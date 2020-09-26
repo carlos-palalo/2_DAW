@@ -1,0 +1,29 @@
+body{
+  background-color: olive;
+}
+fieldset {
+     border: 1px solid #781351;
+     margin:auto;
+     padding: 0em, 0em, 0.4em, 0.8em;
+     width: 310px;
+   }
+   fieldset label { 
+     display     : block;
+     float       : left;
+     font-weight : bold;
+     margin-right: 0.5em;
+     text-align  : left;
+     width       : 65px;
+   }
+   fieldset legend {
+      background: #ffa20c;
+      border: 1px solid #781351;
+      color: #fff;  
+      padding: 2px 2px 2px 2px;
+   } 
+   img {
+	 border: 0px;
+   }
+   p.centrado {
+	 text-align:center;
+   }
