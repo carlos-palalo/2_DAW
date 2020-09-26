@@ -1,0 +1,93 @@
+<h<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>lenguaje_56 - Objeto String relacionado con HTML</title>
+	</head>
+
+	<body>
+		<h1>lenguaje_56 - Objeto String relacionado con HTML</h1>
+		<hr />
+
+		<script type="text/javascript">
+			var cadena = "Mensaje de texto";
+			
+			//ANCHOR
+			document.write("ANCHOR<br />");
+			cadena.anchor("marca1");
+			document.write("<hr />");
+
+
+			//BIG
+			document.write("BIG<br />");
+			document.write(cadena + " - " + cadena.big());
+			document.write("<hr />");
+
+			
+			//BLINK
+			document.write("BLINK<br />");
+			document.write(cadena.blink()); //Sólo funciona en el navegador Opera
+			document.write("<hr />");
+
+
+			//BOLD
+			document.write("BOLD<br />");
+			document.write(cadena + " - " + cadena.bold());
+			document.write("<hr />");
+
+
+			//FIXED
+			document.write("FIXED<br />");
+			document.write(cadena + " - " + cadena.fixed());
+			document.write("<hr />");
+
+
+			//FONTCOLOR
+			document.write("FONTCOLOR<br />");
+			document.write(cadena + " - " + cadena.fontcolor("green") + "<br />");
+			document.write(cadena + " - " + cadena.fontcolor("#FA2363"));
+			document.write("<hr />");
+
+
+			//FONTSIZE
+			document.write("FONTSIZE<br />");
+			document.write(cadena + " - " + cadena.fontsize(5));
+			document.write("<hr />");
+
+			//ITALICS
+			document.write("ITALICS<br />");
+			document.write(cadena + " - " + cadena.italics());
+			document.write("<hr />");
+
+
+			//LINK
+			document.write("LINK<br />");
+			document.write(cadena.link("http://www.iesribera.es"));
+			document.write("<hr />");
+
+
+			//SMALL
+			document.write("SMALL<br />");
+			document.write(cadena + " - " + cadena.small());
+			document.write("<hr />");
+
+
+			//STRIKE
+			document.write("STRIKE<br />");
+			document.write(cadena + " - " + cadena.strike());
+			document.write("<hr />");
+
+
+			//SUB
+			document.write("SUB<br />");
+			document.write(cadena + " - " + cadena.sub());
+			document.write("<hr />");
+
+
+			//SUP
+			document.write("SUP<br />");
+			document.write(cadena + " - " + cadena.sup());
+			document.write("<hr />");
+		</script>
+	</body>
+</html>

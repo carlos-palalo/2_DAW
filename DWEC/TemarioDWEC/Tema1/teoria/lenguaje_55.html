@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>lenguaje_55 - Objeto String</title>
+	</head>
+
+	<body>
+		<h1>lenguaje_55 - Objeto String</h1>
+		<hr />
+
+		<script type="text/javascript">
+			var cadena = "Mensaje de texto para probar el funcionamiento del objeto STRING";
+			otraCadena = new String("Otro mensaje de texto");
+
+			//LENGTH (propiedad)
+			document.write("Propiedad LENGTH<br />");
+			document.write(cadena.length);
+			document.write("<hr />");
+
+
+			//TOUPPERCASE
+			document.write("TOUPPERCASE<br />");
+			document.write(cadena.toUpperCase());
+			document.write("<hr />");
+
+
+			//TOLOWERCASE
+			document.write("TOLOWERCASE<br />");
+			document.write(cadena.toLowerCase());
+			document.write("<hr />");
+
+
+			//SPLIT
+			document.write("SPLIT<br />");
+			var palabras1 = cadena.split(" ");
+			document.write(palabras1 + "<br />");
+			var palabras2 = cadena.split("");
+			document.write(palabras2 + "<br />");
+			var palabras3 = cadena.split();
+			document.write(palabras3 + "<br />");
+			var palabras4 = cadena.split(" ",5);
+			document.write(palabras4 + "<br />");
+			var palabras5 = cadena.split("a");
+			document.write(palabras5 + "<br />");
+			document.write("<hr />");
+
+
+			//SUBSTRING
+			document.write("SUBSTRING<br />");
+			document.write(cadena.substring(3,10)); //10 es posición final
+			document.write("<hr />");
+
+
+			//SUBSTR
+			document.write("SUBSTR<br />");
+			document.write(cadena.substr(3,10)); //10 es longitud
+			document.write("<hr />");
+
+
+			//INDEXOF
+			document.write("INDEXOF<br />");
+			document.write(cadena.indexOf('a'));
+			document.write("<br />");
+			document.write(cadena.indexOf('de'));
+			document.write("<hr />");
+
+
+			//LASTINDEXOF
+			document.write("LASTINDEXOF<br />");
+			document.write(cadena.lastIndexOf('a'));
+			document.write("<br />");
+			document.write(cadena.lastIndexOf('de'));
+			document.write("<hr />");
+
+
+			//CHARAT
+			document.write("CHARAT<br />");
+			document.write(cadena.charAt(14));
+			document.write("<hr />");
+
+
+			//REPLACE
+			document.write("REPLACE<br />");
+			document.write(cadena.replace('a','A'));
+			document.write("<br />");
+			document.write(cadena.replace('de','DE'));
+			document.write("<br />");
+			document.write(cadena.replace(/a/g,'A'));
+			document.write("<hr />");
+
+
+			//CHARCODEAT
+			document.write("CHARCODEAT<br />");
+			document.write(cadena.charAt(3));
+			document.write("<br />")
+			document.write(cadena.charCodeAt(3));
+			document.write("<hr />");
+
+			//CONCAT
+			var c1 = "hola";
+			var c2 = "adios";
+			document.write("CONCAT<br />");
+			document.write(c1.concat(c2));
+			document.write("<hr />");
+
+
+			//ENDSWITH
+			document.write("ENDSWITH<br />");
+			document.write(cadena.endsWith("texto"));
+			document.write("<br />");
+			document.write(otraCadena.endsWith("texto"));
+			document.write("<hr />");
+
+
+			//FROMCHARCODE
+			document.write("FROMCHARCODE<br />");
+			document.write(String.fromCharCode(115));
+			document.write("<hr />");
+
+
+			//INCLUDES
+			document.write("INCLUDES<br />");
+			document.write(cadena.includes("de"));
+			document.write("<hr />");
+
+
+			//LOCALECOMPARE
+			document.write("LOCALECOMPARE<br />");
+			var c3 = "Дcasa";
+			var c4 = "barco";
+			document.write(c3.localeCompare(c4));
+			document.write("<br />");
+			document.write(c4.localeCompare(c3));
+			document.write("<br />");
+			document.write(c3.localeCompare(c3));
+			document.write("<hr />");
+
+
+			//MATCH --> Usa expresiones regulares
+
+
+			//REPEAT
+			document.write("REPEAT<br />");
+			var c5 = "Coche";
+			document.write(c5.repeat(5));
+			document.write("<hr />");
+
+
+			//SEARCH
+			document.write("SEARCH<br />");
+			document.write(cadena.search("texto"));
+			document.write("<hr />");
+
+
+			//SLICE
+			document.write("SLICE<br />");
+			document.write(cadena.slice(13,20));
+			document.write("<hr />");
+
+			//STARTSWITH
+			document.write("STARTSWITH<br />");
+			document.write(cadena.startsWith("Mensaje"));
+			document.write("<br />");
+			document.write(otraCadena.startsWith("Mensaje"));
+			document.write("<hr />");
+
+			//TOLOCALELOWERCASE --> Normalmente funcionará como toLowerCase
+			
+
+			//TOLOCALEUPPERCASE --> Normalmente funcionará como toUpperCase
+
+
+			//TOSTRING
+			document.write("TOSTRING<br />");
+			document.write(cadena.toString());
+			document.write("<hr />");
+
+
+			//TRIM
+			document.write("TRIM<br />");
+			var c6 = "     esto es una cadena     ";
+			document.write("-->" + c6 + "<--");
+			document.write("<br />");
+			document.write("-->" + c6.trim() + "<--");
+			document.write("<hr />");
+
+
+			//VALUEOF
+			document.write("VALUEOF<br />");
+			document.write(cadena.valueOf());
+			document.write("<hr />");
+		</script>
+	</body>
+</html>
