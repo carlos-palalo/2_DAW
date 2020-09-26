@@ -1,0 +1,147 @@
+header{
+    background-color: #0277bd;
+    position: fixed;
+    top: 0px;
+    color: white;
+    width: 100%;
+    margin: 0px 0px 0px -10px;
+    font-variant: small-caps;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
+}
+
+footer{
+    background-color: #0277bd;
+    position: fixed;
+    bottom: 0px;
+    color: white;
+    width: 100%;
+    margin: 0px 0px 0px -10px;
+    font-variant: small-caps;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
+}
+
+header h4, footer h4{
+    display: inline-block;
+}
+
+.ini{
+    float: right;
+    margin-right: 30px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+header h4,footer h4{
+    margin: 20px;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+section{
+    margin-top: 100px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #58a5f0;
+}
+
+section h2{
+    text-align: center;
+    color: #004c8c; 
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
+}
+
+section h3{
+    color: #58a5f0;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
+    padding-right: 20px;
+}
+
+div{
+    text-align: center;
+    color: white;
+}
+
+.t{
+    max-width: 300px;
+    padding: 0px 10px;
+    margin: 20px auto;
+    text-align: right;
+}
+
+.ir{
+    background-color: #0277bd;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 100px;
+    margin: 0px 40px 0px 20px;
+    width: 50px;
+}
+.t *{
+    display: inline-block;
+}
+
+hr{
+    border-color: #4FC3F7;
+    width: 60%;
+}
+
+.vl{
+    float: right;
+    border-left: 2px solid white;
+    height: 60px;
+}
+
+.menu{
+    width: 450px;
+    height: 60%;
+    overflow-y: auto;
+    margin: 30px auto;
+    font-variant: small-caps;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-radius: 15px;
+}
+
+.menu a{
+    background-color: rgba(88, 165, 240,0.8);
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.menu a:hover{
+    background-color: #0277bd;
+    color: white;
+}
+
+i{
+    color: #0277bd;
+    font-size: 25px;
+}
+
+.fa{
+    font-size: 25px;
+}
+
+svg{
+    stroke: #0277bd;
+}
+
+article{
+    width: 60%;
+    margin: 0px auto;
+    margin-bottom: 100px;
+    text-align: justify;
+    color: #0277bd;
+}
+
+article h4{
+    background-color: #4FC3F7;
+    padding: 5px;
+    color: white;
+}
