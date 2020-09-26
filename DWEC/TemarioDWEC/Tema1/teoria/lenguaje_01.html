@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>lenguaje_01 - Código JavaScript en el propio fichero</title>
+		<script type="text/javascript">
+			console.log("Desde el head");
+
+			function funcionEjemplo() {
+				console.log("Desde la función");				
+			}
+		</script>
+	</head>
+	<script>
+		console.log("Desde fuera1");
+	</script>
+	<script text="">
+		console.log("Desde fuera2");
+	</script>
+	<script text="javascript">
+		console.log("Desde fuera3");
+	</script>
+
+	<body>
+		<h1>lenguaje_01 - Código JavaScript en el propio fichero</h1>
+		<hr />
+		<h3>Ver consola</h3>
+
+		<script type="text/javascript">
+			console.log("Desde el body antes de llamar a la función");
+			funcionEjemplo();
+			console.log("Desde el body después de llamar a la función");
+		</script>
+	</body>
+</html>
+
+<script type="text/javascript">
+	console.log("Desde fuera4");
+</script>

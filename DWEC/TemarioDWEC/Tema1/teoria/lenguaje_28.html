@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>lenguaje_28 - Conversiones de base</title>
+	</head>
+
+	<body>
+		<h1>lenguaje_28 - Conversiones de base</h1>
+		<hr />
+	
+		<script type="text/javascript">
+			document.write("<table border='2'>");
+
+			for(i=0;i<256;i++) {
+				document.write("<tr>");
+
+				document.write("<td>");
+				document.write(i.toString());
+				document.write("</td>")
+
+				document.write("<td>");
+				document.write(i.toString(2));
+				document.write("</td>")
+
+				document.write("<td>");
+				document.write(i.toString(8));
+				document.write("</td>")
+
+				document.write("<td>");
+				document.write(i.toString(16));
+				document.write("</td>")
+
+				document.write("</tr>");
+			}
+
+			document.write("</table>");
+		</script>
+	</body>
+</html>
