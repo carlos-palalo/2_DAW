@@ -1,12 +1,13 @@
 <?php
-    echo "El method usado fué: ",$HTTP_SERVER_VARS[REQUEST_METHOD],"<br>";
-    echo $HTTP_POST_VARS['nombre'],"<br>";
-    echo $HTTP_POST_VARS['clave'],"<br>";
-    echo $HTTP_POST_VARS['color'],"<br>";
-    echo $HTTP_POST_VARS['acondicionado'],"<br>";
-    echo $HTTP_POST_VARS['tapiceria'],"<br>";
-    echo $HTTP_POST_VARS['llantas'],"<br>";
-    echo $HTTP_POST_VARS['precio'],"<br>";
-    echo $HTTP_POST_VARS['texto'],"<br>";
-    echo $HTTP_POST_VARS['oculto'],"<br>";
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
+    echo "El method usado fué: ",$_SERVER['REQUEST_METHOD'],"<br>";
+    echo $_POST['nombre'],"<br>";
+    echo $_POST['clave'],"<br>";
+    echo $_POST['color'],"<br>";
+    echo $_POST['acondicionado'],"<br>";
+    echo $_POST['tapiceria'],"<br>";
+    echo $_POST['llantas'],"<br>";
+    echo $_POST['precio'],"<br>";
+    echo $_POST['texto'],"<br>";
+    echo $_POST['oculto'],"<br>";
 ?>

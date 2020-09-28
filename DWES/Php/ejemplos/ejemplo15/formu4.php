@@ -1,5 +1,6 @@
 <?php
-    echo "El method usado fué: ",$_SERVER[REQUEST_METHOD],"<br>";
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
+    echo "El method usado fué: ",$_SERVER["REQUEST_METHOD"],"<br>";
     echo $_POST['nombre'],"<br>";
     echo $_POST['clave'],"<br>";
     echo $_POST['color'],"<br>";

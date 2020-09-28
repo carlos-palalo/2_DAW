@@ -1,6 +1,6 @@
 header{
     background-color: #0277bd;
-    position: fixed;
+    position: absolute;
     top: 0px;
     color: white;
     width: 100%;
@@ -11,7 +11,7 @@ header{
 
 footer{
     background-color: #0277bd;
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     color: white;
     width: 100%;
@@ -67,10 +67,9 @@ div{
 }
 
 .t{
-    max-width: 300px;
     padding: 0px 10px;
     margin: 20px auto;
-    text-align: right;
+    text-align: center;
 }
 
 .ir{
@@ -81,13 +80,14 @@ div{
     margin: 0px 40px 0px 20px;
     width: 50px;
 }
+
 .t *{
     display: inline-block;
 }
 
 hr{
     border-color: #4FC3F7;
-    width: 60%;
+    width: 450px;
 }
 
 .vl{
@@ -132,16 +132,35 @@ svg{
     stroke: #0277bd;
 }
 
-article{
-    width: 60%;
-    margin: 0px auto;
-    margin-bottom: 100px;
-    text-align: justify;
-    color: #0277bd;
+#p1{
+    font-family: 'Architects Daughter', cursive;
 }
 
-article h4{
-    background-color: #4FC3F7;
-    padding: 5px;
-    color: white;
+#p2{
+    font-family: 'Dancing Script', cursive;
+}
+
+#p3{
+    font-family: 'Indie Flower', cursive;
+}
+
+#p4{
+    font-family: 'Lobster', cursive;
+}
+
+#p5{
+    font-family: 'Pacifico', cursive;
+}
+
+#p6{
+    font-family: 'Alfa Slab One', cursive;
+}
+
+#p7{
+    font-family: 'Permanent Marker', cursive;
+}
+
+p{
+    width: 450px;
+    margin: 15px auto;
 }

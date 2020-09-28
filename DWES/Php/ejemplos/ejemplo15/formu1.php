@@ -1,12 +1,13 @@
 <?php
-    echo "El method que ha usado fué: ",$REQUEST_METHOD,"<br>";
-    echo $nombre,"<br>";
-    echo $clave,"<br>";
-    echo $color,"<br>";
-    echo $acondicionado,"<br>";
-    echo $tapiceria,"<br>";
-    echo $llantas,"<br>";
-    echo $precio,"<br>";
-    echo $texto,"<br>";
-    echo $oculto,"<br>";
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
+    echo "El method que ha usado fué: ",'$REQUEST_METHOD',"<br>";
+    echo $_POST['nombre'],"<br>";
+    echo $_POST['clave'],"<br>";
+    echo $_POST['color'],"<br>";
+    echo $_POST['acondicionado'],"<br>";
+    echo $_POST['tapiceria'],"<br>";
+    echo $_POST['llantas'],"<br>";
+    echo $_POST['precio'],"<br>";
+    echo $_POST['texto'],"<br>";
+    echo $_POST['oculto'],"<br>";
 ?>

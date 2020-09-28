@@ -1,12 +1,13 @@
 <?php
-    echo "El method usado fué: ",$HTTP_SERVER_VARS[REQUEST_METHOD],"<br>";
-    echo $HTTP_GET_VARS['nombre'],"<br>";
-    echo $HTTP_GET_VARS['clave'],"<br>";
-    echo $HTTP_GET_VARS['color'],"<br>";
-    echo $HTTP_GET_VARS['acondicionado'],"<br>";
-    echo $HTTP_GET_VARS['tapiceria'],"<br>";
-    echo $HTTP_GET_VARS['llantas'],"<br>";
-    echo $HTTP_GET_VARS['precio'],"<br>";
-    echo $HTTP_GET_VARS['texto'],"<br>";
-    echo $HTTP_GET_VARS['oculto'],"<br>";
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
+    echo "El method usado fué: ",$_SERVER["REQUEST_METHOD"],"<br>";
+    echo $_GET['nombre'],"<br>";
+    echo $_GET['clave'],"<br>";
+    echo $_GET['color'],"<br>";
+    echo $_GET['acondicionado'],"<br>";
+    echo $_GET['tapiceria'],"<br>";
+    echo $_GET['llantas'],"<br>";
+    echo $_GET['precio'],"<br>";
+    echo $_GET['texto'],"<br>";
+    echo $_GET['oculto'],"<br>";
 ?>
