@@ -1,4 +1,4 @@
-var texto = "Esto es una frase.";
+var texto = "En la clase de informática tenemos ordenadores.";
 var tFinal = "";
 var lista = texto.split(" ");
 
