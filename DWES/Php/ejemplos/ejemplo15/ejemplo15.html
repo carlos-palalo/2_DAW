@@ -5,7 +5,7 @@
 
 <BODY>
     <!-- Un formulario debe empezar siempre con una etiqueta de este tipo <form ...> en la que será obligatorio indicar con esta sintaxis action='nombre.extension' nombre.extension debe contener el nombre (o la ruta completa en el caso de que estuviera en un directorio o hosting distinto del que alberga el documento que contiene el formulario desde el que se realiza la petición) Es opcional incluir method que puede tener dos valores method='GET' ó method='POST', por defecto (cuando no se indica) el envio se realizará usando method='GET' También es opcional -a los efectos de PHP- incluir name. Ese valor es útil cuando se incluyen scripts del lado del cliente del tipo JavaScript //-->
-    <form name='mi_formulario' action="formu5.php" method='get'>
+    <form name='mi_formulario' action="formu1.php" method='post'>
         <!-- Pueden incluirse textos dentro del formulario --> Escribe tu nombre:
         <!-- Uno de los tipos de campos posibles es el tipo texto su sintaxis (hablamos de HTML) requiere la etiqueta <input type='text'> que indica el contenido del texto esa etiqueta debe incluir obligatoriamente un name='nombre' el nombre a usar serán caracteres alfabéticos, sin tildes ni eñes y sin espacios. Salvo excepciones que comentaremos no puede usarse el mismo nombre para dos campos distintos el value='' puede no contener nada entre las comillas tal como ocurre aquí o contener el texto que por defecto queremos que aparezca en ese campo al cargar el formulario. el size=xx es opcional. Su utilidad es la de ajustar el tamaño de la ventana al número de caracteres que se indiquen //-->
         <input type='text' name='nombre' value='' size=15><br> Escribe tu clave:
