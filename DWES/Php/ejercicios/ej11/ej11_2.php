@@ -9,8 +9,8 @@
 <body>
     <h1>Ejercicio 11 PHP - Operaciones</h1>
     <?php 
-        $a=$_POST['num1'];
-        $b=$_POST['num2'];
+        $a=$_REQUEST['num1'];
+        $b=$_REQUEST['num2'];
         print("La suma de $a + $b es: " . $a . " + " . $b . " = " . ($a+$b)."<br>");
         print("La resta de $a - $b es: " . $a . " - " . $b . " = " . ($a-$b)."<br>");
         print("La multiplicación de $a * $b es: " . $a . " * " . $b . " = " . ($a*$b)."<br>");

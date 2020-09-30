@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Ejercicio 11 PHP - Operaciones</h1>
+    <h1>Ejercicio 12 PHP - Operaciones</h1>
     <form name="Ejercicio 11" action="ej12_2.php" method="POST">
         <fieldset>
             <legend>Números</legend>
