@@ -58,7 +58,6 @@ section h3{
     color: #58a5f0;
     text-align: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
-    padding-right: 20px;
 }
 
 div{
@@ -67,9 +66,10 @@ div{
 }
 
 .t{
+    max-width: 240px;
     padding: 0px 10px;
     margin: 20px auto;
-    text-align: center;
+    text-align: right;
 }
 
 .ir{
@@ -94,73 +94,4 @@ hr{
     float: right;
     border-left: 2px solid white;
     height: 60px;
-}
-
-.menu{
-    width: 450px;
-    height: 60%;
-    overflow-y: auto;
-    margin: 30px auto;
-    font-variant: small-caps;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    border-radius: 15px;
-}
-
-.menu a{
-    background-color: rgba(88, 165, 240,0.8);
-    color: black;
-    display: block;
-    padding: 12px;
-    text-decoration: none;
-}
-
-.menu a:hover{
-    background-color: #0277bd;
-    color: white;
-}
-
-i{
-    color: #0277bd;
-    font-size: 25px;
-}
-
-.fa{
-    font-size: 25px;
-}
-
-svg{
-    stroke: #0277bd;
-}
-
-#p1{
-    font-family: 'Architects Daughter', cursive;
-}
-
-#p2{
-    font-family: 'Dancing Script', cursive;
-}
-
-#p3{
-    font-family: 'Indie Flower', cursive;
-}
-
-#p4{
-    font-family: 'Lobster', cursive;
-}
-
-#p5{
-    font-family: 'Pacifico', cursive;
-}
-
-#p6{
-    font-family: 'Alfa Slab One', cursive;
-}
-
-#p7{
-    font-family: 'Permanent Marker', cursive;
-}
-
-p{
-    width: 450px;
-    margin: 15px auto;
 }
