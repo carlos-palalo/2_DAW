@@ -1,4 +1,4 @@
-var datos = "jesus,53453452E,677123456,1234RTS,34567,56789,983123456,67899876U,paco,3456PHN";
+var datos = "jesus antonio,53453452E,677123456,1234RTS,34567,56789,983123456,67899876U,paco,3456PHN";
 //Hacer una matriz ordenada donde este el nombre, dni, cp, tlf y matricula
 //;
 arrayDatos = datos.split(",");
