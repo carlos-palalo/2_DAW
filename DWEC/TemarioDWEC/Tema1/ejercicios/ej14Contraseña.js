@@ -8,7 +8,7 @@ var validar = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&](^\s))[A-Za-z\d$@$!
 for (var i = 0; i < login.length - 2; i++) {
     aux = login.slice(i,i+3);
     if(password.match(aux)){
-        console.log("Error. Contraseña no válida");
+        console.log("Error. La contraseña tiene un conjunto de caracteres repetidos respecto al login");
         break;
     }
 }
