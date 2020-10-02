@@ -1,0 +1,91 @@
+#menuPrin{position:absolute;left:20px;top:80px;width:160;font-family:Arial;font-size:13px;color:#ffffff;text-align:left;}
+#cabezaPrin{color:#ffffff;font-family:Arial,Times;font-size:40px;text-align:center}
+#resaltarPrin{color:#E9843E;}
+#up_Princ{position:absolute;top:316px;left:575;width:13px;height:13px;z-Index:5}
+#down_Princ{position:absolute;top:4px;left:575;width:13px;height:13px;z-Index:5}
+#deslizaPrinc{position:absolute;left:25px;top:20px;width:535px;z-Index:6;font-family:Arial;font-size:12px;text-align:justify;color:#5F68A0;visibility:hidden}
+#titulPrinc{font-family:Arial,Verdana;font-size:14px;color:#ffffff;font-weight:bold;margin-right:290px;background-color:#70A77F;text-align:left}
+#ContenidosPrinc{position:absolute;left:20px;top:20px;width:535px;z-Index:6;font-family:Arial;font-size:12px;text-align:justify;color:#5F68A0;}
+
+#PROVISIONAL{position:absolute;left:620px;top:80px;width:150px;height:30xp;font-family:Arial;font-size:14px;color:#ffffff;font-weight:bold;text-align:left;z-Index:20}
+
+
+#enl_ej{font-size:11px;font-family:sans serif,Arial;text-align:center}
+
+A:link{text-decoration:none;color:#009400}
+A:visited{text-decoration:none;color:#009400}
+a:hover{text-decoration:none;color:#ff9400}
+#ejercicio { background-image: url(./images/tintero.gif); background-repeat: no-repeat; border-color: #0000a0 #0000a0 #0000a0 #0000a0; border: 1px #0000a0 solid; padding: 5px 10px; background-color: #F7FCFE; background-position: right bottom; margin:   5px 5px; font-family: Arial, Helvética, sans-serif; font-size: 10pt; color: #0000a0; text-align: justify}
+#aviso{ background-image: url(./images/peligro.gif); background-repeat: no-repeat;border-color: #0000a0 #0000a0 #0000a0 #0000a0; border: 1px #0000a0 solid; padding: 5px 10px; background-color: #Ffffff; background-position: right bottom; margin:   5px 5px; font-family: Arial, Helvética, sans-serif; font-size: 10pt; color: #0000a0; text-align: justify}
+#evaluacion{ background-image: url(./images/tintero.gif); background-repeat: no-repeat; border-color: #0000a0 #0000a0 #0000a0 #0000a0; border: 1px #0000a0 solid; padding: 5px 10px; background-color: #FfDdDd; background-position: right bottom; margin:   5px 5px; font-family: Arial, Helvética, sans-serif; font-size: 10pt; color: #0000a0; text-align: justify}
+#fuentes{background-image: url(./images/ruedas2.gif);background-repeat: no-repeat; border-color: #0000a0 #0000a0 #0000a0 #0000a0; border: 1px #0000a0 solid;background-position: right bottom; position:relative;background-color:#fbffff;color:#607070;padding:0px 5px;margin:   5px 5px;}
+#num_ejer{font-family:sans serif,Verdana,Arial;background-color:#0000a0;font-size:13px;font-weight:bold;color:#ffffff;text-align:left}
+#num_eval{font-family:sans serif,Verdana,Arial;background-color:#a00000;font-size:13px;font-weight:bold;color:#ffffff;text-align:left}
+#alerta{font-family:sans serif,Verdana,Arial;background-color:#d00000;font-size:13px;font-weight:bold;color:#ffffff;text-align:left}
+
+#logo{position:absolute;left:5px;top:0px;width:0px;height: 103px;}
+#enlace{font-family:Arial;font-size:10px;position:absolute;left:150px;top:82px;widht:40px;height:14px;z-Index:90}
+#text_logo{position:relative;left:75px;	top:-20px;	width:200px;height: 50px;}
+#titular{position:relative;left:190px;top:45px;width:590px;	height:103px;border-width:0;border-style:outset;border-color:#FfFffF; font-family:Arial,sans serif,Verdana;font-size:22px;color:#003366;text-align:left;z-Index:32}
+#referencias{font-family:sans serif,Verdana,Arial;font-size:10px;color:#0000a0;text-align:justify;margin-left:60px;margin-right:30px}
+#normal{position:absolute;left:220;top:115px;width:550;height:590px;font-family:sans serif,Verdana,Arial;font-size:12px;color:#0000a0;text-align:justify;}
+#prefor{position:relative;left:10px;width:530px;background-color:#F1F1DA; height:200px}
+#normalC{font-family:sans serif,Verdana,Arial;font-size:12px;color:#0000a0;text-align:center;}
+#normalL{font-family:sans serif,Verdana,Arial;font-size:12px;color:#0000a0;text-align:left;}
+#normalR{font-family:sans serif,Verdana,Arial;font-size:12px;color:#0000a0;text-align:right;}
+#normalJ{font-family:sans serif,Verdana,Arial;font-size:12px;color:#0000a0;text-align:justify;}
+#chiquiC{font-family:sans serif,Verdana,Arial;font-size:10px;color:#0000a0;text-align:center;}
+#chiquiL{font-family:sans serif,Verdana,Arial;font-size:10px;color:#0000a0;text-align:left;}
+#chiquiR{font-family:sans serif,Verdana,Arial;font-size:10px;color:#0000a0;text-align:right;}
+#chiquiJ{font-family:sans serif,Verdana,Arial;font-size:10px;color:#0000a0;text-align:justify;}
+#chiquiJ5{font-family:sans serif,Verdana,Arial;font-size:10px;color:#0000a0;text-align:justify;margin-left:10px;margin-right:20px}
+#superR{color:#a00000;font-weight:bold;font-size:20px;text-align:left}
+#superA{color:#0000a0;font-weight:bold;font-size:20px;text-align:left}
+#titulillo{color:#a00000;font-weight:bold;font-size:13px;text-align:left}
+#titulito{color:#a00000;font-weight:bold;font-size:16px;text-align:left;}
+#cabTabla{color:#a00000;font-weight:bold;font-size:15px;text-align:center;color:#ffffff}
+#previos{font-family:sans serif,Verdana,Arial;font-size:11px;color:#0000a0;text-align:left;font-weight:bold}
+#previas{font-family:sans serif,Verdana,Arial;font-size:11px;color:#0000a0;text-align:left;font-style:italic}
+
+#blancaC{font-family:sans serif,Verdana,Arial;font-size:12px;color:#ffffff;text-align:center;}
+#granateC{font-family:sans serif,Verdana,Arial;font-size:12px;color:#a00000;text-align:center;font-weight:bold}
+#granacurC{font-family:sans serif,Verdana,Arial;font-size:12px;color:#a00000;text-align:center;font-style:italic}
+
+#opcional{position:absolute;width:125px;height:65px;left:670px;top:30px}
+
+
+#titulilloC{color:#a00000;font-weight:bold;font-size:13px;text-align:center}
+#cursiva{font-style:italic}
+#negrita{font-weight:bold}
+#neg_cur{font-weight:bold;font-style:italic}
+
+#cursiva1{font-style:italic;color:#a00000;}
+#negrita1{color:#a00000;font-weight:bold}
+#neg_cur1{color:#a00000;font-weight:bold;font-style:italic}
+
+#rojo{color:#ff0000;}
+#verde{color:#00ff00;}
+#azul{color:#0000ff;}
+#cyan{color:#00ffff;}
+#magenta{color:#ff00ff;}
+#recuadro{position:absolute;left:5px;top:115px;width:200px;background-color:#eeeeee;layer-background-color:#eeeeee;z-Index:2;}
+#recuadro1{position:absolute;left:10px;top:15px;width:220px;background-color:#aaaaaa;layer-background-color:#aaaaaa;z-Index:99;visibility:hidden}
+
+#ladillo{position:relative;left:9px;top:10px;width:182px; font-family:sans serif,Verdana,Arial; font-size:11px;color:#0000a0;text-align:justify;z-Index:3}
+#ladillo_ind{position:relative;left:2px;top:0px;width:196px; font-family:sans serif,Verdana,Arial; font-size:11px;color:#0000a0;text-align:justify;z-Index:3}
+#recuadro2{position:relative;left:-3px;top:-5px;width:215px;background-color:#eeeeee;layer-background-color:#eeeeee;z-Index:99;}
+#ladillo_ind1{position:relative;left:5px;top:10px;width:205px; font-family:sans serif,Verdana,Arial; font-size:11px;color:#0000a0;text-align:justify;z-Index:3}
+#truquito{font-family:sans serif,Verdana,Arial; font-size:11px;color:#0000a0;text-align:justify;}
+
+#td7{font-family:sans serif,Verdana,Arial; font-size:11px;color:#0000a0;text-align:left;}
+
+
+#PIE{font-family:sans serif,Verdana,Arial;font-size:10px;text-align:center}
+#t11{font-family:sans serif,Verdana,Arial;font-size:14px;font-weight:bold;color:#a00000;text-align:center;text-valign:middle}
+#t12{font-family:sans serif,Verdana,Arial;font-size:12px;font-style:italic;color:#0000a0;text-align:justify;text-valign:middle}
+#t13{font-family:sans serif,Verdana,Arial;font-size:12px;font-weight:bold;color:#a00000;text-align:center;text-valign:middle}
+#t14{font-family:sans serif,Verdana,Arial;font-size:10px;font-style:italic;color:#000000;text-align:center;text-valign:middle}
+#t15{font-family:sans serif,Verdana,Arial;font-size:13px;font-weight:bold;color:#ff0000;text-align:center;text-valign:middle}
+
+#titulPrinc1{font-family:Arial,Verdana;font-size:14px;color:#ffffff;font-weight:bold;margin-right:290px;background-color:#70A77F;text-align:left}
+#ContenidosIframe{position:absolute;left:0px;top:0px;width:535px;z-Index:6;font-family:Arial;font-size:12px;text-align:justify;color:#5F68A0;}
