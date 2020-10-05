@@ -28,16 +28,17 @@ var cantidad = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 var fecha = new Date();
 fecha.setHours(0, 0, 0, 0);
-fecha.setFullYear(2021);
+fecha.setFullYear(2018);
 
 var opciones = { weekday: 'long', year: 'numeric', month: 'long' };
-for (var i = 0; i < 12; i++) {
+for (let i = 0; i < 12; i++) {
     for (var j = 0; j < cantidad[i]; j++) {
         fecha.setDate(j);
+        fecha.setMonth(i);
         if (esFestivo(fecha)) {
-            console.log("Festivo: " + fecha.getDate + " - " + fecha.getMonth + " - " + fecha.getFullYear);
+            console.log("Festivo: " + fecha.getDate() + " - " + fecha.getMonth() + " - " + fecha.getFullYear());
         } else {
-
+            console.log(fecha.getFullYear() + " - " + fecha.getMonth() + " - " + fecha.getDate());
         }
     }
 }
