@@ -20,27 +20,29 @@ function esFestivo(_fecha) {
         if (_fecha.getTime() == festivos[i].getTime()) {
             flag = true;
         }
-        return flag;
     }
+    return flag;
 }
 
 var cantidad = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 var fecha = new Date();
-fecha.setHours(0, 0, 0, 0);
+fecha.setHours(0,0,0,0);
 fecha.setFullYear(2018);
+var opciones = { day: 'numeric', year: 'numeric', month: 'numeric' };
 
-var opciones = { weekday: 'long', year: 'numeric', month: 'long' };
 for (let i = 0; i < 12; i++) {
-    for (var j = 0; j < cantidad[i]; j++) {
+    for (let j = 1; j <= cantidad[i]; j++) {
         fecha.setDate(j);
         fecha.setMonth(i);
+
         if (esFestivo(fecha)) {
-            console.log("Festivo: " + fecha.getDate() + " - " + fecha.getMonth() + " - " + fecha.getFullYear());
+            console.log("Festivo: "+fecha.toLocaleString('es-ES',opciones));
         } else {
-            console.log(fecha.getFullYear() + " - " + fecha.getMonth() + " - " + fecha.getDate());
+            console.log(fecha.toLocaleString('es-ES',opciones));
         }
     }
+    console.log();
 }
 
 //hacer un calendario
