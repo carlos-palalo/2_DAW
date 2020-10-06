@@ -27,7 +27,7 @@ function esFestivo(_fecha) {
 var cantidad = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 var fecha = new Date();
-fecha.setHours(0,0,0,0);
+fecha.setHours(0, 0, 0, 0);
 fecha.setFullYear(2018);
 var opciones = { day: 'numeric', year: 'numeric', month: 'numeric' };
 
@@ -37,9 +37,9 @@ for (let i = 0; i < 12; i++) {
         fecha.setMonth(i);
 
         if (esFestivo(fecha)) {
-            console.log("Festivo: "+fecha.toLocaleString('es-ES',opciones));
+            console.log("Festivo: " + fecha.toLocaleDateString('es-ES', opciones));
         } else {
-            console.log(fecha.toLocaleString('es-ES',opciones));
+            console.log(fecha.toLocaleDateString('es-ES', opciones));
         }
     }
     console.log();
