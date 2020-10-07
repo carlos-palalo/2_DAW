@@ -1,5 +1,5 @@
 const distanciaVuelta = 7000;
-const vueltasTotales = 9;
+const vueltasTotales = 8;
 
 function Coche(nombre, potencia, combustible) {
     this.nombre = nombre;
