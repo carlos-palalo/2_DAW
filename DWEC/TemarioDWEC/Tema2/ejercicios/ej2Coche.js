@@ -6,8 +6,11 @@ function Coche(nombre, potencia, combustible) {
     this.potencia = potencia;
     this.combustible = combustible;
     this.tiempo = 0;
+    this.tiempoAnt = 0;
     this.vueltas = 0;
     this.recorrido = 0;
+    this.tiempoMedio = 0;
+    this.tiempoCadaVuelta = new Array();
 
     this.acelerar = function () {
         if (this.combustible > 0) {
@@ -40,12 +43,15 @@ while (carrera.every(y => y.vueltas < vueltasTotales)) {
         if (x.recorrido >= distanciaVuelta) {
             x.vueltas++;
             x.recorrido -= distanciaVuelta;
+            x.tiempoMedio = Math.floor(x.tiempo / x.vueltas, -1);
+            x.tiempoCadaVuelta.push(x.tiempo - x.tiempoAnt);
+            x.tiempoAnt = x.tiempo;
         }
     }));
 }
 
 //RESULTADOS DE LA CARRERA
-carrera.forEach(x => console.log(x.nombre + " --> " + x.vueltas + " --> " + x.recorrido + " --> " + x.combustible + " --> " + x.tiempo));
+carrera.forEach(x => console.log(x.nombre + " --> " + x.vueltas + " --> " + x.recorrido + " --> " + x.combustible + " --> " + x.tiempo + " --> " + x.tiempoMedio + " --> " + x.tiempoCadaVuelta));
 carrera.forEach(x => {
     if (x.vueltas == vueltasTotales) {
         console.log("GANADOR: " + x.nombre);
