@@ -23,16 +23,17 @@ footer{
 section{
     float: left;
     text-align: justify;
-    width: 55%;
+    width: 75%;
     background-color: #004c8c;
     color: white;
+    margin-bottom: 10px;
 }
 
 aside{
     padding: 0px 10px;
     text-align: justify;
     float: right;
-    width: 40%;
+    width: 20%;
     background-color: #8bf6ff;
 }
 
