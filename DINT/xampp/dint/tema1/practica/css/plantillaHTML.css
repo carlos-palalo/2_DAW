@@ -21,7 +21,7 @@ footer, #footer{
     clear: both;
 }
 
-section, .section{
+section, #section{
     float: left;
     text-align: justify;
     width: 65%;
