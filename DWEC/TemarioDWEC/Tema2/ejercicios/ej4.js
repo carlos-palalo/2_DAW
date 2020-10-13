@@ -6,15 +6,58 @@
 function Estudiante(nombre) {
     this.nombre = nombre;
     primero = {
-        "PROG" : {
-            nota:0,
-            horas_semanales:8
+        "PROG": {
+            nota: 0,
+            horas_semanales: 8
         },
-        "BBDD" : {
-            nota:0,
-            horas_semanales:8
+        "BBDD": {
+            nota: 0,
+            horas_semanales: 6
         },
-    }
-    this.segundo = [];
+        "ENT": {
+            nota: 0,
+            horas_semanales: 3
+        },
+        "LMAR": {
+            nota: 0,
+            horas_semanales: 4
+        },
+        "FOL": {
+            nota: 0,
+            horas_semanales: 3
+        },
+        "SIS": {
+            nota: 0,
+            horas_semanales: 6
+        }
+    };
+    segundo = {
+        "DWEC": {
+            nota: 0,
+            horas_semanales: 8
+        },
+        "DWES": {
+            nota: 0,
+            horas_semanales: 9
+        },
+        "DAW": {
+            nota: 0,
+            horas_semanales: 4
+        },
+        "DINT": {
+            nota: 0,
+            horas_semanales: 6
+        },
+        "EIE": {
+            nota: 0,
+            horas_semanales: 3
+        },
+        "Proyecto": {
+            nota: 0
+        },
+        "Formación Centro Trabajo": {
+            nota: 0,
+        },
+    };
 
 }
