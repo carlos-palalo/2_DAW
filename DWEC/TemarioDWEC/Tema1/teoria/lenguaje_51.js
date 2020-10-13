@@ -1,4 +1,4 @@
-//Lenguaje_52.js - Funciones flecha => (Autoinvocación)
+//Lenguaje_51.js - Funciones flecha => (Autoinvocación)
 
 //Autoinvocación, es decir, sin asignar a una variable
 

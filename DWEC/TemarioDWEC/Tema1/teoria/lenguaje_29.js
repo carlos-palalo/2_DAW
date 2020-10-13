@@ -1,4 +1,4 @@
-//lenguaje_29.js - Arrays: Básico</title>
+//lenguaje_29.js - Arrays: Básico
 
 //Definición a partir del objeto Array
 var paises = new Array(); //vacío

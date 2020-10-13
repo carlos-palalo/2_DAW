@@ -1,3 +1,5 @@
+//lenguaje_04 - Comentarios
+
 //Comentario de una línea
 //alert("Saludo1");
 

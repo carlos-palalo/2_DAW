@@ -1,7 +1,7 @@
 //lenguaje_68.js - Ejercicio de expresiones regulares para validar datos de la vida real
 
 //NOMBRE
-var nombreExpr = /^[A-Z]{1}[a-z]+|[A-Z]{1}[a-z]+\s[A-Z]{1}[a-z]+$/;;
+var nombreExpr = /^[A-Z]{1}[a-z]+|[A-Z]{1}[a-z]+\s[A-Z]{1}[a-z]+$/;
 var nombre = "";
 nombreExpr.test(nombre) ? console.log("BIEN") : console.log("MAL");
 
@@ -13,7 +13,7 @@ expDni.test(dni) ? console.log("BIEN") : console.log("MAL");
 
 
 //TELÉFONO
-var telefonoExpr = /^(679)[0-9]{8}$/;
+var telefonoExpr = /^[679][0-9]{8}$/;
 var telefono = "";
 telefonoDni.test(telefono) ? console.log("BIEN") : console.log("MAL");
 

@@ -1,4 +1,4 @@
-//lenguaje_37.js - Arrays multidimensionales<
+//lenguaje_37.js - Arrays multidimensionales
 
 var tablaA = [ [1,2,3] , [4,5,6] , [7,8,9,10] , ['A','B','C'] ];
 console.log(tablaA.length);

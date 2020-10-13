@@ -1,4 +1,4 @@
-//lenguaje_71.js - Ejercicio de expresiones regulares: Crear una expresión regular para una contraseña con condiciones prefijadas</h1>
+//lenguaje_71.js - Ejercicio de expresiones regulares: Crear una expresión regular para una contraseña con condiciones prefijadas
 //La clave debe contener mayúsculas. minúsculas, dígitos, caracteres especiales, no tener espacios en blanco, una longitud entre 4 y 12 y parte no debe contener partes del login en un mínimo de longitud 3
 
 var login = "valladolid";

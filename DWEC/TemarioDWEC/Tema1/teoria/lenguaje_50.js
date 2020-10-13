@@ -1,4 +1,4 @@
-//lenguaje_51 - Funciones flecha (Básico)
+//lenguaje_50 - Funciones flecha (Básico)
 
 //Ejemplo básico 1
 var suma1 = (x,y) => x + y;

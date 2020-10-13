@@ -1,3 +1,5 @@
+//lenguaje_05 - Declaración de variables
+
 /* Los nombres de las variables:
 	-pueden contener letras, dígitos, subrayados (_) y dólares ($).
 	-deben comenzar por una letra, subrayado o dólar.

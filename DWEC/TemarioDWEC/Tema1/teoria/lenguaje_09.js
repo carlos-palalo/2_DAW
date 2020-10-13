@@ -1,4 +1,4 @@
-//lenguaje_09.js - Relación entre hoisting y ámbito</title>
+//lenguaje_09.js - Relación entre hoisting y ámbito
 
 function funcionEjemplo() {
 	//Las variables no declaradas son globales

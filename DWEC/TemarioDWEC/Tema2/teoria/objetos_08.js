@@ -44,8 +44,14 @@ while (carrera.every(y => y.vueltas < vueltasTotales)) {
         if(x.recorrido >= distanciaVuelta) {
             x.vueltas++;
             x.recorrido = x.recorrido - distanciaVuelta;
-            x.tiempoPorVuelta.push(x.tiempo);
-            x.tiempo = 0;
+            
+            var tva = 0;
+            x.tiempoPorVuelta.forEach(function (tv){
+                tva += tv;
+            });
+            
+            x.tiempoPorVuelta.push(x.tiempo-tva);
+            //x.tiempo = 0;
         }
     });
 }

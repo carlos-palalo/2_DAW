@@ -1,4 +1,4 @@
-//lenguaje_62.js - Expresiones regulares: Declaración, modificadores y propiedades
+//lenguaje_62.js - Expresiones regulares: Básico
 
 
 //Formas de definir una expresión regular

@@ -3,7 +3,7 @@
 var fechaAnterior = new Date(2020,9,7);
 var fechaActual = new Date();
 
-var milisegundos = fechaActual.getTime() - fechaAnterior.getTime();
+var milisegundos = Math.abs(fechaActual.getTime() - fechaAnterior.getTime());
 
 const msMinuto = 1000 * 60;
 const msHora = msMinuto * 60;
