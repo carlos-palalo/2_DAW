@@ -60,13 +60,18 @@ function Estudiante(nombre) {
     };
 
     this.examen = function () {
-        if(this.nota){
-            var n = random(1,10);
+        if (this.nota < 5) {
+            var n = random(1, 10);
+            this.nota = n;
         }
     }
 }
 
 var curso = [];
+var cont = 0;
 
-curso.push(new Estudiante("e1"));
-var descriptor = (curso);
+do {
+    curso.push(new Estudiante("e" + cont++));
+} while (cont < 20)
+
+console.table(curso);
