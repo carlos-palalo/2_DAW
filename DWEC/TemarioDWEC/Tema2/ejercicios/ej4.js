@@ -2,10 +2,15 @@
 //Hacer un examen de cada asignatura, numero aleatorio entre 1 y 10, si es mayor que 5, modulo aprobado
 //Empezamos en 2019
 //Se acaba cuando todos hemos sacado el titulo
+//promocionar suma modulos pendientes <10
+
+function random(min, max) {
+    return Math.floor((Math.random() * (max - min + 1)) + min);
+}
 
 function Estudiante(nombre) {
     this.nombre = nombre;
-    primero = {
+    this.primero = {
         "PROG": {
             nota: 0,
             horas_semanales: 8
@@ -31,7 +36,7 @@ function Estudiante(nombre) {
             horas_semanales: 6
         }
     };
-    segundo = {
+    this.segundo = {
         "DWEC": {
             nota: 0,
             horas_semanales: 8
@@ -51,13 +56,17 @@ function Estudiante(nombre) {
         "EIE": {
             nota: 0,
             horas_semanales: 3
-        },
-        "Proyecto": {
-            nota: 0
-        },
-        "Formación Centro Trabajo": {
-            nota: 0,
-        },
+        }
     };
 
+    this.examen = function () {
+        if(this.nota){
+            var n = random(1,10);
+        }
+    }
 }
+
+var curso = [];
+
+curso.push(new Estudiante("e1"));
+var descriptor = (curso);
