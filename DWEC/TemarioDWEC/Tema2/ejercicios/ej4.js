@@ -8,70 +8,54 @@ function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
 
+const horas = [8, 6, 3, 4, 3, 6, 8, 9, 4, 6, 3];
+const asig = ["PROG", "BBDD", "ENT", "LMAR", "FOL", "SIS", "DWEC", "DWES", "DAW", "DINT", "EIE"]
+
 function Estudiante(nombre) {
     this.nombre = nombre;
-    this.primero = {
-        "PROG": {
-            nota: 0,
-            horas_semanales: 8
-        },
-        "BBDD": {
-            nota: 0,
-            horas_semanales: 6
-        },
-        "ENT": {
-            nota: 0,
-            horas_semanales: 3
-        },
-        "LMAR": {
-            nota: 0,
-            horas_semanales: 4
-        },
-        "FOL": {
-            nota: 0,
-            horas_semanales: 3
-        },
-        "SIS": {
-            nota: 0,
-            horas_semanales: 6
-        }
-    };
-    this.segundo = {
-        "DWEC": {
-            nota: 0,
-            horas_semanales: 8
-        },
-        "DWES": {
-            nota: 0,
-            horas_semanales: 9
-        },
-        "DAW": {
-            nota: 0,
-            horas_semanales: 4
-        },
-        "DINT": {
-            nota: 0,
-            horas_semanales: 6
-        },
-        "EIE": {
-            nota: 0,
-            horas_semanales: 3
-        }
-    };
+    this.notas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    this.curso = 1;
+    this.año = 2020;
+    this.pendientesPrimero;
+    this.opor = 2;
 
     this.examen = function () {
-        if (this.nota < 5) {
-            var n = random(1, 10);
-            this.nota = n;
+        if (curso == 1) {
+            do {
+                for (let i = 0; i < 6; i++) {
+                    if (this.notas[i] < 5) {
+                        var n = random(1, 10);
+                        this.notas[i] = n;
+                    }
+                }
+                opor--;
+            } while (opor > 0)
+        } else {
+            do {
+                for (let i = 6; i < 11; i++) {
+                    if (this.notas[i] < 5) {
+                        var n = random(1, 10);
+                        this.notas[i] = n;
+                    }
+                }
+                opor--;
+            } while (opor > 0)
         }
     }
 }
 
-var curso = [];
+var clase = [];
 var cont = 0;
 
 do {
-    curso.push(new Estudiante("e" + cont++));
+    clase.push(new Estudiante("e" + cont++));
 } while (cont < 20)
 
-console.table(curso);
+while (clase.every(y => y.notas[0] < 5)) {
+    y.examen();
+    y.año++;
+    console.log("asdf");
+}
+
+console.table(clase);
