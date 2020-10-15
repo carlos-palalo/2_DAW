@@ -15,13 +15,13 @@ function Estudiante(nombre) {
     this.nombre = nombre;
     this.notas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    this.curso = 1;
+    this.curso = 0;
     this.año = 2020;
     this.pendientesPrimero;
     this.opor = 2;
 
     this.examen = function () {
-        if (curso == 1) {
+        if (this.curso == 1) {
             do {
                 for (let i = 0; i < 6; i++) {
                     if (this.notas[i] < 5) {
@@ -29,9 +29,9 @@ function Estudiante(nombre) {
                         this.notas[i] = n;
                     }
                 }
-                opor--;
-            } while (opor > 0)
-        } else {
+                this.opor--;
+            } while (this.opor > 0)
+        } else if (this.curso == 2) {
             do {
                 for (let i = 6; i < 11; i++) {
                     if (this.notas[i] < 5) {
@@ -39,8 +39,8 @@ function Estudiante(nombre) {
                         this.notas[i] = n;
                     }
                 }
-                opor--;
-            } while (opor > 0)
+                this.opor--;
+            } while (this.opor > 0)
         }
     }
 }
@@ -52,10 +52,11 @@ do {
     clase.push(new Estudiante("e" + cont++));
 } while (cont < 20)
 
-while (clase.every(y => y.notas[0] < 5)) {
-    y.examen();
-    y.año++;
-    console.log("asdf");
+for (var i = 0; i < clase.length; i++) {
+    do {
+        clase[i].examen();
+        clase[i].curso++;
+    } while (clase[i].notas.some(y=>y<5))
 }
 
-console.table(clase);
+console.log(clase);
