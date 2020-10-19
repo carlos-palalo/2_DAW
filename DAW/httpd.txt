@@ -1,0 +1,30 @@
+<Directory "C:\xampp\htdocs\practicaapache\Privado1">
+    Order deny,allow	
+    AuthType Basic
+	AuthName "Sitio restringido"
+	AuthUserFile "C:/claves/claves.txt"
+	Require valid-user
+</Directory>
+
+<Directory "C:\xampp\htdocs\practicaapache\Privado2">
+    Order deny,allow
+    AuthType Basic
+    AuthName "Sitio restringido"
+    AuthUserFile "C:/claves/claves.txt"
+    Require user ana, juan
+</Directory>
+
+<Directory "C:\xampp\htdocs\practicaapache\Privado3">
+    Order deny,allow
+    AuthType Digest
+    AuthName "grupo1"
+    AuthUserFile "C:/claves/claves_digest.txt"
+    Require valid-user
+</Directory>
+
+<Directory "C:\xampp\htdocs\practicaapache\Privado3">
+    Order deny,allow
+    Deny from all
+    Allow from localhost
+#    Allow from ip_profesor
+</Directory>

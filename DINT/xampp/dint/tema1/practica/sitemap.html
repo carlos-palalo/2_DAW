@@ -1,0 +1,163 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/sitemap.css" rel="stylesheet" type="text/css">
+    <title>Práctica_DINT_Palacios_Carlos</title>
+</head>
+
+<body>
+    <header>
+        <h4>Desarrollo de Aplicaciones Web</h4>
+        <h4 class="ini"><a href="../../../index.html">Inicio</a></h4>
+        <div class="vl"></div>
+        <h4 class="ini"><a href="practica.html">Volver</a></h4>
+    </header>
+    <section>
+        <h2>Site Mapping</h2>
+        <hr>
+        <article>
+            <h3>¿Qué es?</h3>
+            <p>Los sitemaps son archivos en los que se proporciona información sobre las páginas, los vídeos y otros
+                archivos de un sitio web, así como sobre las relaciones que hay entre ellos. Los buscadores leen estos
+                archivos para rastrear los sitios web de forma más eficaz. Los sitemaps informan de qué archivos de un
+                sitio web son importantes según el webmaster y, además, incluyen datos importantes sobre ellos. </p>
+            <p>El buscador puede usar el sitemap para ver las paginas nuevas de una página web, o todas las páginas web
+                a la vez, incluyendo imágenes, videos, etc.</p>
+            <h3>Beneficios</h3>
+            <ul>
+                <li><strong>Indexación rápida.</strong> Los buscadores encontraran las paginas nuevas más rápidos, por
+                    lo tanto, el proceso de indexación y exhibición de la página en los resultados de búsqueda será más
+                    rápido como bueno.</li>
+                <li><strong>Mejor indexación de páginas profundas.</strong> Los buscadores pueden encontrar las páginas
+                    que no fueran descubiertas mientras rastrean la página web. Aunque no significa que necesariamente
+                    vayan a estar todas indexadas.</li>
+                <li><strong>Monitoreo de páginas indexadas.</strong> En combinación con la Consola de Búsquedas de
+                    Google (<i>Google Search Console</i>), es posible encontrar que URLs están cubiertas en el sitemap
+                    que indexa Google.</li>
+            </ul>
+            <h3>¿Cuándo necesitamos un sitemap?</h3>
+            <ul>
+                <li><strong>Tenemos una página web grande.</strong> Una página web con 100 paginas no es grande, incluso
+                    con 1000 paginas siguen siendo pequeña, por lo que un sitemap no es realmente necesario. En cambio,
+                    para páginas más grande, es necesario un sitemap.</li>
+                <li><strong>El sitio web es nuevo y hay pocos enlaces externos que dirijan a él.</strong> El sitemap
+                    ayuda a los rastreadores web a buscar nuevas páginas web después de su lanzamiento y a indexar las
+                    nuevas páginas más rápido.</li>
+                <li><strong>El sitio web tiene muchas páginas de contenido que están aisladas</strong> o no están bien
+                    enlazadas entre sí.</li>
+                <li><strong>El sitio web incluye una gran cantidad de rich media</strong>, como video o imágenes, o
+                    aparece en <strong>Google Noticias</strong>.</li>
+            </ul>
+            <h3>Tipos de Sitemap</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Propósito</th>
+                        <th>Dónde usarlo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="gris">
+                        <td>XML sitemap</td>
+                        <td>Mejor indexacción de enlaces a páginas HTML</td>
+                        <td>Sitio web nuevo o extenso con navegación compleja</td>
+                    </tr>
+                    <tr>
+                        <td>Imagen XML sitemap</td>
+                        <td>Extensión para imágenes</td>
+                        <td>Sitio web con imágenes</td>
+                    </tr>
+                    <tr class="gris">
+                        <td>Vídeo XML sitemap</td>
+                        <td>Extensión para vídeos</td>
+                        <td>Sitio web con vídeos</td>
+                    </tr>
+                    <tr>
+                        <td>Móvil XML sitemap</td>
+                        <td>Extensión para páginas de versión móvil</td>
+                        <td>Sitio web con una versión móvil localizada en una URL separada</td>
+                    </tr>
+                    <tr class="gris">
+                        <td>Lenguaje Alternativo XML sitemap</td>
+                        <td>Extensión para páginas en lenguaje alternativo</td>
+                        <td>Sitio web con más modificaciones del lenguaje sin proporcionar el atributo hreflang en el
+                            código HTML</td>
+                    </tr>
+                    <tr>
+                        <td>Noticias de Google Sitemap</td>
+                        <td>Rápida indexación de noticias</td>
+                        <td>Sitio web involucrado con Google News</td>
+                    </tr>
+                    <tr class="gris">
+                        <td>RSS Feed / Atom</td>
+                        <td>Nuevo o actualizados sitios HTML, imágenes</td>
+                        <td>Sitio web con contenido añadido o actualizado a menudo</td>
+                    </tr>
+                    <tr>
+                        <td>mRSS</td>
+                        <td>Extensión de vídeo RSS</td>
+                        <td>Sitio web con vídeos añadidos o actualizados a menudo</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Generadores sitemap</h3>
+            <p>Las herramientas de generadores sitemap como XML-sitemaps.com son muy populares. Simplemente metes la URL
+                del sitio web, y después el generado empieza a rastrearlo y crear el sitemap. </p>
+            <p>Esto está bien en primera instancia, pero es desaconsejable porque a la hora de crear páginas nuevas, el
+                sitemap no las va a reflejar, ya que solo nos da una instantánea del sitio web, por lo que estará
+                desactualizado. También aparecerán URLs que en principio no son importantes, y otras, que puedan ser
+                importante, pero no estén enlazadas no aparecerán.</p>
+            <p>Por estas razones, solamente se debería de usar un generador sitemap si necesitamos indexarlo
+                rápidamente.</p>
+            <p>Principalmente hay dos formatos (XML y RSS).</p>
+            <h3>¿Qué URLs deberían estar en un sitemap?</h3>
+            <ul>
+                <li><strong>Incluir:</strong> páginas que queramos que aparezcan en el ranking de Google y queramos
+                    enseñar a otros usuarios (las importantes y de calidad).</li>
+                <li><strong>Excluir:</strong> páginas de utilidad (páginas que son útiles para los usuarios como de
+                    cuentas, listas de deseos, etc.), redirecciones, de errores, URLs de otros subdominios, duplicadas,
+                    etc.</li>
+            </ul>
+            <h3>Validadores sitemap</h3>
+            <p>Una vez hemos creado o generado nuestro sitemap, es una buena opción validarlo con Yandex Sitemap
+                Validator y después con Google Search Console.</p>
+            <p>Yandex es una buena herramienta para testear sitemaps inicialmente o para revisar sitemaps que no nos
+                pertenezcan.</p>
+            <p>Google Search Console es la mejor solución para testar el sitemap. A la consola de búsqueda le lleva
+                algún tiempo para revisar (desde unas horas hasta días, según lo grande que sea el sitemap). </p>
+            <h3>Robots.txt</h3>
+            <p>Un método que podemos utilizar para indexar los sitemap, es el de robots.txt. Si definimos más de un
+                sitemap, podemos meter sus URLs absolutas en un fichero robots.txt. Esto ayuda al motor de búsqueda para
+                que encuentre todos los sitemap de una forma más rápida, pero hay que tener en cuenta una cosa, que son
+                públicos.</p>
+            <p>Tanto los sitemap en un fichero robots.txt como el código fuente son públicos, esto implica que, de una
+                forma sencilla, los competidores pueden coger todos esos datos (lista de categorías, tags o productos) y
+                abusar de ellos.</p>
+            <h3>Hacer ping a los motores de búsqueda después de cada actualización</h3>
+            <p>Cuando añadimos un nuevo sitio al sitemap, podemos alertar al motor de búsqueda a través de “pinging”. De
+                esta forma, van a conocer los cambios inmediatamente y después pueden indexar el contenido nuevo.</p>
+            <ul>
+                <li><strong>Google:</strong> http://www.google.sk/ping?sitemap=http://example.com/sitemap-path.xml</li>
+                <li><strong>Bing:</strong> http://www.bing.com/ping?sitemap=http://example.com/sitemap-path.xml</li>
+                <li><strong>Otros:</strong> &lt;searchengine_URL&gt;/ping?sitemap=http://example.com/sitemap-path.xml
+                </li>
+            </ul>
+            <h3>Herramientas</h3>
+            <div id="herramientas">
+                <a href="https://www.powermapper.com/">PowerMapper</a>
+                <a href="https://www.xml-sitemaps.com/">XML-sitemaps.com</a>
+                <a href="https://www.screamingfrog.co.uk/seo-spider/">Screaming Frog</a>
+            </div>
+            <h3>Ejemplos</h3>
+        </article>
+    </section>
+    <footer>
+        <h4>2º DAW - Carlos Palacios Alonso</h4>
+        <h4 class="ini">Tema 1 - Diseño de Interfaces Web</h4>
+    </footer>
+</body>
+
+</html>
