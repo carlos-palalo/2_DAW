@@ -13,9 +13,10 @@ const asig = ["PROG", "BBDD", "ENT", "LMAR", "FOL", "SIS", "DWEC", "DWES", "DAW"
 
 function Estudiante(nombre) {
     this.nombre = nombre;
-    this.notas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    this.notasPrim = [0, 0, 0, 0, 0, 0];
+    this.notasSeg = [0, 0, 0, 0, 0]
 
-    this.curso = 0;
+    this.curso = 1;
     this.año = 2020;
     this.pendientesPrimero;
     this.opor = 2;
@@ -24,9 +25,9 @@ function Estudiante(nombre) {
         if (this.curso == 1) {
             do {
                 for (let i = 0; i < 6; i++) {
-                    if (this.notas[i] < 5) {
+                    if (this.notasPrim[i] < 5) {
                         var n = random(1, 10);
-                        this.notas[i] = n;
+                        this.notasPrim[i] = n;
                     }
                 }
                 this.opor--;
@@ -34,9 +35,9 @@ function Estudiante(nombre) {
         } else if (this.curso == 2) {
             do {
                 for (let i = 6; i < 11; i++) {
-                    if (this.notas[i] < 5) {
+                    if (this.notasSeg[i] < 5) {
                         var n = random(1, 10);
-                        this.notas[i] = n;
+                        this.notasSeg[i] = n;
                     }
                 }
                 this.opor--;
@@ -54,9 +55,11 @@ do {
 
 for (var i = 0; i < clase.length; i++) {
     do {
+        clase[i].opor = 2;
         clase[i].examen();
+        clase[i].año++;
         clase[i].curso++;
-    } while (clase[i].notas.some(y=>y<5))
+    } while (clase[i].notasPrim.every(y => y < 5) && clase[i].notasSeg.every(y => y < 5))
 }
 
 console.log(clase);
