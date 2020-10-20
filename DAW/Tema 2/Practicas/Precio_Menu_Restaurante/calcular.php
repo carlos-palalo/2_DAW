@@ -17,6 +17,4 @@ $precioFinal = ($precio_base + $primer_plato + $segundo_plato + $suplemento) * $
 
 echo '<script>document.precio_final.value=' . $precioFinal . '</script>';
 
-echo '<script>document.precio_final.value=' . $precioFinal . '</script>';
-
 include 'index.php';
