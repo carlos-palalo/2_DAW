@@ -24,7 +24,7 @@ function Estudiante(nombre) {
     this.examen = function () {
         if (this.curso == 1) {
             do {
-                for (let i = 0; i < 6; i++) {
+                for (let i = 0; i < this.notasPrim.length; i++) {
                     if (this.notasPrim[i] < 5) {
                         var n = random(1, 10);
                         this.notasPrim[i] = n;
@@ -34,7 +34,7 @@ function Estudiante(nombre) {
             } while (this.opor > 0)
         } else if (this.curso == 2) {
             do {
-                for (let i = 6; i < 11; i++) {
+                for (let i = 0; i < this.notasSeg.length; i++) {
                     if (this.notasSeg[i] < 5) {
                         var n = random(1, 10);
                         this.notasSeg[i] = n;
@@ -53,13 +53,20 @@ do {
     clase.push(new Estudiante("e" + cont++));
 } while (cont < 20)
 
-for (var i = 0; i < clase.length; i++) {
+for (let i = 0; i < clase.length; i++) {
     do {
         clase[i].opor = 2;
-        clase[i].examen();
-        clase[i].año++;
+
+    } while (clase[i].notasPrim.some(y => y < 5));
+
+    if (clase[i].notasPrim.every(y => y > 5)) {
         clase[i].curso++;
-    } while (clase[i].notasPrim.every(y => y < 5) && clase[i].notasSeg.every(y => y < 5))
+    } else if (clase[i].notasSeg.every(y => y > 5)) {
+        clase[i].curso++;
+    }
+    clase[i].opor = 2;
+    clase[i].examen();
+    clase[i].año++;
 }
 
 console.log(clase);
