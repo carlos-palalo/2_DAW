@@ -53,20 +53,33 @@ do {
     clase.push(new Estudiante("e" + cont++));
 } while (cont < 20)
 
-for (let i = 0; i < clase.length; i++) {
+clase.forEach(x => {
     do {
-        clase[i].opor = 2;
+        x.opor = 2;
+        x.examen();
+        x.año++;
+    } while (x.notasPrim.some(y => y < 5));
 
-    } while (clase[i].notasPrim.some(y => y < 5));
+    x.curso++;
 
-    if (clase[i].notasPrim.every(y => y > 5)) {
-        clase[i].curso++;
-    } else if (clase[i].notasSeg.every(y => y > 5)) {
-        clase[i].curso++;
+    do {
+        x.opor = 2;
+        x.examen();
+        x.año++;
+    } while (x.notasSeg.some(y => y < 5));
+
+    console.log("Nombre: " + x.nombre + " -- Año fin: " + x.año);
+    console.log(" ---- Notas Primero ----");
+    for (let i = 0; i < asig.length; i++) {
+        if (i == 6)
+            console.log(" ---- Notas Segundo ----")
+
+        if (i < 6) {
+            console.log("\t" + asig[i] + " " + x.notasPrim[i]);
+        } else {
+            console.log("\t" + asig[i] + " " + x.notasSeg[i - 6]);
+        }
     }
-    clase[i].opor = 2;
-    clase[i].examen();
-    clase[i].año++;
-}
+})
 
-console.log(clase);
+//console.log(clase);
