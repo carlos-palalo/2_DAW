@@ -40,11 +40,7 @@ var numSuspensos = 0;
 cad2.examenes.forEach(x => {
     x.respuestas.forEach(y => {
         cad1.preguntas.forEach(a => {
-            if (a.codigo == y.codigo) {
-                if (a.correcta == y.respuesta) {
-                    x.puntuacion++;
-                }
-            }
+            a.codigo == y.codigo && a.correcta == y.respuesta ? x.puntuacion++ : x.puntuacion = x.puntuacion
         })
     });
     media = x.puntuacion / x.respuestas.length * 10;
