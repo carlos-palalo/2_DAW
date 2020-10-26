@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+<script text="text/javascript">
+    function rotarAvanzar() {
+        temp = document.links[document.links.length - 1].href;
+        for (i = document.links.length - 1; i > 0; i--) {
+            document.links[i].href = document.links[i - 1].href;
+        }
+        document.links[0].href = temp;
+    }
+
+    function rotarRetroceder() {
+        temp = document.links[0].href;
+        for (i = 0; i < document.links.length - 1; i++) {
+            document.links[i].href = document.links[i + 1].href;
+        }
+        document.links[document.links.length - 1].href = temp;
+    }
+</script>
+
+<body onload="setInterval(rotarRetroceder,1000);">
+    <h1>Ejercicio Rotar Enlaces</h1>
+    <button onclick="rotarAvanzar();">Rotar enlaces</button>
+    <ul>
+        <li><a href="http://iesriberadecastilla.centros.educa.jcyl.es/sitio/" target="_blank">Enlace 1</a></li>
+        <li><a href="https://www.educa.jcyl.es/es" target="_blank">Enlace 2</a></li>
+        <li><a href="https://www.jcyl.es/" target="_blank">Enlace 3</a></li>
+        <li><a href="https://adfs.educa.jcyl.es/adfs/ls/" target="_blank">Enlace 4</a></li>
+    </ul>
+</body>
+
+</html>
