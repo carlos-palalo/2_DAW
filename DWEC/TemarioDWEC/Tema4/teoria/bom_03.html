@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_03 - Objeto Window: Ventanas emergentes (alert, prompt y confirm)</title>
+	</head>
+	<body>
+		<h1>bom_03 - Objeto Window: Ventanas emergentes (alert, prompt y confirm)</h1>
+		<hr />
+
+		<script type="text/javascript">
+			//alert
+			window.alert("Mensaje");
+
+			//prompt
+			var cadena = window.prompt("Texto1","Texto2");
+			alert(cadena);
+
+			//confirm
+			if(window.confirm("¿Confirmar?")) {
+				alert("Se confirmó");
+			} else {
+				alert("No se confirmó");
+			}
+		</script>
+	</body>
+</html>

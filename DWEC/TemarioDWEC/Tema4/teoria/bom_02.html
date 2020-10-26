@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_02 - Objeto Window: self, parent, top, frames, frameElement</title>
+	</head>
+	<body>
+		<h1>bom_02 - Objeto Window: self, parent, top, frames, frameElement</h1>
+		<hr />
+
+		<iframe src="bom_02_A.html" width="400" height="300" name="frameA"></iframe>
+		<iframe src="bom_02_B.html" width="400" height="300" name="frameB"></iframe>
+		<hr />
+
+		<script type="text/javascript">
+			window.name = "principal";
+			document.write("<b>window.name:</b> " + window.name + "<br /><br />");
+			document.write("<b>window.self.name:</b> " + window.self.name + "<br /><br />");
+			document.write("<b>window.parent.name:</b> " + window.parent.name + "<br /><br />");
+			document.write("<b>window.top.name:</b> " + window.top.name + "<br /><br />");
+
+			document.write("<b>window.length (numero de frames):</b> " + window.length + "<br /><br />");
+			document.write("<b>window.frames.length (numero de frames):</b> " + window.frames.length + "<br /><br />");
+			document.write("<b>window.frames[0].name:</b> " + window.frames[0].name + "<br /><br />");
+			document.write("<b>window.frames[1].name:</b> " + window.frames[1].name + "<br /><br />");
+
+			if(window === window.self) {
+				document.write("<b>window === window.self</b><br /><br />");
+			}
+
+			if(window === window.parent) {
+				document.write("<b>window === window.parent</b><br /><br />");
+			}
+
+			if(window === window.top) {
+				document.write("<b>window === window.top</b><br /><br />");
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_02_B - Objeto Window: self, parent, top, frames, frameElement</title>
+	</head>
+	<body bgcolor="cyan">
+		<h1>bom_02_B - Objeto Window: self, parent, top, frames, frameElement</h1>
+		<hr />
+
+		<h3 onclick="window.self.document.body.style.backgroundColor = 'red';">Haz click para cambiar a rojo este frame</h3>
+
+		<h3 onclick="parent.document.body.style.backgroundColor = 'red';">Haz click para cambiar a rojo la ventana contenedora</h3>
+
+		<h3 onclick="parent.frames[0].document.body.style.backgroundColor = 'red';">Haz click para cambiar a rojo el otro frame</h3>
+		</script>
+	</body>
+</html>

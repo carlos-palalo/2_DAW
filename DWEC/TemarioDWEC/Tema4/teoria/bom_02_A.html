@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_02_A - Objeto Window: self, parent, top, frames, frameElement</title>
+	</head>
+	<body bgcolor="yellow">
+		<h1>bom_02_A - Objeto Window: self, parent, top, frames, frameElement</h1>
+		<hr />
+		<script type="text/javascript">
+			document.write("<b>window.name:</b> " + window.name + "<br />");
+			document.write("<b>window.self.name:</b> " + window.self.name + "<br />");
+			document.write("<b>window.parent.name:</b> " + window.parent.name + "<br />");
+			document.write("<b>window.top.name:</b> " + window.top.name + "<br />");
+			document.write("<b>window.frameElement.name:</b> " + window.frameElement.name + "<br />");
+
+			if(window === window.self) {
+				document.write("<b>window === window.self</b><br />");
+			}
+
+			if(window.frameElement !== window.self) { //OJO --> frameElement no es la ventana aunque tengan el mismo nombre
+				document.write("<b>window.frameElement !== window.self</b><br />");
+			}
+
+			if(window !== window.parent) {
+				document.write("<b>window !== window.parent</b><br />");
+			}
+				
+			if(window !== window.top) {
+				document.write("<b>window !== window.top</b><br />");
+			}
+		</script>
+	</body>
+</html>

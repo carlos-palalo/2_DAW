@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_01 - Objeto Window: Propiedades</title>
+	</head>
+	<body>
+		<h1>bom_01 - Objeto Window: Propiedades</h1>
+		<h2>Pulsar F5 para ver cambios</h2>
+		<hr />
+
+		<script type="text/javascript">
+			document.write("<b>window.innerHeight (altura interior):</b> " + window.innerHeight + "<br />");
+
+			document.write("<b>window.innerWidth (anchura interior):</b> " + window.innerWidth + "<br />");
+
+			document.write("<b>window.outerHeight (altura exterior):</b> " + window.outerHeight + "<br />");
+
+			document.write("<b>window.outerWidth (anchura exterior):</b> " + window.outerWidth + "<br />");
+
+			document.write("<b>window.length (numero de frames):</b> " + window.length + "<br />");
+
+			window.name="miventana";
+			document.write("<b>window.name (nombre):</b> " + window.name + "<br />");
+			//El name es el segundo parámetro del método window.open
+
+			document.write("<b>window.screenLeft (coordinada horizontal):</b> " + window.screenLeft + "<br />");	
+
+			document.write("<b>window.screenTop (coordinada vertical):</b> " + window.screenTop + "<br />");
+
+			document.write("<b>window.screenX (coordinada horizontal):</b> " + window.screenX + "<br />");		
+
+			document.write("<b>window.screenY (coordinada vertical):</b> " + window.screenY + "<br />");
+
+			document.write("<b>window.devicePixelRatio:</b> " + window.devicePixelRatio + "<br />");
+
+			document.write("<b>window.fullScreen (pantalla completa - firefox):</b> " + window.fullScreen + "<br />");
+		</script>
+
+		<h4 onclick="alert(window.pageXOffset);">window.pageXOffset</h4>
+		(Desplazamiento en X del scroll. Es igual a scrollX)
+
+		<h4 onclick="alert(window.pageYOffset);">window.pageYOffset</h4>
+		(Desplazamiento en Y del scroll. Es igual a scrollY)
+	</body>
+</html>
