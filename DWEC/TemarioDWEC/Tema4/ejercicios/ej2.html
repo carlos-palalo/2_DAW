@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+<script>
+    function sacarPropiedades() {
+        for (i = 0; i < document.images.length; i++) {
+            c = "Fichero: " + document.images[i].src;
+            c += "\nAltura: " + document.images[i].height;
+            c += "\nAncho: " + document.images[i].width;
+            c += "\nBorde: " + document.images[i].border;
+            c += "\nNombre: " + document.images[i].name;
+            alert(c);
+        }
+    }
+</script>
+
+<body>
+    <h1>Ejercicio Propiedades Imágenes</h1>
+    <hr>
+    <img src="i1.jpg" border="2" name="i1" onclick="sacarPropiedades()">
+    <hr>
+    <img src="i2.jpg" border="4" name="i2" onclick="sacarPropiedades()">
+</body>
+
+</html>
