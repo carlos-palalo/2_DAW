@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_06 - Objeto Document: anchors, images, forms, links, scripts, embeds</title>
+	</head>
+	<body>
+		<h1>bom_06 - Objeto Document: anchors, images, forms, links, scripts, embeds</h1>
+		<hr />
+
+		<h2>MARCAS</h2>
+		<a name="#marcaA" id="mA"></a>
+		<a name="#marcaB" id="mB"></a>
+		<a name="#marcaC" id="mC"></a>
+
+		<h2>IMÁGENES</h2>
+		<img src="./recursos/img1.gif" />
+		<img src="./recursos/img2.gif" id="imagen2"/>
+
+		<h2>EMBED</h2>
+		<embed src="./recursos/video.mp4"></embed>
+
+		<h2>FORMULARIOS</h2>
+		<form id="formulario1">
+			<input type="text" name="nombre"><input type="submit" name="Enviar">
+		</form>
+
+		<h2>ENLACES</h2>
+		<a href="http://www.iesribera.es">IES Ribera de castilla</a><br />
+		<a href="http://www.educa.jcyl.es">Portal de educación de la Junta de Castilla y Leon</a><br />
+		<a href="http://moodle.aularibera.es" id="enlace3">Moodle del Ribera de Castilla</a><br />
+		<a href="http://www.nortecastilla.es">Norte de Castilla</a><br />
+
+		<hr />
+
+		<h2>SCRIPTS</h2>
+		<script type="text/javascript">
+			document.write("<hr />");
+		</script>		
+
+		<script type="text/javascript">
+			
+			//PROPIEDADES
+			
+			//anchors
+			document.write("<b>document.anchors:</b> " + document.anchors.length  + "<br />");
+			var mar1 = document.anchors[0];
+			document.write(mar1.name + "<br />");
+			var mar2 = document.anchors.item(1);
+			document.write(mar2.name + "<br />");
+			var mar3 = document.anchors.namedItem("mC");
+			document.write(mar3.name + "<br />");
+
+			//images
+			document.write("<b>document.images:</b> " + document.images.length  + "<br />");
+			var im1 = document.images[0];
+			document.write(im1.src + "<br />");
+			var im2 = document.images.item(0);
+			document.write(im2.src + "<br />");
+			var im3 = document.images.namedItem("imagen2");
+			document.write(im3.src + "<br />");
+
+			//forms
+			document.write("<b>document.forms:</b> " + document.forms.length  + "<br />");
+			var f1 = document.forms[0];
+			document.write(f1.id + "<br />");
+			var f2 = document.forms.item(0);
+			document.write(f2.id + "<br />");
+			var f3 = document.forms.namedItem("formulario1");
+			document.write(f3.id + "<br />");
+
+			//links
+			document.write("<b>document.links:</b> " + document.links.length  + "<br />");
+			var l1 = document.links[0];
+			document.write(l1.href + "<br />");
+			var l2 = document.links.item(1);
+			document.write(l2.href + "<br />");
+			var l3 = document.links.namedItem("enlace3")
+			document.write(l3.href + "<br />");
+
+			//scripts
+			document.write("<b>document.scripts:</b> " + document.scripts.length  + "<br />");
+
+			//embeds
+			document.write("<b>document.embeds:</b> " + document.embeds.length  + "<br />");
+		</script>
+	</body>
+</html>

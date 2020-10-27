@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_08 - Imágenes del documento: document.images</title>
+	</head>
+
+	<script text="javascript">
+		function verimagenes() {
+			for(i=0;i<document.images.length;i++) {
+				c="Fichero: "+document.images[i].src;
+				c+="\nAltura: "+document.images[i].height;
+				c+="\nAncho: "+document.images[i].width;
+				c+="\nBorde: "+document.images[i].border;
+				c+="\nName: "+document.images[i].name;
+				alert(c);
+			}
+		}
+	</script>
+
+	<body>
+		<h1>bom_08 - Imágenes del documento: document.images</h1>
+		<hr />
+		
+		<img src="./recursos/midibujo.gif" border="2" name="i1" onclick="verimagenes()" />
+		<hr />
+		<img src="./recursos/images.gif" border="4" name="i2" onclick="verimagenes()" />
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_07 - Ejercicio: Girar los enlaces manualmente y con un intervalo de tiempo</title>
+	</head>
+
+	<script type="text/javascript">
+	
+		function rotarRetroceder() {
+			var temp = document.links[0].href;
+			for(i=0;i<document.links.length-1;i++) {
+				document.links[i].href = document.links[i+1].href;
+			}
+			document.links[document.links.length-1].href = temp;
+		}
+
+		function rotarAvanzar() {
+			var temp = document.links[document.links.length-1].href;
+			for(i=document.links.length-1;i>0;i--) {
+				document.links[i].href = document.links[i-1].href;
+			}
+			document.links[0].href = temp;
+		}
+
+	</script>		
+
+	<body>
+	<!--<body onload="setInterval(rotarRetroceder,10000);">-->
+		<h1>bom_07 - Ejercicio: Girar los enlaces manualmente y con un intervalo de tiempo</h1>
+		<hr />
+		<button onclick="rotarAvanzar();">Rotar los enlaces</button>
+
+		<hr />
+		
+		<a href="http://www.iesribera.es" target="_blank">Enlace 1</a><br /><br />
+
+		<a href="http://www.educa.jcyl.es" target="_blank">Enlace 2</a><br /><br />
+
+		<a href="http://moodle.aularibera.es" target="_blank">Enlace 3</a><br /><br />
+		
+		<a href="http://www.nortecastilla.es" target="_blank">Enlace 4</a><br />
+	</body>
+</html>
