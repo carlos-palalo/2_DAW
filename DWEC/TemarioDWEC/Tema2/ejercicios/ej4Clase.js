@@ -29,6 +29,10 @@ function Estudiante(nombre) {
                         var n = random(1, 10);
                         this.notasPrim[i] = n;
                     }
+                    if (this.notasPrim.every(y => y > 5)) {
+                        this.opor--;
+                        return;
+                    }
                 }
                 this.opor--;
             } while (this.opor > 0)
@@ -38,6 +42,10 @@ function Estudiante(nombre) {
                     if (this.notasSeg[i] < 5) {
                         var n = random(1, 10);
                         this.notasSeg[i] = n;
+                    }
+                    if (this.notasSeg.every(y => y > 5)) {
+                        this.opor--;
+                        return;
                     }
                 }
                 this.opor--;
@@ -82,4 +90,4 @@ clase.forEach(x => {
     }
 })
 
-//console.log(clase);
+console.log(clase);
