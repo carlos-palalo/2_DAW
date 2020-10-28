@@ -114,6 +114,7 @@ Pag 44
 		B: 30 %
 		C: 47.6 %
 	b)	
+
 Pag 63
 7	a) 	28.000
 	b)	A: 17.85 %
@@ -127,3 +128,28 @@ Pag 47
 	2 - a
 	3 - b
 Matriz Boston Consulting Group -> Algo que no viene en el libro
+
+Pag 49
+9	Automoviles, robots, protesis medicas, infraestructuras, moviles y textiles
+10	a) Consumo, Industrial
+	b) Consumo, Industrial
+	c) Consumo, Industrial
+	d) Industrial
+	e) Consumo, Industrial
+	f) Consumo, Industrial
+
+Pag 51
+12	1. c)
+	2. a)
+	3. d)
+	4. b)
+13	Introducción: ingresos bajos y mucha promoción
+	Crecimiento: altas y no requieren tanta promoción, surgen competidores y hay que hacer diferenciación en precios
+	Madurez: ventas altas, se mantienen o empiezan un leve descenso. Se establece una gran competencia entre las empresas.
+	Declive: pocas ventas y hay que elegir o retirar el producto o innovar para que se relance.
+
+Pag 62
+8	a) Comida. Envase
+	b) Juguete, parking, menus sin gluten, para persionas celiacas, para tercera edad, regalar cubiertos, ticket descuento.
+	
+	c)
