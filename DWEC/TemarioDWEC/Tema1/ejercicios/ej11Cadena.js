@@ -9,6 +9,7 @@ var matriAntigua = /^[A-Z]{1,2}\d{4}[A-Z]{1,2}$/;  //MATRICULA ANTIGUA
 var matriModerna = /^[0-9]{4}[^AEIOUQY]{3}$/;
 var codPostal = /^[0-9]{4,5}$/; //CODIGO POSTAL
 var mac = /^([0-9,A-F]{2}:){5}[0-9,A-F]{2}$/; //MAC
+
 var cadena = "00:15:5D:2A:DF:15";
 
 if(ip.test(cadena)){

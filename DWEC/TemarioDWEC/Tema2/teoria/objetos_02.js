@@ -23,7 +23,7 @@ for(let x in persona1) {
 //MÉTODO 2 --> Object.keys(o) --> Devuelve el array de propiedades enumerables
 console.log("\n\nMÉTODO 2 --> Object.keys(o)");
 var propiedades = Object.keys(persona1);
-//console.log(propiedades);
+console.log(propiedades);
 propiedades.forEach(x => console.log(" --> " + persona1[x]));
 
 
