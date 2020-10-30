@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .mystick {
+            width: 210px;
+            height: 100px;
+            background-color: darkcyan;
+            position: sticky;
+            /* border: 1px solid red;*/
+            top: 0;
+        }
+        
+        .oculto {
+            display: none;
+            width: 210px;
+        }
+        
+        .mystick:hover .oculto {
+            background-color: rgb(189, 238, 148);
+            display: inline-block;
+            transition: ease-in-out;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: #f1f1f1;
+        }
+        
+        ul li {
+            list-style-type: none;
+            padding-bottom: 10px;
+        }
+        
+        li a {
+            background-color: rgb(222, 226, 199);
+            text-decoration: none;
+            display: block;
+            color: rgb(49, 37, 37);
+            padding: 10px 5px;
+            text-align: center;
+        }
+        
+        li a:hover {
+            background-color: rgb(14, 15, 15);
+            color: rgb(222, 226, 199);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>The position property</h1>
+
+    <div class="mystick">
+        <div>
+            <div>
+                <div class="oculto">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-fw fa-home"></i> Home</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-search"></i> Search</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a></li>
+
+
+                    </ul>
+
+
+                </div>
+
+
+</body>
+
+</html>
