@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--Abrir pagina a los 10 segundos, pudiendo cancelar-->
+<html>
+
+<head>
+
+</head>
+
+<script type="text/javascript">
+    var openWindow;
+
+    function abrir() {
+        openWindow = window.open("http://iesriberadecastilla.centros.educa.jcyl.es/sitio/");
+    }
+
+    function cerrar() {
+        openWindow.stop();
+    }
+</script>
+
+<body>
+    <h1>Ejercicio Abrir una ventana en 10 segundos pudiendo cancelar</h1>
+    <input type="button" value="Abrir página del IES en una nueva ventana" onclick="setTimeout(abrir,3000)">
+    <input type="button" value="Cancelar apertura" onclick="clearTimeout()">
+</body>
+
+</html>

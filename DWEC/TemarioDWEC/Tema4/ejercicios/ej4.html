@@ -10,7 +10,11 @@
 
     }
     function cargar() {
-        window.open("", "_blank");
+        temp = document.links[document.links.length - 1].href;
+        for (i = document.links.length - 1; i > 0; i--) {
+            document.links[i].href = document.links[i - 1].href;
+        }
+        document.links[0].href = temp;
     }
 </script>
 
