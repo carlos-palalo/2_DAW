@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<head>
+    <script type="text/javascript">
+        function mostrarInfo() {
+            var elemento
+            var cad = "";
+
+            elemento = document.getElementById("linea1");
+            cad += elemento.tagName + "\n";
+
+            elemento = document.getElementById("parrafo");
+            cad += elemento.tagName + "\n";
+
+            elemento = document.getElementById("boton1");
+            cad += elemento.tagName + "\n";
+
+            alert(cad);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Ejercicio 1</h1>
+    <hr id="linea1">
+    <p id="parrafo">Primer Párrafo</p>
+    <button onclick="mostrarInfo();" id="boton1">Mostrar Info</button>
+</body>
