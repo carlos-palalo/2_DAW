@@ -1,24 +1,27 @@
 <?php
 $filas = 1;
 print("<table border=2 width=400 align=center>");
-$num=[];
-do{
-    for($i=0; $i<6; $i++){
-        
+$num = [];
+$numAux;
+$aux = false;
+echo "<tr>";
+for ($i = 0; $i < 6; $i++) {
+    echo "<td align=center>";
+    if ($i > 0) {
+        do {
+            $numAux = rand(1, 49);
+            for ($j = 0; $j < $i; $j++) {
+                if ($num[$j] == $numAux) {
+                    $numAux = rand(1, 49);
+                    $aux = true;
+                }
+            }
+        } while ($aux == true);
+        $num[$i] = $numAux;
+    } else {
+        $num[0] = rand(1, 49);
     }
-}while($num);
-
-while ($filas > 0) :
-    echo "<tr>";
-    $columnas = 6;
-    $filas--;
-    while ($columnas > 0) :
-        echo "<td align=center>";
-        $i = rand(1,49);
-        print $i;
-        print("</td>");
-        $columnas--;
-    endwhile;
-    echo "</tr>";
-endwhile;
-print "</table>";
+    echo $num[$i];
+    print("</td>");
+}
+echo "</tr></table>";
