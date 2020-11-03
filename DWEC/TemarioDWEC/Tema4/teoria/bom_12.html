@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_12 - Objeto Navigator</title>
+	</head>
+	<body>
+		<h1>bom_12 - Objeto Navigator</h1>
+		<hr />
+
+		<script type="text/javascript">
+
+			//PROPIEDADES
+			//appCodeName
+			document.write("<b>navigator.appCodeName:</b> " + navigator.appCodeName  + "<br />");
+
+			//appCodeName
+			document.write("<b>navigator.appName:</b> " + navigator.appName  + "<br />");
+
+			//appVersion
+			document.write("<b>navigator.appVersion:</b> " + navigator.appVersion  + "<br />");
+
+			//cookieEnabled
+			document.write("<b>navigator.cookieEnabled:</b> " + navigator.cookieEnabled  + "<br />");
+
+			//geolocation
+			document.write("<b>navigator.geolocation:</b> " + navigator.geolocation  + "<br />");
+
+			//language
+			document.write("<b>navigator.language:</b> " + window.navigator.language  + "<br />");
+
+			//online
+			document.write("<b>navigator.onLine:</b> " + navigator.onLine  + "<br />");
+
+			//platform
+			document.write("<b>navigator.platform:</b> " + navigator.platform  + "<br />");
+
+			//product
+			document.write("<b>navigator.product:</b> " + navigator.product  + "<br />");
+
+			//userAgent
+			document.write("<b>navigator.userAgent:</b> " + navigator.userAgent  + "<br />");
+
+			//document.write("<b>navigator.mimetypses:</b> " + navigator.mimeTypes[0].type  + "<br />");
+
+
+
+			//MÉTODOS
+			//javaEnabled()
+			if(navigator.javaEnabled()) {
+				document.write("Java está habilitado"  + "<br />");
+			}
+			else {
+				document.write("Java no está habilitado"  + "<br />");
+			}
+			
+		</script>
+	</body>
+</html>

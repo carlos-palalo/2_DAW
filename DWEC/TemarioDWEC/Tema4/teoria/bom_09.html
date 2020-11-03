@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_09 - Ejercicio: Agrandar, disminuir, alternar y cambiar borde de imágenes</title>
+	</head>
+
+	<script language="javascript">
+		function f1() {
+			document.images[0].width*=2;
+			document.images[1].width*=2;
+		}
+
+		function f2() {
+			document.images[0].width/=2;
+			document.images[1].width/=2;
+		}
+
+		function f3() {
+			var v=document.images[0].src;
+			document.images[0].src=document.images[1].src;
+			document.images[1].src=v;
+		}
+
+		function f4() {
+			document.images[0].border++;
+			document.images[1].border++;
+		}
+
+		function f5() {
+			document.images[0].border--;
+			document.images[1].border--;
+		}
+	</script>
+
+	<body>
+		<h1>bom_09 - Ejercicio: Agrandar, disminuir, alternar y cambiar borde de imágenes</h1>
+		<hr />
+
+		<input type="button" value="agrandar" onclick="f1()" />
+		<input type="button" value="diminuir" onclick="f2()" />
+		<input type="button" value="cambiar" onclick="f3()" />
+		<input type="button" value="aumentar borde" onclick="f4()" />
+		<input type="button" value="disminuir borde" onclick="f5()" />
+		<hr />
+		<img src="./recursos/midibujo.gif" border="2" />
+		<br />
+		<img src="./recursos/images.gif" />
+	</body>
+</html>

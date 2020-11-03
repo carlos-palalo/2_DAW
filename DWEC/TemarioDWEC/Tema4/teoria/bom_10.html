@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_10 - Objeto Document: Propiedades</title>
+	</head>
+	<script type="text/javascript">
+		function oculto() {
+			document.getElementById("pOculto").innerHTML += document.hidden + "&nbsp;&nbsp;&nbsp;";
+		}
+	</script>
+	<body onload="setInterval(oculto,1000);">
+		<h1>bom_10 - Objeto Document: Propiedades</h1>
+		<hr />
+
+		<script type="text/javascript">
+			//PROPIEDADES
+			
+			//URL
+			document.write("<b>document.URL:</b> " + document.URL  + "<br /><br />");
+
+			//baseURI
+			document.write("<b>document.baseURI:</b> " + document.baseURI  + "<br /><br />");
+
+			//baseURI
+			document.write("<b>document.documentURI:</b> " + document.documentURI  + "<br /><br />");
+			
+			//domain
+			document.write("<b>document.domain:</b> " + document.domain  + "<br /><br />");
+
+			//doctype
+			document.write("<b>document.doctype:</b> " + document.doctype  + "<br />");
+			document.write("<b>document.doctype.name:</b> " + document.doctype.name  + "<br /><br />");
+
+			//hidden
+			document.write("<b>document.hidden:</b> " + document.hidden  + "<br /><br />");
+
+			//documentElement
+			document.write("<b>document.documentElement:</b> " + document.documentElement  + "<br />");
+			document.write("<b>document.documentElement.tagName:</b> " + document.documentElement.tagName  + "<br /><br />");
+
+			//body
+			document.write("<b>document.body:</b> " + document.body  + "<br />");
+			document.write("<b>document.body.tagName:</b> " + document.body.tagName  + "<br /><br />");
+
+			//head
+			document.write("<b>document.head:</b> " + document.head  + "<br />");
+			document.write("<b>document.head.tagName:</b> " + document.head.tagName  + "<br /><br />");
+
+			//title
+			document.title="bom_10 - Objeto Document: Propiedades MODIFICADO";
+			document.write("<b>document.title:</b> " + document.title  + "<br /><br />");
+
+			//inputEncoding
+			document.write("<b>document.inputEncoding:</b> " + document.inputEncoding  + "<br /><br />");
+
+			//characterSet
+			document.write("<b>document.characterSet:</b> " + document.characterSet  + "<br /><br />");
+
+			//lastModified
+			document.write("<b>document.lastModified:</b> " + document.lastModified  + "<br /><br />");
+		
+			//readyState
+			document.write("<b>document.readyState:</b> " + document.readyState  + "<br />");
+
+			function comprobarElementoActivo() {
+				alert("document.activeElement.tagName: " + document.activeElement.tagName);
+			}
+
+			function comprobarEstado() {
+				alert("document.readyState: " + document.readyState);
+			}
+
+		</script>
+
+		<hr />
+
+		<input type="text" name="texto" onkeypress="comprobarElementoActivo();" />
+		<br /><br />
+		<button onclick="comprobarElementoActivo();">Comprobar elemento activo</button>
+		<br /><br />
+		<button onclick="comprobarEstado();">Comprobar estado</button>
+		
+		<br /><br />
+		<a href="bom_10_A.html">Ir al ejercicio bom_10_A.html</a>
+
+		<br /><br />
+		<p id="pOculto"></p>
+	</body>
+</html>

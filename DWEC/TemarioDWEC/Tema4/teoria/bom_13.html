@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_13 - Objeto Location</title>
+	</head>
+	<body>
+		<h1>bom_13 - Objeto Location</h1>
+		<hr />
+
+		<script type="text/javascript">
+
+			//PROPIEDADES
+			document.write("<h2>PROPIEDADES</h2>Todas las propiedades son de lectur y escritura<br /><br /><br />")
+			//hash
+			document.write("<b>location.hash: (a partir de # --> marca)</b> " + location.hash  + "<br />");
+
+			//host
+			document.write("<b>location.host: (host y puerto)</b> " + location.host  + "<br />");
+
+			//hostname
+			document.write("<b>location.hostname: (host)</b> " + location.hostname  + "<br />");
+
+			//href
+			document.write("<b>location.href: (toda la URL)</b> " + location.href  + "<br />");
+
+			//origin
+			document.write("<b>location.origin: (protocolo, host y puerto)</b> " + location.origin  + "<br />");
+
+			//pathname
+			document.write("<b>location.pathname: (ruta)</b> " + location.pathname  + "<br />");
+
+			//port
+			document.write("<b>location.port: (puerto)</b> " + location.port  + "<br />");
+
+			//protocol
+			document.write("<b>location.protocol: (protocolo)</b> " + location.protocol  + "<br />");
+
+			//search
+			document.write("<b>location.search: (a partir de ? --> parámetros)</b> " + location.search  + "<br />");
+		</script>
+
+
+		<h2>MÉTODOS</h2>
+		<br />
+		<!-- MÉTODOS -->
+		<button onclick="location.assign('http://iesriberadecastilla.centros.educa.jcyl.es/sitio/');">Ir a la Web del IES Ribera --> assign</button>
+		<button onclick="location.reload();">Recargar --> reload</button>
+		<button onclick="location.replace('http://www.educa.jcyl.es');">Ir a la Web de educación en la junta --> replace</button>
+		<button onclick="location.href='https://www.elnortedecastilla.es';">Ir al norte de castilla --> propiedad href</button>
+		<button onclick="alert(location.toString());">toString</button>
+		//La diferencia entre assign y replace es que replace reemplaza la página en el historial
+	</body>
+</html>

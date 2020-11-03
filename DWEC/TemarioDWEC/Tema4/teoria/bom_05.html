@@ -21,7 +21,14 @@
 		}
 
 		function iniciar() {
-			intervalo = setInterval(escribirHora,1000);
+			intervalo = setInterval(function (){
+				var d = new Date();
+    			var t = d.toLocaleTimeString();
+
+				document.getElementById("parrafo").innerHTML = t;
+			},1000);
+
+			//intervalo = setInterval(escribirHora,1000); //Con función nominal
 		}
 
 		function parar() {
