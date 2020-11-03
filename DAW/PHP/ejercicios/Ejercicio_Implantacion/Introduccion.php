@@ -1,7 +1,7 @@
 <?php
 include 'head.php';
-                                             
-echo'El ayuntamiento de Pesquera quiere modernizarse y utilizar las nuevas tecnologías, ha propuesto a un informático,
+
+echo 'El ayuntamiento de Pesquera quiere modernizarse y utilizar las nuevas tecnologías, ha propuesto a un informático,
  que desarrolle una página para que los vecinos puedan reportar a través de la misma las incidencias que puedan detectar
  en el Municipio.<br>
 El informático ha pensado que ya que no tienen un servidor de BD utilizar una estructura en forma de array asociativo
@@ -20,6 +20,4 @@ Hay que considerar que:
 
 
 
- include 'pie.php';
-											
-                           
+include 'pie.php';

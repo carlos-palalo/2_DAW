@@ -1,6 +1,6 @@
 <?php
 
-print'
+print '
     <!DOCTYPE html>
 <html>
 <head>

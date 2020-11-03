@@ -1,6 +1,6 @@
 <?php
 
-print' 							
+print ' 							
                                           </div>
                           <div class="cleared"></div>
                               </div>

@@ -1,9 +1,21 @@
 <?php
 session_start();
 include 'head.php';
-unset($_SESSION['incidencias'][0]);
-                                             
- print' 
+try {
+    if (isset($_REQUEST['borrar'])) {
+        $num = htmlspecialchars($_REQUEST['num_incidencia']);
+        foreach ($_SESSION['incidencias'] as $incidencia) {
+            if ($incidencia[0] == $num) {
+                unset($_SESSION['incidencias'][$num - 1]);
+                echo "<script>alert('Borrado con éxito!');</script>";
+            }
+        }
+    }
+} catch (Exception $e) {
+    echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+}
+
+print ' 
             <strong>INTRODUCE EL IDENTIFICADOR DE LA INCIDENCIA A BORRAR<BR><BR></strong>
                                      
         <div   class="postcontent"><form action="" method="post">
@@ -21,4 +33,4 @@ unset($_SESSION['incidencias'][0]);
         </table>
     </form>
         </div>';
- include 'pie.php';
+include 'pie.php';
