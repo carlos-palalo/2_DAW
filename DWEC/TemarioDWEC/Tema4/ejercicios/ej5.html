@@ -10,18 +10,18 @@
     var openWindow;
 
     function abrir() {
-        openWindow = window.open("http://iesriberadecastilla.centros.educa.jcyl.es/sitio/");
+        openWindow = setTimeout(function () { window.open("http://iesriberadecastilla.centros.educa.jcyl.es/sitio/"); }, 3000);
     }
 
     function cerrar() {
-        openWindow.stop();
+        clearTimeout(openWindow);
     }
 </script>
 
 <body>
     <h1>Ejercicio Abrir una ventana en 10 segundos pudiendo cancelar</h1>
-    <input type="button" value="Abrir página del IES en una nueva ventana" onclick="setTimeout(abrir,3000)">
-    <input type="button" value="Cancelar apertura" onclick="clearTimeout()">
+    <input type="button" value="Abrir página del IES en una nueva ventana" onclick="abrir()">
+    <input type="button" value="Cancelar apertura" onclick="cerrar()">
 </body>
 
 </html>

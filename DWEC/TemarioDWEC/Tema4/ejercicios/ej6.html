@@ -1,1 +1,33 @@
+<!DOCTYPE html>
 <!--Hacer un gif con 3 imagenes-->
+<html>
+
+<head>
+
+</head>
+
+<script type="text/javascript">
+    var img = new Array(
+        'caminar1.jpg', 'caminar2.jpg', 'caminar3.jpg', 'caminar3.jpg', 'caminar4.jpg', 'caminar5.jpg'
+    );
+
+    var cont = 0;
+
+    function rotar() {
+        document.getElementById("img").src = img[cont];
+        cont++;
+        if (cont == 6) { cont = 0; }
+    }
+
+    onload = function () {
+        rotar();
+        setInterval(rotar, 60);
+    }
+</script>
+
+<body>
+    <h1>Ejercicio Crear un Gif con imagenes</h1>
+    <img src="" id="img">
+</body>
+
+</html>
