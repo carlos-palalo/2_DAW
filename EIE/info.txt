@@ -180,15 +180,14 @@ Pregunta: Beatriz tiene una gran imaginación para inventarse estrategias de pre
 	En el escaparate siempre hay precios mas rebajados. Gancho
 
 4/11/2020
-Añadido:
-	Publicidad: Posicionamiento en Google, SEO, marketing digital (Marketing a través de redes digitales).
-	Marketing digital: Medios pagados
-		a) SEO. Conseguir más visiblidad contratando campañas de Googles Adwords (se pagan ciertas palabras para que aparezcan siempre en los primeros puestos)
-		b) SEM. Pagar publicidad en Google o en alguna app para móviles con banners publicitarios que enlacen a nuestra web.
-		c) SMO. Pagar campañas de publicidad en RRSS.
-		e) Medios Propios. No se pagan a tercero sino que se generan con nuestra actividad diaria. Blog, web propio que sea atractivo para el publico objetivo. Mailing a nuestra base de datos informando de campañas o productos.
+Publicidad: Posicionamiento en Google, SEO, marketing digital (Marketing a través de redes digitales).
+Marketing digital: Medios pagados
+	a) SEO. Conseguir más visiblidad contratando campañas de Googles Adwords (se pagan ciertas palabras para que aparezcan siempre en los primeros puestos)
+	b) SEM. Pagar publicidad en Google o en alguna app para móviles con banners publicitarios que enlacen a nuestra web.
+	c) SMO. Pagar campañas de publicidad en RRSS.
+	e) Medios Propios. No se pagan a tercero sino que se generan con nuestra actividad diaria. Blog, web propio que sea atractivo para el publico objetivo. Mailing a nuestra base de datos informando de campañas o productos.
 
-		razor blade strategy
+	razor blade strategy
 
 Pag 58
 20 	AdWords: Palabras reservadas
