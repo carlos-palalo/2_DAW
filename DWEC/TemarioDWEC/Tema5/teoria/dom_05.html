@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_05 - children, firstElementChild, lastElementChild, childElementCount</title>
+	</head>
+	<body>
+		<h1>dom_05 - children, firstElementChild, lastElementChild, childElementCount</h1>
+		<hr />
+		<p>Primer párrafo</p>
+		<p>Segundo párrafo</p>
+		<p>Tercer párrafo</p>
+		<button onclick="mostrar_informacion();">Mostrar información</button>
+
+
+		<script type="text/javascript">
+			function mostrar_informacion() {
+				c = "\nPrimer nodo: " + document.children[0].tagName; //Nombre del tag html asociado al nodo
+
+				c += "\nElementos principales: " + document.children.length;
+
+				c += "\nElemento html: " + document.children[0].tagName;
+				c += "\nHijos del elemento html: " + document.children[0].children.length;
+				
+				c += "\nElemento head: " + document.children[0].children[0].tagName;
+				c += "\nHijos del elemento head: " + document.children[0].children[0].children.length;
+				c += "\nHijos del elemento head: " + document.children[0].children[0].childElementCount;
+				c += "\nElemento meta: " + document.children[0].children[0].children[0].tagName;
+				c += "\nElemento title: " + document.children[0].children[0].children[1].tagName;
+
+				c += "\nElemento body: " + document.children[0].children[1].tagName;
+				c += "\nHijos del elemento body: " + document.children[0].children[1].children.length;
+				c += "\nHijos del elemento body: " + document.children[0].children[1].childElementCount;
+
+				c += "\nPrimer hijo del body: " + document.children[0].children[1].children[0].tagName;
+				c += "\nPrimer hijo del body: " + document.children[0].children[1].firstElementChild.tagName;
+
+				c += "\nÚltimo hijo del body: " + document.children[0].children[1].children[6].tagName;
+				c += "\nÚltimo hijo del body: " + document.children[0].children[1].lastElementChild.tagName;
+
+				c += "\nNodos 1 dentro del BODY: " + document.children[0].children[1].children[0].tagName;
+				c += "\nNodos 2 dentro del BODY: " + document.children[0].children[1].children[1].tagName;
+				c += "\nNodos 3 dentro del BODY: " + document.children[0].children[1].children[2].tagName;
+				c += "\nNodos 4 dentro del BODY: " + document.children[0].children[1].children[3].tagName;
+				c += "\nNodos 5 dentro del BODY: " + document.children[0].children[1].children[4].tagName;
+				c += "\nNodos 6 dentro del BODY: " + document.children[0].children[1].children[5].tagName;
+				c += "\nNodos 7 dentro del BODY: " + document.children[0].children[1].children[6].tagName;
+				
+				alert(c);
+			}
+		</script>
+	</body>
+</html>

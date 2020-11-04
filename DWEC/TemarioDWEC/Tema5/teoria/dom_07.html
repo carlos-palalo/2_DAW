@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_07 - nextSibling, nextElementSibling</title>
+	</head>
+	<body>
+		<h1>dom_07 - nextSibling, nextElementSibling</h1>
+		<hr />
+		<p>Primer párrafo</p>
+		<p>Segundo párrafo</p>
+		<p>Tercer párrafo</p>
+		<button onclick="mostrar_informacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+			function mostrar_informacion(){
+				
+				var nodoH1 = document.children[0].children[1].children[0];
+
+				c = "\nSiguiente nodo a H1: " + nodoH1.nextSibling.tagName;
+				c = c + "\nSiguiente nodo (elemento) a H1: " + nodoH1.nextElementSibling.tagName;
+				
+				alert(c);
+			}
+		</script>
+	</body>
+</html>

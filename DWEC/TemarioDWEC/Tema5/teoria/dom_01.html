@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_01 - Creación de objetos: createElement, createTextNode, createAttribute, createComment</title>
+	</head>
+	<body>
+		<h1>dom_01 - Creación de objetos: createElement, createTextNode, createAttribute, createComment</h1>
+		<hr />
+		<button onclick="crearElementos();">Crear elementos</button>
+
+		<script type="text/javascript">
+			
+			function crearElementos() {
+				//CREAR ELEMENTOS NODO
+				var parrafo1 = document.createElement("p");
+				var cabecera = document.createElement("h2");
+				var lista = document.createElement("ul");
+				var elementoLista = document.createElement("li");
+				
+				//CREAR ELEMENTOS DE TEXTO
+				var cadena1 = document.createTextNode("Texto principal");
+				var cadena2 = document.createTextNode("Otra cadena");
+				
+				//CREAR ATRIBUTOS
+				var atributo1 = document.createAttribute("src");
+				var atributo2 = document.createAttribute("align");
+				
+				//CREAR COMENTARIOS
+				var comentario = document.createComment("Comentario sobre el código");
+				
+				alert("Elementos creados pero no insertados en el documento");
+			}
+			
+		</script>
+	</body>
+</html>

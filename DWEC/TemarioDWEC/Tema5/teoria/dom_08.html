@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_08 - previousSibling, previousElementSibling</title>
+	</head>
+	<body>
+		<h1>dom_08 - previousSibling, previousElementSibling</h1>
+		<hr />
+		<p>Primer párrafo</p>
+		<p>Segundo párrafo</p>
+		<p>Tercer párrafo</p>
+		<button onclick="mostrar_informacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+			function mostrar_informacion(){
+				
+				var nodoHR = document.children[0].children[1].children[1];
+
+				c = "\nAnterior nodo a HR: " + nodoHR.previousSibling.tagName;
+				c = c + "\nAnterior nodo (elemento) a HR: " + nodoHR.previousElementSibling.tagName;
+				
+				alert(c);
+			}
+		</script>
+	</body>
+</html>

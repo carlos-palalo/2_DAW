@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_02 - getElementById</title>
+	</head>
+	<body>
+		<h1>dom_02 - getElementById</h1>
+		<hr id="linea1" />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<button onclick="mostrarInformacion();" id="boton1">Mostrar información</button>
+
+		<script type="text/javascript">
+		
+			function mostrarInformacion() {
+				var elemento;
+				var c = "";
+
+				elemento = document.getElementById("linea1");
+				c += elemento.tagName + "\n";
+
+				elemento = document.getElementById("parrafo1");
+				c += elemento.tagName + "\n";
+
+				elemento = document.getElementById("parrafo2");
+				c += elemento.tagName + "\n";
+
+				elemento = document.getElementById("parrafo3");
+				c += elemento.tagName + "\n";
+
+				elemento = document.getElementById("boton1");
+				c += elemento.tagName + "\n";
+
+				alert("Elementos obtenidos:\n" + c);
+			}
+		
+		</script>
+	</body>
+</html>

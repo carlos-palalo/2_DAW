@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_03 - getElementsByClassName, getElementsByName, getElementsByTagName</title>
+		<style>
+			.clase1 {
+				color:blue;
+			}
+			
+			.clase2 {
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_03 - getElementsByClassName, getElementsByName, getElementsByTagName</h1>
+		<hr id="linea1" />
+
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2" name="resumen">Segundo párrafo</p>
+		<p id="parrafo3" class="clase1" name="resumen">Tercer párrafo</p>
+		<p id="parrafo4">Cuarto párrafo</p>
+		<p id="parrafo5">Quinto párrafo</p>
+		<p id="parrafo6" name="resumen">Sexto párrafo</p>
+		<p id="parrafo7" class="clase2">Séptimo párrafo</p>
+		<p id="parrafo8">Octavo párrafo</p>
+		<p id="parrafo9" class="clase1">Noveno párrafo</p>
+		<p id="parrafo10" name="resumen" class="clase2">Décimo párrafo</p>
+		<hr id="linea2" />
+
+		<button onclick="mostrarInformacion();" id="boton1">Mostrar información</button>
+
+		<script type="text/javascript">
+
+			function mostrarInformacion() {
+				var listaClase = document.getElementsByClassName("clase1");
+				var listaNombre = document.getElementsByName("resumen");
+				var listaEtiqueta = document.getElementsByTagName("p");
+				var c = "";
+
+				c += "\n" + listaClase.length;
+				c += "\n" + listaNombre.length;
+				c += "\n" + listaEtiqueta.length;
+
+
+				c += "\nELEMENTOS OBTENIDOS POR CLASSNAME";
+				for(i=0;i<listaClase.length;i++) {
+					c += "\n" + listaClase[i].tagName + " - " + listaClase[i].id;
+				}
+
+				c += "\nELEMENTOS OBTENIDOS POR NAME"; //DISTINTO
+				for(i=0;i<listaNombre.length;i++) {
+					c += "\n" + listaNombre[i].tagName + " - " + listaNombre[i].id;
+				}
+
+				c += "\nELEMENTOS OBTENIDOS POR TAGNAME";
+				for(i=0;i<listaEtiqueta.length;i++)	{
+					c += "\n" + listaEtiqueta[i].tagName + " - " + listaEtiqueta[i].id;
+				}
+
+				alert(c);
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_06 - childNodes, firstChild, lastChild</title>
+	</head>
+	<body>
+		<h1>dom_06 - childNodes, firstChild, lastChild</h1>
+		<hr />
+		<p>Primer párrafo</p>
+		<p>Segundo párrafo</p>
+		<p>Tercer párrafo</p>
+		<button onclick="mostrar_informacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+			function mostrar_informacion(){
+				c = "\nPrimer nodo: " + document.childNodes[1].tagName; //Nombre del tag html asociado al nodo
+				
+				c += "\nElementos principales: " + document.childNodes.length;
+
+				c += "\nElemento html: " + document.childNodes[1].tagName;
+				c += "\nHijos del elemento html: " + document.childNodes[1].childNodes.length;
+				
+				c += "\nElemento head: " + document.childNodes[1].childNodes[0].tagName;
+				c += "\nHijos del elemento head: " + document.childNodes[1].childNodes[0].childNodes.length;
+				c += "\nHijos del elemento head: " + document.childNodes[1].childNodes[0].childElementCount;//OJO
+				c += "\nElemento meta: " + document.childNodes[1].childNodes[0].childNodes[1].tagName;
+				c += "\nElemento title: " + document.childNodes[1].childNodes[0].childNodes[3].tagName;
+
+				c += "\nElemento body: " + document.childNodes[1].childNodes[2].tagName;
+				c += "\nHijos del elemento body: " + document.childNodes[1].childNodes[2].childNodes.length;
+				c += "\nHijos del elemento body: " + document.childNodes[1].childNodes[2].childElementCount;//OJO
+			
+
+				c += "\nPrimer hijo del body: " + document.childNodes[1].childNodes[2].childNodes[0].tagName;
+				c += "\nPrimer hijo del body: " + document.childNodes[1].childNodes[2].firstChild.tagName;
+				c += "\nPrimer hijo del body: " + document.childNodes[1].childNodes[2].children[0].tagName;//OJO
+				c += "\nPrimer hijo del body: " + document.childNodes[1].childNodes[2].firstElementChild.tagName;//OJO
+
+				c += "\nÚltimo hijo del body: " + document.childNodes[1].childNodes[2].childNodes[14].tagName;
+				c += "\nÚltimo hijo del body: " + document.childNodes[1].childNodes[2].lastChild.tagName;
+				c += "\nÚltimo hijo del body: " + document.childNodes[1].childNodes[2].children[6].tagName;//OJO
+				c += "\nÚltimo hijo del body: " + document.childNodes[1].childNodes[2].lastElementChild.tagName;//OJO
+
+				//alert(c);
+
+				c = "";
+				c += "\nNodos 1 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[0].tagName;
+				c += "\nNodos 2 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[1].tagName;
+				c += "\nNodos 3 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[2].tagName;
+				c += "\nNodos 4 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[3].tagName;
+				c += "\nNodos 5 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[4].tagName;
+				c += "\nNodos 6 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[5].tagName;
+				c += "\nNodos 7 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[6].tagName;
+				c += "\nNodos 8 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[7].tagName;
+				c += "\nNodos 9 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[8].tagName;
+				c += "\nNodos 10 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[9].tagName;
+				c += "\nNodos 11 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[10].tagName;
+				c += "\nNodos 12 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[11].tagName;
+				c += "\nNodos 13 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[12].tagName;
+				c += "\nNodos 14 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[13].tagName;
+				c += "\nNodos 15 dentro del BODY: " + document.childNodes[1].childNodes[2].childNodes[14].tagName;
+
+				alert(c);
+			}
+		</script>
+	</body>
+</html>
