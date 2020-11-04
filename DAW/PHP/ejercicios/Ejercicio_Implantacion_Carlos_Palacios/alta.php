@@ -27,11 +27,18 @@ try {
             }
             $lugar = htmlspecialchars($_REQUEST['lugar']);
             $descripcion = htmlspecialchars($_REQUEST['descripcion']);
+            if ($lugar == NULL) {
+                  print("<script>alert('Por favor, introduce un lugar.');</script>");
+            } else {
+                  if ($descripcion == NULL) {
+                        print("<script>alert('Por favor, introduce una descripcion');</script>");
+                  } else {
+                        $_SESSION['auto']++;
+                        $_SESSION['incidencias'][$_SESSION['auto'] - 1] = array($_SESSION['auto'], $urg, $_REQUEST['tipo'], date('Y-m-d H:i'), $lugar, getRealIP(), $descripcion);
 
-            $_SESSION['auto']++;
-            $_SESSION['incidencias'][$_SESSION['auto'] - 1] = array($_SESSION['auto'], $urg, $_REQUEST['tipo'], date('Y-m-d H:i'), $lugar, getRealIP(), $descripcion);
-
-            echo "<script>alert('Alta con éxito!');</script>";
+                        echo "<script>alert('Alta realizada con éxito');</script>";
+                  }
+            }
       }
 } catch (Exception $e) {
       echo 'Excepción capturada: ',  $e->getMessage(), "\n";

@@ -2,13 +2,18 @@
 session_start();
 include 'head.php';
 try {
+    $borrado = false;
     if (isset($_REQUEST['borrar'])) {
         $num = htmlspecialchars($_REQUEST['num_incidencia']);
         foreach ($_SESSION['incidencias'] as $incidencia) {
             if ($incidencia[0] == $num) {
                 unset($_SESSION['incidencias'][$num - 1]);
-                echo "<script>alert('Borrado con éxito!');</script>";
+                echo "<script>alert('Incidencia número " . $num . " borrada con éxito');</script>";
+                $borrado = true;
             }
+        }
+        if ($borrado == false) {
+            echo "<script>alert('Por favor, introduce un Número Incidencia válido');</script>";
         }
     }
 } catch (Exception $e) {
