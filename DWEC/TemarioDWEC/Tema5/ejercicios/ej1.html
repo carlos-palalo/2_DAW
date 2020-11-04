@@ -1,28 +1,34 @@
 <!DOCTYPE html>
+<!--Cambiar el parrafo anterior y el siguiente segun haga click-->
+<html>
 
 <head>
     <script type="text/javascript">
-        function mostrarInfo() {
-            var elemento
-            var cad = "";
+        function cambiarParrafo(parrafo) {
+            nodoAnt = parrafo.previousElementSibling;
+            nodoSig = parrafo.nextElementSibling;
 
-            elemento = document.getElementById("linea1");
-            cad += elemento.tagName + "\n";
+            if (nodoAnt != null && parrafo.tagName == nodoAnt.tagName) {
+                nodoAnt.textContent = parrafo.textContent;
+            }
 
-            elemento = document.getElementById("parrafo");
-            cad += elemento.tagName + "\n";
-
-            elemento = document.getElementById("boton1");
-            cad += elemento.tagName + "\n";
-
-            alert(cad);
+            if (nodoSig != null && parrafo.tagName == nodoSig.tagName) {
+                nodoSig.textContent = parrafo.textContent;
+            }
         }
     </script>
 </head>
 
 <body>
-    <h1>Ejercicio 1</h1>
-    <hr id="linea1">
-    <p id="parrafo">Primer Párrafo</p>
-    <button onclick="mostrarInfo();" id="boton1">Mostrar Info</button>
+    <h1>Cambiar el parrafo anterior y el siguiente según click</h1>
+    <hr>
+    <p onclick="cambiarParrafo(this)">Párrafo 1</p>
+    <p onclick="cambiarParrafo(this)">Párrafo 2</p>
+    <p onclick="cambiarParrafo(this)">Párrafo 3</p>
+    <p onclick="cambiarParrafo(this)">Párrafo 4</p>
+    <p onclick="cambiarParrafo(this)">Párrafo 5</p>
+    <p onclick="cambiarParrafo(this)">Párrafo 6</p>
+    <p onclick="cambiarParrafo(this)">Párrafo 7</p>
 </body>
+
+</html>

@@ -6,6 +6,12 @@
 </head>
 
 <script type="text/javascript">
+    var openWindow;
+
+    function abrir() {
+        openWindow = setTimeout(function () { window.open("http://iesriberadecastilla.centros.educa.jcyl.es/sitio/"); }, 3000);
+    }
+    
     function cargar() {
         temp = document.links[document.links.length - 1].href;
         for (i = document.links.length - 1; i > 0; i--) {
