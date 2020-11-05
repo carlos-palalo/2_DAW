@@ -24,12 +24,11 @@
         function ponerClase(parrafo) {
             nodoP = document.getElementById("parrafo");
 
-            nodoP.classList.add(parrafo.className);
+            nodoP.classList.toggle(parrafo.className);
         }
 
         function quitarClases() {
-            nodoP = document.getElementById("parrafo");
-            nodoP.classList.remove("claseAzul", "claseArial", "claseSize", "claseTexto");
+            document.getElementById("parrafo").className = "";
         }
     </script>
 </head>
