@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 30px;
+        }
+
+        #parrafo1 {
+            border: 5px solid red;
+            margin: 0 auto;
+            padding: 0px 20px;
+            box-shadow: 5px 5px black;
+            width: 500px;
+        }
+
+        #parrafo2 {
+            border: 5px solid red;
+            height: 200px;
+            width: 550px;
+            margin: 20px auto;
+            padding: 0px 20px;
+            box-shadow: -5px 5px black;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        button {
+            background-color: white;
+            border: 3px solid red;
+            padding: 5px;
+            font-weight: bold;
+            font-variant: small-caps;
+            box-shadow: 5px 5px black;
+        }
+
+        button:hover {
+            transition: background-color, color 0.5s;
+            background-color: red;
+            color: white
+        }
+    </style>
+    <script type="text/javascript">
+        function mostrarInformacion() {
+            c = "";
+
+            var div1 = document.getElementById("parrafo1");
+
+            c += "OffsetHeight. Altura con padding y border: " + div1.offsetHeight + "\n";
+
+            c += "OffsetWidth. Anchura con padding y border: " + div1.offsetWidth + "\n";
+
+            c += "OffsetLeft. : " + div1.offsetLeft + "\n";
+
+            c += "OffsetTop. : " + div1.offsetTop + "\n";
+
+            c += "OffsetParent. : " + div1.offsetParent + "\n";
+
+            alert(c);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Ejercicio Practico offsetHeight, offsetWidth, offsetTop, offsetLeft, offsetParent</h1>
+    <div id="parrafo1">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo risus dolor, sit amet imperdiet felis
+            euismod sit amet. Integer id ultrices elit. Sed sagittis placerat leo, eget feugiat purus imperdiet a.
+            Maecenas at diam interdum, dapibus erat non, congue lacus. Aenean elementum, risus ac posuere pharetra, nibh
+            erat consequat massa, vitae venenatis sapien felis vitae quam. Pellentesque non pulvinar dui. Donec tempus
+            est tincidunt dolor blandit gravida. Ut sit amet massa suscipit, semper nisl nec, dictum tortor. In volutpat
+            placerat egestas. Vivamus viverra, quam quis bibendum congue, metus ipsum pharetra augue, eu sagittis lacus
+            odio ut ex. Quisque ultrices a orci eget sollicitudin.
+        </p>
+    </div>
+
+    <div id="parrafo2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo risus dolor, sit amet imperdiet felis
+            euismod sit amet. Integer id ultrices elit. Sed sagittis placerat leo, eget feugiat purus imperdiet a.
+            Maecenas at diam interdum, dapibus erat non, congue lacus. Aenean elementum, risus ac posuere pharetra, nibh
+            erat consequat massa, vitae venenatis sapien felis vitae quam. Pellentesque non pulvinar dui. Donec tempus
+            est tincidunt dolor blandit gravida. Ut sit amet massa suscipit, semper nisl nec, dictum tortor. In volutpat
+            placerat egestas. Vivamus viverra, quam quis bibendum congue, metus ipsum pharetra augue, eu sagittis lacus
+            odio ut ex. Quisque ultrices a orci eget sollicitudin.
+        </p>
+    </div>
+
+    <button onclick="mostrarInformacion()">Mostrar Información</button>
+</body>
+
+</html>
