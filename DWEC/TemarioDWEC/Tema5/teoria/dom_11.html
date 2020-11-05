@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_11 - nodeType, nodeName, nodeValue</title>
+	</head>
+	<body>
+		<h1>dom_11 - nodeType, nodeName, nodeValue</h1>
+		<hr />
+		<p>Primer párrafo</p>
+		<p>Segundo párrafo</p>
+		<p>Tercer párrafo</p>
+		<!-- Comentario -->
+		<button onclick="mostrar_informacion();">Mostrar información</button>
+		
+
+		<script type="text/javascript">
+			function mostrar_informacion(){
+				var nodoP1 = document.children[0].children[1].children[2];
+
+				//NODETYPE (1 ELEMENTOS, 2 ATRIBUTOS, 3 TEXTO ...)
+				c = "nodeType";
+				c += "\nTipo del nodo del primer párrafo: " + nodoP1.nodeType;
+				c += "\nTipo del nodo del hijo del primer párrafo: " + nodoP1.firstChild.nodeType;
+
+				c += "\nTipo del nodo de document: " + document.nodeType;
+				
+				var nodoComentario = document.children[0].children[1].childNodes[11];
+				c += "\nTipo del nodo del comentario: " + nodoComentario.nodeType;
+				
+				
+				//NODENAME (nombres de elementos, atributos, comentarios...)
+				c += "\n\nnodeName";
+				c += "\nNombre del nodo del primer párrafo: " + nodoP1.nodeName;
+				c += "\nNombre del nodo del hijo del primer párrafo: " + nodoP1.firstChild.nodeName;
+
+
+				//NODEVALUE
+				c += "\n\nnodeValue";
+				c += "\nValor del nodo del primer párrafo: " + nodoP1.nodeValue;
+				c += "\nValor del nodo del hijo del primer párrafo: " + nodoP1.firstChild.nodeValue;
+
+				alert(c);
+
+				//nodeValue es de lectura/escritura
+				nodoP1.firstChild.nodeValue="Texto alternativo";
+			}
+		</script>
+	</body>
+</html>

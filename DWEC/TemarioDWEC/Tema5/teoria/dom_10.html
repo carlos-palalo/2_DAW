@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_10 - parentNode, parentElement</title>
+	</head>
+	<body>
+		<h1>dom_10 - parentNode, parentElement</h1>
+		<hr />
+		<p>Primer párrafo</p>
+		<p>Segundo párrafo</p>
+		<p>Tercer párrafo</p>
+		<button onclick="mostrar_informacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+			function mostrar_informacion(){
+				var nodoHR = document.children[0].children[1].children[1];
+
+				//Normalmente es el mismo
+				c = "\nparentNode de HR: " + nodoHR.parentNode.tagName;
+				c = c + "\nparentElement de HR: " + nodoHR.parentElement.tagName;
+				c = c + "\nparentNode de HR: " + nodoHR.parentNode;
+				c = c + "\nparentElement de HR: " + nodoHR.parentElement;
+
+				c = c + "\n\nparentNode de BODY: " + document.body.parentNode;
+				c = c + "\nparentElement de BODY: " + document.body.parentElement;
+
+				c = c + "\n\nparentNode de document: " + document.documentElement.parentNode;
+				c = c + "\nparentElement de document: " + document.documentElement.parentElement;
+
+				alert(c);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_14 - id</title>
+	</head>
+	<body>
+		<h1>dom_14 - id</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<button onclick="mostrar_informacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+
+			function mostrar_informacion() {
+				//Se obtiene el primer párrafo
+				var nodoP1 = document.children[0].children[1].children[2];
+				
+				c = "\nid: " + nodoP1.id;
+
+				alert(c);
+
+				nodoP1.id = "primerparrafo";
+				c = "\nid: " + nodoP1.id;
+				var nodo = document.getElementById("primerparrafo");
+				c += "\nContenido: " + nodo.textContent;
+				
+				alert(c);
+			}
+		</script>
+	</body>
+</html>

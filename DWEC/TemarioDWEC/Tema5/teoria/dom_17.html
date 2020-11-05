@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_17 - classList</title>
+		<style>
+			.claseAzul {
+				color:blue;
+			}
+			
+			.claseArial {
+				font-family:Arial, Helvetica, sans-serif;
+			}
+
+			.claseSubrayado {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_17 - classList</h1>
+		<hr />
+		<p id="parrafo1" class="claseArial claseAzul">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p>Tercer párrafo</p>
+
+		<button onclick="modificarClases();">Modificar clases</button>
+
+		<script type="text/javascript">
+			function modificarClases() {
+				var nodoP1 = document.getElementById("parrafo1");
+				var c = "";
+				
+				c += "ANTES\nclassList.value: " + nodoP1.classList.value;
+				c += "\nclassList.classList[0]: " +nodoP1.classList[0];
+				c += "\nclassList.classList[1]: " +nodoP1.classList[1];
+				c += "\nclassList.length " +nodoP1.classList.length;
+
+				nodoP1.classList.add("claseSubrayado");
+				nodoP1.classList.remove("claseArial");
+
+				
+				c += "\n\nDESPUÉS\nclassList.value: " + nodoP1.classList.value;
+				c += "\nclassList.classList[0]: " +nodoP1.classList[0];
+				c += "\nclassList.classList[1]: " +nodoP1.classList[1];
+				c += "\nclassList.length " +nodoP1.classList.length;
+
+				alert(c);
+			}
+		</script>
+	</body>
+</html>

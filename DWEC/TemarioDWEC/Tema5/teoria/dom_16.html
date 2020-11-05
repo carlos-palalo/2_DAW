@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_16 - className</title>
+		<style>
+			.claseAzul {
+				color:blue;
+			}
+			
+			.claseRoja {
+				color:red;
+			}
+
+			.claseArial {
+				font-family:Arial, Helvetica, sans-serif;
+			}
+
+			.claseTexto {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_16 - className</h1>
+		<hr />
+		<p class="claseArial">Primer párrafo</p>
+		<p>Segundo párrafo</p>
+		<p>Tercer párrafo</p>
+		<button onclick="nodoP1.className = 'claseAzul';">Poner Azul</button>
+		<button onclick="ponerRojo();">Poner Rojo</button>
+		<button onclick="nodoP1.className = 'claseAzul claseTexto'">Poner dos clases</button>
+		
+
+		<script type="text/javascript">
+
+			var nodoP1 = document.children[0].children[1].children[2];
+			
+			function ponerRojo() {
+				nodoP1.className = "claseRoja";
+			}
+		</script>
+
+	</body>
+</html>

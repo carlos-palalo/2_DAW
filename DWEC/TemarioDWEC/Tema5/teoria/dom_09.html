@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_09 - Ejercicio: Cambiar el párrafo anterior y siguientes con el contenido del párrafo sobre el que se hace click</title>
+	</head>
+	<body>
+		<h1>dom_09 - Ejercicio: Cambiar el párrafo anterior y siguientes con el contenido del párrafo sobre el que se hace click</h1>
+		<hr />
+		<p onclick="cambiarParrafo(this)">Primer párrafo</p>
+		<p onclick="cambiarParrafo(this)">Segundo párrafo</p>
+		<p onclick="cambiarParrafo(this)">Tercer párrafo</p>
+		<p onclick="cambiarParrafo(this)">Cuarto párrafo</p>
+		<p onclick="cambiarParrafo(this)">Quinto párrafo</p>
+		<p onclick="cambiarParrafo(this)">Sexto párrafo</p>
+		<p onclick="cambiarParrafo(this)">Séptimo párrafo</p>
+		<p onclick="cambiarParrafo(this)">Octavo párrafo</p>
+
+		<script type="text/javascript">
+			function cambiarParrafo(parrafo) {
+				nodoAnt = parrafo.previousElementSibling;
+				nodoSig = parrafo.nextElementSibling;
+
+				if(nodoAnt!=null && parrafo.tagName==nodoAnt.tagName) {
+					nodoAnt.textContent = parrafo.textContent;
+ 				}
+
+ 				if(nodoSig!=null && parrafo.tagName==nodoSig.tagName) {
+					nodoSig.textContent = parrafo.textContent;
+ 				}
+			}
+		</script>
+	</body>
+</html>

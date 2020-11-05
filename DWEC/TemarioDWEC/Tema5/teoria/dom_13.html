@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_13 - innerHTML, innerText</title>
+	</head>
+	<body>
+		<h1>dom_13 - innerHTML, innerText</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<div id="cuadro">
+			<span>Cuarto párrafo</span>
+			<span>Quinto párrafo</span>
+		</div>
+		<button onclick="introducirHTML();">Introducir código HTML</button>
+		<button onclick="introducirTEXTO();">Introducir texto</button>
+
+		<script type="text/javascript">
+
+			function introducirHTML() {
+				//Al final del primer párrafo meto una tabla
+				var nodo = document.children[0].children[1].children[2];
+				codigo = "<table border='5'><tr><td>CELDA</td></tr></table>";
+
+				nodo.innerHTML += codigo;
+				//document.children[0].children[1].innerHTML=codigo;
+			}
+
+			function introducirTEXTO() {
+				//innerText -- muy parecida a textContent
+				document.getElementById("cuadro").innerText += "TEXTO";
+			}
+
+		</script>
+	</body>
+</html>

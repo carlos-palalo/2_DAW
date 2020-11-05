@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_15 - style</title>
+	</head>
+	<body>
+		<h1>dom_15 - style</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<button onclick="cambiarEstilos();">Cambiar estilos</button>
+
+		<script type="text/javascript">
+
+			function cambiarEstilos() {
+				var nodo = document.children[0].children[1].children[2];
+				
+				nodo.style.color="red";
+				nodo.style.fontSize="xx-large";
+				nodo.style.fontFamily="Arial";
+			}
+
+		</script>
+	</body>
+</html>

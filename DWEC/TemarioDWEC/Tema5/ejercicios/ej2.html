@@ -7,7 +7,7 @@
             color: blue;
         }
 
-        .clseArial {
+        .claseArial {
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -19,6 +19,19 @@
             text-decoration: underline;
         }
     </style>
+
+    <script type="text/javascript">
+        function ponerClase(parrafo) {
+            nodoP = document.getElementById("parrafo");
+
+            nodoP.classList.add(parrafo.className);
+        }
+
+        function quitarClases(){
+            nodoP = document.getElementById("parrafo");
+            nodoP.classList.remove("*");
+        }
+    </script>
 </head>
 
 <body>
@@ -29,7 +42,7 @@
     <p class="claseSize" onclick="ponerClase(this)">Párrafo 3</p>
     <p class="claseTexto" onclick="ponerClase(this)">Párrafo 4</p>
     <hr>
-    <p>Este es el texto sin estilos</p>
+    <p id="parrafo">Este es el texto sin estilos</p>
     <button onclick="quitarClases()">Quitar clases</button>
 </body>
 

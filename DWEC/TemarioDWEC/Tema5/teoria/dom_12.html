@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_12 - tagName, textContent</title>
+	</head>
+	<body>
+		<h1>dom_12 - tagName, textContent</h1>
+		<hr />
+		<p>Primer párrafo</p>
+		<p>Segundo párrafo</p>
+		<p>Tercer párrafo</p>
+		<div id="cuadro">
+			<p>Cuarto párrafo</p>
+			<p>Quinto párrafo</p>
+		</div>
+		<button onclick="mostrar_informacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+			function mostrar_informacion(){
+				var nodoP1 = document.children[0].children[1].children[2];
+				var c = "";
+
+				//TAGNAME
+				c += "tagName";
+				c += "\ntagName del nodo del primer párrafo: " + nodoP1.tagName;
+				c += "\ntagName del nodo del hijo del primer párrafo: " + nodoP1.firstChild.tagName;
+				
+				//TEXTCONTENT -- Cambia a este texto todos sus descendientes
+				c += "\n\ntextContent";
+				c += "\ntextContent del nodo del primer párrafo: " + nodoP1.textContent;
+				c += "\ntextContent del nodo del hijo del primer párrafo: " + nodoP1.firstChild.textContent;
+				c += "\ntextContent del cuadro: " + document.getElementById("cuadro").textContent;
+
+				alert(c);
+
+				nodoP1.textContent = "NUEVO CONTENIDO DEL PÁRRAFO";
+				document.getElementById("cuadro").textContent = "TEXTO DEL CONTENEDOR";
+			}
+		</script>
+
+	</body>
+</html>
