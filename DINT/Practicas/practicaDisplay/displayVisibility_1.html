@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .imgbox {
+            float: left;
+            text-align: center;
+            width: 30%;
+            border: 1px solid gray;
+            margin: 4px;
+            padding: 6px;
+            box-shadow: 5px 5px grey;
+        }
+        
+        button {
+            width: 100%;
+        }
+        
+        img {
+            width: 100%;
+        }
+        
+        .imgbox:hover img.img1 {
+            display: none;
+        }
+        
+        .imgbox:hover img.img2 {
+            Visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Difference between display:none and visiblity: hidden</h3>
+    <p><strong>visibility:hidden</strong> hides the element, but it still takes up space in the layout.</p>
+    <p><strong>display:none</strong> removes the element from the document. It does not take up any space.</p>
+
+    <div class="imgbox" id="imgbox1">Box 1 Con display<br>
+        <img class="img1" src="img_5terre.jpg" alt="Italy">
+        <button onclick="">Remove</button>
+    </div>
+
+    <div class="imgbox" id="imgbox2">Box 2 con Visibility<br>
+        <img class="img2" src="img_lights.jpg" alt="Lights">
+        <button onclick="">Hide</button>
+    </div>
+
+    <div class="imgbox">Box 3<br>
+        <img src="img_forest.jpg" alt="Forest">
+        <!--Esta opcion no esta habilitada-->
+        <button onclick="resetElement()">Reset All</button>
+    </div>
+
+
+
+
+</body>
+
+</html>
