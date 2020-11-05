@@ -18,14 +18,9 @@
         cont++;
         if (cont == 6) { cont = 0; }
     }
-
-    onload = function () {
-        rotar();
-        setInterval(rotar, 40);
-    }
 </script>
 
-<body>
+<body onload="setInterval(rotar,40)">
     <h1>Ejercicio Crear un Gif con imagenes</h1>
     <img src="" id="img">
 </body>
