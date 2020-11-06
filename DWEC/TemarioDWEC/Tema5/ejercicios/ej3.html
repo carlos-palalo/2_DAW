@@ -2,26 +2,23 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             margin: 30px;
+            border: 10px solid black;
+            padding: 10px;
         }
 
-        #parrafo1 {
+        #parrafo {
             border: 5px solid red;
-            margin: 0 auto;
-            padding: 0px 20px;
-            box-shadow: 5px 5px black;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 50px;
             width: 500px;
-        }
-
-        #parrafo2 {
-            border: 5px solid red;
             height: 200px;
-            width: 550px;
-            margin: 20px auto;
-            padding: 0px 20px;
-            box-shadow: -5px 5px black;
+            /*display: none;*/
         }
 
         p {
@@ -31,10 +28,10 @@
         button {
             background-color: white;
             border: 3px solid red;
+            border-radius: 10px;
             padding: 5px;
             font-weight: bold;
             font-variant: small-caps;
-            box-shadow: 5px 5px black;
         }
 
         button:hover {
@@ -42,53 +39,50 @@
             background-color: red;
             color: white
         }
+
+        #relativo {
+            position: relative;
+        }
     </style>
     <script type="text/javascript">
         function mostrarInformacion() {
-            c = "";
+            c = "<ul>";
 
-            var div1 = document.getElementById("parrafo1");
+            var div1 = document.getElementById("parrafo");
 
-            c += "OffsetHeight. Altura con padding y border: " + div1.offsetHeight + "\n";
+            c += "<li><b>OffsetHeight.</b> Altura con padding y border respecto al padre.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Padding (50px * 2) +  border (5px * 2) + height (200px) = <b>" + div1.offsetHeight + "px</b></li>";
 
-            c += "OffsetWidth. Anchura con padding y border: " + div1.offsetWidth + "\n";
+            c += "<li><b>OffsetWidth.</b> Anchura con padding y border respecto al padre.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Width (500px) + border (5px * 2) + padding (50px * 2) = <b>" + div1.offsetWidth + "px</b></li>";
 
-            c += "OffsetLeft. : " + div1.offsetLeft + "\n";
+            c += "<li><b>OffsetLeft.</b> Posición a la izquierda (en pixeles) incluyendo el margin, position, padding, scrollbar y el borde del padre.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Margin propio(10px) + margin padre (30px) + padding padre (10px) + border padre (10px) = <b>" + div1.offsetLeft + "px</b></li>";
 
-            c += "OffsetTop. : " + div1.offsetTop + "\n";
+            c += "<li><b>OffsetTop.</b> Posición Superior (en pixeles) incluyendo position, margin, padding, scrollbar y border.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Margin body (30px) + Posición relativa (debido al h1, 117px) + posición debido al hr (12px) + padding padre (10px) + border padre (10px) = <b>" + div1.offsetTop + "px</b></li>";
 
-            c += "OffsetParent. : " + div1.offsetParent + "\n";
+            c += "<li><b>OffsetParent.</b> Devuelve el ancestro más cercano que tiene una posición que no sea estática. Devuelve null si el elemento está configurado a display = 'none'. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Si encierro el párrafo con un div y le asigno una posición que no sea estática : <b>" + div1.offsetParent + "</b></li>";
 
-            alert(c);
+            document.getElementById("info").innerHTML = c;
         }
     </script>
 </head>
 
 <body>
     <h1>Ejercicio Practico offsetHeight, offsetWidth, offsetTop, offsetLeft, offsetParent</h1>
-    <div id="parrafo1">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo risus dolor, sit amet imperdiet felis
-            euismod sit amet. Integer id ultrices elit. Sed sagittis placerat leo, eget feugiat purus imperdiet a.
-            Maecenas at diam interdum, dapibus erat non, congue lacus. Aenean elementum, risus ac posuere pharetra, nibh
-            erat consequat massa, vitae venenatis sapien felis vitae quam. Pellentesque non pulvinar dui. Donec tempus
-            est tincidunt dolor blandit gravida. Ut sit amet massa suscipit, semper nisl nec, dictum tortor. In volutpat
-            placerat egestas. Vivamus viverra, quam quis bibendum congue, metus ipsum pharetra augue, eu sagittis lacus
-            odio ut ex. Quisque ultrices a orci eget sollicitudin.
-        </p>
-    </div>
-
-    <div id="parrafo2">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo risus dolor, sit amet imperdiet felis
-            euismod sit amet. Integer id ultrices elit. Sed sagittis placerat leo, eget feugiat purus imperdiet a.
-            Maecenas at diam interdum, dapibus erat non, congue lacus. Aenean elementum, risus ac posuere pharetra, nibh
-            erat consequat massa, vitae venenatis sapien felis vitae quam. Pellentesque non pulvinar dui. Donec tempus
-            est tincidunt dolor blandit gravida. Ut sit amet massa suscipit, semper nisl nec, dictum tortor. In volutpat
-            placerat egestas. Vivamus viverra, quam quis bibendum congue, metus ipsum pharetra augue, eu sagittis lacus
-            odio ut ex. Quisque ultrices a orci eget sollicitudin.
-        </p>
-    </div>
-
+    <hr>
+    <!--<div id="relativo">-->
+        <p id="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo risus dolor, sit amet
+            imperdiet felis euismod sit amet. Integer id ultrices elit. Sed sagittis placerat leo, eget feugiat purus
+            imperdiet a. Maecenas at diam interdum, dapibus erat non, congue lacus. Aenean elementum, risus ac posuere
+            pharetra, nibh erat consequat massa, vitae venenatis sapien felis vitae quam. Pellentesque non pulvinar dui.
+            Donec tempus est tincidunt dolor blandit gravida. Ut sit amet massa suscipit, semper nisl nec, dictum
+            tortor. In
+            volutpat placerat egestas. Vivamus viverra, quam quis bibendum congue, metus ipsum pharetra augue, eu
+            sagittis
+            lacus odio ut ex. Quisque ultrices a orci eget sollicitudin.</p>
+    <!--</div>-->
     <button onclick="mostrarInformacion()">Mostrar Información</button>
+    <hr>
+    <pdiv id="info">
+        </div>
 </body>
 
 </html>
