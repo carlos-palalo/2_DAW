@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--Cambiar el parrafo anterior y el siguiente segun haga click-->
+<html>
+
+<head>
+    <script type="text/javascript">
+        function agrupar(parrafoActual) {
+            var parrafos = document.getElementsByTagName("p");
+            var auxiliar = "";
+            for (var i = 0; i < parrafos.length; i++) {
+                auxiliar += parrafos[i].innerText + " ";
+            }
+            parrafoActual.innerText = auxiliar;
+            parrafoActual.style.border="2px solid red";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Agrupar los párrafos (si doy click en uno, agruparlo alli)</h1>
+    <hr>
+    <p onclick="agrupar(this)">Párrafo 1</p>
+    <p onclick="agrupar(this)">Párrafo 2</p>
+    <p onclick="agrupar(this)">Párrafo 3</p>
+    <p onclick="agrupar(this)">Párrafo 4</p>
+    <p onclick="agrupar(this)">Párrafo 5</p>
+    <p onclick="agrupar(this)">Párrafo 6</p>
+    <p onclick="agrupar(this)">Párrafo 7</p>
+    <p onclick="agrupar(this)">Párrafo 8</p>
+    <p onclick="agrupar(this)">Párrafo 9</p>
+    <p onclick="agrupar(this)">Párrafo 10</p>
+</body>
+
+</html>

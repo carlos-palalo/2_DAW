@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--Cambiar el parrafo anterior y el siguiente segun haga click-->
+<html>
+
+<head>
+    <script type="text/javascript">
+        function random(min, max) {
+            return Math.floor((Math.random() * (max - min + 1)) + min);
+        }
+
+        function desordenar() {
+            var parrafos = document.getElementsByTagName("p");
+            var aux = Array(parrafos.length);
+
+            for (var i = 0; i < parrafos.length; i++) {
+                var cont = 0;
+                num = random(0, 10);
+                if (i == 0) {
+                    aux[i] = num;
+                } else {
+                    for (var j = 0; j < i; j++) {
+                        do {
+                            if (aux[i] == j) {
+                                cont++;
+                                if (cont > 1)
+                                    break;
+                            }
+                        } while (true);
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Desordenar los párrafos</h1>
+    <hr>
+    <p>Párrafo 1</p>
+    <p>Párrafo 2</p>
+    <p>Párrafo 3</p>
+    <p>Párrafo 4</p>
+    <p>Párrafo 5</p>
+    <p>Párrafo 6</p>
+    <p>Párrafo 7</p>
+    <p>Párrafo 8</p>
+    <p>Párrafo 9</p>
+    <p>Párrafo 10</p>
+    <button onclick="desordenar()">Desordenar</button>
+</body>
+
+</html>
