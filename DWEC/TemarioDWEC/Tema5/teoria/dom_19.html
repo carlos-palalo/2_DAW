@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_19 - Ejercicio: Añadir al párrafo final las clases de los párrafos sobre los que se hace click y quitar las clases si ya la tenían asignada</title>
+		<style>
+			.claseAzul {
+				color:blue;
+			}
+			
+			.claseArial {
+				font-family: Arial;
+			}
+
+			.claseSize {
+				font-size: 28px;
+			}
+
+			.claseSubrayado {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_19 - Ejercicio: Añadir al párrafo final las clases de los párrafos sobre los que se hace click y quitar las clases si ya la tenían asignada</h1>
+		<hr />
+		<p class="claseAzul" onclick="procesarClase(this);">Primer párrafo</p>
+		<p class="claseArial" onclick="procesarClase(this);">Segundo párrafo</p>
+		<p class="claseSize" onclick="procesarClase(this);">Tercer párrafo</p>
+		<p class="claseSubrayado" onclick="procesarClase(this);">Cuarto párrafo</p>
+		<hr />
+		<div id="cuadro">Texto que está dentro de un DIV de prueba</div>
+
+		<script type="text/javascript">
+
+			function procesarClase(actual) {
+				var c = document.getElementById('cuadro');
+
+				if(c.classList.contains(actual.className)) {
+					c.classList.remove(actual.className);
+				} else {
+					c.classList.add(actual.className);
+				}
+			}
+
+		</script>
+	</body>
+</html>

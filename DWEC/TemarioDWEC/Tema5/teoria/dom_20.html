@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_20 - contentEditable, isContentEditable</title>
+	</head>
+	<body>
+		<h1>dom_20 - contentEditable, isContentEditable</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2" contenteditable="true">Segundo párrafo</p>
+		<div contenteditable="true">
+			<p id="parrafo3">Tercer párrafo</p>
+		</div>
+		<div contenteditable="true">
+			<p id="parrafo4">Cuarto párrafo</p>
+		</div>
+		
+
+
+		<button onclick="modificar();">Mostrar información</button>
+		Probar antes y después de pulsar el botón
+
+		<script type="text/javascript">
+			function modificar(){
+				var nodoP1 = document.getElementById("parrafo1");
+				var nodoP2 = document.getElementById("parrafo2");
+				var nodoP3 = document.getElementById("parrafo3");
+				var nodoP4 = document.getElementById("parrafo4");
+
+				nodoP1.contentEditable = "true";
+				nodoP2.contentEditable = "false";
+				nodoP3.contentEditable = "inherit"; //Editable si el padre lo es
+				nodoP4.contentEditable = "false"; //Editable el contenedor pero no el párrafo
+
+				var c = "";
+				c +=  "\nPárrafo 1 --> " + nodoP1.isContentEditable;
+				c += "\nPárrafo 2 --> " + nodoP2.isContentEditable;
+				c +=  "\nPárrafo 3 --> " + nodoP3.isContentEditable;
+				c += "\nPárrafo 4 --> " + nodoP4.isContentEditable;
+				alert(c);
+			}
+		</script>
+	</body>
+</html>

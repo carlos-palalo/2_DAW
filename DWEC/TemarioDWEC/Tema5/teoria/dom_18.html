@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_18 - Ejercicio: Añadir al párrafo final las clases de los párrafos sobre los que se hace click</title>
+		<style>
+			.claseAzul {
+				color:blue;
+			}
+			
+			.claseArial {
+				font-family: Arial;
+			}
+
+			.claseSize {
+				font-size: 28px;
+			}
+
+			.claseTexto {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_18 - Ejercicio: Añadir al párrafo final las clases de los párrafos sobre los que se hace click</h1>
+		<hr />
+		<p class="claseAzul" onclick="ponerClase(this);">Primer párrafo</p>
+		<p class="claseArial" onclick="ponerClase(this);">Segundo párrafo</p>
+		<p class="claseSize" onclick="ponerClase(this);">Tercer párrafo</p>
+		<p class="claseTexto" onclick="ponerClase(this);">Cuarto párrafo</p>
+		<hr />
+		<div id="cuadro">Texto que está dentro de un DIV de prueba</div>
+		<button onclick="document.getElementById('cuadro').className='';">Quitar clases</button>
+		
+		<script type="text/javascript">
+
+			function ponerClase(actual) {
+				//Método1
+				//document.getElementById('cuadro').className += " " + actual.className;
+
+				//Método2
+				document.getElementById('cuadro').classList.add(actual.className);
+			}
+
+		</script>
+	</body>
+</html>
