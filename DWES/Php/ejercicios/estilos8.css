@@ -1,0 +1,21 @@
+body{
+    background-color: whitesmoke;
+    margin-left: 20px auto;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+fieldset{
+    background-color: rgb(147, 219, 252);
+    border: none;
+    color: blue;
+}
+
+legend{
+    color: #ffa500;
+    border: none;
+    background-color: rgb(32, 145, 211);
+    color: white;
+    font-weight: bold;
+    margin: 15px;
+    padding: 5px;
+}
