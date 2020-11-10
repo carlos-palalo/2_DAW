@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_31 - hasChildNodes, appendChild, insertBefore</title>
+	</head>
+	<body>
+		<h1>dom_31 - hasChildNodes, appendChild, insertBefore</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<ul>
+			<li>ElementoA</li>
+			<li>ElementoB</li>
+			<li>ElementoC</li>
+			<li>ElementoD</li>
+			<li>ElementoE</li>
+		</ul>
+		<button onclick="operar();">Añadir elementos</button>
+
+		<script type="text/javascript">
+
+			function operar() {
+				var c = "";
+				var nodoLista = document.children[0].children[1].children[5];
+				
+				if(nodoLista.hasChildNodes()) {
+					c += "\nLa lista tiene elementos";
+
+					//APPENDCHILD
+					var nodo1 = document.createElement("li");
+					var nodoTexto1 = document.createTextNode("Elemento creado con appendChild");
+					nodo1.appendChild(nodoTexto1);
+					nodoLista.appendChild(nodo1);
+
+
+					//INSERTBEFORE
+					var nodo2 = document.createElement("li");
+					var nodoTexto2 = document.createTextNode("Elemento creado con insertBefore");
+					nodo2.appendChild(nodoTexto2);
+					nodoLista.insertBefore(nodo2,nodoLista.children[1]);
+				} else {
+					c += "\nLa lista no tiene elementos";
+				}
+
+				alert(c);
+			}
+
+		</script>
+	</body>
+</html>

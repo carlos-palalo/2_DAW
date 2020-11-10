@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_22 - offsetHeight, offsetWidth, offsetTop, offsetLeft, offsetParent</title>
+		<style>
+			#parrafo3 { /* cambiar a parrafo3 */
+				border: 4px solid red;
+				width: 200px;
+				height: 100px;
+				position: relative;
+				margin: 10px;
+				padding: 7px;
+				top: 0cm;
+				left: 0cm;
+			}
+
+			#cuadro4 {
+				border: 4px solid blue;
+				width: 200px;
+				height: 100px;
+				position: relative;
+				margin: 10px;
+				padding: 7px;
+				top: 0cm;
+				left: 0cm;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_22 - offsetHeight, offsetWidth, offsetTop, offsetLeft, offsetParent</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+
+		<p id="parrafo2">Segundo párrafo</p>
+
+		<div id="cuadro3">
+			<p id="parrafo3">Tercer párrafo</p>
+		</div>
+		
+		<div id="cuadro4">
+			<p id="parrafo4">Cuarto párrafo</p>
+		</div>
+		
+		<button onclick="mostrarInformacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+			function mostrarInformacion(){
+				var nodo = document.getElementById("parrafo3");
+
+				var c = "";
+				c += "Párrafo3"
+
+				//offsetHeight: contenido padding border scrollbar
+				//                 100      7*2     4*2     0
+				c += "\noffsetHeight--> " + nodo.offsetHeight;
+
+				//offsetWidth: contenido padding border scrollbar
+				//                200      7*2    4*2      0
+				c += "\noffsetWidth --> " + nodo.offsetWidth;
+
+				//offsetParent: antecesor más cercano posicionado
+				c += "\n\noffsetParent de párrafo3--> " + document.getElementById("parrafo3").offsetParent.tagName;
+				//Quitar y poner position:relative del estilo y comprobar que offsetParent cambia
+				c += "\noffsetParent de párrafo4 --> " + document.getElementById("parrafo4").offsetParent.tagName;
+
+				//offsetTop: distancia desde la parte superior
+				//Es un valor relativo al elemento offsetParent
+				c += "\n\nPárrafo3"
+				c += "\noffsetTop --> " + nodo.offsetTop;
+
+				//offsetTop: distancia desde la parte izquierda
+				//Es un valor relativo al elemento offsetParent
+				c += "\noffsetLeft --> " + nodo.offsetLeft;
+
+				//offsetLeft y offsetTop con párrafo4
+				c += "\n\nPárrafo4"
+				c += "\noffsetTop --> " + document.getElementById("parrafo4").offsetTop;
+				c += "\noffsetLeft --> " + document.getElementById("parrafo4").offsetLeft;
+
+				alert(c);
+			}
+		</script>
+	</body>
+</html>

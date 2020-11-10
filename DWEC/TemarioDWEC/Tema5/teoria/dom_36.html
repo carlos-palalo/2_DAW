@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_36 - replaceChild, removeChild</title>
+	</head>
+	<body>
+		<h1>dom_36 - replaceChild, removeChild</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<ul type="disc">
+			<li>ElementoA</li>
+			<li>ElementoB</li>
+			<li>ElementoC</li>
+			<li>ElementoD</li>
+			<li>ElementoE</li>
+		</ul>
+		<button onclick="operar();">Reemplazar y quitar</button>
+
+		<script type="text/javascript">
+
+			function operar() {
+				//REPLACECHILD --> Quitar el segundo párrafo y poner una cabecera h2
+				var nodoBody = document.children[0].children[1];
+				
+				var parrafoQuitar = document.getElementById("parrafo2");
+				
+				var nodoH2 = document.createElement("h2");
+				var nodoH2Hijo = document.createTextNode("ELEMENTO CREADO");
+				nodoH2.appendChild(nodoH2Hijo);
+
+				nodoBody.replaceChild(nodoH2,parrafoQuitar);
+
+				//REMOVECHILD --> Elimina la lista
+				var nodoLista = document.children[0].children[1].children[5];
+				//nodoBody.removeChild(nodoLista); //Elimina la lista
+				nodoLista.removeChild(nodoLista.children[3]); //Elimina el cuarto elemento de la lista
+			}
+
+		</script>
+	</body>
+</html>

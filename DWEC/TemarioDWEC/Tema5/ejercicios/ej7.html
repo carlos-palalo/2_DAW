@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--Cambiar el parrafo anterior y el siguiente segun haga click-->
+<html>
+
+<head>
+    <script type="text/javascript">
+        function clonar(parrafo) {
+            var primero = document.childNodes[0].childNodes[1].childNodes[2];
+            var clonado = parrafo.clone(true);
+            
+            alert(primero);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Clonar los párrafos y que vayan apareciendo alternativamente arriba y abajo</h1>
+    <hr>
+    <p onclick="clonar(this)">Párrafo 1</p>
+    <p onclick="clonar(this)">Párrafo 2</p>
+    <p onclick="clonar(this)">Párrafo 3</p>
+</body>
+
+</html>

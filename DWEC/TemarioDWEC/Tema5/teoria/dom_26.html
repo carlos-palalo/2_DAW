@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_26 - NodeList</title>
+	</head>
+	<body>
+		<h1>dom_26 - NodeList</h1>
+		<h3>Ver consola</h3>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+
+		<script type="text/javascript">
+
+			//NodeList
+			var nodosBody = document.childNodes[1].childNodes[2].childNodes;
+
+			console.log("Número de elementos: " + nodosBody.length);
+
+			//Propiedad item
+			console.log("\nEtiqueta del segundo párrafo: " + nodosBody.item(9).tagName);
+			console.log("Texto del segundo párrafo: " + nodosBody.item(9).textContent);
+
+			//Recorrido con bucle for
+			console.log("\nRecorrido con bucle for");
+			for(let i=0;i<nodosBody.length;i++) {
+				console.log(nodosBody.item(i));
+				//console.log(nodosBody.item(i).tagName + " -- " + nodosBody[i].nodeType);
+			}
+
+			//Recorrido con Array.from
+			console.log("\nRecorrido con Array.from");
+			Array.from(nodosBody,function (elemento) {
+				console.log(elemento.tagName + " -- " + elemento.textContent + " -- " + elemento.nodeType);
+			});
+
+			//Recorrido con forEach
+			console.log("\nRecorrido con forEach");
+			nodosBody.forEach(function (nodo) {
+				console.log(nodo.tagName + " -- " + nodo.textContent + " -- " + nodo.nodeType);
+			});
+
+
+			//Método entries
+			console.log("\nPropiedad entries");
+			for(var entrada of nodosBody.entries()) { 
+				//console.log(entrada);
+				console.log(entrada[0] + " -- " + entrada[1].tagName);
+			}
+
+			console.log("\nPropiedad entries usando next, done y value");
+			var entradas = nodosBody.entries();
+			var ent;
+			do {
+				ent = entradas.next();
+				console.log(ent.value);	
+			} while(!ent.done)
+			
+
+			//Método keys -- Es un entero sin signo
+			console.log("\nPropiedad keys");
+			for(var clave of nodosBody.keys()) { 
+				console.log(clave);
+			}
+
+
+			//Método values
+			console.log("\nPropiedad values");
+			for(var valor of nodosBody.values()) { 
+				console.log(valor);
+			}
+		</script>
+	</body>
+</html>

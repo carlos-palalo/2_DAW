@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_27 - Objeto Node</title>
+	</head>
+	<body>
+		<h1>dom_27 - Objeto Node</h1>
+		<h3>Ver consola</h3>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+
+		<script type="text/javascript">
+
+			//NodeList
+			var nodosBody = document.childNodes[1].childNodes[2].childNodes;
+
+			//Nodo elemento
+			console.log("Número de elementos: " + nodosBody.length);
+			var nodo;
+
+			nodo = nodosBody.item(9); //Segundo párrafo
+			console.log("\nnodeName: " + nodo.nodeName);
+			console.log("\nnodeType: " + nodo.nodeType);
+			console.log("\nnodeValue: " + nodo.nodeValue);
+			console.log("\ntextContent: " + nodo.textContent);
+			console.log("\nNúmero de nodos hijo: " + nodo.childNodes.length);
+			console.log("\nparentNode: " + nodo.parentNode.nodeName);
+			console.log("\ntagName: " + nodo.tagName); //Propiedad de Element
+
+			
+			//Nodo de texto
+			nodo = nodo.childNodes[0];
+			console.log("\n\nnodeName: " + nodo.nodeName);
+			console.log("\nnodeType: " + nodo.nodeType);
+			console.log("\nnodeValue: " + nodo.nodeValue);
+			console.log("\ntextContent: " + nodo.textContent);
+			console.log("\nNúmero de nodos hijo: " + nodo.childNodes.length);
+			console.log("\nparentNode: " + nodo.parentNode.nodeName);
+			console.log("\ntagName: " + nodo.tagName); //Propiedad de Element
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_23 - ownerDocument</title>
+	</head>
+	<body>
+		<h1>dom_23 - ownerDocument</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+
+		<p id="parrafo2">Segundo párrafo</p>
+
+		<p id="parrafo3">Tercer párrafo</p>
+		
+		<button onclick="mostrarInformacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+			function mostrarInformacion(){
+				var nodo = document.getElementById("parrafo1");
+
+				if(nodo.ownerDocument === document)
+					alert("Es el documento");
+				else
+					alert("No es el documento");
+			}
+		</script>
+	</body>
+</html>

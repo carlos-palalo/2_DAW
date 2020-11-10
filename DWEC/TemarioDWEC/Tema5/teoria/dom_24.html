@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>dom_24 - dir, title, lang</title>
+	</head>
+	<body>
+		<h1>dom_24 - dir, title, lang</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+
+		<p id="parrafo2">Segundo párrafo</p>
+
+		<p id="parrafo3" lang="en">Third paragraph</p>
+		
+		<button onclick="mostrarInformacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+		
+			function mostrarInformacion(){
+				var nodo;
+				
+				nodo = document.getElementById("parrafo1");
+				nodo.dir = "rtl";
+
+				nodo = document.getElementById("parrafo2");
+				nodo.title = "Título del párrafo 2";
+
+				nodo = document.getElementById("parrafo3");
+				if(nodo.lang == "en") {
+					nodo.style.fontFamily = "Arial";
+					nodo.style.color = "#ff0000";
+				}
+			}
+
+		</script>
+	</body>
+</html>

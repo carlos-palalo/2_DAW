@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_33 - Clonar el parrafo con un ID específico y comprobar ID de los elementos clonados</title>
+	</head>
+	<body>
+		<h1>dom_33 - Clonar el parrafo con un ID específico y comprobar ID de los elementos clonados</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+
+		<button onclick="clonar();">Clonar y comprobar los ID</button>
+
+		<script type="text/javascript">
+
+			function clonar() {
+				var nodoBody = document.children[0].children[1];
+				var nodoAClonar = document.getElementById("parrafo2");
+				var nodoClonado = nodoAClonar.cloneNode(true);
+				nodoBody.appendChild(nodoClonado); //Se clona con el mismo ID
+			}
+
+		</script>
+	</body>
+</html>

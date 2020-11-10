@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_25 - HTMLCollection</title>
+	</head>
+	<body>
+		<h1>dom_25 - HTMLCollection</h1>
+		<h3>Ver consola</h3>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p name="parrafo3">Tercer párrafo</p>
+
+		<script type="text/javascript">
+
+			//HTMLCollection
+			var elementosBody = document.children[0].children[1].children;
+			
+			console.log("Número de elementos: " + elementosBody.length);
+			
+			//Propiedad item
+			console.log("\nEtiqueta del segundo párrafo: " + elementosBody[4].tagName);
+			console.log("Texto del segundo párrafo: " + elementosBody.item(4).tagName);
+			console.log("Etiqueta del segundo párrafo: " + elementosBody[4].textContent);
+			console.log("Texto del segundo párrafo: " + elementosBody.item(4).textContent);
+
+			//Propiedad namedItem
+			var nodoP3 = document.getElementsByTagName("p").namedItem("parrafo3");
+			console.log("\nEtiqueta del segundo párrafo: " + nodoP3.tagName);
+			console.log("Texto del segundo párrafo: " + nodoP3.textContent);
+
+			//Recorrido con bucle for
+			console.log("\nRecorrido con bucle for");
+			for(let i=0;i<elementosBody.length;i++) {
+				console.log(elementosBody.item(i).tagName + " -- " + elementosBody[i].nodeType);
+			}
+
+			//Recorrido con Array.from
+			console.log("\nRecorrido con Array.from");
+			Array.from(elementosBody,function (elemento) {
+				console.log(elemento.tagName + " -- " + elemento.textContent + " -- " + elemento.nodeType);
+			});
+			
+			//Con forEach no es posible
+			/*elementosBody.forEach(function (nodo) {
+				console.log(nodo.tagName + " -- " + nodo.textContent + " -- " + nodo.nodeType);
+			});//ERROR. No es posible ejecutar forEach*/
+			
+		</script>
+	</body>
+</html>

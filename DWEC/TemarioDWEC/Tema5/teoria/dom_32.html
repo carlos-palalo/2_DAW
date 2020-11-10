@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_32 - contains, cloneNode</title>
+	</head>
+	<body>
+		<h1>dom_32 - contains, cloneNode</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<ul type="disc" id="lista1">
+			<li>ElementoA</li>
+			<li id="elB">ElementoB</li>
+			<li>ElementoC</li>
+			<li>ElementoD</li>
+			<li>ElementoE</li>
+		</ul>
+		<button onclick="operar();" id="boton1">Comprobar y clonar</button>
+
+		<script type="text/javascript">
+
+			function operar() {
+				var nodoBody = document.children[0].children[1];
+				var elementoBuscado = document.getElementById("parrafo2");
+				var c = "";
+
+				if(nodoBody.contains(elementoBuscado)) {
+					c += "\nContiene el elemento";
+
+					//CLONENODE
+					//Se va a clonar la lista
+					var nodoLista = document.children[0].children[1].children[5];
+					var listaClonada = nodoLista.cloneNode(true);
+
+					var b = document.getElementById("parrafo2");
+					b.parentElement.insertBefore(listaClonada,b);
+				} else {
+					c += "\nNo contiene el elemento";
+				}
+
+				alert(c);
+			}
+
+		</script>
+	</body>
+</html>
