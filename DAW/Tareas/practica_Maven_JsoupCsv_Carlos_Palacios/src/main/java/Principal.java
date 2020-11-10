@@ -2,12 +2,9 @@
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -47,25 +44,9 @@ public class Principal {
 
                 // Busco todas las noticias que estan dentro de: 
                 Elements entradas = document.select("div .md__new");
-                // Paseo cada una de las entradas
-                final String[] header = new String[]{"newsNo", "title", "signature"};
-                ICsvMapWriter mapWriter = null;
-                mapWriter = new CsvMapWriter(new FileWriter("target/writeWithCsvMapWriter.csv"), CsvPreference.STANDARD_PREFERENCE);
-                try {
-                    // write the header
-                    mapWriter.writeHeader(header);
-                    for (int i = 0; i < entradas.size(); i++) {
-                        String titulo = entradas.get(i).getElementsByClass("ni-title").text();
-                        String autor = entradas.get(i).getElementsByClass("signature").text();
-
-                        writeWithCsvMapWriter(mapWriter, header, i, titulo, autor);
-
-                    }
-                } finally {
-                    if (mapWriter != null) {
-                        mapWriter.close();
-                    }
-                }
+                // Escribo el documento
+                writeWithCsvMapWriter(entradas);
+                // Leo el documento y lo saco por pantalla
                 readWithCsvMapReader();
             } else {
                 System.out.println("El Status Code no es OK, es: " + getStatusConnectionCode(url));
@@ -139,10 +120,12 @@ public class Principal {
             // the header columns are used as the keys to the Map
             final String[] header = mapReader.getHeader(true);
             final CellProcessor[] processors = getProcessors();
-
             Map<String, Object> customerMap;
+
+            System.out.println(String.format("lineNo: %s -- rowNo: %s -- header: %s", mapReader.getLineNumber(),
+                    mapReader.getRowNumber(), Arrays.toString(header)));
             while ((customerMap = mapReader.read(header, processors)) != null) {
-                System.out.println(String.format("lineNo=%s, rowNo=%s, customerMap=%s", mapReader.getLineNumber(),
+                System.out.println(String.format("lineNo: %s -- rowNo: %s -- customerMap: %s", mapReader.getLineNumber(),
                         mapReader.getRowNumber(), customerMap));
             }
 
@@ -153,26 +136,32 @@ public class Principal {
         }
     }
 
-    private static void writeWithCsvMapWriter(ICsvMapWriter mapWriter, String[] header, int i, String titulo, String autor) throws Exception {
+    private static void writeWithCsvMapWriter(Elements entradas) throws Exception {
         // create the customer Maps (using the header elements for the column keys)
-        final Map<String, Object> news = new HashMap<String, Object>();
-        news.put(header[0], i);
-        news.put(header[1], titulo);
-        news.put(header[2], autor);
+        final Map<String, Object> news = new HashMap<>();
+        final String[] header = new String[]{"newsNo", "title", "signature"};
 
         final CellProcessor[] processors = getProcessors();
 
-        // write the customer maps
-        mapWriter.write(news, header, processors);
-    }
-
-    public static TableModel toTableModel(Map<?, ?> map) {
-        DefaultTableModel model = new DefaultTableModel(
-                new Object[]{"Key", "Value"}, 0
-        );
-        for (Map.Entry<?, ?> entry : map.entrySet()) {
-            model.addRow(new Object[]{entry.getKey(), entry.getValue()});
+        ICsvMapWriter mapWriter = null;
+        mapWriter = new CsvMapWriter(new FileWriter("target/writeWithCsvMapWriter.csv"), CsvPreference.STANDARD_PREFERENCE);
+        try {
+            // write the header
+            mapWriter.writeHeader(header);
+            for (int i = 0; i < entradas.size(); i++) {
+                String titulo = entradas.get(i).getElementsByClass("ni-title").text();
+                String autor = entradas.get(i).getElementsByClass("signature").text();
+                news.put(header[0], i);
+                news.put(header[1], titulo);
+                news.put(header[2], autor);
+                
+                // write the customer maps
+                mapWriter.write(news,header,processors);
+            }
+        } finally {
+            if (mapWriter != null) {
+                mapWriter.close();
+            }
         }
-        return model;
     }
 }
