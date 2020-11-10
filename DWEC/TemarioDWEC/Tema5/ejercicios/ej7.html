@@ -4,11 +4,20 @@
 
 <head>
     <script type="text/javascript">
+        var principio = true;
+
         function clonar(parrafo) {
-            var primero = document.childNodes[0].childNodes[1].childNodes[2];
-            var clonado = parrafo.clone(true);
-            
-            alert(primero);
+            var nodoBody = document.children[0].children[1];
+            var clonado = parrafo.cloneNode(true);
+
+            var listaParrafos = document.getElementsByTagName("p");
+            if (principio) {
+                nodoBody.insertBefore(clonado, listaParrafos[0]);
+            } else {
+                nodoBody.appendChild(clonado);
+
+            }
+            principio = !principio;
         }
     </script>
 </head>

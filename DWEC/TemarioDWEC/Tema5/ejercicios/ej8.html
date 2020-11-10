@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--Contar espacios blanco -->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table td {
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function contar(table){
+            alert(table);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Contar espacios en blanco de unas tablas</h1>
+    <hr>
+    <table onclick="contar(this)">
+        <tr>
+            <td>A</td>
+            <td></td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>C</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>D</td>
+            <td></td>
+            <td>E</td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <table onclick="contar(this)">
+        <tr>
+            <td></td>
+            <td></td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>5</td>
+        </tr>
+    </table>
+</body>
+
+</html>
