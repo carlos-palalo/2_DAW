@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -112,25 +116,33 @@ public class Principal {
     }
 
     private static void readWithCsvMapReader() throws Exception {
-
+        final Map<String, Object> st = new TreeMap<>();
+        JPanel p = new JPanel();
         ICsvMapReader mapReader = null;
         try {
-            mapReader = new CsvMapReader(new FileReader("target/writeWithCsvMapWriter.csv"), CsvPreference.STANDARD_PREFERENCE);
+            mapReader = new CsvMapReader(new FileReader("noticiasElDiario.csv"), CsvPreference.STANDARD_PREFERENCE);
 
             // the header columns are used as the keys to the Map
             final String[] header = mapReader.getHeader(true);
             final CellProcessor[] processors = getProcessors();
             Map<String, Object> customerMap;
+            //System.out.println(String.format(Arrays.toString(header)));
 
-            System.out.println(String.format("lineNo: %s -- rowNo: %s -- header: %s", mapReader.getLineNumber(),
-                    mapReader.getRowNumber(), Arrays.toString(header)));
             while ((customerMap = mapReader.read(header, processors)) != null) {
-                System.out.println(String.format("lineNo: %s -- rowNo: %s -- customerMap: %s", mapReader.getLineNumber(),
-                        mapReader.getRowNumber(), customerMap));
-            }
+                st.putAll(customerMap);
+                System.out.println(customerMap.get("newsNo"));
+                //System.out.println(String.format("%s", customerMap));
 
+            }
+            JTable t = new JTable(toTableModel(st));
+            p.add(t);
+            JFrame f = new JFrame();
+            f.add(p);
+            f.setSize(500, 500);
+            f.setVisible(true);
         } finally {
             if (mapReader != null) {
+                System.out.println("Lectura del archivo finalizada!");
                 mapReader.close();
             }
         }
@@ -144,7 +156,7 @@ public class Principal {
         final CellProcessor[] processors = getProcessors();
 
         ICsvMapWriter mapWriter = null;
-        mapWriter = new CsvMapWriter(new FileWriter("target/writeWithCsvMapWriter.csv"), CsvPreference.STANDARD_PREFERENCE);
+        mapWriter = new CsvMapWriter(new FileWriter("noticiasElDiario.csv"), CsvPreference.STANDARD_PREFERENCE);
         try {
             // write the header
             mapWriter.writeHeader(header);
@@ -154,14 +166,25 @@ public class Principal {
                 news.put(header[0], i);
                 news.put(header[1], titulo);
                 news.put(header[2], autor);
-                
+
                 // write the customer maps
-                mapWriter.write(news,header,processors);
+                mapWriter.write(news, header, processors);
             }
         } finally {
             if (mapWriter != null) {
+                System.out.println("Escritura en el archivo finalizada!");
                 mapWriter.close();
             }
         }
+    }
+
+    public static TableModel toTableModel(Map<?, ?> map) {
+        DefaultTableModel model = new DefaultTableModel(
+                new Object[]{"Key", "Value"}, 0
+        );
+        for (Map.Entry<?, ?> entry : map.entrySet()) {
+            model.addRow(new Object[]{entry.getKey(), entry.getValue()});
+        }
+        return model;
     }
 }
