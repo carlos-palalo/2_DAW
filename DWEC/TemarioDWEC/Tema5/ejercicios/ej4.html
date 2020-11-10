@@ -11,23 +11,29 @@
         function desordenar() {
             var parrafos = document.getElementsByTagName("p");
             var aux = Array(parrafos.length);
+            var number = [];
 
-            for (var i = 0; i < parrafos.length; i++) {
-                var cont = 0;
-                num = random(0, 10);
-                if (i == 0) {
-                    aux[i] = num;
-                } else {
-                    for (var j = 0; j < i; j++) {
-                        do {
-                            if (aux[i] == j) {
-                                cont++;
-                                if (cont > 1)
-                                    break;
-                            }
-                        } while (true);
+            while (number.length < parrafos.length) {
+                var randNum = random(0, 9);
+                var exist = false;
+                for (var i = 0; i < number.length; i++) {
+                    if (number[i] == randNum) {
+                        exist = true;
+                        break;
                     }
                 }
+                if (!exist) {
+                    number.push(randNum);
+                }
+            }
+
+            for (var i = 0; i < parrafos.length; i++) {
+                parrafos[i].id = number[i];
+                aux[i] = parrafos[parrafos[i].id].innerText;
+            }
+
+            for (var i = 0; i < parrafos.length; i++) {
+                parrafos[i].innerText = aux[i];
             }
         }
     </script>

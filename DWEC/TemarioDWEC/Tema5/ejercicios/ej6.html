@@ -11,7 +11,9 @@
                 auxiliar += parrafos[i].innerText + " ";
             }
             parrafoActual.innerText = auxiliar;
-            parrafoActual.style.border="2px solid red";
+            parrafoActual.style.border = "2px solid red";
+
+            document.getElementById("sol").innerText = "Número Párrafos: " + parrafos.length;
         }
     </script>
 </head>
@@ -29,6 +31,7 @@
     <p onclick="agrupar(this)">Párrafo 8</p>
     <p onclick="agrupar(this)">Párrafo 9</p>
     <p onclick="agrupar(this)">Párrafo 10</p>
+    <div id="sol">Número Párrafos: </div>
 </body>
 
 </html>
