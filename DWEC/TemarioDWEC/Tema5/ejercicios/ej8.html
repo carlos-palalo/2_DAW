@@ -14,15 +14,18 @@
         }
     </style>
     <script>
-        function contar(table){
+        function contar(table) {
+            var cont = 0;
             var tr = table.children[0];
-            for(var i=0; i<tr.childElementCount; i++){
-                var td=tr.children[i];
-                for(var j=0; j<td.childElementCount; j++){
-                    alert(td.children[j].innerHTML)
+            for (var i = 0; i < tr.childElementCount; i++) {
+                var td = tr.children[i];
+                for (var j = 0; j < td.childElementCount; j++) {
+                    if (td.children[j].innerHTML == "") {
+                        cont++;
+                    }
                 }
             }
-           // alert(table.children[0].children[0].innerHTML);
+            alert("Hay " + cont + " casillas vacías");
         }
     </script>
 </head>
@@ -32,7 +35,7 @@
     <hr>
     <table onclick="contar(this)">
         <tr>
-            <td>A</td>
+            <td></td>
             <td></td>
             <td>B</td>
         </tr>
