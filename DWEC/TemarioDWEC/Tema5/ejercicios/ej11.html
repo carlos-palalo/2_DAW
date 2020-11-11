@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- Aumentar, disminuir texto -->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
+    <script>
+        var parrafo = document.getElementsByTagName("p");
+        var valor = 14;
+        function aumentar() {
+            valor++;
+            parrafo[0].style.fontSize = valor + "px";
+        }
+
+        function disminuir() {
+            valor--;
+            parrafo[0].style.fontSize = valor + "px";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Aumentar y disminuir texto</h1>
+    <hr>
+    <p style="font-size: 14px;">Párrafo 1</p>
+    <button onclick="aumentar()">Aumentar tamaño</button>
+    <button onclick="disminuir()">Disminuir tamaño</button>
+</body>
+
+</html>

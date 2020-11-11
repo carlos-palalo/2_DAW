@@ -15,7 +15,14 @@
     </style>
     <script>
         function contar(table){
-            alert(table);
+            var tr = table.children[0];
+            for(var i=0; i<tr.childElementCount; i++){
+                var td=tr.children[i];
+                for(var j=0; j<td.childElementCount; j++){
+                    alert(td.children[j].innerHTML)
+                }
+            }
+           // alert(table.children[0].children[0].innerHTML);
         }
     </script>
 </head>
@@ -24,6 +31,11 @@
     <h1>Contar espacios en blanco de unas tablas</h1>
     <hr>
     <table onclick="contar(this)">
+        <tr>
+            <td>A</td>
+            <td></td>
+            <td>B</td>
+        </tr>
         <tr>
             <td>A</td>
             <td></td>
