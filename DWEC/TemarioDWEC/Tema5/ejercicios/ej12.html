@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- Ir cambiando de parrafo -->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
+    <script>
+        var numParrafo = 0;
+        var parar;
+        var texto = document.getElementsByTagName("span");
+        var parrafo = document.getElementById("parrafo");
+
+        function cargarParrafo() {
+            var clonado = texto[numParrafo].firstChild.cloneNode(true);
+            parrafo.appendChild(clonado);
+            parar = setInterval(cambiar, 2000);
+            numParrafo++;
+        }
+
+        function cambiar() {
+            var clonado = texto[numParrafo].firstChild.cloneNode(true);
+            parrafo.replaceChild(clonado, parrafo.firstChild);
+            numParrafo++;
+            if (numParrafo >= texto.length) {
+                numParrafo = 0;
+            }
+        }
+    </script>
+</head>
+
+<body onload="cargarParrafo()">
+    <h1>Cambiar parrafo cada x tiempo</h1>
+    <hr>
+    <p id="parrafo"></p>
+    <div style="visibility: hidden;">
+        <span>Primer Párrafo</span>
+        <span>Segundo Párrafo</span>
+        <span>Tercer Párrafo</span>
+        <span>Cuarto Párrafo</span>
+        <span>Quinto Párrafo</span>
+    </div>
+</body>
+
+</html>

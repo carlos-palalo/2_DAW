@@ -14,37 +14,50 @@
         }
     </style>
     <script>
+        function girarVertical(tabla) {
+            var primeraFila = tabla.children[0].children[0];
+            tabla.children[0].appendChild(primeraFila);
+        }
 
+        function girarHorizontal(tabla) {
+            for (var i = 0; i < tabla.children[0].children[0].childElementCount; i++) {
+                primeraCelda = tabla.children[0].children[i].children[0];
+                tabla.children[0].children[i].appendChild(primeraCelda);
+            }
+        }
     </script>
 </head>
 
 <body>
-    <h1>Contar espacios en blanco de unas tablas</h1>
+    <h1>Girar casillas</h1>
     <hr>
+    <h2>Giro Vertical</h2>
     <table onclick="girarVertical(this)">
-        <tr>
-            <td>A</td>
-            <td>B</td>
-            <td>C</td>
-        </tr>
-        <tr>
-            <td>D</td>
-            <td>E</td>
-            <td>F</td>
-        </tr>
-        <tr>
-            <td>G</td>
-            <td>H</td>
-            <td>I</td>
-        </tr>
-        <tr>
-            <td>J</td>
-            <td>K</td>
-            <td>L</td>
-        </tr>
+        <tbody>
+            <tr>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+            </tr>
+            <tr>
+                <td>D</td>
+                <td>E</td>
+                <td>F</td>
+            </tr>
+            <tr>
+                <td>G</td>
+                <td>H</td>
+                <td>I</td>
+            </tr>
+            <tr>
+                <td>J</td>
+                <td>K</td>
+                <td>L</td>
+            </tr>
+        </tbody>
     </table>
-    <br>
-    <br>
+    <hr>
+    <h2>Giro Horizontal</h2>
     <table onclick="girarHorizontal(this)">
         <tr>
             <td>1</td>
