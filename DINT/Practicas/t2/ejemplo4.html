@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Práctica_Menú_Nav</title>
+    <style>
+        .nav {
+            background-color: gainsboro;
+            font-size: 15px;
+        }
+
+        .nav .list {
+            display: inline;
+            float: left;
+        }
+
+        .nav a {
+            text-decoration: none;
+            float: left;
+            color: black;
+            padding: 15px;
+            padding-right: 10px;
+        }
+
+        .nav a i {
+            padding-right: 10px;
+        }
+
+        .nav a:hover:not(.active){
+            background-color: rgb(194, 194, 194)
+        }
+
+        .nav .active {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        .nav .search {
+            float: right;
+            margin-top: 10px;
+            margin-right: 20px;
+        }
+
+        .nav .search input {
+            border: none;
+            width: 200px;
+            height: 30px;
+            padding: 10px;
+            color: gray;
+        }
+
+        .nav .search button {
+            background-color: gainsboro;
+            border: none;
+            float: right;
+            padding: 3px 7px;
+        }
+
+        .nav i {
+            font-size: 18px;
+        }
+
+        .nav .search button:hover {
+            background-color: rgb(194, 194, 194)
+        }
+
+        .main {
+            margin: 20px;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="list">
+            <a class="active" href="#home"><i class="glyphicon glyphicon-home"></i>Home</a>
+            <a href="#about"><i class="glyphicon glyphicon-font"></i>About</a>
+            <a href="#contact"><i class="glyphicon glyphicon-envelope"></i>Contact</a>
+        </div>
+        <div class="search">
+            <form>
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="main">
+        <h1>Responsive Search Bar</h1>
+        <p>Navigation bar with a search box and a submit button inside of it.</p>
+        <p>Resize the browser window to see the responsive effect,</p>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <style>
+        /* Capa que contiene al menu*/
+        
+        .contenedor {
+            position: relative;
+            display: inline-block
+        }
+        
+        .menu {
+            position: absolute;
+            left: 0;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            min-width: 160px;
+            display: none
+        }
+        
+        .btn {
+            width: 100%;
+            border: none;
+            padding: 16px;
+            font-size: 16px;
+            width: 160px;
+        }
+        /*Cuando pasa el raton por la capa contenedora se cambia el modo de visualización de la capa menu*/
+        
+        .contenedor:hover .menu {
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 5px;
+            background-color: ghostwhite;
+            text-align: center;
+        }
+        
+        a:hover {
+            background-color: lightgrey;
+            ;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mi menu</h1>
+    <!-- Capa contenedor que va ha tener posicion relativa  para posicionar dentro al menu que 
+    -->
+    <div class="contenedor">
+        <button class="btn">link 0</button>
+        <!--Capa que contiene al menu con posicionamiento absoluto con respecto  a su capa contenedora-->
+        <div class="menu">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .caja {
+            box-sizing: border-box;
+            float: left;
+            text-align: center;
+            width: 30%;
+            border: 1px solid gray;
+            margin: 5px;
+            padding: 5px;
+            box-shadow: 10px 10px grey;
+        }
+
+        div img {
+            width: 100%;
+        }
+
+        button {
+            width: 100%;
+        }
+
+        .caja:hover img#img1 {
+            display: none;
+        }
+
+        .caja:hover img#img2 {
+            visibility: hidden;
+        }
+    </style>
+
+    <script>
+        function remove() {
+            document.getElementById("img1").style.display = "none";
+        }
+
+        function hide() {
+            document.getElementById("img2").style.visibility = "hidden";
+        }
+
+        function reset() {
+            document.getElementById("img1").style.display = "block";
+            document.getElementById("img2").style.visibility = "visible";
+        }
+    </script>
+</head>
+
+<body>
+
+    <h3>Difference between display:none and visiblity: hidden</h3>
+    <p><strong>visibility:hidden</strong> hides the element, but it still takes up space in the layout.</p>
+    <p><strong>display:none</strong> removes the element from the document. It does not take up any space.</p>
+    <div class="caja">Box 1<br>
+        <img id="img1" src="img1.jpg">
+        <button onclick="remove()">Remove</button>
+    </div>
+
+    <div class="caja">Box 2<br>
+        <img id="img2" src="img2.jpg">
+        <button onclick="hide()">Hide</button>
+    </div>
+
+    <div class="caja" >Box 3<br>
+        <img src="img3.jpg">
+        <button onclick="reset()">Reset All</button>
+    </div>
+</body>
+
+</html>

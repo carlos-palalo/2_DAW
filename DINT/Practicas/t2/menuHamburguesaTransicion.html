@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .contenedor {
+            width: 0px;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background-color: rgba(0, 0, 0,0.9);
+            height: 100%;
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .menu{
+            position: relative;
+            top: 25%;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .contenedor>span{
+            display: inline-block;
+            color: white;
+            right: 0px;
+        }
+        .contenedor .menu>a {
+            display: block;
+            width: 130px;
+            right: 0px;
+            text-decoration: none;
+            color: white;
+            float: right;
+        }
+    </style>
+
+    <script>
+        function open(){
+            document.getElementById("nav").style.width = "200px";
+        }
+
+        function close(){
+            document.getElementById("nav").style.width = "0px";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Menú Hamburguesa Transición</h1>
+    <span class="material-icons" onclick="open()">menu</span>
+    <div id="nav" class="contenedor">
+        <span class="material-icons" onclick="close()">close</span>
+        <div class="menu">
+            <a href="#link1"><span class="material-icons" onclick="">architecture</span> Tema 1</a>
+            <a href="#link2"><span class="material-icons" onclick="">support</span> Tema 2</a>
+            <a href="#link3"><span class="material-icons" onclick="">videocam</span> Tema 3</a>
+            <a href="#link3"><span class="material-icons" onclick="">accessible</span> Tema 4</a>
+        </div>
+    </div>
+</body>
+
+</html>

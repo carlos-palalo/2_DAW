@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
+    <title>Ejemplo Menú Horizontal</title>
+    <style>
+        div {
+            width: 200px;
+            height: 150px;
+            padding: 10px 0px 0px 30px;
+            margin: 0px;
+        }
+
+        .azul.trans_5 {
+            background-color: rgba(2, 119, 187, 0.5);
+        }
+
+        .azul.trans_2 {
+            background-color: rgba(2, 119, 187, 0.2);
+        }
+
+        .azul {
+            background-color: rgb(2, 119, 187);
+        }
+
+        .azul_oscuro {
+            background-color: rgb(0, 76, 140);
+            color: white;
+        }
+
+        .azul_claro {
+            background-color: rgb(79, 194, 247);
+        }
+
+        #redondo {
+            border: 5px solid gray;
+            border-radius: 10px;
+        }
+
+        #redondo button {
+            background-color: gray;
+            color: beige;
+            border-radius: 10px;
+            padding: 15px 5px;
+            border: 3px solid gray;
+            font-weight: bold;
+        }
+
+        #redondo button:hover {
+            background-color: beige;
+            color: gray;
+        }
+
+        #img {
+            background-image: url("img/fondo.gif");
+            background-size: 100%;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Colores</h1>
+    <div class="azul_oscuro">rgb(0, 76, 140)</div>
+    <div class="azul">rgb(2, 119, 187)</div>
+    <div class="azul_claro">rgb(79, 194, 247)</div>
+
+    <h1>Colores con transparencia</h1>
+    <div class="azul ">rgb(0, 76, 140)</div>
+    <div class="azul trans_5">rgba(2, 119, 187, 0.5)</div>
+    <div class="azul trans_2">rgba(79, 194, 247, 0.2)</div>
+
+    <h1>Capa con imagen de fondo</h1>
+    <div id="img">Esta capa tiene un fondo</div>
+
+    <h1>Capa con bordes redondeados</h1>
+    <div id="redondo">
+        <p>Esta capa tiene bordes redondeados</p>
+        <button>Home</button>
+    </div>
+
+</body>
+
+</html>
