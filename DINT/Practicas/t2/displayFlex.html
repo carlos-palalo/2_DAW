@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .contenedor, .contenedor>div {
+            width: 100%;
+            background-color: blue;
+            display: flex;
+
+        }
+
+        .contenedor .cuadrado {
+            background-color: cyan;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        #wrap {
+            flex-wrap: wrap;
+        }
+
+        #centro {
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+        }
+
+        .imagen>img {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .flex-5{
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Contenedor con propiedad display: flex</h1>
+    <div class="contenedor">
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+    </div>
+    <h1>Sin la propiedad wrap</h1>
+    <div class="contenedor">
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+    </div>
+    <h1>Con propiedad wrap</h1>
+    <div id="wrap" class="contenedor">
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+    </div>
+
+    <h1>Totalmente centrado</h1>
+    <div id="centro" class="contenedor">
+        <div class="cuadrado">justify-content: center align-items: center</div>
+    </div>
+
+    <h1>Con propiedades en los elementos</h1>
+    <div class="contenedor">
+        <div>
+            <div class="cuadrado"><img src="una.jpg"></div>
+            <div class="cuadrado flex-5">
+                <p>Esta capa es 5 veces mas que las otras</p>
+                <p>Se le ha aplicado la propiedad flex-grow: 1</p>
+            </div>
+            <div class="cuadrado">1</div>
+        </div>
+        <div>
+            <div class="cuadrado"><img src="una.jpg"></div>
+            <div class="cuadrado flex-5">
+                <p>Esta capa es 5 veces mas que las otras</p>
+                <p>Se le ha aplicado la propiedad flex-grow: 1</p>
+            </div>
+            <div class="cuadrado">no cambiará</div>
+        </div>
+    </div>
+    <h1>Con propiedades en formato short</h1>
+    <div class="contenedor">
+        <div class="cuadrado">Sin cambios</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+        <div class="cuadrado">1</div>
+    </div>
+    <h1>Sin propiedades en los elementos</h1>
+    <div class="contenedor">
+        <div class="cuadrado"><img src=""></div>
+        <div class="cuadrado">
+            <p>Esta capa es 5 veces mas que las otras</p>
+            <p>Se le ha aplicado la propiedad flex-grow: 1</p>
+        </div>
+        <div class="cuadrado">1</div>
+    </div>
+    <h1>Con propiedades en los elementos</h1>
+    <div class="contenedor">
+        <div class="cuadrado"><img src=""></div>
+        <div class="cuadrado">
+            <p>Esta capa es 5 veces mas que las otras</p>
+            <p>Se le ha aplicado la propiedad flex-grow: 1</p>
+        </div>
+        <div class="cuadrado">1</div>
+    </div>
+    <h1>Con propiedades en los elementos, el primero se mantiene y el segudno 4 0</h1>
+    <div class="contenedor">
+        <div class="cuadrado"><img src="">
+            <p>"flex:0 0"</p>
+        </div>
+        <div class="cuadrado">
+            <p>Esta capa </p>
+            <p>Se le ha aplicado la propiedad flex:4 0</p>
+        </div>
+        <div class="cuadrado">flex: 1 2 100px"</div>
+    </div>
+</body>
+
+</html>
