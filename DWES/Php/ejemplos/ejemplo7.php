@@ -18,7 +18,7 @@
         /* Cuidado con anidar
         /* comentarios
         multilinea con estos*/
-        al PHP no le gustan */
+        /*al PHP no le gustan */
     ?>
 </body>
 
