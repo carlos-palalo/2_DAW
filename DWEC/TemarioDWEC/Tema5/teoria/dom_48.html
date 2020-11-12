@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_48 - querySelector</title>
+	</head>
+	<body>
+		<h1>dom_48 - querySelector</h1>
+		<hr />
+		Selecciona el primer nodo de un conjunto que cumple con un selector especificado
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2" class="clase1">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<p id="parrafo4">Cuarto <b>párrafo</b></p>
+		<p id="parrafo5" align="left">Quinto párrafo</p>
+		<p id="parrafo6" align="right">Sexto párrafo</p>
+		<p id="parrafo7" align="right">Séptimo <b>párrafo</b></p>
+
+		<hr />
+
+		<h2>Cabecera H2</h2>
+		<h3>Cabecera H3</h3>
+		<h4>Cabecera H4</h4>
+
+		<script type="text/javascript">
+			//El primer párrafo
+			document.querySelector("p").style.backgroundColor="red";
+
+			//El primer párrado con la clase "clase1", cualquiere elemento con la clase "clase1" subrayado
+			document.querySelector("p.clase1").style.backgroundColor="yellow";
+			document.querySelector(".clase1").style.textDecoration="underline";
+
+			//El elemento con identificador "parrafo3"
+			document.querySelector("#parrafo3").style.backgroundColor="green";
+
+			//El primer elemento b dentro de p
+			document.querySelector("p > b").style.backgroundColor="aqua";
+
+			//El primer elemento p con atributo align
+			document.querySelector("p[align]").style.backgroundColor="grey";
+
+			//El primer elemento p con atributo align y con valor right
+			document.querySelector("p[align=right]").style.backgroundColor="pink";
+
+			//Ejemplo de selectores múltiples. Pero se queda con el primero únicamente
+			document.querySelector("h2,h3").style.color="red";			
+		</script>
+	</body>
+</html>

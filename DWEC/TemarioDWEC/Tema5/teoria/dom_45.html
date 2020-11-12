@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_45 - isSameNode, isEqualNode</title>
+	</head>
+	<body>
+		<h1>dom_45 - isSameNode, isEqualNode</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<p>Párrafo suelto</p>
+		<p>Párrafo suelto</p>
+		<p>Párrafo suelto diferente</p>
+
+		<br /><br />
+		
+		<button onclick="isSameNodeCheck();">isSameNode</button>
+		<button onclick="isEqualNodeCheck();">isEqualNode</button>
+
+		<script type="text/javascript">
+
+			function isSameNodeCheck() {
+				//isSameNode comprueba si dos nodos son el mismo objeto
+				var c = "";
+
+				//Caso 1 --> Mismo objeto
+				var nodo1 = document.getElementById("parrafo2");
+				var nodo2 = document.children[0].children[1].children[3];
+				if(nodo1.isSameNode(nodo2)) {
+					c += "\nCaso1: isSameNode true";
+				} else {
+					c += "\nCaso1: isSameNode false";
+				}
+
+				//Caso 2 --> Distinto objeto aunque con idénticas características
+				nodo1 = document.children[0].children[1].children[4];
+				nodo2 = document.children[0].children[1].children[5];
+				if(nodo1.isSameNode(nodo2)) {
+					c += "\nCaso2: isSameNode true";
+				} else {
+					c += "\nCaso2: isSameNode false";
+				}
+
+				alert(c);
+			}
+			
+			function isEqualNodeCheck() {
+				//isEqualNode comprueba si dos nodos tienen las mismas características
+				var c = "";
+
+				//Caso 1 --> Mismo objeto
+				var nodo1 = document.getElementById("parrafo2");
+				var nodo2 = document.children[0].children[1].children[3];
+				if(nodo1.isEqualNode(nodo2)) {
+					c += "\nCaso1: isEqualNode true";
+				} else {
+					c += "\nCaso1: isEqualNode false";
+				}
+
+				//Caso 2 --> Distinto objeto pero diferentes características
+				nodo1 = document.children[0].children[1].children[6];
+				nodo2 = document.children[0].children[1].children[7]; //texto diferente
+				if(nodo1.isEqualNode(nodo2)) {
+					c += "\nCaso2: isEqualNode true";
+				} else {
+					c += "\nCaso2: isEqualNode false";
+				}
+
+				//Caso 3 --> Distinto objeto pero características idénticas
+				nodo1 = document.children[0].children[1].children[5];
+				nodo2 = document.children[0].children[1].children[6];
+				if(nodo1.isEqualNode(nodo2)) {
+					c += "\nCaso3: isEqualNode true";
+				} else {
+					c += "\nCaso3: isEqualNode false";
+				}
+
+				alert(c);
+			}
+
+		</script>
+	</body>
+</html>

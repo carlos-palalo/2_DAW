@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_52 - setAttribute, setAttributeNode</title>
+	</head>
+	<body>
+		<h1>dom_52 - setAttribute, setAttributeNode</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<img src="./recursos/midibujo.gif"  id="imagen1"/>
+		<br />
+		<button onclick="ponerAtributos();">Poner atributos</button>
+
+		<script type="text/javascript">
+
+			function ponerAtributos() {
+				var nodoImagen = document.getElementById("imagen1");
+				//setAttribute --> Se especifica el atributo y el valor
+				nodoImagen.setAttribute("border",5);
+				nodoImagen.setAttribute("border",10);
+
+
+
+				var nodoParrafo = document.getElementById("parrafo2");
+				//Se crea el objeto atributo (Attr)			
+				var atributo = document.createAttribute("align");
+				atributo.value = "center";
+				//setAttributeNode --> Se especifica el nodo
+				nodoParrafo.setAttributeNode(atributo);
+			}
+
+		</script>
+	</body>
+</html>

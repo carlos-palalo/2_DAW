@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_49 - querySelectorAll</title>
+	</head>
+	<body>
+		<h1>dom_49 - querySelectorAll</h1>
+		<hr />
+		Devuelve un NodeList con un conjunto de nodos que cumple con un selector especificado
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2" class="clase1">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<p id="parrafo4">Cuarto <b>párrafo</b></p>
+		<p id="parrafo5" align="left">Quinto párrafo</p>
+		<p id="parrafo6" align="right">Sexto párrafo</p>
+		<p id="parrafo7" align="right">Séptimo <b>párrafo</b></p>
+
+		<script type="text/javascript">
+
+			//Devuelve un NodeList
+
+			//Primer párrafo subrayado
+			document.querySelectorAll("p")[0].style.textDecoration="underline";
+
+			//Párrafos con atributo align se pondrán de color de fondo rojo
+			var nodos = document.querySelectorAll("p[align]");
+			for(i=0;i<nodos.length;i++) {
+				nodos[i].style.backgroundColor="red";
+			}
+
+		</script>
+	</body>
+</html>

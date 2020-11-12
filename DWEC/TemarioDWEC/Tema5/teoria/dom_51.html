@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_51 - getAttribute, getAttributeNode</title>
+	</head>
+	<body>
+		<h1>dom_51 - getAttribute, getAttributeNode</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2" align="center">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<img src="./recursos/midibujo.gif" border="5" alt="Imagen personalizada" id="imagen1"/>
+		<br />
+		<button onclick="mostrarInformacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+
+			function mostrarInformacion() {
+				//Se obtiene la imagen
+				var c = "";
+				var nodoImagen = document.getElementById("imagen1");
+
+				//getAttribute obtiene el valor
+				c += "\ngetAttribute()\nBorder: " + nodoImagen.getAttribute("border");
+
+
+				//getAttributeNode obtiene el objeto atributo (Attr)
+				c += "\n\ngetAttributeNode()\nBorder: " + nodoImagen.getAttributeNode("border");
+				c += "\nBorder: " + nodoImagen.getAttributeNode("border").value;
+
+				alert(c);
+			}
+
+		</script>
+	</body>
+</html>

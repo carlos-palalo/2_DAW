@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_50 - hasAttributes, hasAttribute</title>
+	</head>
+	<body>
+		<h1>dom_50 - hasAttributes, hasAttribute</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2" align="center">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<img src="./recursos/midibujo.gif" border="4" alt="Imagen personalizada" id="imagen1"/>
+		<br />
+		<button onclick="mostrarInformacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+
+			function mostrarInformacion() {
+				var c = "\nIMAGEN";
+
+				//hasAttributes
+				//Se obtiene la imagen
+				var nodoImagen = document.getElementById("imagen1");
+				
+				if(nodoImagen.hasAttributes()) {
+					c += "\nSí tiene atributos";
+				}
+				else {
+					c = "\nNo tiene atributos";
+				}
+
+
+				//hasAttribute
+				c += "\n\nPÁRRAFO";
+				var nodoParrafo = document.getElementById("parrafo2");
+				//var nodoParrafo = document.getElementById("parrafo3");
+				if(nodoParrafo.hasAttribute("align")) {
+					c += "\nEl párrafo tiene el atributo align";
+				}
+				else {
+					c += "\nEl párrafo no tiene el atributo align";
+				}
+
+				alert(c);
+			}
+
+		</script>
+	</body>
+</html>

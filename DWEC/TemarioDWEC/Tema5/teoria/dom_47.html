@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_47 - normalize</title>
+		<style>
+			#cuadro {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_47 - normalize</h1>
+		<h3>Ver consola (elementos)</h3>
+		<hr />
+		<div id="cuadro"></div>
+		
+		<br /><br />
+		
+		<button onclick="normalizar();">Normalizar</button>
+
+		<script type="text/javascript">
+
+			var nodoTexto1 = document.createTextNode("Texto1");
+			var nodoTexto2 = document.createTextNode("Texto2");
+			document.getElementById("cuadro").appendChild(nodoTexto1);
+			document.getElementById("cuadro").appendChild(nodoTexto2);
+
+			function normalizar() {
+				var c = "";
+				var cuadro = document.getElementById("cuadro");
+
+				c += "ANTES DE NORMALIZAR";
+				c += "\nNodos hijo: " + cuadro.childNodes.length;
+				c += "\nContenido del nodo 1: " + cuadro.childNodes[0].textContent;
+				c += "\nContenido del nodo 2: " + cuadro.childNodes[1].textContent;
+
+				document.getElementById("cuadro").normalize();
+
+				c += "\nDESPUÉS DE NORMALIZAR";
+				c += "\nNodos hijo: " + cuadro.childNodes.length;
+				c += "\nContenido del nodo 0: " + cuadro.childNodes[0].textContent;
+				
+				alert(c);
+			}
+
+		</script>
+	</body>
+</html>

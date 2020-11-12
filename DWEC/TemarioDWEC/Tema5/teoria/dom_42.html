@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_42 - insertAdjacentElement</title>
+		<style>
+			div {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_42 - insertAdjacentElement</h1>
+		<hr />
+		<div id="cuadro">
+			<p id="parrafo1">Primer párrafo</p>
+			<p id="parrafo2">Segundo párrafo</p>
+			<p id="parrafo3">Tercer párrafo</p>
+		</div>
+		
+		<br /><br />
+		<button onclick="insertarAntesPrincipio();">Insertar antes del principio</button>
+		<button onclick="insertarDespuesPrincipio();">Insertar después del principio</button>
+		<button onclick="insertarAntesFinal();">Insertar antes del final</button>
+		<button onclick="insertarDespuesFinal();">Insertar después del final</button>
+
+		<script type="text/javascript">
+
+			function insertarAntesPrincipio() {
+				var nodo = document.createElement("p");
+				var nodoTexto = document.createTextNode("ANTES DEL PRINCIPIO");
+				nodo.appendChild(nodoTexto);
+
+				document.getElementById("cuadro").insertAdjacentElement("beforebegin",nodo);
+			}
+
+			function insertarDespuesPrincipio() {
+				var nodo = document.createElement("p");
+				var nodoTexto = document.createTextNode("DESPUÉS DEL PRINCIPIO");
+				nodo.appendChild(nodoTexto);
+
+				document.getElementById("cuadro").insertAdjacentElement("afterbegin",nodo);
+			}
+
+			function insertarAntesFinal() {
+				var nodo = document.createElement("p");
+				var nodoTexto = document.createTextNode("ANTES DEL FINAL");
+				nodo.appendChild(nodoTexto);
+
+				document.getElementById("cuadro").insertAdjacentElement("beforeend",nodo);
+			}
+
+			function insertarDespuesFinal() {
+				var nodo = document.createElement("p");
+				var nodoTexto = document.createTextNode("DESPUÉS DEL FINAL");
+				nodo.appendChild(nodoTexto);
+
+				document.getElementById("cuadro").insertAdjacentElement("afterend",nodo);
+			}
+
+		</script>
+	</body>
+</html>

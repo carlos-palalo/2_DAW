@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_43 - insertAdjacentHTML</title>
+		<style>
+			div {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_43 - insertAdjacentHTML</h1>
+		<hr />
+		<div id="cuadro">
+			<p id="parrafo1">Primer párrafo</p>
+			<p id="parrafo2">Segundo párrafo</p>
+			<p id="parrafo3">Tercer párrafo</p>
+		</div>
+		
+		<br /><br />
+		<button onclick="insertarAntesPrincipio();">Insertar antes del principio</button>
+		<button onclick="insertarDespuesPrincipio();">Insertar después del principio</button>
+		<button onclick="insertarAntesFinal();">Insertar antes del final</button>
+		<button onclick="insertarDespuesFinal();">Insertar después del final</button>
+
+		<script type="text/javascript">
+
+			function insertarAntesPrincipio() {
+				var textoHTML = "<p>ANTES DEL PRINCIPIO</P>";
+				document.getElementById("cuadro").insertAdjacentHTML("beforebegin",textoHTML);
+			}
+
+			function insertarDespuesPrincipio() {
+				var textoHTML = "<p>DESPUÉS DEL PRINCIPIO</P>";
+				document.getElementById("cuadro").insertAdjacentHTML("afterbegin",textoHTML);
+			}
+
+			function insertarAntesFinal() {
+				var textoHTML = "<p>ANTES DEL FINAL</P>";
+				document.getElementById("cuadro").insertAdjacentHTML("beforeend",textoHTML);
+			}
+
+			function insertarDespuesFinal() {
+				var textoHTML = "<p>DESPUÉS DEL FINAL</P>";
+				document.getElementById("cuadro").insertAdjacentHTML("afterend",textoHTML);
+			}
+
+		</script>
+	</body>
+</html>

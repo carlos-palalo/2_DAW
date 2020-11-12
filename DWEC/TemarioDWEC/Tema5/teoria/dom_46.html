@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_46 - compareDocumentPosition</title>
+		<style>
+			#cuadro4 {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_46 - compareDocumentPosition</h1>
+		<hr />
+		<div id="cuadro1">Primer párrafo</div>
+		<div id="cuadro2">Segundo párrafo</div>
+		<div id="cuadro3">Tercer párrafo</div>
+		<div id="cuadro4">
+			<div id="cuadro5">Quinto párrafo</div>
+			<div id="cuadro6">Sexto párrafo</div>
+		</div>
+		<div id="cuadro7">Séptimo párrafo</div>
+		<div id="cuadro8">Octavo párrafo</div>
+		<div id="cuadro9">Noveno párrafo</div>
+
+		<br /><br />
+		
+		<button onclick="comprobarPosicion();">Comprobar Posición</button>
+
+		<script type="text/javascript">
+
+			function comprobarPosicion() {
+				var nodo1,nodo2,valor,c = "";
+
+				//Cambiar números de cuadros para ir comprobando
+				nodo1 = document.getElementById("cuadro4");
+				nodo2 = document.getElementById("cuadro5");
+
+				valor = nodo1.compareDocumentPosition(nodo2);
+				c += "VALOR: " + valor;
+
+				if(valor & 1) {
+					c += "\nSin relación: 1";
+				}
+
+				if(valor & 2) {
+					c += "\nEl nodo1 está después del nodo2";
+				}
+
+				if(valor & 4) {
+					c += "\nEl nodo1 está antes del nodo2";
+				}
+
+				if(valor & 8) {
+					c += "\nEl nodo1 está dentro del nodo2";
+				}
+
+				if(valor & 16) {
+					c += "\nEl nodo2 está dentro del nodo1";
+				}
+
+				if(valor & 32) {
+					c += "\nSin relación: 32";
+				}
+
+				alert(c);
+			}
+
+		</script>
+	</body>
+</html>

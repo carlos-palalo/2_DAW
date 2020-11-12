@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_44 - insertAdjacentText</title>
+		<style>
+			#parrafo2 {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_44 - insertAdjacentText</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+
+		<br /><br />
+		<button onclick="insertarAntesPrincipio();">Insertar antes del principio</button>
+		<button onclick="insertarDespuesPrincipio();">Insertar después del principio</button>
+		<button onclick="insertarAntesFinal();">Insertar antes del final</button>
+		<button onclick="insertarDespuesFinal();">Insertar después del final</button>
+
+		<script type="text/javascript">
+
+			function insertarAntesPrincipio() {
+				var texto = "ANTES DEL PRINCIPIO";
+				document.getElementById("parrafo2").insertAdjacentText("beforebegin",texto);
+			}
+
+			function insertarDespuesPrincipio() {
+				var texto = "DESPUÉS DEL PRINCIPIO";
+				document.getElementById("parrafo2").insertAdjacentText("afterbegin",texto);
+			}
+
+			function insertarAntesFinal() {
+				var texto = "ANTES DEL FINAL";
+				document.getElementById("parrafo2").insertAdjacentText("beforeend",texto);
+			}
+
+			function insertarDespuesFinal() {
+				var texto = "DESPUÉS DEL FINAL";
+				document.getElementById("parrafo2").insertAdjacentText("afterend",texto);
+			}
+
+		</script>
+	</body>
+</html>
