@@ -5,25 +5,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-
-    </style>
     <script>
+        function cambiarParrafos() {
+            let p1 = document.getElementById("p1");
+            let p2 = document.getElementById("p2");
+            let attr1 = p1.getAttribute("style");
+            let attr2 = p2.getAttribute("style");
+            p2.setAttribute("style", attr1);
+            p1.setAttribute("style", attr2);
+        }
 
+        function cambiarImagenes() {
+            let img1 = document.getElementById("img1");
+            let img2 = document.getElementById("img2");
+            let attrImg1 = img1.getAttribute("style");
+            let attrImg2 = img2.getAttribute("style");
+            img1.setAttribute("style", attrImg2);
+            img2.setAttribute("style", attrImg1);
+        }
     </script>
 </head>
 
-<body onload="cargarParrafo()">
-    <h1>Cambiar parrafo cada x tiempo</h1>
+<body>
+    <h1>Cambiar atributos párrafos</h1>
     <hr>
-    <p id="parrafo"></p>
-    <div style="visibility: hidden;">
-        <span>Primer Párrafo</span>
-        <span>Segundo Párrafo</span>
-        <span>Tercer Párrafo</span>
-        <span>Cuarto Párrafo</span>
-        <span>Quinto Párrafo</span>
+    <p id="p1" style="border: 5px solid red; padding: 10px;">Primer Párrafo</p>
+    <p id="p2" style="border: 5px solid blue; width: 250px;text-align: center; margin: 0 auto;">Segundo Párrafo</p>
+    <button onclick="cambiarParrafos()">Cambiar</button>
+    <hr>
+    <h1>Cambiar atributos imágenes</h1>
+    <div>
+        <img id="img1" style="border: 5px solid black; width: 200px;" src="../img/foto1.jpg">
     </div>
+    <div>
+        <img id="img2" style="width: 450px;" src="../img/foto2.jpg">
+    </div>
+    <button onclick="cambiarImagenes()">Cambiar</button>
 </body>
 
 </html>

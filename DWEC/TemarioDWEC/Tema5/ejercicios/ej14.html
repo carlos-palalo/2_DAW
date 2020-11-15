@@ -5,24 +5,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-
-    </style>
     <script>
+        function mostrarAtributos() {
+            var body = document.children[0].children[1];
+            var c = "";
+            for (var i = 0; i < body.children.length; i++) {
+                c += "Etiqueta: " + body.children[i].tagName + "\n";
+                for (var j = 0; j < body.children[i].attributes.length; j++) {
+                    c += "-- Atributo: " + body.children[i].attributes.item(j).name + ". ";
+                    c += " Valor: " + body.children[i].attributes.item(j).value + "\n";
+                }
+            }
+            alert(c);
+        }
     </script>
 </head>
 
-<body onload="cargarParrafo()">
-    <h1>Cambiar parrafo cada x tiempo</h1>
+<body>
+    <h1 style="color: red;">Contar número de atributos de todo el documento y sacarlos</h1>
+    <h2 style="border: 4px solid blue; padding: 10px;">Esto es un h2</h2>
     <hr>
-    <p id="parrafo"></p>
-    <div style="visibility: hidden;">
-        <span>Primer Párrafo</span>
-        <span>Segundo Párrafo</span>
-        <span>Tercer Párrafo</span>
-        <span>Cuarto Párrafo</span>
-        <span>Quinto Párrafo</span>
-    </div>
+    <p style="font-weight: bold;">Primer Parrafo</p>
+    <p style="text-align: center;">Segundo Parrafo</p>
+    <p class="p3">Tercer Parrafo</p>
+    <img src="../img/foto2.jpg" style="width: 250px;" alt="Foto">
+    <br>
+    <button onclick="mostrarAtributos()">Ver atributos</button>
 </body>
 
 </html>

@@ -9,26 +9,7 @@
 
     </style>
     <script>
-        var numParrafo = 0;
-        var parar;
-        var texto = document.getElementsByTagName("span");
-        var parrafo = document.getElementById("parrafo");
 
-        function cargarParrafo() {
-            var clonado = texto[numParrafo].firstChild.cloneNode(true);
-            parrafo.appendChild(clonado);
-            parar = setInterval(cambiar, 2000);
-            numParrafo++;
-        }
-
-        function cambiar() {
-            var clonado = texto[numParrafo].firstChild.cloneNode(true);
-            parrafo.replaceChild(clonado, parrafo.firstChild);
-            numParrafo++;
-            if (numParrafo >= texto.length) {
-                numParrafo = 0;
-            }
-        }
     </script>
 </head>
 

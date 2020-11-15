@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Quitar y poner alternativamente los atributos a un elemento concreto de la página l hacer click en ese elemento -->
+<!-- Quitar y poner alternativamente los atributos a un elemento concreto de la página al hacer click en ese elemento -->
 <html>
 
 <head>
@@ -9,20 +9,20 @@
 
     </style>
     <script>
+        function cambiarAtributo(elemento) {
+        }
     </script>
 </head>
 
-<body onload="cargarParrafo()">
+<body>
     <h1>Cambiar parrafo cada x tiempo</h1>
     <hr>
-    <p id="parrafo"></p>
-    <div style="visibility: hidden;">
-        <span>Primer Párrafo</span>
-        <span>Segundo Párrafo</span>
-        <span>Tercer Párrafo</span>
-        <span>Cuarto Párrafo</span>
-        <span>Quinto Párrafo</span>
-    </div>
+    <p style="color: red;" onclick="cambiarAtributo(this,true)">Primer párrafo</p>
+    <p onclick="cambiarAtributo(this)">Segundo párrafo</p>
+    <p onclick="cambiarAtributo(this)">Tercer párrafo</p>
+    <p onclick="cambiarAtributo(this)">Cuarto párrafo</p>
+    <p onclick="cambiarAtributo(this)">Quinto párrafo</p>
+    <p onclick="cambiarAtributo(this)">Sexto párrafo</p>
 </body>
 
 </html>

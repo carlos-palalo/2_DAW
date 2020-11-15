@@ -5,24 +5,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-
-    </style>
     <script>
+        function quitarJerarquia() {
+            var body = document.body;
+            var longitud = body.childElementCount;
+            for (var i = 0; i < longitud; i++) {
+                let elemento;
+                if (body.children[i].childElementCount == 0) {
+                    body.appendChild(body.children[0]);
+                } else {
+                    let longitudHijo = body.children[i].childElementCount;
+                    for (var j = 0; j < longitudHijo; j++) {
+                        elemento = body.children[i].children[0];
+                        body.appendChild(elemento);
+                    }
+                }
+                alert("a");
+            }
+        }
     </script>
 </head>
 
 <body onload="cargarParrafo()">
-    <h1>Cambiar parrafo cada x tiempo</h1>
+    <h1>Quitar jerarquía</h1>
     <hr>
-    <p id="parrafo"></p>
-    <div style="visibility: hidden;">
-        <span>Primer Párrafo</span>
-        <span>Segundo Párrafo</span>
-        <span>Tercer Párrafo</span>
-        <span>Cuarto Párrafo</span>
-        <span>Quinto Párrafo</span>
+    <ul>
+        <li>Lista 1</li>
+        <li>Lista 2</li>
+        <li>Lista 3</li>
+        <li>Lista 4</li>
+    </ul>
+    <p>Primer párrafo</p>
+    <div>
+        <p>Segundo Párrafo dentro de un div</p>
     </div>
+
+    <button onclick="quitarJerarquia()">Quitar jerarquía</button>
 </body>
 
 </html>
