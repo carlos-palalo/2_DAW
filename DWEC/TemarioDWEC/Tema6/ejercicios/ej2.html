@@ -8,13 +8,14 @@
             var opcion = document.createElement("option");
             var texto = document.getElementById("nacionalidad").value;
             opcion.innerText = texto;
-            opcion.value=texto.substr(0,2);
+            opcion.value = texto.substr(0, 2);
             document.getElementById("select1").appendChild(opcion);
             //alert(document.getElementById("select1").innerHTML);
         }
 
         function eliminar() {
-            var seleccion = document.getElementsByName("seleccion");
+            var seleccion = document.forms.seleccion;
+            alert(seleccion);
         }
     </script>
 </head>
