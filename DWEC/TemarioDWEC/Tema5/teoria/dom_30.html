@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_30 - Ejercicio: A partir de una página con varios párrafos se pide hacer click con el ratón en uno de ellos y que este último contenga el texto de todos separados por un salto de línea en el mismo orden en el que aparecen inicialmente</title>
+	</head>
+	<body>
+		<h1>dom_30 - Ejercicio: A partir de una página con varios párrafos se pide hacer click con el ratón en uno de ellos y que este último contenga el texto de todos separados por un salto de línea en el mismo orden en el que aparecen inicialmente</h1>
+		<hr />
+		<p onclick="agrupar(this);">Primer párrafo</p>
+		<p onclick="agrupar(this);">Segundo párrafo</p>
+		<p onclick="agrupar(this);">Tercer párrafo</p>
+		<p onclick="agrupar(this);">Cuarto párrafo</p>
+		<p onclick="agrupar(this);">Quinto párrafo</p>
+		<p onclick="agrupar(this);">Sexto párrafo</p>
+		<p onclick="agrupar(this);">Séptimo párrafo</p>
+		<p onclick="agrupar(this);">Octavo párrafo</p>
+		<p onclick="agrupar(this);">Noveno párrafo</p>
+		<p onclick="agrupar(this);">Décimo párrafo</p>
+		<button onclick="agrupar();">Agrupar los párragos</button>
+
+		<script type="text/javascript">
+
+			function agrupar(parrafo) {
+				parrafo.style.border = "2px solid red";
+				var textoParrafo = parrafo.textContent;
+				parrafo.textContent = "";
+
+				var listaParrafos = document.getElementsByTagName("p");
+				
+				for(i=0;i<listaParrafos.length;i++)	{
+					if(parrafo.textContent != "") {
+						parrafo.innerHTML += "<br />";
+					}
+
+					if(listaParrafos[i] !== parrafo) {
+						parrafo.innerHTML += listaParrafos[i].textContent;
+					} else {
+						listaParrafos[i].innerHTML += textoParrafo;
+					}
+				}
+			}
+
+		</script>
+	</body>
+</html>

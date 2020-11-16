@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_40 - Ejercicio: Hacer que una serie de párrafos se muestren de uno en uno un número determinado de segundos</title>
+	</head>
+	<body onload="ponerParrafoInicial();">
+		<h1>dom_40 - Ejercicio: Hacer que una serie de párrafos se muestren de uno en uno un número determinado de segundos</h1>
+		<hr />
+		<p id="parrafo"></p>
+
+		<div style="visibility:hidden">
+			<span>Primer párrafo</span>
+			<span>Segundo párrafo</span>
+			<span>Tercer párrafo</span>
+			<span>Cuarto párrafo</span>
+			<span>Quinto párrafo</span>
+		</div>
+		<br />
+
+		<script type="text/javascript">
+
+			var numParrafo = 0;
+			var textos = document.getElementsByTagName("span");
+			var parrafo = document.getElementById("parrafo");
+			var parar;
+
+			function ponerParrafoInicial() {
+				var clonado = textos[numParrafo].firstChild.cloneNode(true);
+				parrafo.appendChild(clonado);
+				parar = setInterval(cambiar,2000);
+				numParrafo++;
+			}
+
+			function cambiar() {
+				var clonado = textos[numParrafo].firstChild.cloneNode(true);
+				parrafo.replaceChild(clonado,parrafo.firstChild);
+				numParrafo++;
+				if(numParrafo>=textos.length)
+					numParrafo=0;
+					//clearInterval(parar);
+			}
+
+		</script>
+	</body>
+</html>

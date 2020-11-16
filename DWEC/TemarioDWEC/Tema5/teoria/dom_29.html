@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_29 - Ejercicio: A partir de una página con varios párrafos se pide vaciar todos menos el primero y que el primero contenga el texto de todos separados por un salto de línea</title>
+	</head>
+	<body>
+		<h1>dom_29 - Ejercicio: A partir de una página con varios párrafos se pide vaciar todos menos el primero y que el primero contenga el texto de todos separados por un salto de línea</h1>
+		<hr />
+		<p>Primer párrafo</p>
+		<p>Segundo párrafo</p>
+		<p>Tercer párrafo</p>
+		<p>Cuarto párrafo</p>
+		<p>Quinto párrafo</p>
+		<p>Sexto párrafo</p>
+		<p>Séptimo párrafo</p>
+		<p>Octavo párrafo</p>
+		<p>Noveno párrafo</p>
+		<p>Décimo párrafo</p>
+		<button onclick="agrupar();">Agrupar los párragos</button>
+
+		<script type="text/javascript">
+
+			document.getElementsByTagName("p")[0].style.border = "2px solid red";
+
+			function agrupar() {
+				var listaParrafos = document.getElementsByTagName("p");
+				
+				for(i=1;i<listaParrafos.length;i++)	{
+					//listaParrafos[0].textContent += "<br />" + listaParrafos[i].textContent;
+					listaParrafos[0].innerHTML += "<br />" + listaParrafos[i].textContent;
+					listaParrafos[i].textContent = "";
+				}
+			}
+
+		</script>
+	</body>
+</html>

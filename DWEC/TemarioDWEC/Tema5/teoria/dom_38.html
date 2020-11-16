@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_38 - Ejercicio: Eliminar los párrafos al hacer click</title>
+	</head>
+	<body>
+		<h1>dom_38 - Ejercicio: Eliminar los párrafos al hacer click</h1>
+		<hr />
+		<p id="parrafo1" onclick="quitar(this);">Primer párrafo</p>
+		<p id="parrafo2" onclick="quitar(this);">Segundo párrafo</p>
+		<p id="parrafo3" onclick="this.parentNode.removeChild(this);">Tercer párrafo</p>
+
+		<script type="text/javascript">
+
+			function quitar(parrafo) {				
+				var nodoBody = document.children[0].children[1];
+				nodoBody.removeChild(parrafo);
+			}
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_58 - NamedNodeMap: setNamedItem</title>
+	</head>
+	<body>
+		<h1>dom_58 - NamedNodeMap: setNamedItem</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2" align="">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<img src="./recursos/midibujo.gif" border="4" alt="Imagen personalizada" id="imagen1"/>
+		<br />
+		<button onclick="ponerAtributo();">Poner atributo width</button>
+
+		<script type="text/javascript">
+
+			function ponerAtributo() {
+				var atributosImagen = document.getElementById("imagen1").attributes;
+
+				var atributoAnchura = document.createAttribute("width");
+				atributoAnchura.value=400;
+
+				atributosImagen.setNamedItem(atributoAnchura);
+			}
+		</script>
+
+	</body>
+</html>

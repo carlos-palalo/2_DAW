@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_28 - Ejercicio: Desordenar unos párrafo aleatoriamente</title>
+	</head>
+	<body>
+		<h1>dom_28 - Ejercicio: Desordenar unos párrafo aleatoriamente</h1>
+		<hr />
+		<p>Primer párrafo</p>
+		<p>Segundo párrafo</p>
+		<p>Tercer párrafo</p>
+		<p>Cuarto párrafo</p>
+		<p>Quinto párrafo</p>
+		<p>Sexto párrafo</p>
+		<p>Séptimo párrafo</p>
+		<p>Octavo párrafo</p>
+		<p>Noveno párrafo</p>
+		<p>Décimo párrafo</p>
+		<button onclick="desordenar();">Deordenar los párragos</button>
+
+		<script type="text/javascript">
+			
+			var valores = [];
+
+			//Calcula un número aleatorio entre 1 y 10 no repetido
+			function aleatorioNoRepetido() {
+				var v = Math.floor(Math.random() * 10) + 1;
+				if(valores.length<10) {
+					while(valores.includes(v)) {
+						v = Math.floor(Math.random() * 10) + 1;
+					}
+					valores.push(v);
+				}
+				return v;
+			}
+
+
+			function desordenar() {
+				//Asignar id a cada párrafo entre 1 y 10
+				valores = [];
+				var listaParrafos = document.getElementsByTagName("p");
+				for(i=1;i<=listaParrafos.length;i++) {
+					listaParrafos[i-1].id = aleatorioNoRepetido();
+				}
+
+				//Intercambio
+				var temp;
+				for(i=1;i<=listaParrafos.length;i++) {
+					temp = listaParrafos[i-1].textContent;
+					listaParrafos[i-1].textContent = document.getElementById(i).textContent;
+					document.getElementById(i).textContent = temp;
+				}
+			}
+
+		</script>
+	</body>
+</html>

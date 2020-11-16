@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_37 - Ejercicio: Hacer clic sobre una tabla y decir el número de celdas vacías que tiene</title>
+		<style type="text/css">
+			td {
+				width: 30px;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_37 - Ejercicio: Hacer clic sobre una tabla y decir el número de celdas vacías que tiene</h1>
+		<hr />
+		<table border="2" onclick="comprobar(this);" id="t1">
+			<tr><td></td><td>E</td><td></td></tr>
+			<tr><td></td><td></td><td></td></tr>
+			<tr><td>G</td><td>H</td><td>I</td></tr>
+		</table>
+
+		<br /><br />
+
+		<table border="2" onclick="comprobar(this);" id="t2">
+			<tr><td>A</td><td></td><td></td></tr>
+			<tr><td></td><td>E</td><td>F</td></tr>
+			<tr><td></td><td>H</td><td></td></tr>
+			<tr><td>J</td><td></td><td>K</td></tr>
+		</table>
+
+		<script type="text/javascript">
+
+			function comprobar(tabla) {
+				var contador = 0;
+				var elementos = tabla.getElementsByTagName("TD");
+				for(i=0;i<elementos.length;i++) {
+					if(elementos[i].textContent.length==0) {
+						contador++;
+					}
+				}
+				alert("Hay " + contador + " celdas vacías");
+			}
+
+		</script>
+	</body>
+</html>

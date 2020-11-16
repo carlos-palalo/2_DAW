@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_41 - Ejercicio: Girar, al hacer click, las filas en una tabla y las columnas en otra</title>
+		<style>
+			td {
+				width:40px;
+				height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_41 - Ejercicio: Girar, al hacer click, las filas en una tabla y las columnas en otra</h1>
+		<hr />
+		Girar filas<br />
+		<table border="2" id="t1" onclick="girarFilas(this);">
+			<tr><td>A</td><td>B</td><td>C</td></tr>
+			<tr><td>D</td><td>E</td><td>F</td></tr>
+			<tr><td>G</td><td>H</td><td>I</td></tr>
+			<tr><td>J</td><td>K</td><td>L</td></tr>
+		</table>
+		<br /><br />
+		Girar columnas<br />
+		<table border="2" id="t2" onclick="girarColumnas(this);">
+			<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+			<tr><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+			<tr><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+		</table>
+
+		<script type="text/javascript">
+
+			function girarFilas(tabla) {
+				var primeraFila = tabla.children[0].children[0];
+				tabla.children[0].appendChild(primeraFila);
+
+				/*var filaClonada = primeraFila.cloneNode(true);
+				primeraFila.parentElement.appendChild(filaClonada);
+				primeraFila.parentElement.removeChild(primeraFila);*/
+			}
+
+
+			function girarColumnas(tabla) {
+				var numFilas, primeraCelda, celdaClonada;
+				
+				numFilas = tabla.children[0].children.length;
+
+				for(i=0;i<numFilas;i++) {
+					primeraCelda = tabla.children[0].children[i].children[0];
+					tabla.children[0].children[i].appendChild(primeraCelda);
+
+					/*celdaClonada = primeraCelda.cloneNode(true);
+					primeraCelda.parentElement.appendChild(celdaClonada);
+					primeraCelda.parentElement.removeChild(primeraCelda);*/
+				}
+			}
+
+		</script>
+	</body>
+</html>

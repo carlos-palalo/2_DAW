@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_53 - removeAttribute, removeAttributeNode</title>
+	</head>
+	<body>
+		<h1>dom_53 - removeAttribute, removeAttributeNode</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2" align="center">Segundo párrafo</p>
+		<p id="parrafo3" size="30" color="red">Tercer párrafo</p>
+		<img src="./recursos/midibujo.gif" border="8" alt="Imagen personalizada" id="imagen1"/>
+		<br />
+		<button onclick="eliminarAtributos();">Eliminar atributos</button>
+
+		<script type="text/javascript">
+
+			function eliminarAtributos() {
+				var c = "\nIMAGEN";
+
+				var nodoImagen = document.getElementById("imagen1");
+				c += "\nAtributos antes de eliminar: " + nodoImagen.attributes.length;
+				//removeAttribute --> Se indica el nombre del atributo. No devuelve valor
+				nodoImagen.removeAttribute("border");
+
+
+
+				var nodoParrafo = document.getElementById("parrafo2");
+				var atributo = nodoParrafo.getAttributeNode("align");
+				//removeAttributeNode --> Se indica el objeto atributo. Se devuelve lo eliminado
+				var attrEliminado = nodoParrafo.removeAttributeNode(atributo);
+				c += "\n\nPÁRRAFO\nSe eliminará\n" + attrEliminado.name + " - " + attrEliminado.value;
+
+				alert(c);
+			}
+
+		</script>
+	</body>
+</html>

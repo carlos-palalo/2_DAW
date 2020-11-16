@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_55 - attributes (NamedNodeMap)</title>
+	</head>
+	<body>
+		<h1>dom_55 - attributes (NamedNodeMap)</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2" align="center">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<img src="./recursos/midibujo.gif" border="4" alt="Imagen personalizada" id="imagen1"/>
+		<br />
+		<button onclick="mostrarInformacion();">Mostrar información</button>
+
+		<script type="text/javascript">
+
+			function mostrarInformacion() {
+				var c = "\nIMAGEN";
+
+				//Se obtiene la imagen
+				var nodoImagen = document.getElementById("imagen1");
+				
+				if(nodoImagen.hasAttributes()) {
+					//Propiedad attributes: length
+					c += "\nSi tiene atributos: " + nodoImagen.attributes.length;
+					for(i=0;i<nodoImagen.attributes.length;i++)	{
+						c = c + "\nAtributo " + i + ": " + nodoImagen.attributes[i].name + " - " + nodoImagen.attributes[i].value;
+					}
+				}
+				else {
+					c = "\nNo tiene atributos";
+				}
+
+				alert(c);
+			}
+
+		</script>
+	</body>
+</html>
