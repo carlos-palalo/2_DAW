@@ -10,20 +10,12 @@
     </style>
     <script>
         var numParrafo = 0;
-        var parar;
         var texto = document.getElementsByTagName("span");
-        var parrafo = document.getElementById("parrafo");
-
-        function cargarParrafo() {
-            var clonado = texto[numParrafo].firstChild.cloneNode(true);
-            parrafo.appendChild(clonado);
-            parar = setInterval(cambiar, 2000);
-            numParrafo++;
-        }
 
         function cambiar() {
-            var clonado = texto[numParrafo].firstChild.cloneNode(true);
-            parrafo.replaceChild(clonado, parrafo.firstChild);
+            var parrafo = document.getElementById("p1");
+            var clonado = texto[numParrafo].cloneNode(true);
+            parrafo.replaceChild(clonado, parrafo.childNodes[0]);
             numParrafo++;
             if (numParrafo >= texto.length) {
                 numParrafo = 0;
@@ -32,10 +24,10 @@
     </script>
 </head>
 
-<body onload="cargarParrafo()">
+<body onload="setInterval(cambiar, 500)">
     <h1>Cambiar parrafo cada x tiempo</h1>
     <hr>
-    <p id="parrafo"></p>
+    <p id="p1"> </p>
     <div style="visibility: hidden;">
         <span>Primer Párrafo</span>
         <span>Segundo Párrafo</span>

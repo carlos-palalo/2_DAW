@@ -12,7 +12,7 @@
             for (var i = 0; i < longitud; i++) {
                 let elemento;
                 if (body.children[i].childElementCount == 0) {
-                    body.appendChild(body.children[0]);
+                    //body.appendChild(body.children[i]);
                 } else {
                     let longitudHijo = body.children[i].childElementCount;
                     for (var j = 0; j < longitudHijo; j++) {
@@ -20,7 +20,6 @@
                         body.appendChild(elemento);
                     }
                 }
-                alert("a");
             }
         }
     </script>

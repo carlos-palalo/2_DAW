@@ -8,15 +8,17 @@
     <script>
         function mostrarAtributos() {
             var body = document.children[0].children[1];
+            var cont = 0;
             var c = "";
             for (var i = 0; i < body.children.length; i++) {
                 c += "Etiqueta: " + body.children[i].tagName + "\n";
                 for (var j = 0; j < body.children[i].attributes.length; j++) {
                     c += "-- Atributo: " + body.children[i].attributes.item(j).name + ". ";
                     c += " Valor: " + body.children[i].attributes.item(j).value + "\n";
+                    cont++;
                 }
             }
-            alert(c);
+            alert("Hay " + cont + " atributos en total.\n" + c);
         }
     </script>
 </head>

@@ -6,24 +6,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-
+        .divs {
+            border: 1px solid red;
+            padding: 5px;
+            margin: 10px;
+        }
     </style>
     <script>
-
+        function meterDiv() {
+            var body = document.children[0].children[1];
+            var long = body.childElementCount;
+            for (var i = 0; i < long; i++) {
+                var div = document.createElement("div");
+                div.className = "divs";
+                div.innerHTML=body.removeChild(body.children[6]);
+                //body.children[i].innerHTML
+                body.insertBefore(div, body.childNodes[0]);
+                /*c += "Etiqueta: " + body.children[i].tagName + "\n";
+                for (var j = 0; j < body.children[i].attributes.length; j++) {
+                    c += "-- Atributo: " + body.children[i].attributes.item(j).name + ". ";
+                    c += " Valor: " + body.children[i].attributes.item(j).value + "\n";
+                    cont++;
+                }*/
+            }
+        }
     </script>
 </head>
 
-<body onload="cargarParrafo()">
-    <h1>Cambiar parrafo cada x tiempo</h1>
+<body>
+    <h1>Meter los elementos en divs</h1>
     <hr>
-    <p id="parrafo"></p>
-    <div style="visibility: hidden;">
-        <span>Primer Párrafo</span>
-        <span>Segundo Párrafo</span>
-        <span>Tercer Párrafo</span>
-        <span>Cuarto Párrafo</span>
-        <span>Quinto Párrafo</span>
+    <p>Parrafo fuera de div</p>
+    <div>
+        <p>Parrafo dentro de div</p>
     </div>
+    <div><img src="../img/foto1.jpg" width="300px"></div>
+    <button onclick="meterDiv()">Meter en Divs</button>
 </body>
 
 </html>
