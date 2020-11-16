@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function verDatos() {
+            var formularios = document.forms;
+            var c = "";
+            for (var i = 0; i < formularios.length; i++) {
+                for (var j = 0; j < formularios[i].elements.length; j++) {
+                    c += formularios[i].elements[j].name +": "+ formularios[i].elements.item(j).value + "\n";
+                }
+
+            }
+            alert(c);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Recorrer Formulario</h1>
+    <hr>
+    <form name="form1">
+        <h2>Primer Formulario</h2>
+        Nombre: <input type="text" name="nombre"><br>
+        Apellidos: <input type="text" name="apellidos">
+    </form>
+    <form name="form2">
+        <h2>Segundo formulario</h2>
+        Localidad: <input type="text" name="loc"><br>
+        Provincia: <input type="text" name="prov">
+    </form>
+    <button onclick="verDatos()">Ver datos de todos los formularios</button>
+</body>
+
+</html>
