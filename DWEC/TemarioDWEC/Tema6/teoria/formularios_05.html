@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_05 - Colección options</title>
+	</head>
+	<body>
+		<h1>formularios_05 - Colección options</h1>
+		<hr />
+
+		Nacionalidad1<br />
+		<select name="nacionalidad1" id="nacionalidad1">
+			<option value="es">Española</option>
+			<option value="it" id="it">Italiana</option>
+			<option value="pt">Portuguesa</option>
+			<option value="ca">Canadiense</option>
+			<option value="ar">Argentina</option>	
+			<option value="ch">China</option>
+			<option value="jp">Japonesa</option>	
+		</select>
+
+		<br /><br /><br />
+
+		<button onclick="numeroNacionalidades()">Consultar número o cantidad</button>
+		<button onclick="insertar()">Insertar nacionalidad francesa con índice 4</button>
+		<button onclick="eliminar()">Eliminar la nacionalidad con índice 2</button>
+		<button onclick="obtener()">Obtener la nacionalidad con índice 2</button>
+
+		<script type="text/javascript">
+
+			function numeroNacionalidades() {
+				alert(document.getElementById("nacionalidad1").options.length);
+			}
+
+			function insertar() {
+				var opt = document.createElement("option");
+				var texto = document.createTextNode("Francesa");
+				opt.appendChild(texto);
+				opt.setAttribute("value","fr");
+
+				document.getElementById("nacionalidad1").options.add(opt,4);
+			}
+
+			function eliminar() {
+				document.getElementById("nacionalidad1").options.remove(2);
+			}
+
+			function obtener() {
+				var obj = document.getElementById("nacionalidad1").options.item(2);
+				
+				//namedItem --> id
+				//var obj = document.getElementById("nacionalidad1").options.namedItem("it");
+				alert(obj.value + " - " + obj.textContent);
+			}
+
+		</script>
+	</body>
+</html>

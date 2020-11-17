@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_03 - Campos tradicionales</title>
+	</head>
+	<body>
+		<h1>formularios_03 - Campos tradicionales</h1>
+		<hr />
+
+		<form>
+			<!-- text -->
+			Nombre<br />
+			<input type="text" name="nombre" />
+			<br /><br /><br />
+
+
+			<!-- password -->
+			Clave<br />
+			<input type="password" name="clave" />
+			<br /><br /><br />
+
+			
+			<!-- checkbox -->
+			Mayor de edad<br />
+			<input type="checkbox" name="mayor" value="yes" id="mayorEdad" checked="checked"/>
+			<br /><br /><br />
+
+
+			<!-- radio -->
+			Estudios<br />
+			<input type="radio" name="estudios" value="primarios" id="ePrimarios" />Primarios<br />
+			<input type="radio" name="estudios" value="secundarios" id="eSecundarios" checked="checked" />Medios<br />
+			<input type="radio" name="estudios" value="superiores" id="eSuperiores" />Superiores
+			<br /><br /><br />
+
+
+			<!-- button,reset,submit,file -->
+			Distintos botones<br />
+			<input type="button" name="boton" value="Botón" /><br />
+			<input type="reset" name="resetear" value="Borrar campos" /><br />
+			<input type="submit" name="enviar" value="Enviar valores" /><br />
+			<input type="file" name="fichero" value="Selecciona un fichero" />
+			<br /><br /><br />
+
+			
+			<!-- select -->
+			Nacionalidad1<br />
+			<select name="nacionalidad1" id="nacionalidad1">
+				<optgroup label="Europeas">
+					<option value="es">Española</option>
+					<option value="it">Italiana</option>
+					<option value="pt">Portuguesa</option>
+				</optgroup>
+				<optgroup label="Americanas">
+					<option value="ca">Canadiense</option>
+					<option value="ar">Argentina</option>	
+				</optgroup>
+				<optgroup label="Asiáticas">
+					<option value="ch">China</option>
+					<option value="jp">Japonesa</option>	
+				</optgroup>
+			</select>
+			<br /><br /><br />
+
+
+			<!-- select múltiple-->
+			Nacionalidad2<br />
+			<select name="nacionalidad2" id="nacionalidad2" multiple="multiple" size="6">
+				<optgroup label="Europeas">
+					<option value="es">Española</option>
+					<option value="it">Italiana</option>
+					<option value="pt">Portuguesa</option>
+				</optgroup>
+				<optgroup label="Americanas">
+					<option value="ca">Canadiense</option>
+					<option value="ar">Argentina</option>	
+				</optgroup>
+				<optgroup label="Asiáticas">
+					<option value="ch">China</option>
+					<option value="jp">Japonesa</option>	
+				</optgroup>
+			</select>
+			<br /><br /><br />
+
+
+			<!-- textarea -->
+			<textarea name="comentarios" cols="50" rows="5">Pon aquí tu opinión</textarea>
+			<br /><br /><br />
+
+		</form>
+
+		<button onclick="recorrerFormularios();">Ver datos de todos los formularios</button>
+		<button onclick="verCheckboxRadio();">Ver datos de checkbox y radio</button>
+		<button onclick="verSelect();">Ver datos de los select</button>
+
+		<script type="text/javascript">
+
+			function recorrerFormularios() {
+				var c = "";
+				for(i=0;i<document.forms.length;i++) {
+					for(j=0;j<document.forms[i].elements.length;j++) {
+						element = document.forms[i].elements[j];
+						c += "\n" + element.name + " (" + element.type +"): " + element.value;
+					}
+				}
+				alert(c);
+			}
+
+
+			function verCheckboxRadio() {
+				var c = "";
+				if(document.getElementById("mayorEdad").checked) {
+					c += "\nEs mayor de edad";
+				}
+				if(document.getElementById("ePrimarios").checked) {
+					c += "\nTiene estudios primarios";
+				}
+				if(document.getElementById("eSecundarios").checked)	{
+					c += "\nTiene estudios secundarios";
+				}
+				if(document.getElementById("eSuperiores").checked) {
+					c += "\nTiene estudios superiores";
+				}
+				alert(c);
+			}
+
+
+			function verSelect() {
+				var c = "";
+
+				//SELECT 1
+				c += "NACIONALIDAD PRIMERA";
+				c += "\n" + document.getElementById("nacionalidad1").options.selectedIndex;
+				c += "\n" + document.getElementById("nacionalidad1").selectedIndex;
+
+				//SELECT 2
+				c += "\n\nNACIONALIDAD SEGUNDA\n";
+				c += document.getElementById("nacionalidad2").options.selectedIndex;
+				for(i=0;i<document.getElementById("nacionalidad2").options.length;i++) {
+					//c += "\n" + i + ":" + document.getElementById("nacionalidad2").options[i].selected + ":" + document.getElementById("nacionalidad2").options[i].value;
+					if(document.getElementById("nacionalidad2").options[i].selected) {
+						c += "\n" + document.getElementById("nacionalidad2").options[i].value;
+					}
+				}
+				
+				alert(c);
+			}
+		
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_02 - Recorrido genérico</title>
+	</head>
+	<body>
+		<h1>formularios_02 - Recorrido genérico</h1>
+		<hr />
+
+		<h3>Primer formulario</h3>
+		<form>
+			Nombre: <input type="text" name="nombre" /><br />
+			Apellidos: <input type="text" name="apellidos" /><br />
+		</form>
+
+		<h3>Segundo formulario</h3>
+		<form name="formu2">
+			Localidad: <input type="text" name="localidad" /><br />
+			Provincia: <input type="text" name="provincia" /><br />
+		</form>
+
+		<button onclick="recorrerFormularios();">Ver datos de todos los formularios</button>
+
+		<script type="text/javascript">
+			
+			function recorrerFormularios() {
+				var c = "";
+				
+				for(i=0;i<document.forms.length;i++) {
+				 	for(j=0;j<document.forms[i].elements.length;j++) {
+				 		c += "\n" + document.forms[i].elements[j].name+ ": " + document.forms[i].elements[j].value;
+					}
+				}
+				
+				c += "\n";
+				
+				for(i=0;i<document.forms.length;i++) {
+					for(j=0;j<document.forms.item(i).elements.length;j++) {
+						c += "\n" + document.forms.item(i).elements.item(j).name+ ": " + document.forms.item(i).elements.item(j).value;
+					}
+				}
+
+				alert(c);
+			}
+			
+		</script>
+	</body>
+</html>
+

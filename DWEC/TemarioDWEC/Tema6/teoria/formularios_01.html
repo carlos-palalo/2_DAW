@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_01 - Acceso: forms y elements</title>
+	</head>
+	<body>
+		<h1>formularios_01 - Acceso: forms y elements</h1>
+		<hr />
+
+		<form>
+			<fieldset>
+				<legend>Primer formulario</legend>
+				Nombre: <input type="text" name="nombre" /><br />
+				Apellidos: <input type="text" /><br />
+				Edad: <input type="text" id="edad" /><br />
+				<input type="button" value="Ver" onclick="verFormulario1();" />
+			</fieldset>
+		</form>
+
+		<br /><br /><br />
+		
+		<form name="formu2">
+			<fieldset>
+				<legend>Segundo formulario</legend>
+				Localidad: <input type="text" name="loc" /><br />
+				Provincia: <input type="text" name="prov" /><br />
+				<input type="button" value="Ver" onclick="verFormulario2();" />
+				<input type="button" value="Poner localidad y provincia" onclick="ponerLocalidadProvincia();" />
+			</fieldset>
+		</form>
+
+		<script type="text/javascript">
+			
+			function verFormulario1() {
+				var c = "";
+				c += "Nombre: " + document.forms[0].elements[1].value;
+				c += "\nApellidos: " + document.forms.item(0).elements.item(2).value;
+				c += "\nEdad: " + document.getElementById("edad").value;
+				alert(c);
+			}
+			
+			function verFormulario2() {
+				var c = "";
+				c += "Localidad: " + document.formu2.loc.value;
+				c += "\nProvincia: " + document.formu2.prov.value;
+				alert(c);
+			}
+
+			function ponerLocalidadProvincia() {
+				document.forms[1].elements[1].value = "Tordesillas";
+				document.formu2.prov.value ="Valladolid";
+			}
+
+		</script>
+	</body>
+</html>

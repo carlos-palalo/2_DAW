@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_04 - Validar un formulario con expresiones regulares</title>
+	</head>
+	<body>
+		<h1>formularios_04 - Validar un formulario con expresiones regulares</h1>
+		<hr />
+
+		<form>
+			Nombre<br />
+			<input type="text" name="nombre" id="nombre" />
+			<br /><br />
+			
+			Apellidos<br />
+			<input type="text" name="apellidos" id="apellidos" />
+			<br /><br />
+
+			DNI<br />
+			<input type="text" name="dni" id="dni" />
+			<br /><br />
+
+			Dirección<br />
+			<input type="text" name="direccion" id="direccion" />
+			<br /><br />
+
+			Localidad<br />
+			<input type="text" name="localidad" id="localidad" />
+			<br /><br />
+
+			Provincia<br />
+			<input type="text" name="provincia" id="provincia" />
+			<br /><br />
+
+			Código postal<br />
+			<input type="text" name="cp" id="cp" />
+			<br /><br />
+
+			Teléfono<br />
+			<input type="text" name="telefono" id="telefono" />
+			<br /><br />
+
+			email<br />
+			<input type="text" name="email" id="email" />
+			<br /><br />
+
+			<input type="button" value="Enviar" onclick="validar();" />
+
+		</form>
+
+		<script type="text/javascript">
+		
+			var error = "";
+	
+			function validar() {
+				error = "";
+	
+				pasaTest(/^[a-zA-Z\s]+$/,"nombre");
+				pasaTest(/^[a-zA-Z\s]+$/,"apellidos");
+				pasaTest(/^\d{8}[A-Z]$/,"dni");
+				pasaTest(/\S/,"direccion");
+				pasaTest(/^[a-zA-Z\s]+$/,"localidad");
+				pasaTest(/^[a-zA-Z\s]+$/,"provincia");
+				pasaTest(/^\d{5}$/,"cp");
+				pasaTest(/^(6|9)\d{8}$/,"telefono");
+				pasaTest(/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,"email");
+	
+				if(error!="")
+					alert(error);
+			}
+
+	
+			function pasaTest(expresion,campo) {
+				var dato = document.getElementById(campo).value;
+				if(!expresion.test(dato)) {
+					error += "\u25cf\u0020Error en el campo " + campo + "\n";
+					document.getElementById(campo).value = "";
+					document.getElementById(campo).style.backgroundColor="red";
+				} else {
+					document.getElementById(campo).style.backgroundColor="white";
+					document.getElementById(campo).disabled = true;
+				}
+			}
+			
+		</script>
+	</body>
+</html>
+
