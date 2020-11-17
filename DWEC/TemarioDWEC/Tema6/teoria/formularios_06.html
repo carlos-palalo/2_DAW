@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_06 - Ejercicio: Insertar un país nuevo o eliminar el último o el seleccionado</title>
+	</head>
+	<body>
+		<h1>formularios_06 - Ejercicio: Insertar un país nuevo o eliminar el último o el seleccionado</h1>
+		<hr />
+
+		Nacionalidad<br />
+		<select name="nacionalidades" id="nacionalidades">
+			<option value="es">Española</option>
+			<option value="it">Italiana</option>
+			<option value="pt">Portuguesa</option>
+			<option value="ca">Canadiense</option>
+			<option value="ar">Argentina</option>	
+			<option value="ch">China</option>
+			<option value="jp">Japonesa</option>	
+		</select>
+
+		<br /><br /><br />
+
+		<input type="text" id="nacionNueva" name="nacionNueva" /><br />
+		<button onclick="insertar()">Insertar nacionalidad</button>
+		<hr />
+		<button onclick="eliminar()">Eliminar</button><br />
+		<input type="radio" name="tipoEliminacion" value="ultima" id="ultima" />Última<br />
+		<input type="radio" name="tipoEliminacion" value="seleccionada" id="seleccionada" />Seleccionada
+
+		<script type="text/javascript">
+
+			function insertar() {
+				var opt = document.createElement("option");
+				var dato = document.getElementById("nacionNueva").value;
+				var texto = document.createTextNode(dato);
+				opt.appendChild(texto);
+				opt.setAttribute("value",dato.substring(0,2).toLowerCase());
+
+				document.getElementById("nacionalidades").options.add(opt);
+			}
+
+			function eliminar() {
+				if(document.getElementById("ultima").checked) {
+					var cantidad = document.getElementById("nacionalidades").options.length;
+					document.getElementById("nacionalidades").options.remove(cantidad-1);
+				}
+
+				if(document.getElementById("seleccionada").checked) {
+					var indice = document.getElementById("nacionalidades").selectedIndex;
+					document.getElementById("nacionalidades").options.remove(indice);
+				}
+			}
+
+		</script>
+	</body>
+</html>

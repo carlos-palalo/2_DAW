@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<!-- A partir de una cadena JSON, pasarlo a formulario -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">
+        var datos = '{"campos":[\
+            {"id":"nombre", "name":"nombre","type":"text","placeholder":"Escribe el nombre"},\
+            {"id":"clave", "name":"clave","type":"password","placeholder":"Escribe la contraseña"},\
+            {"id":"mayorEdad", "name":"mayorEdad","type":"checkbox","checked":"checked"},\
+            {"id":"modulo", "name":"modulo","type":"radio","opciones":[\
+                {"value":"servidor","texto":"D. Servidor"},\
+                {"value":"cliente","texto":"D. Cliente"},\
+                {"value":"diseño","texto":"Diseño"},\
+                ]}, \
+            { "id": "descripcion", "name": "descripcion", "type": "textarea", "placeholder": "Escribe la descripcion"}, \
+            {"id":"nacionalidades", "name":"nacionalidades","type":"select","opciones":[\
+                {"value":"es","texto":"Española"},\
+                {"value":"fr","texto":"Francesa"},\
+                {"value":"de","texto":"Alemana"},\
+                {"value":"pt","texto":"Portuguesa"},\
+                {"value":"uk","texto":"Británica"},\
+                ]}, \
+        ]}';
+
+        function crearFormulario() {
+
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Formualrio a partir de un JSON</h1>
+    <hr>
+    <form id="formulario"></form>
+    <button onclick="crearFormulario()">Crear Formulario</button>
+</body>
+
+</html>
