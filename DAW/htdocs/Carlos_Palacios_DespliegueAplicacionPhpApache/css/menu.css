@@ -1,0 +1,38 @@
+body{
+    background-color: #2E4053;
+    text-align: center;
+}
+
+nav{
+    margin: 0 auto;
+    padding: 20px 0px;
+    background-color: #34495E;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+}
+
+.verde:hover{
+    background-color: #48C9B0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.rojo:hover{
+    background-color: #E74C3C;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+header{
+    font-family: 'Cherry Swash', cursive;
+    text-shadow: 3px 3px 3px black;
+    color: white;
+    font-size: xx-large;
+    margin: 40px;
+}

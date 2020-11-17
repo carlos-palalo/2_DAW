@@ -1,0 +1,33 @@
+body{
+     background-color: #f1f1c1;
+      
+     /*background-image: url("../imagenes/fondo.jpg");*/
+}
+h2 {
+    text-align: center;
+    color: blue;
+}
+h1 {
+    text-align: center;
+    color: red;
+}
+p
+{
+    margin: 0.4em 0px 0.5em; 
+    line-height: 19.2px; 
+    color: rgb(0, 0, 0); 
+    font-family: sans-serif; 
+    font-size: 13px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: normal; 
+    letter-spacing: normal; 
+    text-align: start; 
+    text-indent: 0px; 
+    text-transform: none; 
+    white-space: normal; 
+    word-spacing: 0px; 
+   
+}
+
+
