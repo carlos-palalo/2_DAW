@@ -8,11 +8,11 @@
 
 $Calificacion=$_GET['Calificacion'];
 $Penitente=$_GET['Penitente'];
-$base="joseluis";
+$base="carlos";
 
 # establecemos la conexión con el servidor
 
-$c=mysqli_connect ("localhost","joseluis","joseluis");
+$c=mysqli_connect ("localhost","carlos","carlos");
 
 #Seleccionamos la BASE DE DATOS en la que PRETENDEMOS TRABAJAR
 
@@ -104,7 +104,7 @@ mysqli_close($c);
 <script language='JavaScript'>
 
 
-<? echo "window.self.location='ejemplo198.php?avisa=$avisar'"?>
+<?php echo "window.self.location='ejemplo198.php?avisa=$avisar'"?>
 
 
 </script>

@@ -1,7 +1,7 @@
 <?php
 # recogemos en una variable el nombre de BASE DE DATOS
 
-$base="joseluis";
+$base="carlos";
 
 # recogemos en una variable el nombre de la TABLA
 
@@ -91,7 +91,7 @@ $v9+=$valor;
 
 # establecemos la conexion con el servidor
 
- $c=mysqli_connect("localhost","joseluis","joseluis");
+ $c=mysqli_connect("localhost","carlos","carlos");
 
 #asiganamos la conexión a una base de datos determinada
 

@@ -13,7 +13,7 @@ and open the template in the editor.
         <?php
         # recogemos en una variable el nombre de BASE DE DATOS
 
-$base="joseluis";
+$base="carlos";
 
 # recogemos en una variable el nombre de la TABLA
 
@@ -22,7 +22,7 @@ $tabla="demo42";
 
 # establecemos la conexion con el servidor
 
-$c=mysqli_connect("localhost","joseluis","joseluis");
+$c=mysqli_connect("localhost","carlos","carlos");
 
 #asiganamos la conexión a una base de datos determinada
 

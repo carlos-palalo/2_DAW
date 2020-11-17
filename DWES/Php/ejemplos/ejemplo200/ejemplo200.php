@@ -8,11 +8,11 @@
 
 # definimos una variable con el NOMBRE DE LA BASE DE DATOS
 
-$base="joseluis";
+$base="carlos";
 
 # establecemos la conexión con el servidor
 
-$conexion=mysqli_connect ("localhost","joseluis","joseluis",$base);
+$conexion=mysqli_connect ("localhost","carlos","carlos",$base);
 
 if (!$conexion) {
     echo "Error: No se pudo conectar a MySQL." . PHP_EOL;

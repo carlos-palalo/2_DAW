@@ -1,11 +1,11 @@
 
 <?php 
 
-$base="joseluis";
+$base="carlos";
 
 # establecemos la conexión con el servidor
 
-$conexion=mysqli_connect ("localhost","joseluis","joseluis");
+$conexion=mysqli_connect ("localhost","carlos","carlos");
 
 #Seleccionamos la BASE DE DATOS en la que PRETENDEMOS TRABAJAR
 

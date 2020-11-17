@@ -1,5 +1,5 @@
 <?php
-$base="joseluis";
+$base="carlos";
 
 #definimos otra variable con el NOMBRE QUE QUEREMOS DAR A LA TABLA
 
@@ -7,7 +7,7 @@ $tabla="companeros";
 
 # establecemos la conexión con el servidor
 
-$c=mysqli_connect ("localhost","joseluis","joseluis");
+$c=mysqli_connect ("localhost","carlos","carlos");
 
 #Seleccionamos la BASE DE DATOS en la que PRETENDEMOS CREAR LA TABLA
 

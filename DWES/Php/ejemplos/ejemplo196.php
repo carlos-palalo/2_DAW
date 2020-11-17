@@ -3,14 +3,14 @@
 # definimos una variable con el NOMBRE DE LA BASE DE DATOS
 
 
-$base="joseluis";
+$base="carlos";
 
 #definimos otra variable con el NOMBRE de LA TABLA ORIGEN DE LOS DATOS
 
 
 # establecemos la conexión con el servidor
 
-$c=mysqli_connect ("localhost","joseluis","joseluis");
+$c=mysqli_connect ("localhost","carlos","carlos");
 
 #Seleccionamos la BASE DE DATOS en la que PRETENDEMOS TRABAJAR
 

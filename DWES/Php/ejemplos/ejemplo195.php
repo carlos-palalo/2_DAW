@@ -3,22 +3,22 @@
 # definimos una variable con el NOMBRE DE LA BASE DE DATOS
 
 
-$base="joseluis";
+$base="carlos";
 
 #definimos otra variable con el NOMBRE de LA TABLA ORIGEN DE LOS DATOS
 
-$tabla="demo42";
+$tabla="demo4";
 
 #definimos UN ARRAY con los nombres de las tablas a crear
 
 
-$tablanuev[]="demodat421";
-$tablanuev[]="demodat422";
-$tablanuev[]="demodat423";
+$tablanuev[]="demodat1";
+$tablanuev[]="demodat2";
+$tablanuev[]="demodat3";
 
 # establecemos la conexión con el servidor
 
-$c=mysqli_connect ("localhost","joseluis","joseluis");
+$c=mysqli_connect ("localhost","carlos","carlos");
 
 #Seleccionamos la BASE DE DATOS en la que PRETENDEMOS TRABAJAR
 
