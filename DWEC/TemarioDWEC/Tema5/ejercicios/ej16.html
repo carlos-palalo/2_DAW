@@ -7,18 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
         function quitarJerarquia() {
-            var body = document.body;
-            var longitud = body.childElementCount;
-            for (var i = 0; i < longitud; i++) {
-                let elemento;
-                if (body.children[i].childElementCount == 0) {
-                    //body.appendChild(body.children[i]);
-                } else {
-                    let longitudHijo = body.children[i].childElementCount;
-                    for (var j = 0; j < longitudHijo; j++) {
-                        elemento = body.children[i].children[0];
-                        body.appendChild(elemento);
+            var body = document.children[0].children[1];
+            var long = body.childElementCount;
+            for (var i = 0; i < long; i++) {
+                var nodo = body.children[0];
+                var longHijo = nodo.childElementCount;
+                if (longHijo > 0) {
+                    for (var j = 0; j < longHijo; j++) {
+                        body.appendChild(nodo.removeChild(nodo.children[0]));
+
                     }
+                    long++;
+                }
+                else {
+                    body.appendChild(body.removeChild(nodo));
                 }
             }
         }
