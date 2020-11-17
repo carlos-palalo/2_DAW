@@ -207,3 +207,27 @@ Estrategias de Distribución
 	Costo. Precio + tiempo + combustible
 	Conveniencia. Facilitar a los clientes y los productos y servicios de forma rápida, sencilla y fácil.
 	Comunicación. Llegar a un público objetivo (publicidad)
+
+------------------------------- Tema 4 ------------------------------------ 
+INVERSIÓN
+	-	Gasto. Se producto un gasto cuando se produce una disminución del beneficio de la empresa. Ej: local, maquinaria, instalciones, mobiliario, herramientas, vehículos, equipos informáticos, programas informáticos, patentes / marcas.
+	-	Inversion. Compra de un bien o un derecho duradero que se va a usar durante más de un año. Ej: De constitución, publicidad, alquileres, sueldos y SS, suministros, servicios profesión, material de oficina, stock mínimo para la venta, gastos financieros.
+
+FINANCIACIÓN
+	Obtención Recursos Empresa
+	FUENTES DE FINANCIACIÓN
+		Propias.
+			Externas. 
+				Aportaciones de los socios. A través del capital social y ampliacioens de capital.
+				Aportaciones de inversores. Business Angels y Sociedades de Capital de Riesgo
+			Internas.
+				Autofinanciación
+					De mantenimiento. Amortizaciones
+					De enriquecimiento. Reservas
+		Ajenas -> Externas
+			A largo plazo. Fuentes que tienen que durar más de un año. Préstamos bancarios, Leasing / Renting, ayudas y subvenciones estatales, crowfunding
+			A corto plazo. Fuentes que tienen que pagar en menos de un año. Créditos bancarios, créditos comerciales, descuento de letras / pagarés, F + F + F (Friendas, family and fools), factoring / confirming, crowfunding.
+
+Pag 70
+1	Gasto: compra materia prima, salarios, alquiler local, compra herramientas, contratación publicidad, consumo agua, contratación seguros
+	Inversión: adquisición de edificios, maquinaria, compra de vehículos, mobiliario, elementos informáticos
