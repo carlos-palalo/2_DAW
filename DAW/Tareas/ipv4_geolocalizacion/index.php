@@ -4,21 +4,37 @@ require_once 'vendor/autoload.php';
 use Foolz\Inet\Inet;
 use ipinfo\ipinfo\IPinfo;
 
-$num = new Inet();
-$client = new IPinfo();
+try {
+    $num = new Inet();
+    $client = new IPinfo();
 
-$decimal_ip = $num->ptod("127.0.0.1");
-$ip = $num->dtop($decimal_ip);
+    echo "  <!DOCTYPE>
+        <html>
+        <head></head>
+        <body>
+            <h1>Geolocalización de un número decimal</h1>
+            <hr>
+            <form action='' method='GET'>
+                <p>Introduce el Nº entero:</p>
+                <p><input type='number' name='num' placeholder='Número'></p>
+                <input name='calcular' type='submit' value='Calcular'></button>
+            </form>
+        </body>
+        </html>";
 
-print($decimal_ip);
-print("<br>");
-print($ip);
-
-$ip_address = '216.239.36.21';
-$details = $client->getDetails($ip_address);
-
-$details->city;
-$details->loc;
-echo "<pre>";
-var_dump($details);
-echo "</pre>";
+    if (isset($_REQUEST['calcular'])) {
+        $decimal_ip = htmlspecialchars($_REQUEST['num']);
+        $dir_ip = $num->dtop($decimal_ip);
+        echo "<p>IP Decimal: " . $decimal_ip . "</p>";
+        $details = $client->getDetails($dir_ip);
+        echo "<p>IP: " . $details->ip . "</p>";
+        echo "<p>City: " . $details->city . "</p>";
+        echo "<p>Region: " . $details->region . "</p>";
+        echo "<p>Country: " . $details->country . "</p>";
+        echo "<p>Loc: " . $details->loc . "</p>";
+        echo "<p>Postal: " . $details->postal . "</p>";
+        echo "<p>Timezone: " . $details->timezone . "</p>";
+    }
+} catch (Exception $e) {
+    echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+}
