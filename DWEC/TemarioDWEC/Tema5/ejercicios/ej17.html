@@ -18,10 +18,10 @@
             var long = body.childElementCount;
             for (var i = 0; i < long; i++) {
                 var div = document.createElement("div");
+                var nodo = body.children[long - 1];
                 div.className = "divs";
-                div.innerHTML=body.removeChild(body.children[6]);
-                //body.children[i].innerHTML
-                body.insertBefore(div, body.childNodes[0]);
+                div.appendChild(body.removeChild(nodo));
+                body.insertBefore(div, body.children[0]);
                 /*c += "Etiqueta: " + body.children[i].tagName + "\n";
                 for (var j = 0; j < body.children[i].attributes.length; j++) {
                     c += "-- Atributo: " + body.children[i].attributes.item(j).name + ". ";

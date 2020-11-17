@@ -10,14 +10,19 @@
     </style>
     <script>
         function cambiarAtributo(elemento) {
+            if (elemento.hasAttribute("style")) {
+                elemento.removeAttribute("style");
+            } else {
+                elemento.setAttribute("style", "color: red");
+            }
         }
     </script>
 </head>
 
 <body>
-    <h1>Cambiar parrafo cada x tiempo</h1>
+    <h1>Poner o quitar atributos</h1>
     <hr>
-    <p style="color: red;" onclick="cambiarAtributo(this,true)">Primer párrafo</p>
+    <p style="color: red;" onclick="cambiarAtributo(this)">Primer párrafo</p>
     <p onclick="cambiarAtributo(this)">Segundo párrafo</p>
     <p onclick="cambiarAtributo(this)">Tercer párrafo</p>
     <p onclick="cambiarAtributo(this)">Cuarto párrafo</p>

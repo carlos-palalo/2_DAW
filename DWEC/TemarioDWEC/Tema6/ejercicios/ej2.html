@@ -2,20 +2,23 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
         var formu = document.forms;
         function insertar() {
-            var opcion = document.createElement("option");
+            var opt = document.createElement("option");
             var texto = document.getElementById("nacionalidad").value;
-            opcion.innerText = texto;
-            opcion.value = texto.substr(0, 2);
-            document.getElementById("select1").appendChild(opcion);
-            //alert(document.getElementById("select1").innerHTML);
+            opt.appendChild(texto);
+            opt.setAttribute("value", texto.substr(0, 2));
+            document.getElementById("nacionalidad1").options.add(opt, 4);
         }
 
         function eliminar() {
-            var seleccion = document.forms.seleccion;
-            alert(seleccion);
+            //if ultima
+            var ultima = document.getElementById("nacionalidad1").options.length - 1;
+            document.getElementById("nacionalidad1").options.remove(ultima);
+            //uf seleccion
         }
     </script>
 </head>
@@ -23,9 +26,9 @@
 <body>
     <h1>Recorrer Formulario</h1>
     <hr>
-    <form name="form1">
+    <form name="form1" id="form1">
         <p>Nacionalidad 1</p>
-        <select id="select1">
+        <select id="nacionalidad1" name="nacionalidad1">
             <option value="es">Española</option>
             <option value="en">Inglesa</option>
             <option value="ge">Alemana</option>
@@ -33,11 +36,11 @@
             <option value="pt">Portuguesa</option>
         </select>
 
-        <p><input id="nacionalidad" type="text" placeholder="Introduce nacionalidad"></p>
+        <p><input id="nacionalidad" name="nacionalidad" type="text" placeholder="Introduce nacionalidad"></p>
         <p><button onclick="insertar()">Insertar Nacionalidad</button></p>
 
-        <p><input type="radio" name="seleccion" value="ult" checked>Última</p>
-        <p><input type="radio" name="seleccion" value="sel">Seleccionada</p>
+        <input type="radio" name="seleccion" value="ult" checked>Última<br>
+        <input type="radio" name="seleccion" value="sel">Seleccionada<br>
         <button onclick="eliminar()">Eliminar Nacionalidad</button>
     </form>
 
