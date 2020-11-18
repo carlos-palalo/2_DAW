@@ -209,6 +209,7 @@ Estrategias de Distribución
 	Comunicación. Llegar a un público objetivo (publicidad)
 
 ------------------------------- Tema 4 ------------------------------------ 
+17/11/20
 INVERSIÓN
 	-	Gasto. Se producto un gasto cuando se produce una disminución del beneficio de la empresa. Ej: local, maquinaria, instalciones, mobiliario, herramientas, vehículos, equipos informáticos, programas informáticos, patentes / marcas.
 	-	Inversion. Compra de un bien o un derecho duradero que se va a usar durante más de un año. Ej: De constitución, publicidad, alquileres, sueldos y SS, suministros, servicios profesión, material de oficina, stock mínimo para la venta, gastos financieros.
@@ -231,3 +232,14 @@ FINANCIACIÓN
 Pag 70
 1	Gasto: compra materia prima, salarios, alquiler local, compra herramientas, contratación publicidad, consumo agua, contratación seguros
 	Inversión: adquisición de edificios, maquinaria, compra de vehículos, mobiliario, elementos informáticos
+
+18/11/20
+Diferencias crédito y préstamo bancario. Solo pago intereses por lo que utilizo vs Pago por un dinero que tengo desde el principio en x tiempo ya fijado
+Diferencias Renting y Leasing. Opcion de compra vs Sin opcion compra e incluye mantenimiento. 
+Diferencias Business Angels y Sociedades Capital Riesgo. Particulares vs Empresa. 
+
+Ley de Fomento de la Financiación Empresarial (Crowfunding). En 2015 se establece el límite. No se puede recibir más del 125 % de la cantidad inicial solicitada. Hace diferenciación entre inversores particulares (no acreditados) y empresas (acreditados). 
+	No acreditados: No más de 3000 € por proyecto, ni más de 6000 € en 12 meses en el conjunto de proyectos de la misma empresa.
+	Acreditados. Sin límite. 
+	Se pueden desgravarse 20% IRPF.
+
