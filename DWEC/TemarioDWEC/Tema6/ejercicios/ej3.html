@@ -33,7 +33,7 @@
             listaCampos.campos.forEach(x => {
                 if (x.type == "text" || x.type == "password" || x.type == "checkbox") {
                     let nodoP = document.createElement("p");
-                    let textoLabel = document.createTextNode(x.name);
+                    let textoLabel = document.createTextNode(x.name.toUpperCase());
                     let div = document.createElement("div");
                     let nodo = document.createElement("input");
                     nodoP.for = x.id;
@@ -50,6 +50,10 @@
                     div.appendChild(nodoP);
                     div.appendChild(nodo);
                     formulario.appendChild(div);
+                }
+
+                if (x.type == "radio") {
+                    
                 }
             });
         }
