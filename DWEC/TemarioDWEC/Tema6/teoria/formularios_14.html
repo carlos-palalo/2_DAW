@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_14 - Métodos</title>
+	</head>
+	<body>
+		<h1>formularios_14 - Métodos</h1>
+		<hr />
+
+		<form>
+
+			Nombre: <input type="text"><br>
+
+			<input type="button" value="Poner foco" 
+				onclick="document.forms[0].elements[0].focus()">
+
+			<input type="button" value="Quitar foco" 
+				onclick="document.forms[0].elements[0].blur()">
+
+			<input type="button" value="Seleccionar texto"
+				onclick="document.forms[0].elements[0].select()">
+
+			<input type="button" value="Enviar" onclick="submit();">
+
+		</form>
+	</body>
+</html>
+

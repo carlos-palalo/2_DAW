@@ -8,7 +8,7 @@
 		<h1>formularios_07 - Ejercicio: Crear un formulario a partir de un JSON</h1>
 		<hr />
 
-		Formulario<br />
+		<h2>Formulario</h2>
 		<form id="formulario"></form>
 		
 		<button onclick="crearFormulario()">Crear formulario</button><br />
@@ -22,19 +22,75 @@
 	{"id":"modulo","name":"modulo","type":"radio","opciones":[\
 	{"value":"servidor","texto":"Prog.Servidor"},\
 	{"value":"cliente","texto":"Prog.Cliente"},\
-	{"value":"diseño","texto":"Diseño"},\
-	]},\
-	{"id":"descripcion","name":"descripcion","type":"textarea","placeholder":"Escribe la descripción"},\
+	{"value":"diseño","texto":"Diseño"}]},\
+	{"id":"descripcion","name":"descripcion","type":"textarea","placeholder":"Escribe la descripción","rows":"5","cols":"50"},\
 	{"id":"nacionalidades","name":"nacionalidades","type":"select","opciones":[\
 	{"value":"es","texto":"Española"},\
 	{"value":"fr","texto":"Francesa"},\
 	{"value":"de","texto":"Alemana"},\
 	{"value":"pt","texto":"Portuguesa"},\
-	{"value":"uk","texto":"Británica"},\
-	]},\
+	{"value":"uk","texto":"Británica"}]}\
     ]}';
 
 			function crearFormulario() {
+
+				var listaCampos = JSON.parse(datos);
+				var formulario = document.getElementById("formulario");
+				var elemento,opcion;
+
+				listaCampos.campos.forEach(x => {
+					
+					if(x.type == "text" || x.type=="password" || x.type=="checkbox") {
+						formulario.appendChild(document.createTextNode(x.name.toUpperCase()));
+						formulario.appendChild(document.createElement("br"));
+						elemento = document.createElement("input");
+						Object.keys(x).forEach(y => elemento.setAttribute(y,x[y]));
+						formulario.appendChild(elemento);
+					}
+
+					if(x.type == "textarea") {
+						formulario.appendChild(document.createTextNode(x.name.toUpperCase()));
+						formulario.appendChild(document.createElement("br"));
+						elemento = document.createElement("textarea");
+						Object.keys(x).forEach(y => elemento.setAttribute(y,x[y]));
+						formulario.appendChild(elemento);
+					}
+
+					if(x.type == "radio") {
+						formulario.appendChild(document.createTextNode(x.name.toUpperCase()));
+						formulario.appendChild(document.createElement("br"));
+						x.opciones.forEach(y => {
+							elemento = document.createElement("input");
+							elemento.setAttribute("type",x.type);
+							elemento.setAttribute("name",x.name);
+							elemento.setAttribute("id",x.id+y.value);
+							elemento.setAttribute("value",y.value);
+							formulario.appendChild(elemento);
+							formulario.appendChild(document.createTextNode(y.texto));
+							formulario.appendChild(document.createElement("br"));
+						});
+					}
+
+					if(x.type == "select") {
+						formulario.appendChild(document.createTextNode(x.name.toUpperCase()));
+						formulario.appendChild(document.createElement("br"));
+						elemento = document.createElement("select");
+						Object.keys(x).forEach(y => {
+							if(y!="opciones" && y!="type")
+								elemento.setAttribute(y,x[y])
+						});
+						formulario.appendChild(elemento);
+						x.opciones.forEach(y => {
+							opcion = document.createElement("option");
+							opcion.setAttribute("value",y.value);
+							opcion.appendChild(document.createTextNode(y.texto));
+							elemento.appendChild(opcion);
+						});
+					}
+					
+					formulario.appendChild(document.createElement("br"));
+					formulario.appendChild(document.createElement("br"));
+				});
 
 			}
 

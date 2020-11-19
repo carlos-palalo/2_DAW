@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_11 - Eventos</title>
+	</head>
+	<body>
+		<h1>formularios_11 - Eventos</h1>
+		<hr />
+
+		<form onsubmit="alert('Ha enviado el formulario');" onreset="alert('Reset del formulario');">
+
+			onchange
+			<br />
+			<input type="text" onchange="alert('Ha cambiado');" />
+			<br /><br />
+
+
+			onblur
+			<br />
+			<input type="text" onblur="alert('Ha perdido el foco');" />
+			<br /><br />
+
+
+			onfocus
+			<br />
+			<input type="text" onfocus="alert('Ha obtenido el foco');" />
+			<br /><br />
+
+
+			onselect
+			<br />
+			<input type="text" onselect="alert('Ha seleccionado texto');" />
+			<br /><br />
+
+
+			onsearch
+			<br />
+			<input type="search" onsearch="alert('En la búsqueda');" />
+			<br /><br />
+
+
+			oninput (ver consola)
+			<br />
+			<input type="text" oninput="console.log('Escribiendo...\n');" />
+			<br /><br />
+
+
+			oninvalid
+			<br />
+			<input type="email" required oninvalid="alert('El email es incorrecto');" />
+			<br /><br />
+
+
+			onreset
+			<input type="reset" />
+			<br /><br />
+
+
+			onsubmit
+			<input type="submit" />
+		</form>
+	</body>
+</html>
+

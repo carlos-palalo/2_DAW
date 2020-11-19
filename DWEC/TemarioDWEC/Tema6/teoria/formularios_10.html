@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_10 - Atributos de los campos</title>
+	</head>
+	<body>
+		<h1>formularios_10 - Atributos de los campos</h1>
+		<hr />
+
+		<!--<form novalidate>-->
+		<form>
+
+			<h2>Atributos generales</h2>		
+			<!-- value -->
+			value
+			<br />
+			<input type="text" value="texto inicial" />
+			<br /><br />
+
+
+			readonly
+			<br />
+			<!-- readonly -->
+			<input type="text" value="texto inicial" readonly />
+			<br /><br />
+
+
+			disabled
+			<br />
+			<!-- disabled -->
+			<input type="text" value="texto inicial" disabled />
+			<br /><br />
+
+
+			size
+			<br />
+			<!-- size -->
+			<input type="text" value="texto inicial" size="30" />
+			<br /><br />
+
+
+			maxlength
+			<br />
+			<!-- maxlength -->
+			<input type="text" value="texto inicial" maxlength="20" />
+			<br /><br />
+
+
+
+			<h2>Atributos de HTML5</h2>
+
+			novalidate(email)
+			<br />
+			<!-- novalidate: va en el form realmente -->
+			<input type="email" />
+			<br /><br />
+
+
+			autofocus
+			<br />
+			<!-- autofocus -->
+			<input type="text" autofocus />
+			<br /><br />
+
+
+			min, max
+			<br />
+			<!-- min, max -->
+			<input type="number" min="3" max="9" />
+			<br /><br />
+
+
+			multiple
+			<br />
+			<!-- multiple -->
+			<input type="file" id="ficheros" multiple />
+			<br /><br />
+			<button onclick="verFicheros();">Ver nombres de ficheros</button>
+			<br /><br />
+
+
+			pattern
+			<br />
+			<!-- pattern -->
+			<input type="text" pattern="^[A-Z]{4}$" title="Cuatro letras mayúsculas" />
+			<br /><br />
+
+
+			placeholder
+			<br />
+			<!-- placeholder -->
+			<input type="text" placeholder="Nombre aquí" />
+			<br /><br />
+
+
+			required
+			<br />
+			<!-- required -->
+			<input type="text" required="required" />
+			<br /><br />
+
+
+			step
+			<br />
+			<!-- step -->
+			<input type="number" step="5" min="0" max="100" />
+			<br /><br />
+
+
+			height, width
+			<br />
+			<!-- height, width -->
+			<input type="image" src="./recursos/ball.gif" height="70" width="70" />
+			<br /><br />
+
+
+
+			<!-- Otros vistos antes: list, name -->
+
+			<input type="submit" value="Enviar validando" />
+			<input type="submit" value="Enviar sin validar" formnovalidate="formnovalidate" />
+
+		</form>
+
+		<script type="text/javascript">
+			
+			function verFicheros() {
+				var c = "";
+				var ficheros = document.getElementById("ficheros").files;
+				Array.from(ficheros,f => {
+					c += "\n" + f.name;
+				});
+				alert(c);
+			}
+			
+		</script>
+	</body>
+</html>
+

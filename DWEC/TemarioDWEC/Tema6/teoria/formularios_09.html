@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_09 - Campo output</title>
+	</head>
+
+	<body>
+		<h1>formularios_09 - Campo output</h1>
+		<hr />
+
+		<h3>Suma 1</h3>
+		<form oninput="resultado1.value=parseInt(s1.value)+parseInt(s2.value);">
+			<input type="number" id="s1" value="0" />+
+			<input type="number" id="s2" value="0" />=
+			<output name="resultado1"></output>
+		</form>
+
+		<br /><br /><br /><br />
+
+		<h3>Suma 2</h3>
+		<form>
+			<input type="number" id="s3" value="0" oninput="resultado2.value=parseInt(s3.value)+parseInt(s4.value);" />+
+			<input type="number" id="s4" value="0" oninput="resultado2.value=parseInt(s3.value)+parseInt(s4.value);" />=
+			<output name="resultado2"></output>
+		</form>
+	</body>
+</html>

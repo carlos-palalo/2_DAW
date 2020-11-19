@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_08 - Campos en html5</title>
+	</head>
+	<body>
+		<h1>formularios_08 - Campos en html5</h1>
+		<hr />
+
+		<form>
+			<!-- datalist -->
+			Ciudades<br />
+			<input list="listaciudades" id="ciudad" name="ciudad" />
+			<datalist id="listaciudades">
+				<option value="AV">Ávila</option>
+				<option value="BU">Burgos</option>
+				<option value="SE">Segovia</option>
+				<option value="VA">Valladolid</option>
+				<option value="ZA">Zamora</option>
+			</datalist>
+			<br /><br /><br />	
+
+
+			<!-- number -->
+			Nota<br />
+			<input type="number" id="numero" name="numero" min="0" max="10" />
+			<br /><br /><br />
+
+
+			<!-- date -->
+			Fecha<br />
+			<input type="date" id="fecha" name="fecha" />
+			<br /><br /><br />
+
+
+			<!-- color -->
+			Color<br />
+			<input type="color" id="color" name="color" />
+			<br /><br /><br />
+
+
+			<!-- range -->
+			Rango<br />
+			<input type="range" id="rango" name="rango" min="0" max="10" />
+			<br /><br /><br />
+
+
+			<!-- month -->
+			Month<br />
+			<input type="month" id="mes" name="mes" />
+			<br /><br /><br />
+
+
+			<!-- week -->
+			Semana<br />
+			<input type="week" id="semana" name="semana" />
+			<br /><br /><br />
+
+
+			<!-- time -->
+			Hora<br />
+			<input type="time" id="hora" name="hora" />
+			<br /><br /><br />
+
+
+			<!-- datetime-local -->
+			Fecha y hora<br />
+			<input type="datetime-local" id="horalocal" name="horalocal" />
+			<br /><br /><br />
+
+
+			<!-- email -->
+			Email<br />
+			<input type="email" id="email" name="email" />
+			<br /><br /><br />
+
+
+			<!-- search -->
+			Búsqueda<br />
+			<input type="search" id="busqueda" name="busqueda" />
+			<br /><br /><br />
+
+
+			<!-- tel (solo safari) -->
+			Teléfono<br />
+			<input type="tel" id="telefono" name="telefono" />
+			<br /><br /><br />
+
+			<!-- url -->
+			URL<br />
+			<input type="url" id="url" name="url" />
+			<br /><br /><br />
+
+			<input type="submit" />
+
+			<button onclick="recorrerFormularios();">Ver datos de todos los formularios</button>
+		</form>
+
+		<script type="text/javascript">
+
+			function recorrerFormularios() {
+				
+				var c = "VALORES";
+				
+				c += "\nCiudad: " + document.getElementById("ciudad").value;
+
+				c += "\nNota: " + document.getElementById("numero").value;
+
+				c += "\nFecha: " + document.getElementById("fecha").value;
+				var objFecha1 = new Date(document.getElementById("fecha").value);
+				c += "\nFecha: " + objFecha1.toUTCString();
+
+				c += "\nColor: " + document.getElementById("color").value;
+
+				c += "\nRango: " + document.getElementById("rango").value;
+
+				c += "\nMes: " + document.getElementById("mes").value;
+				var objFecha2 = new Date(document.getElementById("mes").value);
+				c += "\nMes: " + objFecha2.toUTCString();
+				
+				c += "\nSemana: " + document.getElementById("semana").value;
+
+				c += "\nHora: " + document.getElementById("hora").value;
+
+				c += "\nHora local: " + document.getElementById("horalocal").value;
+				var objFecha3 = new Date(document.getElementById("horalocal").value);
+				c += "\nMes: " + objFecha3.toUTCString();
+
+				c += "\nEmail: " + document.getElementById("email").value;
+
+				c += "\nBúsqueda: " + document.getElementById("busqueda").value;
+
+				c += "\nTeléfono: " + document.getElementById("telefono").value;
+
+				alert(c);
+			}
+		
+		</script>
+	</body>
+</html>
+
