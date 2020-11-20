@@ -48,8 +48,22 @@
             text-align: center;
             position: fixed;
         }
-        .hamburguesa{
+
+        .hamburguesa {
             display: none;
+        }
+
+        .hamburguesa button {
+            background-color: #0277bd;
+            color: white;
+            border: 1px solid white;
+            padding: 7px 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 4px 1px white;
+        }
+
+        .hamburguesa span{
+            vertical-align: middle;
         }
 
         .menu {
@@ -69,7 +83,8 @@
             border-radius: 5px;
             box-shadow: 1px 1px 1px 1px lightgrey;
         }
-        .menu li:hover{
+
+        .menu li:hover {
             transition: background-color 1s;
             background-color: #58a5f0;
         }
@@ -192,7 +207,7 @@
         }
     </style>
     <script>
-        function openNav(elemento){
+        function openNav(elemento) {
             document.getElementById("myNav").style.display = "block";
             elemento.parentElement.style.display = "none";
         }
