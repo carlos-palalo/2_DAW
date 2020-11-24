@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        var celdas = document.getElementsByTagName("td");
+        alert(nodoTabla);
+        for (var i = 0; i < celdas.length; i++) {
+            celdas[i].addEventListener("click", function (e) {
+                var col = 0, fila = 0;
+                var nodoTabla = document.getElementsByTagName("table");
+                
+                for(var j =0; j<nodoTabla.length; j++){
+                    console.log("a");
+                }
+            })
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>Decir en que fila y columna clicko</h1>
+    <hr>
+    <table border="3">
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>E</td>
+            <td>F</td>
+            <td>G</td>
+        </tr>
+        <tr>
+            <td>H</td>
+            <td>I</td>
+            <td>J</td>
+        </tr>
+        <tr>
+            <td>K</td>
+            <td>L</td>
+            <td>M</td>
+        </tr>
+        <tr>
+            <td>N</td>
+            <td>Ñ</td>
+            <td>O</td>
+        </tr>
+    </table>
+</body>
+
+</html>
