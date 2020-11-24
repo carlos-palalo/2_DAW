@@ -2,20 +2,6 @@
 <html>
 
 <head>
-    <script>
-        var celdas = document.getElementsByTagName("td");
-        alert(nodoTabla);
-        for (var i = 0; i < celdas.length; i++) {
-            celdas[i].addEventListener("click", function (e) {
-                var col = 0, fila = 0;
-                var nodoTabla = document.getElementsByTagName("table");
-                
-                for(var j =0; j<nodoTabla.length; j++){
-                    console.log("a");
-                }
-            })
-        }
-    </script>
 
 </head>
 
@@ -49,6 +35,27 @@
             <td>O</td>
         </tr>
     </table>
+
+    <script>
+        var celdas = document.getElementsByTagName("td");
+        for (var i = 0; i < celdas.length; i++) {
+            celdas[i].addEventListener("click", function (e) {
+                var columnas = 0, fila = 0;
+
+                var nodoTbody = this.parentNode.parentNode;
+                for (var fil = 0; fil < nodoTbody.children.length; fil++) {
+                    for (var col = 0; col < nodoTbody.children[fil].children.length; col++) {
+                        if (this == nodoTbody.children[fil].children[col]) {
+                            fila = fil + 1;
+                            columnas = col + 1;
+                        }
+                    }
+                }
+
+                alert("Columna: " + columnas + " ---- Fila: " + fila);
+            })
+        };
+    </script>
 </body>
 
 </html>
