@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_15 - Ejercicio: Validar un formulario sin javascript</title>
+	</head>
+
+	<body>
+		<h1>formularios_15
+			 - Ejercicio: Validar un formulario sin javascript</h1>
+		<hr />
+
+		<form>
+			Nombre<br />
+			<input type="text" name="nombre" id="nombre" pattern="^[a-zA-Z\s]+$" title="Nombre incorrecto" required="required" />
+			<br /><br />
+			
+			Apellidos<br />
+			<input type="text" name="apellidos" id="apellidos" pattern="^[a-zA-Z\s]+$" title="Apellidos incorrectos" required="required"/>
+			<br /><br />
+
+			DNI<br />
+			<input type="text" name="dni" id="dni" pattern="^\d{8}[A-Z]$" title="DNI incorrecto" required="required" />
+			<br /><br />
+
+			Dirección<br />
+			<input type="text" name="direccion" id="direccion" pattern="^[\S\s]*$" title="Dirección incorrecta" required="required"/>
+			<br /><br />
+
+			Localidad<br />
+			<input type="text" name="localidad" id="localidad" pattern="^[a-zA-Z\s]+$" title="Localidad incorrecta" required="required"/>
+			<br /><br />
+
+			Provincia<br />
+			<input type="text" name="provincia" id="provincia" pattern="^[a-zA-Z\s]+$" title="Provincia incorrecta" required="required"/>
+			<br /><br />
+
+			Código postal<br />
+			<input type="text" name="cp" id="cp"  pattern="^\d{5}$" title="Código postal incorrecto" required="required"/>
+			<br /><br />
+
+			Teléfono<br />
+			<input type="tel" name="telefono" id="telefono" title="Teléfono incorrecto" required="required" />
+			<br /><br />
+
+			email<br />
+			<input type="email" name="email" id="email" title="Email incorrecto" required="required" />
+			<br /><br />
+
+			<input type="submit" value="Enviar" />
+
+		</form>
+	</body>
+</html>

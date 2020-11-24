@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_16 - Ejercicio: Editar una selección de opciones</title>
+	</head>
+	<body>
+		<h1>formularios_16 - Ejercicio: Editar una selección de opciones</h1>
+		<hr />
+
+		Ciudad<br />
+		<input type="text" id="ciudad" />
+		<br /><br />
+
+		Código de ciudad<br />
+		<input type="text" id="codigociudad" />
+		<br /><br /><br />
+
+		<input type="radio" id="insertar" name="operacion" value="ins">Insertar
+		<br /><br />
+
+		<input type="radio" id="eliminar" name="operacion" value="eli">Eliminar
+		<br /><br />
+
+		<input type="radio" id="modificar" name="operacion" value="mod">Modificar
+		<br /><br />
+
+		<input type="checkbox" id="multiple" name="multiple" onchange="seleccionarMultiple();" />Selección múltiple
+		<br /><br />
+
+		<button onclick="procesar()">Procesar</button>
+
+		<hr />
+		<form id="formulario">
+
+			<select id="ciudades">
+			</select>
+
+		</form>
+
+		<script type="text/javascript">
+		
+			function seleccionarMultiple() {
+				var ciudades = document.getElementById("ciudades");
+	
+				if(document.getElementById("multiple").checked)	{
+					if(!ciudades.hasAttribute("multiple")) {
+						ciudades.setAttribute("multiple","multiple");
+						ciudades.setAttribute("size","4");
+					}
+				} else {
+					if(ciudades.hasAttribute("multiple")) {
+						ciudades.removeAttribute("multiple");
+						ciudades.removeAttribute("size");
+					}
+				}
+			}
+
+
+			function procesar()	{
+				if(document.getElementById("insertar").checked)	{
+					var opcion = document.createElement("option");
+					opcion.setAttribute("value",document.getElementById("codigociudad").value);
+	
+					var texto = document.createTextNode(document.getElementById("ciudad").value);
+	
+					opcion.appendChild(texto);
+	
+					document.getElementById("ciudades").appendChild(opcion);
+				}
+	
+				if(document.getElementById("eliminar").checked)	{
+					var indice = document.getElementById("ciudades").selectedIndex;
+	
+					var nodoEliminar = document.getElementById("ciudades").children[indice];
+	
+					document.getElementById("ciudades").removeChild(nodoEliminar);
+				}
+	
+				if(document.getElementById("modificar").checked) {
+					var indice = document.getElementById("ciudades").selectedIndex;
+	
+					var nodoModificar = document.getElementById("ciudades").children[indice];
+	
+					nodoModificar.value = document.getElementById("codigociudad").value;
+					nodoModificar.innerHTML = document.getElementById("ciudad").value;
+				}
+			}
+		
+		</script>
+	</body>
+</html>
+

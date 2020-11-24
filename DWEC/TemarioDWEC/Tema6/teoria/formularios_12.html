@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_12 - Ejercicio: No coincidan dos elecciones de un campo select</title>
+	</head>
+	<body>
+		<h1>formularios_12 - Ejercicio: No coincidan dos elecciones de un campo select</h1>
+		<hr />
+
+		<h2>Selecciona por orden de preferencia tus ciudades favoritas</h2>
+		<form>
+
+			<select name="paris" id="paris" onchange="preferencias('paris',0,0,4,5);">
+				<option value=""></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>París
+
+			<br /><br />
+
+			<select name="londres" id="londres" onchange="preferencias('londres',1,0,4,5);">
+				<option value=""></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>Londres
+
+			<br /><br />
+			
+			<select name="roma" id="roma" onchange="preferencias('roma',2,0,4,5);">
+				<option value=""></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>Roma
+
+			<br /><br />
+			
+			<select name="madrid" id="madrid" onchange="preferencias('madrid',3,0,4,5);">
+				<option value=""></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>Madrid
+			
+			<br /><br />
+
+			<select name="berlin" id="berlin" onchange="preferencias('berlin',4,0,4,5);">
+				<option value=""></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>Berlín
+		
+			<hr />
+
+			<h2>Selecciona por orden de preferencia tus colores favoritos</h2>
+			<select name="verde" id="verde" onchange="preferencias('verde',0,5,7,3);">
+				<option value=""></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>Verde
+
+			<br /><br />
+
+			<select name="rojo" id="rojo" onchange="preferencias('rojo',1,5,7,3);">
+				<option value=""></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>Rojo
+
+			<br /><br />
+
+			<select name="azul" id="azul" onchange="preferencias('azul',2,5,7,3);">
+				<option value=""></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>Azul
+
+			<br /><br />
+
+		</form>
+
+		<script type="text/javascript">
+	
+			function preferencias(optativa,n,inicio,fin,totales) {
+				objv_optativa = document.getElementById(optativa);
+				j = 0;
+				var lista = new Array(totales);
+	
+				flag = true;
+				cont=0;
+				for(i=inicio;i<=fin;i++) {
+					lista[cont] = window.document.forms[0].elements[i].value;
+					cont++;
+				}
+	
+				for(j=0;j<totales;j++) {
+					if(j!=n)
+						if((lista[j]==lista[n]) && lista[n]!=0)
+							flag = false;
+				}
+	
+				if(flag == false) {
+					alert('\u25cf\u0020 Números iguales');
+					objv_optativa.selectedIndex = 0;
+				}
+			}	
+			
+		</script>
+	</body>
+</html>
+
