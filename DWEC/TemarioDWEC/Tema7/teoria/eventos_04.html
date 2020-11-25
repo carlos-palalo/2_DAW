@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_04 - Añadir eventos: addEventListener</title>
+	</head>
+	<body>
+		<h1>eventos_04 - Añadir eventos: addEventListener</h1>
+		<hr />
+		
+		<!-- FORMATO HTML: 1) Se mete el evento en la etiqueta HTML con el tipo de evento correspondiente -->
+		<p id="parrafo1" onclick="console.log('Click 1A');" onclick="console.log('Click 1B');">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+		<p id="parrafo4">Cuarto párrafo</p>
+
+		<script type="text/javascript">
+
+			function f3() {
+				console.log("Click 3A");
+			}
+
+			//FORMATO JAVASCRIPT: 2) Se asigna la función que gestionará el evento a la propiedad del elemento (con el nombre del evento)
+			document.getElementById("parrafo2").onclick = function (){console.log("Click 2A");};
+			//Sobreescribe al anterior
+			document.getElementById("parrafo2").onclick = () => {console.log("Click 2B");};
+
+
+
+			//MÉTODO ADDEVENTLISTENER: 3) Se emplea el método addEventListener. Podemos tener varios métodos asociados a un evento
+			document.getElementById("parrafo3").addEventListener("click",f3);
+			document.getElementById("parrafo3").addEventListener("click",function (){console.log("Click 3B")});
+
+
+
+			//MÉTODO ADDEVENTLISTENER  CON FUNCIÓN FLECHA: 4) Se emplea el método addEventListener. Podemos tener varios métodos asociados a un evento
+			document.getElementById("parrafo4").addEventListener("click",() => console.log(("Click 4A")));
+			document.getElementById("parrafo4").addEventListener("click",x => console.log(("Click 4B")));
+
+		</script>
+	</body>
+</html>

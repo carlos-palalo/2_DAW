@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_08 - diferencia entre mouseenter y mouseover y entre mouseleave y mouseout</title>
+		<style>
+			div {
+				border: 2px solid red;
+				background-color: cadetblue;
+			}
+
+			p {
+				border: 2px solid blue;
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_08 - diferencia entre mouseenter y mouseover y entre mouseleave y mouseout</h1>
+		<h3>Ver consola</h3>
+		<hr />
+
+		<h2>mouseenter y mouseover</h2>
+		<div id="cuadro1">
+			<br /><br /><br />
+			<p id="parrafo1"><br />Texto del párrafo<br /></p>
+			<br /><br /><br />
+		</div>
+
+		<br /><br /><br />
+		
+		<h2>mouseleave y mouseout</h2>
+		<div id="cuadro2">
+			<br /><br /><br />
+			<p id="parrafo2"><br />Texto del párrafo<br /></p>
+			<br /><br /><br />
+		</div>
+
+		<script type="text/javascript">
+
+			document.getElementById("cuadro1").addEventListener("mouseenter",function () {console.log("cuadro1 - mouseenter")});
+			document.getElementById("cuadro1").addEventListener("mouseover",function () {console.log("cuadro1 - mouseover")});
+			document.getElementById("parrafo1").addEventListener("mouseenter",function () {console.log("parrafo1 - mouseenter")});
+			document.getElementById("parrafo1").addEventListener("mouseover",function () {console.log("parrafo1 - mouseover")});
+
+			document.getElementById("cuadro2").addEventListener("mouseleave",function () {console.log("cuadro2 - mouseleave")});
+			document.getElementById("cuadro2").addEventListener("mouseout",function () {console.log("cuadro2 - mouseout")});
+			document.getElementById("parrafo2").addEventListener("mouseleave",function () {console.log("parrafo2 - mouseleave")});
+			document.getElementById("parrafo2").addEventListener("mouseout",function () {console.log("parrafo2 - mouseout")});
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_10 - Ejercicio: Hacer click sobre una celda y que se elimine</title>
+		<style>
+			table {
+				border: 3px solid black;
+			}
+			td {
+				width: 40px;
+				height: 40px;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_10 - Ejercicio: Hacer click sobre una celda y que se elimine</h1>
+		<hr />
+		<table>
+			<tbody>
+				<tr><td>A</td><td>B</td><td>C</td></tr>
+				<tr><td>D</td><td>E</td><td>F</td></tr>
+				<tr><td>G</td><td>H</td><td>I</td></tr>
+				<tr><td>J</td><td>K</td><td>L</td></tr>
+				<tr><td>M</td><td>N</td><td>O</td></tr>
+				<tr><td>P</td><td>Q</td><td>R</td></tr>
+			</tbody>
+		</table>
+
+		<script type="text/javascript">
+
+			//Se ponen los eventos
+			var celdas = document.getElementsByTagName("td");
+
+			for(i=0;i<celdas.length;i++) {
+				celdas[i].addEventListener("click",function (e) {
+					var padre = this.parentElement;
+					var tbodyNodo = padre.parentElement;
+					var tableNodo = tbodyNodo.parentElement;
+
+					padre.removeChild(this);
+					
+					if(padre.children.length==0) {
+						//Eliminamos la fila
+						padre.parentElement.removeChild(padre);
+						
+						if(tbodyNodo.children.length==0) {
+							//Eliminamos tbody
+							tbodyNodo.parentElement.removeChild(tbodyNodo);
+
+							//Eliminamos la tabla
+							tableNodo.parentElement.removeChild(tableNodo);
+						}
+					}
+					
+				});
+			}
+
+		</script>
+	</body>
+</html>

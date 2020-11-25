@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_06 - Eliminar eventos: removeEventListener</title>
+	</head>
+	<body>
+		<h1>eventos_06 - Eliminar eventos: removeEventListener</h1>
+		<hr />
+		<p id="parrafo1" onclick="alert('Click 1')">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+
+		<script type="text/javascript">
+
+			function f3() {
+				alert("Click 3A");
+			}
+
+			//SE PONEN LOS EVENTOS
+			//parrafo1 --> Puesto en la etiqueta HTML
+			
+			//parrafo2 --> Puesto con la propiedad onclick
+			document.getElementById("parrafo2").onclick = function (){alert("Click 2");};
+
+			//parrafo3 --> Se ponen con addEventListener (se ponen 2, uno con función nominal, otro con función anónima y otro con función flecha)
+			document.getElementById("parrafo3").addEventListener("click",f3); 
+			document.getElementById("parrafo3").addEventListener("click",function (){alert("Click 3B")});
+			document.getElementById("parrafo3").addEventListener("click",() => alert("Click 3C"));
+
+
+			//SE QUITAN LOS EVENTOS
+			//parrafo1 --> Pueston en la etiqueta HTML (sólo podía haber uno)
+			document.getElementById("parrafo1").removeAttribute("onclick");
+
+			//parrafo2 --> Puesto con la propiedad onclick (sólo podía haber uno)
+			document.getElementById("parrafo2").onclick = "";
+
+			//parrafo3 --> Se ponen con addEventListener
+			//De esta forma elimino un evento
+			document.getElementById("parrafo3").removeEventListener("click",f3); // SI --> Creado con función nominal
+			
+			
+			//Con los tres metodos siguientes no quitamos los eventos
+			document.getElementById("parrafo3").removeEventListener("click",function (){alert("Click 3B");});
+			document.getElementById("parrafo3").removeEventListener("click",() => alert("Click 3C"));
+			document.getElementById("parrafo3").onclick = "";
+			//document.getElementById("parrafo3").removeEventListener("click"); //Directamente da error al necesitar dos parámetros
+
+		</script>
+	</body>
+</html>

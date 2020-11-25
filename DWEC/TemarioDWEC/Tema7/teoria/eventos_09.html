@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_09 - Ejercicio: Al hacer click sobre un párrafo, éste debe situarse como primer párrafo</title>
+	</head>
+	<body>
+		<h1>eventos_09 - Ejercicio: Al hacer click sobre un párrafo, éste debe situarse como primer párrafo</h1>
+		<hr />
+
+		<div>
+			<p>Texto del párrafo 1</p>
+			<p>Texto del párrafo 2</p>
+			<p>Texto del párrafo 3</p>
+			<p>Texto del párrafo 4</p>
+			<p>Texto del párrafo 5</p>
+		</div>
+		
+		<script type="text/javascript">
+
+			var parrafos = document.getElementsByTagName("p");
+
+			for(i=0;i<parrafos.length;i++) {
+				parrafos[i].addEventListener("click",function (e) {
+					var primerParrafo = parrafos[0];
+					primerParrafo.parentElement.insertBefore(this,primerParrafo);
+				});
+			}
+
+		</script>
+	</body>
+</html>
