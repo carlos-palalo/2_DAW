@@ -3,13 +3,109 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #cuadroPalabra {
+            font-size: xx-large;
+            font-weight: bold;
+        }
+
+        #jugador1,
+        #jugador2,
+        #cuadroPalabra {
+            border: 5px solid black;
+            padding: 50px;
+        }
+
+        #jugador2,
+        #cuadroPalabra {
+            display: none;
+        }
+    </style>
     <script type="text/javascript">
-        
+        var palabra = "", intentos = 0, nueva = "", listaLetras = [];
+        function introducirPalabra() {
+            palabra = document.getElementById("palabra").value;
+            document.getElementById("jugador1").style.display = "none";
+            document.getElementById("jugador2").style.display = "block";
+            document.getElementById("cuadroPalabra").style.display = "block";
+            nueva = palabra.replace(/\w/g, "_ ");
+            document.getElementById("oculta").innerHTML = nueva;
+        }
+        function decirLetra() {
+            intentos++;
+            if (intentos > 5) {
+                //deshabilitar
+            } else {
+                document.getElementById("intentos").innerHTML = intentos;
+                listaLetras.push(document.getElementById("letras").value);
+                document.getElementById("listaLetras").innerHTML = listaLetras;
+            }
+        }
+        function resolver() {
+
+        }
     </script>
 </head>
 
-<body>
-    
+<body onload="">
+    <h1>Ahorcado</h1>
+    <hr>
+    <div id="jugador1">
+        <h1>Jugador 1</h1>
+        <p>Introduce la palabra:</p>
+        <input type="text" id="palabra" name="palabra">
+        <br>
+        <br>
+        <button onclick="introducirPalabra()">Introducir Palabra</button>
+    </div>
+    <hr>
+    <div id="cuadroPalabra">
+        <div id="intentos"></div>
+        <hr>
+        <div id="listaLetras"></div>
+        <hr>
+        <div id="oculta"></div>
+    </div>
+    <hr>
+    <div id="jugador2">
+        <h1>Jugador 2</h1>
+        <select name="letras" id="letras">
+            <option id="A">A</option>
+            <option id="B">B</option>
+            <option id="C">C</option>
+            <option id="D">D</option>
+            <option id="E">E</option>
+            <option id="F">F</option>
+            <option id="G">G</option>
+            <option id="H">H</option>
+            <option id="I">I</option>
+            <option id="J">J</option>
+            <option id="K">K</option>
+            <option id="L">L</option>
+            <option id="M">M</option>
+            <option id="N">N</option>
+            <option id="Ñ">Ñ</option>
+            <option id="O">O</option>
+            <option id="P">P</option>
+            <option id="Q">Q</option>
+            <option id="R">R</option>
+            <option id="S">S</option>
+            <option id="T">T</option>
+            <option id="U">U</option>
+            <option id="B">V</option>
+            <option id="W">W</option>
+            <option id="X">X</option>
+            <option id="Y">Y</option>
+            <option id="Z">Z</option>
+        </select>
+        <br><br>
+        <button onclick="decirLetra()">Decir Letra</button>
+        <p>Decir palabra:</p>
+        <input type="text" id="resolver" name="resolver">
+        <button onclick="resolver()">Resolver</button>
+    </div>
 </body>
 
 </html>
