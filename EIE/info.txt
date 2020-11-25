@@ -258,5 +258,16 @@ Pag a partir de 70 - Subrayar lo que me parezca
 	Autofinanciacion de mantenimiento 	-> Amortización
 										-> Provisiones
 
+Pag 81
+	1	Instituto de Credito Oficial (ICO)
+	2	A fondo perdido
+	3	Si, porque es muy largo
+	4	Contratar una empresa externa
+	5	Tendría que ir a una Ventanilla Unica Empresarial (VUE) o un Punto de Atención al Emprendedor (PAE), o buscar por Internet lo que necesita
+	9	Cuando necesitemos un aval
+	11	Business-angel porque es menos exigente y te ayuda
 
+Pag 74
+	Ponte a prueba
+		5 % 30000 = 1500 * 5 + 30000 = 37500
 
