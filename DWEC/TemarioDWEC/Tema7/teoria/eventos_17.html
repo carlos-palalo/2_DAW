@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_17 - No ejecutar otros métodos manejadores del mismo evento: stopImmediatePropagation</title>
+	</head>
+	<body>
+		<h1>eventos_17 - No ejecutar otros métodos manejadores del mismo evento: stopImmediatePropagation</h1>
+		<h3>Ver consola</h3>
+		<hr />
+		<p id="parrafo">Pulsar dentro de este párrafo con click</p>
+
+		<script type="text/javascript">
+
+			function f1(pEvento) { 
+				console.log("Click 1.A");
+				pEvento.stopImmediatePropagation();
+				console.log("Click 1.B"); //Sí se ejecuta
+			}
+
+			function f2() {
+				console.log("Click 2");	
+			}
+
+			function f3() {
+				console.log("Mouseup 1");	
+			}
+
+			document.getElementById("parrafo").addEventListener("click",f1);
+			document.getElementById("parrafo").addEventListener("click",f2);
+
+			document.getElementById("parrafo").addEventListener("mouseup",f3);
+
+		</script>
+	</body>
+</html>

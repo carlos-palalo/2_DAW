@@ -2,10 +2,77 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body * {
+            margin: 20px;
+        }
+
+        img {
+            display: block;
+            width: 350px;
+        }
+    </style>
+    <script type="text/javascript">
+        var cont = 0;
+        document.getElementsByTagName("*").addEventListener("click", function () {
+            cont++;
+            document.getElementById("click").innerHTML = "Clicks: " + cont;
+        });
+    </script>
 </head>
 
 <body>
-    <h1></h1>
+    <h1>Sacar el número de click que se hace en la página excepto las tablas</h1>
+    <hr>
+    <p id="click">Clicks: </p>
+    <table border="3">
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>E</td>
+            <td>F</td>
+            <td>G</td>
+        </tr>
+        <tr>
+            <td>H</td>
+            <td>I</td>
+            <td>J</td>
+        </tr>
+        <tr>
+            <td>K</td>
+            <td>L</td>
+            <td>M</td>
+        </tr>
+        <tr>
+            <td>N</td>
+            <td>Ñ</td>
+            <td>O</td>
+        </tr>
+    </table>
+    <img src="../img/foto1.jpg">
+    <img src="../img/foto2.jpg">
+    <table border="3">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
 </body>
 
 </html>

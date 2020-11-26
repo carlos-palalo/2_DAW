@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_20 - Ejercicio: Contar los clicks de ratón que se hacen en cualquier parte de la página salvo en las tablas</title>
+		<style>
+			p {
+				font-size: 30px;
+			}
+
+			div {
+					background-color: red;
+					width: 200px;
+					height: 200px;
+				}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_20 - Ejercicio: Contar los clicks de ratón que se hacen en cualquier parte de la página salvo en las tablas</h1>
+		<hr />
+
+		<p id="parrafoClicks"></p>
+
+		<table border="3">
+			<tbody>
+				<tr><td>A</td><td>B</td><td>C</td></tr>
+				<tr><td>D</td><td>E</td><td>F</td></tr>
+				<tr><td>G</td><td>H</td><td>I</td></tr>
+				<tr><td>J</td><td>K</td><td>L</td></tr>
+				<tr><td>M</td><td>N</td><td>O</td></tr>
+			</tbody>
+		</table>
+
+		<br /><br />
+
+		<img src="./recursos/midibujo.gif" />
+
+		<br /><br />
+
+		<div></div>
+
+		<br /><br />
+
+		<table border="3">
+			<tbody>
+				<tr><td>A</td><td>B</td><td>C</td></tr>
+				<tr><td>D</td><td>E</td><td>F</td></tr>
+				<tr><td>G</td><td>H</td><td>I</td></tr>
+				<tr><td>J</td><td>K</td><td>L</td></tr>
+				<tr><td>M</td><td>N</td><td>O</td></tr>
+			</tbody>
+		</table>
+
+		<input type="text" id="texto" />
+
+		<script type="text/javascript">
+
+			var clicks = 0;
+			document.getElementById("parrafoClicks").innerHTML = clicks;
+
+			document.addEventListener("click",function () {
+				clicks++;
+				document.getElementById("parrafoClicks").innerHTML = clicks;
+			});
+
+			var listaTiposElementos = [];
+
+			
+			listaTiposElementos[0] = document.getElementsByTagName("table");
+			//listaTiposElementos[1] = document.getElementsByTagName("img");
+			
+			for(i=0;i<listaTiposElementos.length;i++) {
+				for(j=0;j<listaTiposElementos[i].length;j++) {
+					listaTiposElementos[i][j].addEventListener("click",function (event) {
+						event.stopPropagation();
+					});
+				}
+			}
+			
+			
+			
+			
+
+			/*var tablas = document.getElementsByTagName("img");
+			for(i=0;i<tablas.length;i++) {
+				tablas[i].addEventListener("click",function (event) {
+					event.stopPropagation();
+				});
+			}*/
+			
+		</script>
+	</body>
+</html>

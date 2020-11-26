@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_19 - Ejercicio: Hacer una caja de texto que admita únicamente números</title>
+	</head>
+	<body>
+		<h1>eventos_19 - Ejercicio: Hacer una caja de texto que admita únicamente números</h1>
+		<hr />
+
+		Esta caja admite números únicamente
+		<input type="text" id="texto" />
+
+		<script type="text/javascript">
+
+			document.getElementById("texto").addEventListener("keypress",function (e) {
+				console.log(e.keyCode);
+				if(!(e.keyCode >= 48 && e.keyCode <= 57)) {
+					e.preventDefault();
+				}
+			});
+			
+		</script>
+	</body>
+</html>

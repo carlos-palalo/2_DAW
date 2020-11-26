@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_16 - Objeto Event (target vs currentTarget)</title>
+		<style>
+			div {
+				left: 25%;
+				top: 25%;
+				position: relative;
+			}
+
+			.claseRojo {
+				background-color: red;
+				width: 400px;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_16 - Objeto Event (target vs currentTarget)</h1>
+		<hr />
+		
+		<form id="formulario">
+			<input type="text" id="texto" />
+			<br /><br /><br />
+			<button id="boton">Pulsar</button>
+		</form>
+
+		<script type="text/javascript">
+
+		function funcion(pEvento) {
+			var c = "";
+
+			//TARGET
+			c += "\nObjeto que dispara el evento: " + pEvento.target;
+			c += "\nNombre de la etiqueta que dispara el evento: " + pEvento.target.tagName;
+
+			//CURRENTTARGET
+			c += "\n\nObjeto que gestiona el evento: " + pEvento.currentTarget;
+			c += "\nNombre de la etiqueta que gestiona el evento: " + pEvento.currentTarget.tagName;
+
+			alert(c);
+		}
+
+		document.getElementById("formulario").addEventListener("click",funcion);
+
+		</script>
+	</body>
+</html>

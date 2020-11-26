@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_18 - No ejecutar la acción por defecto: preventDefault</title>
+		<style>
+			div {
+				left: 25%;
+				top: 25%;
+				position: relative;
+				background-color: red;
+				width: 400px;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_18 - No ejecutar la acción por defecto: preventDefault</h1>
+		<hr />
+		<a href="http://www.iesribera.es" id="enlace1">IES Ribera de Castilla</a>
+		<br /><br />
+		<form>
+			<input type="text" id="caja1" />
+			<br /><br />
+			<input type="text" id="caja2" />
+			<br /><br />
+			<input type="reset" value="Resetear" id="resetear">
+			<input type="submit" value="Enviar" id="enviar">
+		</form>
+		
+
+		<script type="text/javascript">
+
+			document.getElementById("enlace1").addEventListener("click",function (event) {
+				event.preventDefault();
+			});
+
+			document.getElementById("caja1").addEventListener("keypress",function (event) {
+				event.preventDefault();
+			});
+
+			document.getElementById("resetear").addEventListener("click",function (event) {
+				event.preventDefault();
+			});
+
+			document.getElementById("enviar").addEventListener("click",function (event) {
+				event.preventDefault();
+			});
+
+		</script>
+	</body>
+</html>
