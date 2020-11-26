@@ -22,27 +22,50 @@
         #cuadroPalabra {
             display: none;
         }
+
+        #intentos {
+            color: green;
+        }
+
+        #listaLetras {
+            color: red;
+        }
     </style>
     <script type="text/javascript">
         var palabra = "", intentos = 0, nueva = "", listaLetras = [];
+
         function introducirPalabra() {
-            palabra = document.getElementById("palabra").value;
+            palabra = document.getElementById("palabara").value.toUpperCase();
             document.getElementById("jugador1").style.display = "none";
             document.getElementById("jugador2").style.display = "block";
             document.getElementById("cuadroPalabra").style.display = "block";
             nueva = palabra.replace(/\w/g, "_ ");
             document.getElementById("oculta").innerHTML = nueva;
         }
+
         function decirLetra() {
-            intentos++;
-            if (intentos > 5) {
-                //deshabilitar
+            if (listaLetras.indexOf(document.getElementById("letras").value) != -1) {
+                alert("Letra ya dicha. Elige otra.")
             } else {
+                intentos++;
                 document.getElementById("intentos").innerHTML = intentos;
                 listaLetras.push(document.getElementById("letras").value);
                 document.getElementById("listaLetras").innerHTML = listaLetras;
+                if (intentos >= 5) {
+                    document.getElementById("letras").disabled = true;
+                    document.getElementById("decirLetra").disabled = true;
+                }
+                formarPalabra();
             }
         }
+
+        function formarPalabra() {
+            var indice = palabra.indexOf(document.getElementById("letras").value);
+            if (indice != -1) {
+                nueva = palabra.replace(document.getElementById("letras").value,"")
+            }
+        }
+
         function resolver() {
 
         }
@@ -101,7 +124,7 @@
             <option id="Z">Z</option>
         </select>
         <br><br>
-        <button onclick="decirLetra()">Decir Letra</button>
+        <button id="decirLetra" onclick="decirLetra()">Decir Letra</button>
         <p>Decir palabra:</p>
         <input type="text" id="resolver" name="resolver">
         <button onclick="resolver()">Resolver</button>
