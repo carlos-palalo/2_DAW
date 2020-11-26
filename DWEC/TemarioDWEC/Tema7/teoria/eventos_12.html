@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_12 - Propagación (capturing and bubbling)</title>
+		<style>
+			div {
+				left: 25%;
+				top: 25%;
+				position: relative;
+			}
+
+			.claseRojo {
+				background-color: red;
+				width: 400px;
+				height: 400px;
+			}
+
+			.claseAzul {
+				background-color: blue;
+				width: 200px;
+				height: 200px;
+			}
+
+			.claseAmarillo {
+				background-color: yellow;
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_12 - Propagación (capturing and bubbling)</h1>
+		<h3>Ver consola</h3>
+		<hr />
+		<p>BUBBLING</p>
+		<div class="claseRojo" id="cRojo1">
+			<div class="claseAzul" id="cAzul1">
+				<div class="claseAmarillo" id="cAmarillo1">
+				</div>
+			</div>
+		</div>	
+		<hr />
+		<p>CAPTURING</p>
+		<div class="claseRojo" id="cRojo2">
+			<div class="claseAzul" id="cAzul2">
+				<div class="claseAmarillo" id="cAmarillo2">
+				</div>
+			</div>
+		</div>	
+
+		<script type="text/javascript">
+
+			//FUNCIONES
+			function fRojoBubbling(e) {
+				var origen = e.target.id;
+				var gestion = e.currentTarget.id;
+				console.log("ROJO BUBBLING, origen en " + origen + ", gestionado por " + gestion);
+			}
+			function fAzulBubbling() {console.log("AZUL BUBBLING");}
+			function fAmarilloBubbling() {console.log("AMARILLO BUBBLING");}
+
+			function fRojoCapturing() {console.log("ROJO CAPTURING");}
+			function fAzulCapturing() {console.log("AZUL CAPTURING");}
+			function fAmarilloCapturing() {console.log("AMARILLO CAPTURING");}
+
+
+			//EVENTOS
+			//BUBBLING --> De dentro a fuera
+			//El tercer parámetro por defecto es false
+			document.getElementById("cRojo1").addEventListener("click",fRojoBubbling);
+			document.getElementById("cAzul1").addEventListener("click",fAzulBubbling,false);
+			document.getElementById("cAmarillo1").addEventListener("click",fAmarilloBubbling);
+
+			//CAPTURING --> De fuera a dentro --> Comentar y descomentar para probar
+			document.getElementById("cRojo2").addEventListener("click",fRojoCapturing,true);
+			document.getElementById("cAzul2").addEventListener("click",fAzulCapturing,true);
+			document.getElementById("cAmarillo2").addEventListener("click",fAmarilloCapturing,true);
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_11 - Poner eventos para todo el documento</title>
+	</head>
+	<body>
+		<h1>eventos_11 - Poner eventos para todo el documento</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3">Tercer párrafo</p>
+
+		<script type="text/javascript">
+
+			function f1() {
+				alert("Click 1");
+			}
+
+			function f2() {
+				alert("Click 2");
+			}
+
+			function f3() {
+				alert("Click 3");
+			}
+
+
+			//document.addEventListener
+			document.addEventListener("click",f1);
+			document.addEventListener("click",f2);
+			document.addEventListener("click",f3);
+			
+
+			//document.removeEventListener
+			document.removeEventListener("click",f2);
+
+			//Inhabilitar el menú contextual
+			document.oncontextmenu = function () {return false;};
+
+		</script>
+	</body>
+</html>

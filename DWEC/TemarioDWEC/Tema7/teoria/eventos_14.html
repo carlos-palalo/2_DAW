@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_14 - Parar la propagación: stopPropagation</title>
+		<style>
+			div {
+				left: 25%;
+				top: 25%;
+				position: relative;
+			}
+
+			.claseRojo {
+				background-color: red;
+				width: 400px;
+				height: 400px;
+			}
+
+			.claseAzul {
+				background-color: blue;
+				width: 200px;
+				height: 200px;
+			}
+
+			.claseAmarillo {
+				background-color: yellow;
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_14 - Parar la propagación: stopPropagation</h1>
+		<h3>Ver consola</h3>
+		<hr />
+		
+		<div class="claseRojo" id="cRojo">
+			<div class="claseAzul" id="cAzul">
+				<div class="claseAmarillo" id="cAmarillo">
+				</div>
+			</div>
+		</div>	
+
+		<script type="text/javascript">
+
+			function fRojoBubbling() {console.log("ROJO BUBBLING");}
+			function fAzulBubbling(e) {
+				console.log("AZUL BUBBLING");
+				e.stopPropagation();
+			}
+			function fAmarilloBubbling() {console.log("AMARILLO BUBBLING");}
+
+			function fRojoCapturing() {console.log("ROJO CAPTURING");}
+			function fAzulCapturing(e) {
+				console.log("AZUL CAPTURING");
+				//e.stopPropagation();
+			}
+			function fAmarilloCapturing() {console.log("AMARILLO CAPTURING");}
+
+
+			//BUBBLING
+			document.getElementById("cRojo").addEventListener("click",fRojoBubbling);
+			document.getElementById("cAzul").addEventListener("click",fAzulBubbling);
+			document.getElementById("cAmarillo").addEventListener("click",fAmarilloBubbling);
+
+
+			//CAPTURING --> Descomentar las líneas siguientes para añadir capturing y probar cambiando la ubicación del método stopPropagation
+			document.getElementById("cRojo").addEventListener("click",fRojoCapturing,true);
+			document.getElementById("cAzul").addEventListener("click",fAzulCapturing,true);
+			document.getElementById("cAmarillo").addEventListener("click",fAmarilloCapturing,true);
+		</script>
+	</body>
+</html>

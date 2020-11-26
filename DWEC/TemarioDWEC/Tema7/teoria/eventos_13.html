@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_13 - Orden de capturing y bubbling</title>
+		<style>
+			div {
+				left: 25%;
+				top: 25%;
+				position: relative;
+			}
+
+			.claseRojo {
+				background-color: red;
+				width: 400px;
+				height: 400px;
+			}
+
+			.claseAzul {
+				background-color: blue;
+				width: 200px;
+				height: 200px;
+			}
+
+			.claseAmarillo {
+				background-color: yellow;
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_13 - Orden de capturing y bubbling</h1>
+		<h3>Ver consola</h3>
+		<hr />
+
+		<p>CAPTURING and BUBBLING</p>
+		<div class="claseRojo" id="cRojo">
+			<div class="claseAzul" id="cAzul">
+				<div class="claseAmarillo" id="cAmarillo">
+				</div>
+			</div>
+		</div>	
+
+		<script type="text/javascript">
+
+			function fRojoBubbling() {console.log("ROJO BUBBLING");}
+			function fAzulBubbling() {console.log("AZUL BUBBLING");}
+			function fAmarilloBubbling() {console.log("AMARILLO BUBBLING");}
+
+			function fRojoCapturing() {console.log("ROJO CAPTURING");}
+			function fAzulCapturing() {console.log("AZUL CAPTURING");}
+			function fAmarilloCapturing() {console.log("AMARILLO CAPTURING");}
+
+			
+			//CAPTURING --> De fuera a dentro --> Ponerlo después de bubbling y probar
+			document.getElementById("cRojo").addEventListener("click",fRojoCapturing,true);
+			document.getElementById("cAzul").addEventListener("click",fAzulCapturing,true);
+			document.getElementById("cAmarillo").addEventListener("click",fAmarilloCapturing,true);
+			
+			//BUBBLING --> De dentro a fuera
+			//El tercer parámetro por defecto es false
+			document.getElementById("cRojo").addEventListener("click",fRojoBubbling);
+			document.getElementById("cAzul").addEventListener("click",fAzulBubbling);
+			document.getElementById("cAmarillo").addEventListener("click",fAmarilloBubbling);
+		
+			
+
+		</script>
+	</body>
+</html>
