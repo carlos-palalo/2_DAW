@@ -60,15 +60,27 @@
         }
 
         function formarPalabra() {
-            var letra = document.getElementById("letras").value.toLowerCase();
-            
+            var regex;
+            nueva = palabra;
+            for (var i = 0; i < listaLetras.length; i++) {
+                letra = listaLetras[i].toLowerCase();
+                if (palabra.indexOf(letra) != -1) {
+                    regex = new RegExp(letra, "ig");
+                    nueva = nueva.replace(regex, letra.toUpperCase());
+                }
+            }
+            nueva = nueva.replace(/[a-z]/g, "_ ");
+            document.getElementById("oculta").innerHTML = nueva;
         }
 
         function resolver() {
             var solucion = document.getElementById("resolver").value.toUpperCase();
+            palabra = palabra.toUpperCase();
             solucion == palabra ? alert("Has acertado!") : alert("Has fallado");
             document.getElementById("resolver").disabled = true;
             document.getElementById("btn-resolver").disabled = true;
+            document.getElementById("letras").disabled = true;
+            document.getElementById("decirLetra").disabled = true;
         }
     </script>
 </head>
