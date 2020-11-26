@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_61 - Ejercicio: Contar el número de atributos que hay en un documento y sacar sus nombres y valores</title>
+	</head>
+	<body>
+		<h1>dom_61 - Ejercicio: Contar el número de atributos que hay en un documento y sacar sus nombres y valores</h1>
+		<hr />
+		<button onclick="procesar();">Ejecutar</button>
+		<div class="container">
+			<p id="parrafo1">Primer párrafo</p>
+			<p id="parrafo2" align="center">Segundo párrafo</p>
+			<p id="parrafo3" style="color:red">Tercer párrafo</p>
+		</div>
+
+		<!-- La etiqueta script lleva implícito el atributo type -->
+		<script>
+
+			function procesar() {
+				var c = "";
+				let cont = 0;
+				let elementos = document.getElementsByTagName('*');
+				for(i = 0; i < elementos.length; i++) {
+					cont = cont + elementos[i].attributes.length;
+					for(j = 0; j < elementos[i].attributes.length; j++) {
+						c += "\nNombre: " + elementos[i].attributes[j].name + " - Valor: " + elementos[i].attributes[j].value;
+					}
+				}
+				c = "\nHay " + cont + " atributos" + c;
+				alert(c);
+			}
+
+		</script>
+	</body>
+</html>

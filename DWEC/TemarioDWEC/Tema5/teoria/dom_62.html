@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_62 - Ejercicio: Quitar y poner alternativamente los atributos a un elemento concreto de la página al hacer click ese elemento</title>
+		<style>
+			.claseParrafo {
+				color:red;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>dom_62 - Ejercicio: Quitar y poner alternativamente los atributos a un elemento concreto de la página al hacer click ese elemento</h1>
+		<hr />
+		<p id="parrafo1">Primer párrafo</p>
+		<p id="parrafo2">Segundo párrafo</p>
+		<p id="parrafo3" style="font-family:arial" class="claseParrafo" onclick="alternar();">Tercer párrafo</p>
+
+
+		<script type="text/javascript">
+
+			//Se hace el ejercicio para el párrafo3
+			var nodo = document.getElementById("parrafo3");
+			var nodoClonado = document.getElementById("parrafo3").cloneNode(true);
+
+			function alternar() {
+				var nombreAtributos=[];
+				
+				if(nodo.attributes.length>1) {
+					//Quitar atributos salvo onclick
+					for(i=0;i<nodo.attributes.length;i++) {
+						nombreAtributos.push(nodo.attributes[i].name);
+					}
+					for(i=0;i<nombreAtributos.length;i++) {
+						if(nombreAtributos[i]!="onclick")
+							nodo.attributes.removeNamedItem(nombreAtributos[i]);
+					}
+				} else {
+					//Poner atributos salvo onclick
+					for(i=0;i<nodoClonado.attributes.length;i++) {
+						if(nodoClonado.attributes[i].name!="onclick")
+							nodo.setAttribute(nodoClonado.attributes[i].name,nodoClonado.attributes[i].value);
+					}
+				}
+			}
+
+		</script>
+	</body>
+</html>
