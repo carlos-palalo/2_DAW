@@ -8,6 +8,7 @@
     <style>
         * {
             box-sizing: border-box;
+            /*border: 1px solid gainsboro;*/
         }
 
         body {
@@ -15,8 +16,9 @@
         }
 
         .icon {
-            display: inline-block;
+            background-repeat: no-repeat;
             margin: 0 auto;
+            background-size: contain;
         }
 
         .icon.rain {
@@ -44,28 +46,50 @@
         }
 
         .tiempo {
-            padding: 10px 10px 0 10px;
-            display: inline-block;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0px 0px 3px 3px gainsboro;
+            padding: 20px;
         }
 
-        .lugar {
+        .tiempo .lugar {
             font-size: 3em;
+            color: rgb(78, 78, 78);
         }
 
-        .actual {
-            overflow: auto;
+        .tiempo .dia,
+        .tiempo .desc,
+        .tiempo .descripcion {
+            color: rgb(78, 78, 78);
+        }
+
+        .tiempo .actual {
+            display: flex;
             width: 100%;
-            margin-bottom: 15px;
         }
 
-        .actual .visual {
+        .tiempo .actual .visual,
+        .tiempo .actual .descripcion {
             width: 50%;
-            float: left;
         }
 
-        .actual .descripcion {
-            width: 50%;
-            float: left;
+        .visual {
+            display: flex;
+            color: rgb(78, 78, 78);
+            margin-bottom: 30px;
+        }
+
+        .visual .temp {
+            font-size: 2.5em;
+        }
+
+        .visual .temp {
+            flex: 0;
+        }
+
+        .visual .escala {
+            flex: 1;
         }
 
         .visual .icon {
@@ -73,59 +97,29 @@
             height: 64px;
         }
 
-        .temp {
-            font-size: 2.5em;
-            display: inline-block;
-            vertical-align: top;
-        }
-
-        .escala {
-            vertical-align: top;
-            display: inline-block;
-            margin-top: 6px;
-            color: grey;
-        }
-
-        .viento:before {
-            content: "Wind: ";
-            color: grey;
-        }
-
-        .precipitacion:before {
+        .precipitacion::before {
             content: "Precipitation: ";
             color: grey;
         }
 
-        .humedad:before {
+        .humedad::before {
             content: "Humidity: ";
             color: grey;
         }
 
-        .polen:before {
+        .viento::before {
+            content: "Wind: ";
+            color: grey;
+        }
+
+        .polen::before {
             content: "Pollen Count: ";
             color: grey;
         }
 
-        .num-polen:before {
-            content: "Pollen ";
-            color: grey;
-        }
-
-        .semana div {
-            vertical-align: middle;
-        }
-
-        .dia-semana {
-            margin: 0 -11px -1px -11px;
-            padding: 10px;
-        }
-
-        .dia-semana div {
-            display: inline-block;
-        }
-
         .dia-semana .dia {
             font-weight: bold;
+            font-size: small;
         }
 
         .dia-semana .icon {
@@ -133,85 +127,139 @@
             height: 50px;
         }
 
-        .dia-semana .temp-semana {
-            text-align: center;
-        }
-
-        .dia-semana .baja {
+        .baja {
             color: grey;
         }
 
-        .dia-semana .baja,
-        .dia-semana .alta {
-            display: block;
+        .num-polen::before {
+            content: "Pollen: ";
+            color: grey;
         }
 
-        .dia-semana .num-polen {
-            text-align: center;
+        .num-polen {
+            font-size: small;
         }
 
-        @media (max-width: 600px) {
-            .tiempo {
-                width: 100%;
+        @media (min-width: 451px) and (max-width: 500px) {
+
+            .actual,
+            .semana>div {
+                border-bottom: 1px solid gainsboro;
+            }
+
+            .semana>div {
+                display: flex;
+                padding: 20px 0px;
+            }
+
+            .semana .dia {
+                font-size: medium;
+                color: black;
             }
 
             .dia-semana {
-                border-top: 1px solid rgba(0, 0, 0, 0.2);
-            }
-
-            .dia-semana:last-of-type {
-                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                display: flex;
+                text-align: center;
+                align-items: center;
             }
 
             .dia-semana .dia {
-                width: 30%;
+                flex-grow: 1;
+                width: 100px;
+                text-align: left;
+            }
+
+            .dia-semana .icon {
+                flex-grow: 1;
             }
 
             .dia-semana .temp-semana {
-                width: 30%;
+                flex-grow: 1;
             }
 
             .dia-semana .num-polen {
-                width: 16%;
+                flex-grow: 1;
+                font-size: medium;
+            }
+        }
+
+        @media (min-width: 501px) and (max-width: 600px) {
+
+            .actual,
+            .semana>div {
+                border-bottom: 1px solid gainsboro;
+            }
+
+            .semana>div {
+                display: flex;
+                padding: 20px 0px;
+            }
+
+            .semana .dia {
+                font-size: medium;
+                color: black;
+            }
+
+            .dia-semana {
+                display: flex;
+                text-align: center;
+                align-items: center;
+            }
+
+            .dia-semana .dia {
+                flex-grow: 1;
+                width: 100px;
+                text-align: left;
+            }
+
+            .dia-semana .icon {
+                flex-grow: 1;
+            }
+
+            .dia-semana .temp-semana {
+                flex-grow: 1;
+                display: flex;
+            }
+
+            .alta,
+            .baja {
+                flex-grow: 1;
+            }
+
+            .dia-semana .num-polen {
+                flex-grow: 1;
+                font-size: medium;
             }
         }
 
         @media (min-width: 601px) {
-            body {
-                font-size: 1em;
-            }
-
-            .tiempo {
+            .semana {
+                display: flex;
                 width: 100%;
-                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
             }
 
-            .dia-semana {
-                display: inline-block;
-                width: 13.5%;
-                margin: 0;
-                border: none;
-                font-size: 0.8em;
+            .temp-semana {
+                display: flex;
             }
 
-            .dia-semana div {
-                display: block;
+            .semana div {
+                width: 100%;
                 text-align: center;
             }
 
-            .dia-semana .dia {
-                text-align: center;
+            .alta,
+            .baja {
+                flex: 0;
             }
 
-            .dia-semana .baja,
-            .dia-semana .alta {
-                display: inline;
+            .alta {
+                margin-left: 20%;
+                margin-right: 15%;
             }
 
-            .dia-semana .temp-semana {
-                font-size: 1.25em;
-            }
+        }
 
+        @media (min-width: 601px) {
             .dia-semana .icon {
                 width: 64px;
                 height: 64px;
@@ -225,26 +273,9 @@
         }
 
         @media (min-width: 500px) {
-
-            .dia-semana .baja,
-            .dia-semana .alta {
-                display: inline-block;
-                width: 45%;
-            }
-
-            .dia-semana .temp-semana {
-                margin-left: 5%;
-            }
-
             .dia-semana .icon {
                 width: 64px;
                 height: 64px;
-            }
-        }
-
-        @media (min-width: 700px) {
-            .tiempo {
-                width: 700px;
             }
         }
     </style>
