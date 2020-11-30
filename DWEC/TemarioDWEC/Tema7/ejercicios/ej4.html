@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .c1 {
+            border: 5px solid red;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 3cm;
+            left: 5cm;
+        }
+
+        .c2 {
+            border: 5px solid blue;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 3cm;
+            left: 12cm;
+        }
+    </style>
+    <script type="text/javascript">
+        function fase1(pevent) {
+            pevent.dataTransfer.setData("", pevent.target.id);
+        }
+        function fase2(pevent) {
+            pevent.preventDefault();
+        }
+        function fase3(pevent) {
+            pevent.preventDefault();
+            var datos = pevent.dataTransfer.getData("");
+            pevent.target.appendChild(document.getElementById(datos));
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Bidireccional</h1>
+    <hr>
+    <div class="c1" id="origen" ondragover="fase2(event)" ondrop="fase3(event)">
+        <p draggable="true" id="t1" ondragstart="fase1(event)">TEXTO 1</p>
+        <p draggable="true" id="t2" ondragstart="fase1(event)">TEXTO 2</p>
+    </div>
+    <div class="c2" id="destino" ondragover="fase2(event)" ondrop="fase3(event)">
+
+    </div>
+</body>
+
+</html>

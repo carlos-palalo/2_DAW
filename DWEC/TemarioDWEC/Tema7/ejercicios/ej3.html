@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        span {
+            font-size: x-large;
+        }
+
+        .cuadro {
+            margin: 50px auto;
+            background-color: red;
+            width: 500px;
+            height: 500px;
+            color: white;
+        }
+
+        table,
+        td {
+            border: 1px solid white;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+
+        strong {
+            font-size: x-large;
+        }
+    </style>
+    <script>
+        var cont = 0;
+        var elementos = document.getElementsByTagName("*");
+
+        for (var i = 0; i < elementos.length; i++) {
+            if (elementos[i].tagName != "BODY") {
+                elementos[i].addEventListener("click", function (e) {
+                    cont++;
+                });
+            } else {
+                elementos[i].addEventListener("click", function (e) {
+                    document.getElementById("grado").innerHTML = cont;
+                    cont = 0;
+                    e.stopPropagation();
+                });
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Obtener el grado de anidamiento de un elemento HTML al hacer click sobre él</h1>
+    <hr>
+    <span>Grado de anidamiento: </span><span id="grado"></span>
+    <div class="cuadro">
+        <br>
+        <table>
+            <tbody>
+                <tr>
+                    <td>A</td>
+                    <td><span>B</span></td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>D</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <p>Esto es una <strong>frase</strong></p>
+    </div>
+</body>
+
+</html>
