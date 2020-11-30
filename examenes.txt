@@ -5,3 +5,16 @@ Cuestionario EIE - 21/10/20
 Presentación Proyecto DWEC - 4-9-11/12/20
 Examen DINT - 4/12/20
 2 Cuestionario EIE - 2/10/20
+
+-- Examen DINT
+
+Flex, float, col
+    header fixed
+    top-nav - Menu hamburguesa
+    main
+        side-nav
+        container
+            article
+            button (icono)
+    footer fixed
+        tres secciones
