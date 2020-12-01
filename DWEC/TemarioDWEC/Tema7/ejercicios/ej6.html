@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        td {
+            border: 2px solid red;
+        }
+
+        .cuadro {
+            border: 2px solid black;
+            padding: 40px;
+        }
+    </style>
+    <script>
+        function fase1(pEvento) {
+            pEvento.dataTransfer.setData("", pEvento.target.id);
+            console.log(pEvento.target.id);
+        }
+
+
+        function fase2(pEvento) {
+            pEvento.preventDefault();
+        }
+
+
+        function fase3(pEvento) {
+            pEvento.preventDefault();
+            var datos = pEvento.dataTransfer.getData("");
+            document.getElementById(datos).style.border = "2px solid blue";
+            document.getElementById("tituloCampo").innerText = document.getElementById(datos).innerText;
+        }
+
+        function validar() {
+            document.getElementById("tituloCampo").innerText = "";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Validar datos (nombre, teléfono, matrícula y puntuación) y ver datos</h1>
+    <hr>
+    <table>
+        <tr>
+            <td id="nombre" draggable="true" ondragstart="fase1(event);">NOMBRE</td>
+            <td id="tlf" draggable="true" ondragstart="fase1(event);">TELÉFONO</td>
+            <td id="matricula" draggable="true" ondragstart="fase1(event);">MATRÍCULA</td>
+            <td id="puntuacion" draggable="true" ondragstart="fase1(event);">PUNTUACIÓN</td>
+        </tr>
+    </table>
+    <div class="cuadro" ondragover="fase2(event);" ondrop="fase3(event);">
+        <h2>Zona de inserción de datos</h2>
+        Arrastra el campo a buscar: <span id="tituloCampo"></span>
+        <br>
+        <input type="text" id="entrada">
+        <br>
+        <button onclick="validar();">Validar</button>
+    </div>
+    <div></div>
+</body>
+
+</html>
