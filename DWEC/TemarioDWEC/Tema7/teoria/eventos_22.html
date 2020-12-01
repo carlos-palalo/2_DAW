@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_22 - Ejercicio: Objener el grado de anidamiento de un elemento HTML al hacer click sobre él</title>
+		<style>
+			span {
+				font-size: 30px;
+			}
+
+			p {
+				font-size: 30px;
+				border: 2px solid black
+			}
+
+			div {
+				left: 25%;
+				top: 25%;
+				position: relative;
+				background-color: red;
+				width: 400px;
+				height: 400px;
+			}
+
+			table,td {
+				border: 1px solid black;
+				border-spacing: 10px;
+			}
+
+			td {
+				width:30px;
+				height:30px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_22 - Ejercicio: Objener el grado de anidamiento de un elemento HTML al hacer click sobre él</h1>
+		<hr />
+		<span>Grado de anidamiento: </span><span id="grado"></span>
+
+
+		<div>
+			<br />
+			<table>
+				<tbody>
+					<tr>
+						<td>A</td><td><span>B</span></td>
+					</tr>
+					<tr>
+						<td>C</td><td>D</td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<p>Texto <b>del</b> párrafo</p>
+			<br />
+		</div>
+
+		
+		
+		<script type="text/javascript">
+
+			var elementos = document.getElementsByTagName("*");
+			var prof = 0;
+
+			for(i=0;i<elementos.length;i++) {
+				if(elementos[i].tagName!="BODY") {
+					elementos[i].addEventListener("click",function (e) {
+						prof++;
+					});
+				} else {
+					elementos[i].addEventListener("click",function (e) {
+						document.getElementById("grado").innerText = prof;
+						//console.log(e.target.tagName);
+						prof=0;
+						e.stopPropagation();
+					});
+				}
+			}
+
+		</script>
+	</body>
+</html>

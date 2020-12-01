@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_21 - Ejercicio: Ejecutar un evento una única vez en cada uno de los párrafo de un documento</title>
+		<style>
+			p {
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_21 - Ejercicio: Ejecutar un evento una única vez en cada uno de los párrafo de un documento</h1>
+		<hr />
+
+		<p>Texto del párrafo 1</p>
+		<p>Texto del <b>párrafo 2</b></p>
+		<p>Texto del párrafo 3</p>
+		<p>Texto del párrafo 4</p>
+		<p>Texto del párrafo 5</p>
+		
+		<script type="text/javascript">
+
+			function ponerEvento(e) {
+				console.log(e.currentTarget.textContent);
+				e.currentTarget.removeEventListener("click",ponerEvento);
+			}
+
+			var elementos = document.getElementsByTagName("p");
+			for(i=0;i<elementos.length;i++) {
+				elementos[i].addEventListener("click",ponerEvento);
+			}
+			
+		</script>
+	</body>
+</html>
