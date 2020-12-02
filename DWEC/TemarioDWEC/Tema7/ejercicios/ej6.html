@@ -29,12 +29,39 @@
         function fase3(pEvento) {
             pEvento.preventDefault();
             var datos = pEvento.dataTransfer.getData("");
-            document.getElementById(datos).style.border = "2px solid blue";
             document.getElementById("tituloCampo").innerText = document.getElementById(datos).innerText;
         }
 
         function validar() {
-            document.getElementById("tituloCampo").innerText = "";
+            var campoTipo = document.getElementById("tituloCampo").innerText;
+            var campo = document.getElementById("entrada").value;
+            var celdas = document.getElementsByTagName("td");
+            var expReg;
+            switch (campoTipo) {
+                case "NOMBRE":
+                    expReg = /^[a-z-A-Z]+$/;
+                    break;
+                case "TELÉFONO":
+                    expReg = /^\d{9}/;
+                    break;
+                case "MATRÍCULA":
+                    expReg = /^\d{4}[A-Z]{3}/;
+                    break;
+                case "PUNTUACIÓN":
+                    expReg = /^\d[0-9]/;    //Cambiar
+                    break;
+            }
+            if (!expReg.test(campo)) {
+                alert("Por favor, introduce un campo válido.");
+            } else {
+                for (var i = 0; i < celdas.length; i++) {
+                    if (celdas[i].innerText == campoTipo) {
+                        celdas[i].style.border = "2px solid blue";
+                        celdas[i].draggable = false;
+                    }
+                }
+                document.getElementById("tituloCampo").innerText = "";
+            }
         }
     </script>
 </head>
