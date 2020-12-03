@@ -26,3 +26,7 @@ Debajo del encabezado, zona con un menu
 Una serie de filas (cuatro elementos, img, texto, iconos, hora, dia...)
 Botón diseñado por nosotros con un icono
 Diseño que se vea en tres dispositivos
+
+examen/flex
+practicas/t2/ej4
+plantillas/bootstrap/navbar-fixed/index
