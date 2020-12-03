@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: 'Lucida Sans', sans-serif;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+            width: 100%;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: whitesmoke;
+        }
+
+        .header {
+            background-color: lightskyblue;
+            color: black;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            top: 0px;
+            width: 100%;
+        }
+
+        .main {
+            margin-top: 120px;
+            padding: 0px;
+        }
+
+        .hamburguesa {
+            display: none;
+        }
+
+        .side-nav {
+            padding: 0px;
+        }
+
+        .side-nav ul {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .side-nav ul li {
+            margin-bottom: 5px;
+            font-weight: bold;
+            padding: 15px;
+            text-align: center;
+            background-color: gainsboro;
+        }
+
+        .side-nav ul li:hover {
+            background-color: red;
+        }
+
+        .container {
+            margin-bottom: 240px;
+        }
+
+        .btn {
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .btn span {
+            font-size: 50px;
+        }
+
+        .footer {
+            background-color: lightskyblue;
+            padding: 20px;
+            position: fixed;
+            bottom: 0px;
+        }
+        .btn-float{
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+        }
+        .btn-float button{
+            border-radius: 50px;
+            padding: 0px;
+            width: 50px;
+            height: 50px;
+        }
+        .btn-float button span{
+            width: 100%;
+            font-size: 40px;
+        }
+
+        @media screen and (max-width:600px) {
+            .side-nav {
+                display: none;
+            }
+
+            .hamburguesa {
+                display: block;
+            }
+        }
+
+        @media screen and (min-width: 701px) {
+            .col-1 {
+                width: 8.33%;
+            }
+
+            .col-2 {
+                width: 16.66%;
+            }
+
+            .col-3 {
+                width: 25%;
+            }
+
+            .col-4 {
+                width: 33.33%;
+            }
+
+            .col-5 {
+                width: 41.66%;
+            }
+
+            .col-6 {
+                width: 50%;
+            }
+
+            .col-7 {
+                width: 58.33%;
+            }
+
+            .col-8 {
+                width: 66.66%;
+            }
+
+            .col-9 {
+                width: 75%;
+            }
+
+            .col-10 {
+                width: 83.33%;
+            }
+
+            .col-11 {
+                width: 91.66%;
+            }
+
+            .col-12 {
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            .col-s-1 {
+                width: 8.33%;
+            }
+
+            .col-s-2 {
+                width: 16.66%;
+            }
+
+            .col-s-3 {
+                width: 25%;
+            }
+
+            .col-s-4 {
+                width: 33.33%;
+            }
+
+            .col-s-5 {
+                width: 41.66%;
+            }
+
+            .col-s-6 {
+                width: 50%;
+            }
+
+            .col-s-7 {
+                width: 58.33%;
+            }
+
+            .col-s-8 {
+                width: 66.66%;
+            }
+
+            .col-s-9 {
+                width: 75%;
+            }
+
+            .col-s-10 {
+                width: 83.33%;
+            }
+
+            .col-s-11 {
+                width: 91.66%;
+            }
+
+            .col-s-12 {
+                width: 100%;
+            }
+        }
+    </style>
+    <script>
+        function openNav(elemento) {
+            document.getElementById("myNav").style.display = "block";
+            elemento.parentElement.style.display = "none";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="header col-12 col-s-12">
+        <h1>Chania</h1>
+        <div class="hamburguesa">
+            <button>
+                <span class="material-icons" onclick="openNav(this);">menu</span>
+            </button>
+        </div>
+    </div>
+    <div class="main col-12 col-s-12">
+        <div id="myNav" class="side-nav col-s-12 col-3">
+            <ul>
+                <li>The Flight</li>
+                <li>The City</li>
+                <li>The Island</li>
+                <li>The Food</li>
+            </ul>
+        </div>
+        <div class="container col-s-12 col-9">
+            <div class="article col-s-12 col-12">
+                <div class="col-s-9 col-9">
+                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                        dignissim fusce consectetur mi facilisis consectetur ve</p>
+                </div>
+                <div class="btn col-s-3 col-3">
+                    <button>
+                        <span class="material-icons">face</span>
+                    </button>
+                </div>
+            </div>
+            <div class="article col-s-12 col-12">
+                <div class="col-s-9 col-9">
+                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                        dignissim fusce consectetur mi facilisis consectetur ve</p>
+                </div>
+                <div class="btn col-s-3 col-3">
+                    <button>
+                        <span class="material-icons">face</span>
+                    </button>
+                </div>
+            </div>
+            <div class="article col-s-12 col-12">
+                <div class="col-s-9 col-9">
+                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                        dignissim fusce consectetur mi facilisis consectetur ve</p>
+                </div>
+                <div class="btn col-s-3 col-3">
+                    <button>
+                        <span class="material-icons">face</span>
+                    </button>
+                </div>
+            </div>
+            <div class="article col-s-12 col-12">
+                <div class="col-s-9 col-9">
+                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                        dignissim fusce consectetur mi facilisis consectetur ve</p>
+                </div>
+                <div class="btn col-s-3 col-3">
+                    <button>
+                        <span class="material-icons">face</span>
+                    </button>
+                </div>
+            </div>
+            <div class="article col-s-12 col-12">
+                <div class="col-s-9 col-9">
+                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                        dignissim fusce consectetur mi facilisis consectetur ve</p>
+                </div>
+                <div class="btn col-s-3 col-3">
+                    <button>
+                        <span class="material-icons">face</span>
+                    </button>
+                </div>
+            </div>
+            <div class="article col-s-12 col-12">
+                <div class="col-s-9 col-9">
+                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                        dignissim fusce consectetur mi facilisis consectetur ve</p>
+                </div>
+                <div class="btn col-s-3 col-3">
+                    <button>
+                        <span class="material-icons">face</span>
+                    </button>
+                </div>
+            </div>
+            <div class="article col-s-12 col-12">
+                <div class="col-s-9 col-9">
+                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                        dignissim fusce consectetur mi facilisis consectetur ve</p>
+                </div>
+                <div class="btn col-s-3 col-3">
+                    <button>
+                        <span class="material-icons">face</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer col-12 col-s-12">
+        <div class="section col-3 col-s-12">Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+            dignissim fusce consectetur mi facilisis consectetur ve
+        </div>
+        <div class="section col-6 col-s-12">Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+            dignissim fusce consectetur mi facilisis consectetur venenati
+        </div>
+        <div class="section col-3 col-s-12">Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+            dignissim fusce consectetur mi facilisis consectetur venenatis per orci. Vel adipiscing sagittis gravida
+            pellentesque a
+        </div>
+    </div>
+    <div class="btn-float">
+        <button>
+            <span class="material-icons">face</span>
+        </button>
+    </div>
+</body>
+
+</html>
