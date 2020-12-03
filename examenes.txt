@@ -18,3 +18,11 @@ Flex, float, col
             button (icono)
     footer fixed
         tres secciones
+
+Header navegacion con iconos, puede que buscador
+Menu desplegable (oculto, hamburguesa)
+Footer fijo con info
+Debajo del encabezado, zona con un menu
+Una serie de filas (cuatro elementos, img, texto, iconos, hora, dia...)
+Botón diseñado por nosotros con un icono
+Diseño que se vea en tres dispositivos
