@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_27 - Ejercicio: Simular el movimiento del caballo en ajedrez</title>
+		<style>
+			td {
+				width:50px;
+				height:50px;
+				align-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_27 - Ejercicio: Simular el movimiento del caballo en ajedrez</h1>
+		<hr />
+
+		<table border="3">
+			<tbody id="tablero">
+				<tr>
+					<td><img draggable="true" src="./recursos/caballo.png" id="caballo" /></td>
+					<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+				</tr>
+				<tr>
+					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+				</tr>
+				<tr>
+					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+				</tr>
+				<tr>
+					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+				</tr>
+				<tr>
+					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+				</tr>
+				<tr>
+					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+				</tr>
+				<tr>
+					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+				</tr>
+				<tr>
+					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<hr />
+
+		<p id="parrafo"></p>
+
+		<script type="text/javascript">
+
+			function validarMovimiento(m) {
+				difFilas = Math.abs(m.filaOrigen-m.filaDestino);
+				difColumnas = Math.abs(m.columnaOrigen-m.columnaDestino);
+				diferencia = difFilas+difColumnas;
+
+				if(m.filaOrigen!=m.filaDestino & m.columnaOrigen!=m.columnaDestino & diferencia==3)
+					return true;
+				else
+					return false;
+			}
+
+
+			function obtenerFilaCelda(celda) {
+				var fila;
+				for(var f=0;f<8;f++) {
+					for(var c=0;c<8;c++) {
+						if(tablero.children[f].children[c] == celda) {
+							fila = f;
+						}
+					}
+				}
+				return fila;
+			}
+
+
+			function obtenerColumnaCelda(celda) {
+				var columna;
+				for(var f=0;f<8;f++) {
+					for(var c=0;c<8;c++) {
+						if(tablero.children[f].children[c] == celda) {
+							columna = c;
+						}
+					}
+				}
+				return columna;
+			}
+			
+
+
+			function iniciarArrastre(pEvento){
+				var movimiento = {};
+				
+				movimiento.filaOrigen = obtenerFilaCelda(pEvento.target.parentNode);
+				movimiento.columnaOrigen = obtenerColumnaCelda(pEvento.target.parentNode);
+
+				pEvento.dataTransfer.setData("", JSON.stringify(movimiento));
+			}
+
+
+
+			function soltar(pEvento){
+				pEvento.preventDefault();
+				var movimiento = JSON.parse(pEvento.dataTransfer.getData(""));
+
+				movimiento.filaDestino = obtenerFilaCelda(pEvento.target);
+				movimiento.columnaDestino = obtenerColumnaCelda(pEvento.target);
+				console.log(movimiento);
+				
+				if(validarMovimiento(movimiento)) {
+					pEvento.target.appendChild(document.getElementById("caballo"));
+					parrafo.innerHTML += "<br />(" + (movimiento.filaOrigen+1) + "," + (movimiento.columnaOrigen+1) + ") --> (" + (movimiento.filaDestino+1) + "," + (movimiento.columnaDestino+1) + ")";
+				}
+			}
+
+
+			var tablero = document.getElementById("tablero");
+			var parrafo = document.getElementById("parrafo");
+
+
+
+			var celdas = document.getElementsByTagName("td");
+
+			//FASE1 --> caballo
+			document.getElementById("caballo").addEventListener("dragstart",iniciarArrastre);
+
+
+			for(i=0;i<celdas.length;i++) {
+				//FASE2 --> celdas
+				celdas[i].addEventListener("dragover",function (e) {
+					e.preventDefault();
+				});
+
+				//FASE3 --> celdas
+				celdas[i].addEventListener("drop",soltar);
+			}
+
+			
+
+		</script>
+	</body>
+</html>

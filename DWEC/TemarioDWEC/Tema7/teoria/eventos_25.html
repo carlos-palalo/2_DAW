@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_25 - Arrastrar y soltar: Alternar entre ambos cuadros el texto y la imagen (bidireccional)</title>
+		<style>
+			.c1 {
+				border: 5px solid red;
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 5cm;
+				left: 8cm;
+			}
+
+			.c2 {
+				border: 5px solid blue;
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 5cm;
+				left: 12cm;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_25 - Arrastrar y soltar: Alternar entre ambos cuadros el texto y la imagen (bidireccional)</h1>
+		<hr />
+
+		<div class="c1" id="origen" ondragover="fase2(event);" ondrop="fase3(event);">
+			<span draggable="true" id="texto" ondragstart="fase1(event);" ondragend="console.log('Final');">EL TEXTO</span>
+			<img draggable="true" src="./recursos/ball.gif" id="pelota" ondragstart="fase1(event);"/> 
+		</div>
+
+		<div class="c2" id="destino" ondragover="fase2(event);" ondrop="fase3(event);"></div>
+
+		<script type="text/javascript">
+
+			function fase1(pEvento){
+				pEvento.dataTransfer.setData("", pEvento.target.id);
+			}
+
+
+			function fase2(pEvento){
+				pEvento.preventDefault();
+			}
+
+
+			function fase3(pEvento){
+				var datos = pEvento.dataTransfer.getData("");
+				pEvento.target.appendChild(document.getElementById(datos));
+			}
+
+		</script>
+	</body>
+</html>
