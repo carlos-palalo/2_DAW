@@ -13,7 +13,8 @@
             font-family: 'Lucida Sans', sans-serif;
         }
 
-        .container, .section{
+        .container,
+        .section {
             padding: 15px;
         }
 
@@ -27,14 +28,50 @@
             background-color: lightskyblue;
             color: black;
             text-align: center;
-            padding: 20px;
             position: fixed;
             top: 0px;
             width: 100%;
         }
 
+        .list a {
+            flex: 1;
+            width: 100px;
+            padding: 20px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .list a:hover {
+            background-color: gainsboro;
+            color: black;
+        }
+
+        .search form {
+            padding: 20px;
+        }
+
+
+        .search input {
+            height: 50px;
+        }
+
+        .search button {
+            height: 50px;
+            width: 50px;
+        }
+
+        .top-nav {
+            margin-top: 85px;
+            background-color: lightslategray;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .top-nav a {
+            color: white;
+        }
+
         .main {
-            margin-top: 120px;
             padding: 0px;
         }
 
@@ -65,7 +102,40 @@
         }
 
         .container {
-            margin-bottom: 240px;
+            margin-bottom: 200px;
+        }
+
+        .article{
+            display: flex;
+            border-bottom: 1px solid grey;
+        }
+        
+        .article .txt{
+            flex: 1;
+            padding: 20px;
+            text-align: justify;
+        }
+        .article .icono{
+            padding: 15px 0;
+        }
+        .article .hyf{
+            padding-top: 10px;
+        }
+
+        .article .img {
+            width: 100px;
+        }
+
+        .article .icono span {
+            font-size: 50px;
+        }
+
+        .article .hyf {
+            font-size: x-small;
+        }
+
+        img {
+            width: 100%;
         }
 
         .btn {
@@ -102,6 +172,24 @@
             font-size: 40px;
         }
 
+        @media screen and (min-width: 601px) {
+            .header .nav {
+                display: flex;
+            }
+
+            .list {
+                flex: 0;
+                display: flex;
+            }
+
+            .search form {
+                position: absolute;
+                right: 0px;
+                display: flex;
+                flex: 1;
+            }
+        }
+
         @media screen and (max-width:600px) {
             .side-nav {
                 display: none;
@@ -109,6 +197,31 @@
 
             .hamburguesa {
                 display: block;
+            }
+
+            .header .nav .list {
+                display: flex;
+            }
+
+            .search form {
+                padding: 0px 50px;
+                display: flex;
+            }
+
+            .search form input {
+                flex: 1;
+            }
+
+            .hamburguesa {
+                margin: 5px;
+            }
+
+            .top-nav {
+                margin-top: 160px;
+            }
+
+            .top-nav .list {
+                display: flex;
             }
         }
 
@@ -143,28 +256,50 @@
             .article .btn {
                 flex: 0;
             }
+
+            .container {
+                margin-bottom: 240px;
+            }
         }
     </style>
     <script>
         function openNav(elemento) {
             document.getElementById("myNav").style.display = "block";
             elemento.parentElement.style.display = "none";
+            document.getElementById("top-nav").style.marginTop = "120px"
         }
     </script>
 </head>
 
 <body>
     <div class="header">
-        <div class="logo">Logo</div>
-        <div class="home"></div>
-        <div class=""
+        <div class="nav">
+            <div class="list">
+                <a href="#home"><span class="material-icons">home</span>Home</a>
+                <a href="#about"><span class="material-icons">menu</span>About</a>
+                <a href="#contact"><span class="material-icons">people</span>Contact</a>
+            </div>
+            <div class="search">
+                <form>
+                    <input type="text" placeholder="Search...">
+                    <button type="submit"><span class="material-icons">search</span></button>
+                </form>
+            </div>
+        </div>
         <div class="hamburguesa">
             <button>
                 <span class="material-icons" onclick="openNav(this);">menu</span>
             </button>
         </div>
     </div>
-    <div class="main">
+    <div id="top-nav" class="top-nav">
+        <div class="list">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    <div id="main" class="main">
         <div id="myNav" class="side-nav">
             <ul>
                 <li>The Flight</li>
@@ -175,81 +310,60 @@
         </div>
         <div class="container">
             <div class="article">
-                <div>
-                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
-                        dignissim fusce consectetur mi facilisis consectetur ve</p>
-                </div>
-                <div class="btn">
-                    <button>
-                        <span class="material-icons">face</span>
-                    </button>
-                </div>
+                <div class="img"><img src="img.jpg"></div>
+                <div class="txt">Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                    dignissim fusce consectetur mi facilisis consectetur ve</div>
+                <div class="icono"><span class="material-icons">face</span></div>
+                <div class="hyf">04/12/2020 - 13:00</div>
             </div>
             <div class="article">
-                <div>
-                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
-                        dignissim fusce consectetur mi facilisis consectetur ve</p>
-                </div>
-                <div class="btn">
-                    <button>
-                        <span class="material-icons">face</span>
-                    </button>
-                </div>
+                <div class="img"><img src="img.jpg"></div>
+                <div class="txt">Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                    dignissim fusce consectetur mi facilisis consectetur ve</div>
+                <div class="icono"><span class="material-icons">face</span></div>
+                <div class="hyf">04/12/2020 - 13:00</div>
             </div>
             <div class="article">
-                <div>
-                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
-                        dignissim fusce consectetur mi facilisis consectetur ve</p>
-                </div>
-                <div class="btn">
-                    <button>
-                        <span class="material-icons">face</span>
-                    </button>
-                </div>
+                <div class="img"><img src="img.jpg"></div>
+                <div class="txt">Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                    dignissim fusce consectetur mi facilisis consectetur ve</div>
+                <div class="icono"><span class="material-icons">face</span></div>
+                <div class="hyf">04/12/2020 - 13:00</div>
             </div>
             <div class="article">
-                <div>
-                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
-                        dignissim fusce consectetur mi facilisis consectetur ve</p>
-                </div>
-                <div class="btn">
-                    <button>
-                        <span class="material-icons">face</span>
-                    </button>
-                </div>
+                <div class="img"><img src="img.jpg"></div>
+                <div class="txt">Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                    dignissim fusce consectetur mi facilisis consectetur ve</div>
+                <div class="icono"><span class="material-icons">face</span></div>
+                <div class="hyf">04/12/2020 - 13:00</div>
             </div>
             <div class="article">
-                <div>
-                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
-                        dignissim fusce consectetur mi facilisis consectetur ve</p>
-                </div>
-                <div class="btn">
-                    <button>
-                        <span class="material-icons">face</span>
-                    </button>
-                </div>
+                <div class="img"><img src="img.jpg"></div>
+                <div class="txt">Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                    dignissim fusce consectetur mi facilisis consectetur ve</div>
+                <div class="icono"><span class="material-icons">face</span></div>
+                <div class="hyf">04/12/2020 - 13:00</div>
             </div>
             <div class="article">
-                <div>
-                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
-                        dignissim fusce consectetur mi facilisis consectetur ve</p>
-                </div>
-                <div class="btn">
-                    <button>
-                        <span class="material-icons">face</span>
-                    </button>
-                </div>
+                <div class="img"><img src="img.jpg"></div>
+                <div class="txt">Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                    dignissim fusce consectetur mi facilisis consectetur ve</div>
+                <div class="icono"><span class="material-icons">face</span></div>
+                <div class="hyf">04/12/2020 - 13:00</div>
             </div>
             <div class="article">
-                <div>
-                    <p>Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
-                        dignissim fusce consectetur mi facilisis consectetur ve</p>
-                </div>
-                <div class="btn">
-                    <button>
-                        <span class="material-icons">face</span>
-                    </button>
-                </div>
+                <div class="img"><img src="img.jpg"></div>
+                <div class="txt">Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                    dignissim fusce consectetur mi facilisis consectetur ve</div>
+                <div class="icono"><span class="material-icons">face</span></div>
+                <div class="hyf">04/12/2020 - 13:00</div>
+            </div>
+            <div class="article">
+                <div class="img"><img src="img.jpg"></div>
+                <div class="txt">Sit vel dui posuere consequat sollicitudin senectus risus cras. Enim
+                    dignissim fusce consectetur mi facilisis consectetur ve</div>
+                <div class="icono"><span class="material-icons">face</span></div>
+                <div class="hyf">04/12/2020 - 13:00</div>
             </div>
         </div>
     </div>
@@ -267,7 +381,7 @@
     </div>
     <div class="btn-float">
         <button>
-            <span class="material-icons">face</span>
+            <span class="material-icons">add</span>
         </button>
     </div>
 </body>
