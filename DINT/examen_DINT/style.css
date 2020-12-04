@@ -1,0 +1,315 @@
+* {
+    box-sizing: border-box;
+    /*border: 1px solid gray;*/
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    display: flex;
+    background-color: rgb(54, 132, 180);
+    font-weight: bold;
+    color: white;
+    align-items: center;
+}
+
+.header .enterprise {
+    padding: 20px;
+    font-size: xx-large;
+}
+
+.header .hamburger {
+    display: none;
+}
+
+.header .enterprise {
+    padding-left: 20px;
+    flex: 1;
+}
+.container{
+    background-color: whitesmoke;
+}
+.container .top-nav {
+    display: flex;
+}
+
+.container .camera {
+    flex: 0;
+}
+
+.container a {
+    background-color: lightskyblue;
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    flex: 1;
+    transition: background-color 0.5s;
+}
+
+.container a:hover {
+    background-color: rgb(74, 175, 238);
+}
+
+.side-nav {
+    display: flex;
+    border-bottom: 2px solid gainsboro;
+    border-top: 2px solid gainsboro;
+    background-color: whitesmoke;
+}
+
+.section-side-nav {
+    padding: 10px;
+}
+
+.side-nav .img {
+    padding: 5px;
+}
+
+.side-nav .img img {
+    align-items: center;
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+}
+
+.section-side-nav .title {
+    font-weight: bold;
+    padding-left: 50px;
+    margin-bottom: 5px;
+}
+
+.section-side-nav .desc {
+    font-size: 14px;
+}
+
+.container-tn {
+    padding: 5px 20px;
+}
+
+.container-tn .time {
+    font-size: small;
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+
+.container-tn .notifications {
+    padding: 8px;
+    background-color: lightskyblue;
+    font-weight: bold;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.search {
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 1px 8px 0px gray;
+}
+
+.search form {
+    display: flex;
+    margin-right: 20px;
+    flex: 1;
+}
+
+.search button {
+    background-color: white;
+    border: none;
+    flex: 0;
+}
+
+.search input {
+    flex: 1;
+    border: none;
+    padding-left: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .header .hamburger {
+        display: block;
+        margin-right: 10px;
+        margin-left: 0px;
+        padding: 10px;
+        border-radius: 50px;
+        width: 50px;
+        background-color: unset;
+        color: inherit;
+        border: none;
+    }
+
+    #menu {
+        position: absolute;
+        top: 75px;
+        left: -350px;
+        color: black;
+        background-color: gainsboro;
+        transition: left 1s;
+        box-shadow: 5px 3px 8px 1px gray;
+    }
+
+    #menu a {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        width: 300px;
+        font-size: medium;
+        text-decoration: none;
+        color: black;
+        font-weight: normal;
+        transition: background-color 0.5s;
+    }
+
+    #menu a:hover {
+        background-color: rgb(161, 215, 248);
+    }
+
+    #menu .row-header {
+        background-color: rgb(98, 188, 245);
+        font-weight: bold;
+    }
+
+    #menu .row {
+        border-top: 2px solid gray;
+    }
+
+    .main .section-main {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-left: 30px;
+        padding-right: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .main .section-header {
+        display: none;
+    }
+
+    .section-main .section-img {
+        width: 150px;
+        height: 140px;
+    }
+
+    .section-img img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .section-main .section-info {
+        padding-left: 20px;
+    }
+
+    .section-info div:first-child {
+        margin-bottom: 20px;
+    }
+
+    .btn-float {
+        position: fixed;
+        bottom: 60px;
+        right: 60px;
+    }
+
+    .btn-float button {
+        padding: 10px;
+        background-color: lightskyblue;
+        border: none;
+        border-radius: 50px;
+        box-shadow: 0px 0px 8px 1px gray;
+        transition: background-color,color 0.5s;
+    }
+
+    .btn-float button:hover {
+        background-color: rgb(36, 150, 221);
+        color: white;
+    }
+
+    .search {
+        position: fixed;
+        bottom: 0px;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    .header {
+        padding: 0px;
+    }
+
+    .main {
+        display: flex;
+        height: 100%;
+    }
+    .container-main{
+        margin-left: 350px;
+    }
+    .main .container{
+        position: fixed;
+        z-index: 0;
+        max-width: 350px;
+        height: 100%;
+    }
+
+    #menu .row-header {
+        display: none;
+    }
+
+    #menu {
+        display: flex;
+    }
+
+    #menu a {
+        text-decoration: none;
+        color: inherit;
+        padding: 30px 10px;
+        font-size: medium;
+        transition: background-color 1s;
+    }
+
+    #menu a:hover {
+        background-color: rgb(79, 161, 212);
+    }
+
+    .search {
+        display: flex;
+    }
+
+    .section-main {
+        padding-top: 30px;
+        padding-left: 80px;
+        padding-right: 100px;
+    }
+
+    .section-container{
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .section-img {
+        width: 250px;
+    }
+
+    .section-img img {
+        width: 100%;
+    }
+    .section-desc{
+        margin-bottom: 40px;
+
+    }
+    .section-header{
+        flex: 1;
+        text-align: right;
+    }
+    .search button{
+        border-radius: 50px;
+        padding: 5px;
+        transition: background-color 0.5s;
+    }
+    .search button:hover{
+        background-color: gainsboro;
+    }
+}
