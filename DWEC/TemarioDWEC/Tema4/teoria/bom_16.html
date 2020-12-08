@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bom_16 - Ejercicio: Abrir una ventana en 10 segundos pero en ese tiempo se puede cancelar la apertura</title>
+	</head>
+
+	<script type="text/javascript">
+		var temporizador;
+
+		function abrir() {
+			temporizador = setTimeout(function () {
+				window.open("http://www.iesribera.es","_blank","height=600,width=800,top=40,left=200");
+			},10000);
+		}
+
+		function cancelar() {
+			clearTimeout(temporizador);
+		}
+	</script>
+
+	<body>
+		<h1>bom_16 - Ejercicio: Abrir una ventana en 10 segundos pero en ese tiempo se puede cancelar la apertura</h1>
+		<hr />
+
+		<button onclick="abrir();">Abrir página del IES en una nueva ventana</button>
+		<button onclick="cancelar();">Cancelar apertura</button>
+	</body>
+</html>

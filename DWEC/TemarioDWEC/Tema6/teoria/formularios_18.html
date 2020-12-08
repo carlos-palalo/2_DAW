@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>formularios_18 - Ejercicio: Juego del ahorcado</title>
+		<style>
+			div {
+				border: 2px solid black;
+				padding: 1cm;
+			}
+
+			#cuadropalabra {
+				font-size: 1cm;
+			}
+
+			#letrasdichas {
+				color: red;
+			}
+
+			#intentos {
+				color: green;
+			}
+		</style>
+	</head>
+	<body onload="iniciar();">
+		<h1>formularios_18 - Ejercicio: Juego del ahorcado</h1>
+		<hr />
+
+		<div id="cuadrojugador1">
+			<h1>JUGADOR 1</h1>
+			Introduce una palabra<br />
+			<input type="password" id="palabraorigen" />
+			<br />
+			<button onclick="IntroducirPalabra();">Introducir palabra</button>
+		</div>
+		
+		<hr />
+		
+		<div id="cuadropalabra">
+			<p id="intentos"></p>
+			<hr />
+			<p id="letrasdichas"></p>
+			<hr />
+			<p id="oculta"></p>
+		</div>
+
+		<hr />
+		
+		<div id="cuadrojugador2">
+			<h1>JUGADOR 2</h1>
+			Selecciona una letra<br />
+			<select id="letra">
+				<option id="A">A</option>
+				<option id="B">B</option>
+				<option id="C">C</option>
+				<option id="D">D</option>
+				<option id="E">E</option>
+				<option id="F">F</option>
+				<option id="G">G</option>
+				<option id="H">H</option>
+				<option id="I">I</option>
+				<option id="J">J</option>
+				<option id="K">K</option>
+				<option id="L">L</option>
+				<option id="M">M</option>
+				<option id="N">N</option>
+				<option id="O">O</option>
+				<option id="P">P</option>
+				<option id="Q">Q</option>
+				<option id="R">R</option>
+				<option id="S">S</option>
+				<option id="T">T</option>
+				<option id="U">U</option>
+				<option id="V">V</option>
+				<option id="W">W</option>
+				<option id="X">X</option>
+				<option id="Y">Y</option>
+				<option id="Z">Z</option>
+			</select><br />
+			<button id="botondecirletra" onclick="DecirLetra();">Decir letra</button>
+
+			<br /><br />
+
+			Introduce tu solución
+			<input type="text" id="palabrasolucion" /><br />
+			<button id="botonresolver" onclick="Resolver();">Resolver</button>
+		</div>
+		
+
+		<script type="text/javascript">
+		
+			var palabra = "";
+			var listaLetras = [];
+			var intentos = 0;
+	
+			function iniciar() {
+				document.getElementById("cuadrojugador2").style.display = "none";
+			}
+	
+			function IntroducirPalabra()	{
+				palabra = document.getElementById("palabraorigen").value.toUpperCase();
+				document.getElementById("oculta").innerHTML = palabra.replace(/\w/g,"_ ");
+				document.getElementById("cuadrojugador1").style.display = "none";
+				document.getElementById("cuadrojugador2").style.display = "block";
+			}
+	
+			function DecirLetra() {
+				var letra = document.getElementById("letra").value;
+	
+				if(listaLetras.indexOf(letra)!=-1) {
+					alert("Ya se dijo esa letra");
+				} else {
+					listaLetras.push(letra);
+					intentos++;
+					document.getElementById("intentos").innerHTML = intentos;
+					document.getElementById("letrasdichas").innerHTML = listaLetras;
+					FormarPalabra();
+					if(intentos>=5) {
+						document.getElementById("letra").disabled = true;
+						document.getElementById("botondecirletra").disabled = true;
+					}
+				}
+			}
+	
+			function FormarPalabra() {
+				var nueva = "";
+	
+				 for(i=0;i<palabra.length;i++) {
+					if(listaLetras.indexOf(palabra[i])!=-1) {
+						nueva += palabra[i] + " ";
+					} else {
+						nueva += "_ ";
+					}
+				}
+				document.getElementById("oculta").innerHTML = nueva;
+			}
+	
+			function Resolver() {
+				document.getElementById("letra").disabled = true;
+				document.getElementById("botondecirletra").disabled = true;
+				document.getElementById("palabrasolucion").disabled = true;
+				document.getElementById("botonresolver").disabled = true;
+				var p1 = document.getElementById("palabraorigen").value.toUpperCase();
+				var p2 = document.getElementById("palabrasolucion").value.toUpperCase();
+				if(p1==p2) {
+					alert("Has ganado");
+				} else {
+					alert("Has perdido");
+				}
+			}
+	
+		</script>
+	</body>
+</html>

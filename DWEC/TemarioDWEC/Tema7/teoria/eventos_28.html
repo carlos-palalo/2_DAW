@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_28 - Ejercicio: Validar un formulario seleccionando el campo a validar</title>
+		<style>
+			td {
+				border: 2px solid red;
+				padding: 5px;
+			}
+
+			div {
+				border: 2px solid black;
+				padding: 1cm;
+			}
+		</style>
+	</head>
+	<body onload="iniciar();">
+		<h1>eventos_28 - Ejercicio: Validar un formulario seleccionando el campo a validar</h1>
+		<hr />
+
+		<table>
+			<tr id="fila">
+				<td id="nombre" draggable="true" ondragstart="fase1(event);">NOMBRE</td>
+				<td id="matricula" draggable="true" ondragstart="fase1(event);">MATRÍCULA</td>
+				<td id="puntuacion" draggable="true" ondragstart="fase1(event);">PUNTUACIÓN</td>
+				<td id="telefono" draggable="true" ondragstart="fase1(event);">TELÉFONO</td>
+			</tr>
+		</table>
+
+		<div id="cuadroentrada"  ondragover="fase2(event);" ondrop="fase3(event);">
+			<h2>Zona de inserción de datos</h2>
+			Introduce el campo <span id="titulocampo"></span>
+			<br />
+			<input type="text" id="entrada" />
+			<br />
+			<button onclick="Validar();">Validar</button>
+		</div>
+		
+		<div id="cuadrovisualizar">
+			Ver datos de la persona<br />
+			<button onclick="VerDatos();">Ver datos</button>
+			<select id="persona">
+				<option value="0" id="p0"></option>
+				<option value="1" id="p1"></option>
+			</select>
+			<p id="datospersona"></p>
+		</div>
+
+
+		<script type="text/javascript">
+
+			var personas = [];
+			var nnombre = 0;
+			var nmatricula = 0;
+			var npuntuacion = 0;
+			var ntelefono = 0;
+	
+			function iniciar() {
+				document.getElementById("cuadrovisualizar").style.display = "none";
+			}
+	
+			function fase1(pEvento){
+				pEvento.dataTransfer.setData("", pEvento.target.id);
+			}
+	
+			function fase2(pEvento){
+					pEvento.preventDefault();
+			}
+	
+			function fase3(pEvento){
+					var datos = pEvento.dataTransfer.getData("");
+					//pEvento.target.appendChild(document.getElementById(datos));
+					document.getElementById("titulocampo").innerHTML = datos;
+			}
+	
+			function Validar() {
+				var titulocampo = document.getElementById("titulocampo").innerHTML;
+				var entrada = document.getElementById("entrada").value;
+				var objFila = document.getElementById("fila");
+		
+	
+				//NOMBRE
+				var exp = /^[a-zA-Z\s]+$/;
+				if(titulocampo=="nombre") {
+					if(exp.test(entrada)) {
+						if(nnombre==0) {
+							personas[0] = entrada;
+							document.getElementById("nombre").style.border = "2px solid blue";
+							document.getElementById("p0").innerHTML = entrada;
+						} else {
+							personas[4] = entrada;
+							document.getElementById("p1").innerHTML = entrada;
+							var objNombre = document.getElementById("nombre");
+							objFila.removeChild(objNombre);
+						}
+						nnombre++;
+						document.getElementById("entrada").value = "";
+						document.getElementById("titulocampo").innerHTML = "";
+					} else {
+						alert("El nombre es incorrecto");
+					}
+				}	
+	
+	
+				//MATRÍCULA
+				exp = /^\d{4}[A-Z]{3}$/;
+				if(titulocampo=="matricula") {
+					if(exp.test(entrada)) {
+						if(nmatricula==0) {
+							personas[1] = entrada;
+							document.getElementById("matricula").style.border = "2px solid blue";
+						} else {
+							personas[5] = entrada;
+							var objMatricula = document.getElementById("matricula");
+							objFila.removeChild(objMatricula);
+						}
+						nmatricula++;
+						document.getElementById("entrada").value = "";
+						document.getElementById("titulocampo").innerHTML = "";
+					} else {
+						alert("La matrícula es incorrecta");
+					}
+				}
+
+	
+				//PUNTUACIÓN
+				exp = /^\d{1,2}$/;
+				if(titulocampo=="puntuacion") {
+					if(exp.test(entrada)) {
+						if(npuntuacion==0) {
+							personas[2] = entrada;
+							document.getElementById("puntuacion").style.border = "2px solid blue";
+						} else {
+							personas[6] = entrada;
+							var objPuntuacion = document.getElementById("puntuacion");
+							objFila.removeChild(objPuntuacion);
+						}
+						npuntuacion++;
+						document.getElementById("entrada").value = "";
+						document.getElementById("titulocampo").innerHTML = "";
+					} else {
+						alert("La puntuación es incorrecta");
+					}
+				}
+
+				
+				//TELEFONO
+				exp = /^(6|9)\d{8}$/;
+				if(titulocampo=="telefono") {
+					if(exp.test(entrada)) {
+						if(ntelefono==0) {
+							personas[3] = entrada;
+							document.getElementById("telefono").style.border = "2px solid blue";
+						} else {
+							personas[7] = entrada;
+							var objTelefono = document.getElementById("telefono");
+							objFila.removeChild(objTelefono);
+						}
+						ntelefono++;
+						document.getElementById("entrada").value = "";
+						document.getElementById("titulocampo").innerHTML = "";
+					} else {
+						alert("El teléfono es incorrecto");
+					}
+				}
+	
+				var suma = nnombre + nmatricula + ntelefono + npuntuacion;
+				//alert("SUMA:" + suma);
+				if(suma==8) {
+					document.getElementById("cuadrovisualizar").style.display = "block";
+				}
+			}
+	
+	
+			function VerDatos() {
+				var c = "";
+				if(document.getElementById("persona").value=="0") {
+					c += "Nombre: " + personas[0];
+					c += "<br />Matrícula: " + personas[1];
+					c += "<br />Puntuación: " + personas[2];
+					c += "<br />Teléfono: " + personas[3];
+				}
+				if(document.getElementById("persona").value=="1") {
+					c += "Nombre: " + personas[4];
+					c += "<br />Matrícula: " + personas[5];
+					c += "<br />Puntuación: " + personas[6];
+					c += "<br />Teléfono: " + personas[7];
+				}
+				document.getElementById("datospersona").innerHTML = c;
+			}
+	
+		</script>
+	</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom_63 - Ejercicio: Quitar la jerarquía a un documento, es decir, todos los elementos del body deben ser hijos de éste</title>
+	</head>
+	<body>
+		<h1>dom_63 - Ejercicio: Quitar la jerarquía a un documento, es decir, todos los elementos del body deben ser hijos de éste</h1>
+		<hr />
+		<div>
+			Texto al principio
+			<p>Primer párrafo del documento</p>
+			<p>Segundo <b>párrafo</b> del documento</p>
+			<p>Tercer párrafo del documento</p>
+			Texto al final
+		</div>
+		<ul>
+			<li>Elemento 1 de la lista</li>
+			<li><b><u><i>Elemento 2 de la lista</i></u></b></li>
+			<li>Elemento 3 de la lista</li>
+		</ul>
+
+		<button onclick="procesar();">Quitar jerarquía</button>
+
+
+		<script type="text/javascript" id="scriptprincipal">
+
+			var temp = document.createElement("span");
+			var clonado;
+
+			function juntarNodosTexto(elemento) {
+				var c = "";
+				for(i=0;i<elemento.childNodes.length;i++) {
+					if(elemento.childNodes[i].nodeType == 3) {
+						c += elemento.childNodes[i].textContent;
+					}
+				}
+				return c;
+			}
+
+			function quitarJerarquia(coleccion) {
+				Array.from(coleccion, elemento => {
+					if(elemento.tagName!="SCRIPT") {
+						if(elemento.children.length>0) { //Si tiene hijos
+							clonado = elemento.cloneNode(false);
+							clonado.textContent = juntarNodosTexto(elemento);
+							temp.appendChild(clonado);
+							quitarJerarquia(elemento.children);
+						} else {
+							clonado = elemento.cloneNode(true);
+							temp.appendChild(clonado);
+						}
+					}
+				});
+			}
+
+			function cambiarBody() {
+				var nodoBody = document.children[0].children[1];
+				var nodoScript = document.getElementById("scriptprincipal");
+
+				nodoBody.innerHTML = "";
+				nodoBody.innerHTML = temp.innerHTML;
+				temp.innerHTML = "";
+
+				nodoBody.appendChild(nodoScript);
+			}
+
+			function procesar() {
+				quitarJerarquia(document.children[0].children[1].children);
+				cambiarBody();
+			}
+
+		</script>
+	</body>
+</html>

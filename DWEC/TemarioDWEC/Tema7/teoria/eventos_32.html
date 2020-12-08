@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_32 - Ejercicio: Hacer la lotería primitiva comprobando el boleto</title>
+		<style>
+			div {
+				height: 47px;
+				width: 47px;
+				border: 2px solid black;
+				text-align: center;
+			}
+
+			#parrafosorteo {
+				font-size: 40px;
+			}
+
+			#parrafoaciertos {
+				font-size: 40px;
+				color: red;
+			}
+
+			.ficha {
+				font-size: 30px;
+				font-weight: bold;
+				color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_32 - Ejercicio: Hacer la lotería primitiva comprobando el boleto</h1>
+		<hr />
+		<h2>Sorteo de la loteria primitiva</h2>
+		
+		<input id="botonsortear" type="button" onclick="sortear();" value="Sortear" />
+		
+		<span class="ficha" id="ficha1" draggable="true" ondragstart="fase1(event);" style="display:inline">X</span>
+		<span class="ficha" id="ficha2" draggable="true" ondragstart="fase1(event);" style="display:none">X</span>
+		<span class="ficha" id="ficha3" draggable="true" ondragstart="fase1(event);" style="display:none">X</span>
+		<span class="ficha" id="ficha4" draggable="true" ondragstart="fase1(event);" style="display:none">X</span>
+		<span class="ficha" id="ficha5" draggable="true" ondragstart="fase1(event);" style="display:none">X</span>
+		<span class="ficha" id="ficha6" draggable="true" ondragstart="fase1(event);" style="display:none">X</span>
+		
+		<p id="parrafosorteo"></p>
+
+		<table id="tablero">		
+		</table>
+
+		<p id="parrafoaciertos"></p>
+
+		<script type="text/javascript">
+
+			var numeros = [];
+			var aciertos = 0;
+
+			function sortear() {
+				var n;
+				while(numeros.length != 6) {
+					n = Math.floor(Math.random() * 50);
+					if(numeros.indexOf(n) == -1) {
+						numeros.push(n);
+					}
+				}
+				iniciarJuego();
+				document.getElementById("parrafosorteo").innerHTML = numeros;
+				document.getElementById("botonsortear").disabled = true;
+			}
+
+
+			function habilitarFichas(d) {
+				switch(d) {
+					case "ficha1":document.getElementById("ficha2").style.display="inline";break;
+					case "ficha2":document.getElementById("ficha3").style.display="inline";break;
+					case "ficha3":document.getElementById("ficha4").style.display="inline";break;
+					case "ficha4":document.getElementById("ficha5").style.display="inline";break;
+					case "ficha5":document.getElementById("ficha6").style.display="inline";break;
+				}
+			}
+
+			function comprobar() {
+				aciertos=0;
+				var casillas = document.getElementsByTagName("div");
+				for(i=0;i<casillas.length;i++) {
+					if(casillas[i].childNodes.length == 3) {
+						if(numeros.indexOf(i+1)!=-1)
+							aciertos++;
+					}
+				}
+				document.getElementById("parrafoaciertos").innerHTML = aciertos;
+			} 
+
+
+			function iniciarJuego()	{
+				var tablero = document.getElementById("tablero");
+				var numeroCeldas = 49;
+
+				if(numeroCeldas>=5) {
+					for(i=0;i<numeroCeldas;i++)	{
+						if(i%10==0)	{
+							fila = document.createElement("tr");
+							tablero.appendChild(fila);
+						}
+						
+
+						celdaExterior = document.createElement("td");
+						celdaInterior = document.createElement("div");
+						celdaInterior.id = i+1;
+
+						celdaInterior.addEventListener("dragover",function (pEvento){
+							pEvento.preventDefault();
+						});
+
+						celdaInterior.addEventListener("drop",function (pEvento){
+							var datos = pEvento.dataTransfer.getData("");
+							//console.log("Casilla soltada: " + pEvento.target.id);
+							if(pEvento.target.childNodes.length == 2) {
+								pEvento.target.appendChild(document.getElementById(datos));
+								habilitarFichas(datos);
+								comprobar();
+							}
+						});
+
+						celdaExterior.appendChild(celdaInterior);
+
+						contenidoCelda = document.createTextNode(i+1);
+						celdaInterior.appendChild(contenidoCelda);
+						celdaInterior.appendChild(document.createElement("br"));
+
+						fila.appendChild(celdaExterior);
+					}
+				}
+			}
+
+
+			function fase1(pEvento)	{
+				pEvento.dataTransfer.setData("", pEvento.target.id);
+			}
+
+		</script>
+	</body>
+</html>

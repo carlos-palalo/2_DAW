@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_31 - Ejercicio: Hacer la lotería primitiva</title>
+		<style>
+			td {
+				width:50px;
+				height:50px;
+				text-align: center;
+				font-size: 30px;
+			}
+
+			#parrafonumeros {
+				font-size: 40px;
+				color:blue;
+			}
+
+			#mark {
+				font-size: 40px;
+				color:red;
+			}
+		</style>
+	</head>
+	<body onload="createTable();">
+		<h1>eventos_31 - Ejercicio: Hacer la lotería primitiva</h1>
+		<hr />
+
+		<span id="mark">X</span>
+		<table border="3">
+			<tbody id="lotery">
+			</tbody>
+		</table>
+		<p id="parrafonumeros"></p>
+
+		<script type="text/javascript">
+
+			function createTable() {
+				var lotery = document.getElementById("lotery");
+				var trow,tdata,tdspan,telement,row,column,square=0,numbers=0;
+
+				for(row=0;row<10;row++) {
+					trow = document.createElement("tr");
+					lotery.appendChild(trow);
+				}
+
+				for(column=0;column<5;column++) {
+					for(row=0;row<10;row++) {
+						if(square==0) {
+							telement = document.createTextNode("");
+						} else {
+							telement = document.createTextNode(square);
+						}
+						
+						tdata = document.createElement("td");
+						tdspan = document.createElement("span");
+						tdata.appendChild(tdspan);
+						tdspan.appendChild(telement);
+						tdata.id = square;
+						lotery.children[row].appendChild(tdata);
+
+						if(square!=0) {
+							tdspan.addEventListener("dragover",function (event) {
+								event.preventDefault();
+							});
+
+							tdata.addEventListener("drop",function (event) {
+								if(numbers<6) {
+									event.preventDefault();
+									if(event.dataTransfer.getData("")=="mark") {
+										var clonado = document.getElementById("mark").cloneNode(true);
+
+										//El evento se produce realmente en el span, no en el td
+										document.getElementById("parrafonumeros").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;" + event.currentTarget.id;
+										
+										event.target.parentNode.appendChild(clonado);
+										clonado.removeAttribute("draggable");
+
+										event.target.parentNode.removeChild(event.target);
+										
+										numbers++;
+									}
+								}
+							});
+						}
+						square++;
+					}
+				}
+				lotery.children[0].children[0].style.backgroundColor="red";
+
+
+				document.getElementById("mark").setAttribute("draggable",true);
+				document.getElementById("mark").addEventListener("dragstart",function (event) {
+					event.dataTransfer.setData("",event.target.id);
+				});
+			}
+
+		</script>
+	</body>
+</html>

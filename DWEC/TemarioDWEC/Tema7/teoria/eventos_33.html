@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eventos_33 - Ejercicio: Sopa de letras (hacer y resolver)</title>
+		<style>
+			#tablero td {
+				height: 100px;
+				width: 100px;
+				border: 2px solid black;
+				text-align: center;
+				font-size:80px
+			}
+
+			span {
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>eventos_33 - Ejercicio: Sopa de letras (hacer y resolver)</h1>
+		<hr />
+		<div id="c1">
+			Número de filas y columnas
+			<input type="number" min="5" max="15" step="1" id="filascolumnas" value="8" />
+			<br /><br />
+			<button onclick="iniciarJuego();" id="botonIniciar">Iniciar juego</button>
+		</div>
+		
+		<br /><br />
+
+		<div id="c2" style="display:none">
+			Introducir palabra<br />
+			<input type="text" id="buscada" />
+			<button onclick="comprobarPalabra();">Probar palabra</button>
+			&nbsp;&nbsp;&nbsp;<span id="parrafo">0 veces</span>
+		</div>
+		
+		<hr />
+		<table>
+			<tbody id="tablero">
+			</tbody>
+		</table>
+
+		<script type="text/javascript">
+			
+			var filascolumnas = 0;
+			var numeroCeldas = 0;
+
+			function iniciarJuego()	{
+				var tablero = document.getElementById("tablero");
+				filascolumnas = document.getElementById("filascolumnas").value;
+				numeroCeldas = filascolumnas * filascolumnas;
+
+				if(filascolumnas>=5 && filascolumnas<=15) {
+					for(i=0;i<numeroCeldas;i++)	{
+						if(i%filascolumnas==0) {
+							fila = document.createElement("tr");
+							tablero.appendChild(fila);
+						}
+						
+						celda = document.createElement("td");
+						celda.setAttribute("draggable",true);
+						celda.id = i+1;
+
+						var letras ="ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+						var indice = Math.floor(Math.random() * letras.length);
+						contenidoCelda = document.createTextNode(letras[indice]);
+						celda.appendChild(contenidoCelda);
+						fila.appendChild(celda);
+
+						document.getElementById("c1").style.display = "none";
+						document.getElementById("c2").style.display = "inline";
+
+
+						//EVENTOS
+						//FASE 1
+						celda.addEventListener("dragstart",function (pEvento) {
+							var idCelda = pEvento.target.id;
+							var columna = 0,fila = 0;
+
+							var columna = idCelda%filascolumnas;
+							if(columna==0) {
+								columna = filascolumnas;
+							}
+
+							fila = Math.ceil(idCelda/filascolumnas);
+
+							pEvento.target.style.backgroundColor = "red";
+							pEvento.dataTransfer.setData("", pEvento.target.id);
+
+							if(pEvento.altKey) {
+								for(i=1;i<=filascolumnas;i++) {
+									if(i!=columna) {
+										document.getElementById("tablero").children[fila-1].children[i-1].style.backgroundColor="#F08080"
+									}
+								}
+							}
+
+							if(pEvento.ctrlKey) {
+								for(i=1;i<=filascolumnas;i++) {
+									if(i!=fila) {
+										document.getElementById("tablero").children[i-1].children[columna-1].style.backgroundColor="#F08080"
+									}
+								}
+							}
+						});
+
+
+						//FASE 2
+						celda.addEventListener("dragover",function (pEvento) {
+							pEvento.preventDefault();
+						});
+
+
+						//FASE 3
+						celda.addEventListener("drop",function (pEvento) {
+							var celda1 = pEvento.dataTransfer.getData("");
+							var celda2 = pEvento.target.id;
+							
+							var celdas = document.getElementsByTagName("td");
+							for(i=0;i<celdas.length;i++) {
+								celdas[i].style.backgroundColor = "white";
+							}
+
+							if(pEvento.altKey && !pEvento.ctrlKey) {
+								intercambiarFilas(obtenerFila(celda1),obtenerFila(celda2));
+							}
+							
+							if(pEvento.ctrlKey && !pEvento.altKey) {
+								intercambiarColumnas(obtenerColumna(celda1),obtenerColumna(celda2));
+							}
+							
+							if(!pEvento.altKey && !pEvento.ctrlKey)
+								intercambiarCeldas(celda1,celda2);
+						});
+					}
+
+
+					document.getElementsByTagName("body")[0].addEventListener("dragover",function (pEvento) {
+						pEvento.preventDefault();
+					});
+
+
+					document.getElementsByTagName("body")[0].addEventListener("drop",function (pEvento) {
+						if(pEvento.target.tagName != "TD") {
+							var celdas = document.getElementsByTagName("td");
+							for(i=0;i<celdas.length;i++) {
+								celdas[i].style.backgroundColor = "white";
+							}
+						}
+					});
+				}
+			}
+
+
+			//INTERCAMBIO DE CELDAS
+			function intercambiarCeldas(numCelda1,numCelda2) {
+				var celda1 = document.getElementById(numCelda1);
+				var celda2 = document.getElementById(numCelda2);
+				var tempInner;
+
+				tempInner = celda1.innerHTML;
+				celda1.innerHTML = celda2.innerHTML;
+				celda2.innerHTML = tempInner;
+
+				colorearCelda(numCelda1,"yellow",400);
+				colorearCelda(numCelda2,"yellow",400);
+			}
+
+
+			//INTERCAMBIO DE FILAS
+			function intercambiarFilas(numFila1,numFila2) {
+				var c1,c2;
+				var t = document.getElementById("tablero");
+				if(numFila1 != numFila2) {
+					for(i=1;i<=filascolumnas;i++) {
+						c1 = t.children[numFila1-1].children[i-1].id;
+						c2 = t.children[numFila2-1].children[i-1].id;
+						intercambiarCeldas(c1,c2);
+					}
+				}
+			}
+
+
+			//INTERCAMBIO DE COLUMNAS
+			function intercambiarColumnas(numColumna1,numColumna2) {
+				var c1,c2;
+				var t = document.getElementById("tablero");
+				if(numColumna1 != numColumna2) {
+					for(i=1;i<=filascolumnas;i++) {
+						c1 = t.children[i-1].children[numColumna1-1].id;
+						c2 = t.children[i-1].children[numColumna2-1].id;
+						intercambiarCeldas(c1,c2);
+					}
+				}
+			}
+
+
+			function obtenerFila(celda) {
+				return Math.ceil(celda/filascolumnas);
+			}
+
+
+			function obtenerColumna(celda) {
+				var columna = celda%filascolumnas;
+				if(columna==0) {
+					columna = filascolumnas;
+				}
+				return columna;
+			}
+
+
+			function colorearCelda(numCelda,color,tiempo) {
+				var celda = document.getElementById(numCelda);
+				celda.style.backgroundColor = color;
+				if(tiempo>0) {
+					setTimeout(function () {
+						celda.style.backgroundColor = "white";
+					},tiempo);
+				}
+			}
+
+
+			function comprobarPalabra() {
+				var buscada = document.getElementById("buscada").value.toUpperCase();
+				var palabras = [];
+				var numCelda;
+				var posicion = -1;
+				var cadena = "";
+				var contador = 0;
+				var t = document.getElementById("tablero");
+				
+
+
+				//FILAS
+				var inicio = 0;
+				for(i=1;i<=filascolumnas;i++) {
+					cadena = "";
+					for(j=1;j<=filascolumnas;j++) {
+						cadena += t.children[i-1].children[j-1].innerHTML;
+					}
+
+					while(cadena.indexOf(buscada,inicio)!=-1) {
+						posicion=cadena.indexOf(buscada,inicio);
+						if(posicion!=-1) {
+							contador++;
+							for(col=posicion+1;col<posicion+buscada.length+1;col++) {
+								numCelda = (i-1)*filascolumnas + col;
+								colorearCelda(numCelda,"aqua",3000);
+							}
+						}
+
+						inicio = posicion+1;
+					}
+				}
+
+				//COLUMNAS
+				inicio = 0;
+				for(j=1;j<=filascolumnas;j++) {
+					cadena = "";
+					for(i=1;i<=filascolumnas;i++) {
+						cadena += t.children[i-1].children[j-1].innerHTML;
+					}
+
+					while(cadena.indexOf(buscada,inicio)!=-1) {
+						posicion=cadena.indexOf(buscada,inicio);
+
+						posicion=cadena.indexOf(buscada,inicio);
+						if(posicion!=-1) {
+							contador++;
+							for(fil=posicion+1;fil<posicion+buscada.length+1;fil++) {
+								numCelda = (fil-1)*filascolumnas + j;
+								colorearCelda(numCelda,"aqua",3000);
+							}
+						}
+
+						inicio = posicion+1;
+					}
+
+				}
+				document.getElementById("parrafo").innerHTML = contador + " veces";
+			}
+
+		</script>
+	</body>
+</html>
