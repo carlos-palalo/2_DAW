@@ -146,10 +146,10 @@ SHOW WARNINGS;
 -- INSERT `proyectoTiendaRopa_carlosp`.`Usuario`
 -- -----------------------------------------------------
 
-INSERT INTO USUARIO (email, username, password, tipo, tlf, fecha_creacion) VALUES("ana@gmail.com", "ana", sha1("ana"), "normal", 123456789, sysdate());
-INSERT INTO USUARIO (email, username, password, tipo, tlf, fecha_creacion) VALUES("jose@gmail.com", "jose", sha1("jose"), "normal", 789456123, sysdate());
-INSERT INTO USUARIO (email, username, password, tipo, tlf, fecha_creacion) VALUES("admin@gmail.com", "admin", sha1("admin"), "admin", 456789123, sysdate());
-INSERT INTO USUARIO (email, username, password, tipo, tlf, fecha_creacion) VALUES("laura@gmail.com", "laura", sha1("laura"), "normal", 321654987, sysdate());
+INSERT INTO USUARIO (email, username, password, tipo, tlf, fecha_creacion) VALUES("ana@gmail.com", "ana", sha1("Ana12345"), "normal", 123456789, sysdate());
+INSERT INTO USUARIO (email, username, password, tipo, tlf, fecha_creacion) VALUES("jose@gmail.com", "jose", sha1("Jose12345"), "normal", 789456123, sysdate());
+INSERT INTO USUARIO (email, username, password, tipo, tlf, fecha_creacion) VALUES("admin@gmail.com", "admin", sha1("Admin12345"), "admin", 456789123, sysdate());
+INSERT INTO USUARIO (email, username, password, tipo, tlf, fecha_creacion) VALUES("laura@gmail.com", "laura", sha1("Laura12345"), "normal", 321654987, sysdate());
 
 -- -----------------------------------------------------
 -- INSERT `proyectoTiendaRopa_carlosp`.`Proveedor`
