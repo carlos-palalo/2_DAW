@@ -2,37 +2,36 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        var ventana, intervalo, i = 0;
 
+        function abrir() {
+            if (document.links.length > 0) {
+                intervalo = setInterval(cargar, 3000);
+            }
+        }
+
+        function cargar() {
+            if (i == 0) {
+                ventana = window.open("", "_blank", "height=600,width=800,top=40,left=200,toolbar=yes,location=yes", true); //Ventana
+            }
+
+            if (i < document.links.length) {
+                ventana.location.href = document.links[i++].href;
+            } else if (i = document.links.length) {
+                clearInterval(intervalo);
+            }
+        }
+    </script>
 </head>
 
-<script type="text/javascript">
-    var ventana, intervalo, i = 0;
-
-    function abrir() {
-        if (document.links.length > 0) {
-            intervalo = setInterval(cargar, 3000);
-        }
-    }
-
-    function cargar() {
-        if (i == 0) {
-            ventana = window.open("", "_blank","",true);
-        }
-
-        if (i < document.length) {
-            ventana.location.href = document.links[i++].href;
-        } else if (i = document.links.length) {
-            clearInterval(intervalo);
-        }
-    }
-</script>
-
-<body onload="abrir()">
+<body onload="abrir();">
     <h1>Ejercicio Cambiar enlaces en una misma ventana cada 5 segundos</h1>
-    <p><a href="http://iesriberadecastilla.centros.educa.jcyl.es/sitio/" target="_blank">Enlace 1</a></p>
-    <p><a href="https://www.todofp.es/inicio.html" target="_blank">Enlace 2</a></p>
-    <p><a href="https://www.educa.jcyl.es/educacyl/cm" target="_blank">Enlace 3</a></p>
-    <p><a href="https://adfs.educa.jcyl.es/adfs/ls/" target="_blank">Enlace 4</a></p>
+    <a href="http://iesriberadecastilla.centros.educa.jcyl.es/sitio/" target="_blank">Enlace 1</a>
+    <a href="https://www.todofp.es/inicio.html" target="_blank">Enlace 2</a>
+    <a href="https://www.educa.jcyl.es/educacyl/cm" target="_blank">Enlace 3</a>
+    <a href="https://adfs.educa.jcyl.es/adfs/ls/" target="_blank">Enlace 4</a>
 </body>
 
 </html>
