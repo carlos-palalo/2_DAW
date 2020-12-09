@@ -272,3 +272,22 @@ Pag 74
 	Ponte a prueba
 		5 % 30000 = 1500 * 5 + 30000 = 37500
 
+------------------------------- Tema 5 ------------------------------------ 
+Rentabilidad	-> Plan financiero
+					Plan de Tesoreía (utilidad financiera)
+						Entradas
+						Salidas
+					Cuenta de Perdidas y Ganancias (Beneficio Neto)
+						Ingresos
+						Gastos
+					Balance
+						Activo (BSyDos)*
+						Pasivo (Deudas)
+						Neto Patrimonial (Aportaciones: KS)
+						Ratio Liquidez: F.M.
+				-> Umbral de Rentabilidad (Punto Muerto)
+					Coste Fijo != Coste Variable
+					PM = CF / (Pv - C.Unit) = Nº Unidades -> Punto Muerto = Coste Fijo / (Precio venta - Coste Unitario) = Nº Unidades
+
+Beneficio = Ingresos Totales - Costes Totales => B = IT - CT 
+B = (Precio * Cantidad) - (CF + C. Unit*q) => B = p*q - (CF+CUnit*q)
