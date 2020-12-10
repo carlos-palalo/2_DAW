@@ -1,15 +1,147 @@
 <!DOCTYPE html>
-<!--Validar un formulario sin javascript (pattern) - Dni, nombre, apellidos, direccion, localidad -->
+<!--Ahorcado -->
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #cuadroPalabra {
+            font-size: xx-large;
+            font-weight: bold;
+        }
+
+        #jugador1,
+        #jugador2,
+        #cuadroPalabra {
+            border: 5px solid black;
+            padding: 50px;
+        }
+
+        #jugador2,
+        #cuadroPalabra {
+            display: none;
+        }
+
+        #intentos {
+            color: green;
+        }
+
+        #listaLetras {
+            color: red;
+        }
+    </style>
     <script type="text/javascript">
-        
+        var palabra = "", intentos = 0, nueva = "", listaLetras = [];
+
+        function introducirPalabra() {
+            palabra = document.getElementById("palabra").value;
+            document.getElementById("jugador1").style.display = "none";
+            document.getElementById("jugador2").style.display = "block";
+            document.getElementById("cuadroPalabra").style.display = "block";
+            nueva = palabra.replace(/\w/g, "_ ");
+            document.getElementById("oculta").innerHTML = nueva;
+        }
+
+        function decirLetra() {
+            if (listaLetras.indexOf(document.getElementById("letras").value) != -1) {
+                alert("Letra ya dicha. Elige otra.")
+            } else {
+                intentos++;
+                document.getElementById("intentos").innerHTML = intentos;
+                listaLetras.push(document.getElementById("letras").value);
+                document.getElementById("listaLetras").innerHTML = listaLetras;
+                if (intentos >= 5) {
+                    document.getElementById("letras").disabled = true;
+                    document.getElementById("decirLetra").disabled = true;
+                }
+                formarPalabra();
+            }
+        }
+
+        function formarPalabra() {
+            var regex;
+            nueva = palabra;
+            for (var i = 0; i < listaLetras.length; i++) {
+                letra = listaLetras[i].toLowerCase();
+                if (palabra.indexOf(letra) != -1) {
+                    regex = new RegExp(letra, "ig");
+                    nueva = nueva.replace(regex, letra.toUpperCase());
+                }
+            }
+            nueva = nueva.replace(/[a-z]/g, "_ ");
+            document.getElementById("oculta").innerHTML = nueva;
+        }
+
+        function resolver() {
+            var solucion = document.getElementById("resolver").value.toUpperCase();
+            palabra = palabra.toUpperCase();
+            solucion == palabra ? alert("Has acertado!") : alert("Has fallado!");
+            document.getElementById("resolver").disabled = true;
+            document.getElementById("btn-resolver").disabled = true;
+            document.getElementById("letras").disabled = true;
+            document.getElementById("decirLetra").disabled = true;
+        }
     </script>
 </head>
 
-<body>
-    
+<body onload="">
+    <h1>Ahorcado</h1>
+    <hr>
+    <div id="jugador1">
+        <h1>Jugador 1</h1>
+        <p>Introduce la palabra:</p>
+        <input type="password" id="palabra" name="palabra">
+        <br>
+        <br>
+        <button onclick="introducirPalabra()">Introducir Palabra</button>
+    </div>
+    <hr>
+    <div id="cuadroPalabra">
+        <div id="intentos"></div>
+        <hr>
+        <div id="listaLetras"></div>
+        <hr>
+        <div id="oculta"></div>
+    </div>
+    <hr>
+    <div id="jugador2">
+        <h1>Jugador 2</h1>
+        <select name="letras" id="letras">
+            <option id="A">A</option>
+            <option id="B">B</option>
+            <option id="C">C</option>
+            <option id="D">D</option>
+            <option id="E">E</option>
+            <option id="F">F</option>
+            <option id="G">G</option>
+            <option id="H">H</option>
+            <option id="I">I</option>
+            <option id="J">J</option>
+            <option id="K">K</option>
+            <option id="L">L</option>
+            <option id="M">M</option>
+            <option id="N">N</option>
+            <option id="Ñ">Ñ</option>
+            <option id="O">O</option>
+            <option id="P">P</option>
+            <option id="Q">Q</option>
+            <option id="R">R</option>
+            <option id="S">S</option>
+            <option id="T">T</option>
+            <option id="U">U</option>
+            <option id="B">V</option>
+            <option id="W">W</option>
+            <option id="X">X</option>
+            <option id="Y">Y</option>
+            <option id="Z">Z</option>
+        </select>
+        <br><br>
+        <button id="decirLetra" onclick="decirLetra()">Decir Letra</button>
+        <p>Decir palabra:</p>
+        <input type="text" id="resolver" name="resolver">
+        <button id="btn-resolver" onclick="resolver()">Resolver</button>
+    </div>
 </body>
 
 </html>

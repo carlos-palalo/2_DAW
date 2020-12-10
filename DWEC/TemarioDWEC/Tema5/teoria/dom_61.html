@@ -22,9 +22,10 @@
 				let cont = 0;
 				let elementos = document.getElementsByTagName('*');
 				for(i = 0; i < elementos.length; i++) {
-					cont = cont + elementos[i].attributes.length;
+					//cont = cont + elementos[i].attributes.length;
 					for(j = 0; j < elementos[i].attributes.length; j++) {
 						c += "\nNombre: " + elementos[i].attributes[j].name + " - Valor: " + elementos[i].attributes[j].value;
+						cont++
 					}
 				}
 				c = "\nHay " + cont + " atributos" + c;
