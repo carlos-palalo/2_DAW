@@ -3,5 +3,3 @@ M: DAW(2), DWEC(2), EIE(1), DWES(1)
 X: EIE(2), DWEC(2), DWES(2)
 J: DINT(2), DWEC(2), DAW(2)
 V: DINT(3), DWES(3)
-
-36
