@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<!-- No utilizar innerHTML -->
+
+<head>
+    <meta charset="utf-8">
+    <title>Examen 2</title>
+    <style>
+        .no {
+            border: 2px solid black;
+        }
+
+        .si {
+            border: 2px dotted red;
+        }
+
+        div {
+            padding: 1cm;
+            margin: 0.5cm;
+            width: 25%;
+        }
+
+        #obligatorio {
+            font-size: 20px;
+            color: red;
+        }
+
+        td {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Examen 2</h1>
+    <hr>
+    <span id="obligatorio">OBLIGATORIO</span>
+    <div id="cuadrodni">
+        DNI<br />
+        <input type="text" id="dni">
+    </div>
+    <div id="cuadronombre">
+        Nombre<br />
+        <input type="text" id="nombre">
+    </div>
+    <div id="cuadrotelefono">
+        Teléfono<br />
+        <input type="text" id="telefono">
+    </div>
+    <button onclick="enviar()">Almacenar</button>
+    <br /><br />
+    <table>
+        <tbody id="tabla"></tbody>
+    </table>
+    <script type="text/javascript">
+        var obligatorio = document.getElementById("obligatorio");
+        var divs = document.getElementsByTagName("div");
+        var cont = 0;
+
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].classList.add("no");
+            divs[i].draggable = true;
+            divs[i].addEventListener("dragstart", fase1);
+            divs[i].addEventListener("dragover", fase2);
+            divs[i].addEventListener("drop", fase3);
+        }
+        obligatorio.draggable = true;
+        obligatorio.addEventListener("dragstart", fase1);
+        obligatorio.addEventListener("dragover", fase2);
+        obligatorio.addEventListener("drop", fase3);
+
+        function fase1(pEvento) {
+            pEvento.dataTransfer.setData("", pEvento.target.id);
+        }
+
+        function fase2(pEvento) {
+            pEvento.preventDefault();
+        }
+
+        function fase3(pEvento) {
+            var datos = pEvento.dataTransfer.getData("");
+
+            if (datos == "obligatorio") {
+                pEvento.target.classList.remove("no");
+                pEvento.target.classList.add("si");
+            } else {
+                if (document.getElementById(datos).classList.contains("si")) {
+                    if (pEvento.target.classList.contains("no")) {
+                        document.getElementById(datos).classList.remove("si");
+                        document.getElementById(datos).classList.add("no");
+                        pEvento.target.classList.remove("no");
+                        pEvento.target.classList.add("si");
+                    } else if (pEvento.target.id = "obligatorio") {
+                        document.getElementById(datos).classList.remove("si");
+                        document.getElementById(datos).classList.add("no");
+                    }
+                }
+            }
+        }
+
+        function enviar() {
+            var dni = document.getElementById("dni");
+            var nombre = document.getElementById("nombre");
+            var tlf = document.getElementById("telefono");
+            var tabla = document.getElementById("tabla");
+            var flag = false;
+
+            if (dni.parentElement.classList.contains("si") && dni.value == "") {
+                alert("Por favor, rellena el DNI.");
+
+            } else if (tlf.parentElement.classList.contains("si") && tlf.value == "") {
+                alert("Por favor, rellena el TELÉFONO.");
+
+            } else if (nombre.parentElement.classList.contains("si") && nombre.value == "") {
+                alert("Por favor, rellena el NOMBRE.");
+            } else if (dni.value != "" || nombre.value != "" || tlf.value != "") {
+                var tr = document.createElement("tr");
+                if (cont == 0) {
+                    for (var i = 0; i < 3; i++) {
+                        var td = document.createElement("td");
+                        switch (i) {
+                            case 0:
+                                var texto = document.createTextNode("DNI");
+                                break;
+                            case 1:
+                                var texto = document.createTextNode("NOMBRE");
+                                break;
+                            case 2:
+                                var texto = document.createTextNode("TELEFONO");
+                                break;
+                        }
+                        td.appendChild(texto);
+                        tr.appendChild(td);
+                        td.style.fontWeight = "bold";
+                    }
+                    tabla.appendChild(tr);
+                    cont++;
+                }
+                var tr = document.createElement("tr");
+                var column = document.getElementsByTagName("tr");
+                if (column.length >= 2) {
+                    for (var fil = 0; fil < column.length; fil++) {
+                        if (tabla.children[fil].children[0].textContent == dni.value && dni.value != "") {
+                            flag = true;
+                            for (var i = 0; i < 2; i++) {
+                                var celda = tabla.children[fil].children[i + 1];
+                                switch (i) {
+                                    case 0:
+                                        celda.textContent = nombre.value;
+                                        break;
+                                    case 1:
+                                        celda.textContent = tlf.value;
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (!flag) {
+                    for (var i = 0; i < 3; i++) {
+                        var td = document.createElement("td");
+                        switch (i) {
+                            case 0:
+                                var texto = document.createTextNode(dni.value);
+                                break;
+                            case 1:
+                                var texto = document.createTextNode(nombre.value);
+                                break;
+                            case 2:
+                                var texto = document.createTextNode(tlf.value);
+                                break;
+                        }
+                        td.appendChild(texto);
+                        tr.appendChild(td);
+                    }
+                    tabla.appendChild(tr);
+                    tr.addEventListener("dblclick", function (pEvento) {
+                        pEvento.target.parentElement.remove();
+                    });
+                }
+                dni.value = "";
+                nombre.value = "";
+                tlf.value = "";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
