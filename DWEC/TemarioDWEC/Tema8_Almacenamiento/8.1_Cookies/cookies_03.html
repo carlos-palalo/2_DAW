@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>cookies_03 - Eliminar cookies</title>
+	</head>
+	<body>
+		<h1>cookies_03 - Eliminar cookies</h1>
+		<hr />
+		<button onclick="eliminarTodasCookies();">Eliminar todas la cookies</button>
+		<br /><br />
+		<input type="text" id="idclave" />
+		<button onclick="eliminarCookie(document.getElementById('idclave').value);">Eliminar una cookie</button>
+
+		<script type="text/javascript">
+
+			function eliminarTodasCookies() {
+				var listaCookies = document.cookie.split(';');
+				var clave = "";
+				for(i=0;i<listaCookies.length;i++) {
+					clave = listaCookies[i].split('=')[0].trim();
+					document.cookie = clave + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+				}
+			}
+	
+	
+			function eliminarCookie(clave) {
+				//document.cookie = clave + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+				document.cookie = clave + "=; max-age=0";
+			}
+	
+		</script>
+	</body>
+</html>

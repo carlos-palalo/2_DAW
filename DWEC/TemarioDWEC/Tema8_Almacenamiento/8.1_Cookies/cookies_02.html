@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>cookies_02 - Lectura de cookies</title>
+	</head>
+	<body>
+		<h1>cookies_02 - Lectura de cookies</h1>
+		<hr />
+		<button onclick="leerTodasCookies();">Leer todas las cookies</button>
+		<br /><br />
+		<input type="text" id="idnombre" />
+		<button onclick="alert(leerCookie(document.getElementById('idnombre').value));">Leer la cookies</button>
+
+		<script type="text/javascript">
+
+			function leerTodasCookies() {
+				alert(document.cookie);
+			 }
+	
+	
+			function leerCookie(clave) {
+				var resultado = "";
+				var busqueda = clave + "=";
+	
+				var listCookies = document.cookie.split(';');
+				var par = "";
+	
+				for(var i = 0; i <listCookies.length; i++) {
+					par = listCookies[i]; //Cada elemento del array de cookies: nombre de la cookie y carácter =
+	
+					//Se quitan los espacios en blanco 
+					while (par.charAt(0)==' ') {
+						par = par.substring(1);
+					}
+	
+					//Se compara los que buscamos con el elemento del array. Si devuelve como índice 0 se ha encontrado
+					if (par.indexOf(busqueda) == 0) {
+						resultado = par.substring(busqueda.length,par.length);
+					}
+				}
+				return resultado;
+			}
+	
+		</script>
+	</body>
+</html>

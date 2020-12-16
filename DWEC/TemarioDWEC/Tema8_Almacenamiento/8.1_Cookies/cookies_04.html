@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>cookies_04 - Modificar cookies</title>
+	</head>
+	<body>
+		<h1>cookies_04 - Modificar cookies</h1>
+		<hr />
+		Nombre de la cookie a modificar
+		<input type="text" id="idclave" />
+		<br /><br />
+		Nuevo valor de la cookie
+		<input type="text" id="idvalor" />
+		<br /><br />
+		<button onclick="modificarCookie();">Modificar una cookie</button>
+
+		<script type="text/javascript">
+
+			function modificarCookie() {
+				document.cookie = document.getElementById("idclave").value + "=" + document.getElementById("idvalor").value;
+			}
+	
+		</script>
+	</body>
+</html>
