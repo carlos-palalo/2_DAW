@@ -291,3 +291,54 @@ Rentabilidad	-> Plan financiero
 
 Beneficio = Ingresos Totales - Costes Totales => B = IT - CT 
 B = (Precio * Cantidad) - (CF + C. Unit*q) => B = p*q - (CF+CUnit*q)
+
+Ejercicios
+	Calculadoras
+		-Alquiler del local 360€
+		-Impuesto municipal 90€
+		-Coste unitario de la calculadora 4,5€
+		-Precio venta unitario 9€
+		a) Calcule PM/Umbral de rentabilidad = 360+90/9-4,5=100 calculadoras tienen que vender
+		b) Explique su significado
+		b) Con 100 calculadoras cubren sus costes y tienen minimo 900 alumnos.
+
+	Paraguas
+		CF=50.000unidades
+		INGRESOS=90.000unidades
+		COSTES VARIABLES UNITARIOS 25unidades
+		PRECIO DE VENTA 50unidades
+		50.000/50-25=2000 paraguas
+		a)cuantos paraguas tienen que vender para cubrir sus costes
+		b)representar
+
+	Cuentas
+		caja 500 
+		terreno 2600
+		reservas 3300
+		clientes 600
+		instalaciones 5000
+		edificios 8500
+		amortizacion -(2000)
+		acreedores 2200
+		proveedores 3500
+		deudas a largo plazo 3000
+		bancos 1200
+		perdidas y ganancias ????
+		capital social 5000
+		mercaderias 1400
+
+	Pau Sociedad Anonima, presenta las siguientes cuentas.
+		Acreedores a corto plazo 2400
+		Acreedores a largo plazo 5000
+		Bancos cuenta corriente 2200
+		Caja 600
+		Capital social 12000
+		Clientes 1500
+		Construcciones - 10000
+		Efectivo corto 2100
+		Mercaderias 3000
+		Maquinaria 2200
+		Materias primas 1100
+		Proveedores a corto plazo 1800
+		Reservas 1200
+		Calcular balance situacion, fondo maniobra y explicar el significado
