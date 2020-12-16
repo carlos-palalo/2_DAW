@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #cuenta {
+            font-size: 300%;
+        }
+    </style>
+    <script>
+        function leerCookie(clave) {
+            var resultado = "";
+            var busqueda = clave + "=";
+
+            var listCookies = document.cookie.split(';');
+            var par = "";
+
+            for (var i = 0; i < listCookies.length; i++) {
+                par = listCookies[i]; //Cada elemento del array de cookies: nombre de la cookie y carácter =
+
+                //Se quitan los espacios en blanco 
+                while (par.charAt(0) == ' ') {
+                    par = par.substring(1);
+                }
+
+                //Se compara los que buscamos con el elemento del array. Si devuelve como índice 0 se ha encontrado
+                if (par.indexOf(busqueda) == 0) {
+                    resultado = par.substring(busqueda.length, par.length);
+                }
+            }
+            return resultado;
+        }
+
+        function ponerCookie(clave, valor, dias = 0) {
+            var miCookie = "";
+            if (dias > 0) {
+                var fecha = new Date();
+                fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + fecha.toUTCString();
+                miCookie = clave + "=" + valor + ";" + expires; //PERMANENTE
+            } else {
+                miCookie = clave + "=" + valor; //SESIÓN
+            }
+            document.cookie = miCookie;
+        }
+
+        function meter() {
+            var cantidad = document.getElementById("dinero").value;
+            if (cantidad != "") {
+                if (/^\d+$/.test(cantidad)) {
+                    if (leerCookie("cuenta") != "") {
+                        ponerCookie("cuenta", parseInt(cantidad) + parseInt(leerCookie("cuenta")), 5);
+                    } else {
+                        ponerCookie("cuenta", cantidad, 5);
+                    }
+                } else {
+                    alert("Ingrese una cantidad válida");
+                }
+            } else {
+                alert("Ingresa una cantidad");
+            }
+            actualizarSaldo();
+        }
+
+        function sacar() {
+            var cantidad = document.getElementById("dinero").value;
+            if (cantidad != "") {
+                if (/^\d+$/.test(cantidad)) {
+                    if (leerCookie("cuenta") != "") {
+                        ponerCookie("cuenta", parseInt(leerCookie("cuenta")) - parseInt(cantidad), 5);
+                    } else {
+                        alert("Para sacar, debe meter antes dinero");
+                    }
+                } else {
+                    alert("Ingrese una cantidad válida");
+                }
+            } else {
+                alert("Ingresa una cantidad");
+            }
+            actualizarSaldo();
+        }
+
+        function actualizarSaldo() {
+            if (leerCookie("cuenta") != "") {
+                document.getElementById("cuenta").innerText = leerCookie("cuenta");
+            }
+            document.getElementById("dinero").value="";
+        }
+    </script>
+</head>
+
+<body onload="actualizarSaldo()">
+    <h1>Ejercicio Login</h1>
+    <hr>
+    <div id="cuenta"></div>
+    <br><br>
+    <input type="text" id="dinero" placeholder="Cantidad">
+    <br><br>
+    <input type="submit" onclick="meter()" value="Meter dinero">
+    <input type="submit" onclick="sacar()" value="Sacar dinero">
+</body>
+
+</html>

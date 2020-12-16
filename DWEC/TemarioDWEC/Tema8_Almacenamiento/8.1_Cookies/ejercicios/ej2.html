@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        function leerCookie(clave) {
+            var resultado = "";
+            var busqueda = clave + "=";
+
+            var listCookies = document.cookie.split(';');
+            var par = "";
+
+            for (var i = 0; i < listCookies.length; i++) {
+                par = listCookies[i]; //Cada elemento del array de cookies: nombre de la cookie y carácter =
+
+                //Se quitan los espacios en blanco 
+                while (par.charAt(0) == ' ') {
+                    par = par.substring(1);
+                }
+
+                //Se compara los que buscamos con el elemento del array. Si devuelve como índice 0 se ha encontrado
+                if (par.indexOf(busqueda) == 0) {
+                    resultado = par.substring(busqueda.length, par.length);
+                }
+            }
+            return resultado;
+        }
+
+        function ponerCookie(clave, valor, dias = 0) {
+            var miCookie = "";
+            if (dias > 0) {
+                var fecha = new Date();
+                fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + fecha.toUTCString();
+                miCookie = clave + "=" + valor + ";" + expires; //PERMANENTE
+            } else {
+                miCookie = clave + "=" + valor; //SESIÓN
+            }
+            document.cookie = miCookie;
+        }
+
+        function entrar() {
+            var usuario = document.getElementById("nombre").value;
+            var pass = document.getElementById("pass").value
+            if ((usuario == "jperez" && pass == "1234") || (usuario == "mgarcia" && pass == "4321")) {
+                ponerCookie("user", usuario, 5);
+                alert("Usuario Correcto");
+            } else {
+                alert("Usuario Incorrecto");
+            }
+            document.getElementById("nombre").value = "";
+            document.getElementById("pass").value = "";
+            comprobar();
+        }
+        function comprobar() {
+            if (leerCookie("user") != "") {
+                document.getElementById("nombre").value = leerCookie("user");
+            }
+        }
+    </script>
+</head>
+
+<body onload="comprobar()">
+    <h1>Ejercicio Login</h1>
+    <hr>
+    <input type="text" id="nombre" placeholder="Usuario">
+    <br><br>
+    <input type="password" id="pass" placeholder="Contraseña">
+    <br><br>
+    <input type="submit" onclick="entrar()" value="Entrar">
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>cookies_05 - Imprimir independientemente los nombres de las cookies</title>
+	</head>
+	<body>
+		<h1>cookies_05 - Imprimir independientemente los nombres de las cookies</h1>
+		<hr />
+		<button onclick="verNombresCookies();">Ver nombres de las cookies</button>
+
+		<script type="text/javascript">
+
+			function verNombresCookies() {
+				var listaCookies = document.cookie.split(';');
+				var nombresCookies = "";
+				var valoresCookies = "";
+				for(var i = 0; i <listaCookies.length; i++) {
+					nombresCookies += '\n' + listaCookies[i].split('=')[0].trim();
+					valoresCookies += '\n' + listaCookies[i].split('=')[1].trim();
+				}
+				alert(nombresCookies);
+				alert(valoresCookies);
+			}
+	
+		</script>
+	</body>
+</html>
