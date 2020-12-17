@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>storage_02 - localStorage: removeItem, clear</title>
+	</head>
+	<body>
+		<h1>storage_02 - localStorage: removeItem, clear</h1>
+		<hr />
+
+		Clave<br />
+		<input type="text" id="clave" /><button onclick="eliminarPar();">Eliminar par clave-valor</button>
+		
+		<br /><br />
+
+		<button onclick="eliminarTodos();">Borrar todo el almacenamiento</button>
+
+		<script type="text/javascript">
+
+			function eliminarPar() {
+				localStorage.removeItem(document.getElementById("clave").value);
+			}
+	
+			function eliminarTodos() {
+				localStorage.clear();
+			}
+	
+		</script>
+	</body>
+</html>

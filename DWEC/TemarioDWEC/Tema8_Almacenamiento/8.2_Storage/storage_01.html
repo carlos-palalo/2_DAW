@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>storage_01 - localStorage: setItem, getItem, length</title>
+	</head>
+	<body>
+		<h1>storage_01 - localStorage: setItem, getItem, length</h1>
+		<hr />
+
+		Clave<br />
+		<input type="text" id="clave" />
+		<br /><br />
+
+		Valor<br />
+		<input type="text" id="valor" />
+		<br /><br />
+
+		<button onclick="ponerClaveValor();">Poner par clave-valor</button>
+
+		<button onclick="obtenerValor();">Obtener valor</button>
+
+		<br /><br />
+
+		<button onclick="modificarPropiedad();">Acceso mediante propiedad</button>
+
+		<br /><br />
+		
+		<button onclick="alert('Elementos: ' + localStorage.length);">Número de elementos</button>
+		
+		<script type="text/javascript">
+
+			function ponerClaveValor() {
+				var c = document.getElementById("clave").value;
+				var v = document.getElementById("valor").value;
+				window.localStorage.setItem(c,v);
+				localStorage.setItem(c,v);
+			}
+
+			function obtenerValor()	{
+				var c = document.getElementById("clave").value;
+				alert(window.localStorage.getItem(c));
+			}
+
+			function modificarPropiedad()	{
+				window.localStorage.ciudad = "Valladolid";
+				localStorage["color"] = "verde";
+				alert(localStorage.ciudad + " - " + localStorage["color"]);
+			}
+
+		</script>
+	</body>
+</html>

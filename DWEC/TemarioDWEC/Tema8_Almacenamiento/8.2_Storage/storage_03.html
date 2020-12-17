@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>storage_03 - localStorage: propiedad key y recorrer el almacenamiento</title>
+	</head>
+	<body>
+		<h1>storage_03 - localStorage: propiedad key y recorrer el almacenamiento</h1>
+		<hr />
+
+		<button onclick="recorrer();">Recorrer almacenamiento con el método key</button>
+		
+		<br />
+
+		<hr />
+		<p id="contenido"></p>
+
+		<script type="text/javascript">
+
+			function recorrer() {
+				var c = "<h2>Recorrido con la propiedad key y un índice</h2>";
+				//Se almacenan alfabéticamente
+				for(i=0;i<localStorage.length;i++) {
+					c += localStorage.key(i) + " --> " + localStorage.getItem(localStorage.key(i)) + "<br />";
+				}
+				document.getElementById("contenido").innerHTML = c;
+			}
+
+		</script>
+	</body>
+</html>
+
