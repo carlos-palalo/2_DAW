@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function ponerClaveValor() {
+            var c = document.getElementById("clave").value;
+            var v = document.getElementById("valor").value;
+            window.localStorage.setItem(c, v);
+            localStorage.setItem(c, v);
+        }
+
+        function obtenerValor() {
+            var c = document.getElementById("clave").value;
+            alert(window.localStorage.getItem(c));
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Ejercicio 1 Local Storage</h1>
+    <hr>
+    <input type="text" id="clave" placeholder="Clave">
+    <br><br>
+    <input type="text" id="valor" placeholder="Valor">
+    <br><br>
+    <input type="submit" value="Poner" onclick="ponerClaveValor()">
+    <input type="submit" value="Leer" onclick="obtenerValor()">
+</body>
+
+</html>
