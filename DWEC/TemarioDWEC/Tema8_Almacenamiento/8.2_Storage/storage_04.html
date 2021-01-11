@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>storage_04 - localStorage: evento storage</title>
+	</head>
+
+	
+
+	<body>
+		<h1>storage_04 - localStorage: evento storage</h1>
+		<hr />
+
+		Clave<br />
+		<input type="text" id="clave" />
+
+		<br /><br />
+
+		Valor<br />
+		<input type="text" id="valor" />
+
+		<br /><br />
+
+		<button onclick="ponerValor();">Poner par clave-valor</button>
+
+		<hr />
+
+		<p id="parrafo"></p>
+		
+		<script type="text/javascript">
+
+			window.addEventListener("storage",function (){
+				document.getElementById("parrafo").innerHTML = "<h2>Se ha modificado el almacenamiento</h2>";
+			});
+	
+			function ponerValor() {
+				var c = document.getElementById("clave").value;
+				var v = document.getElementById("valor").value;
+				localStorage.setItem(c,v);
+			}
+	
+		</script>
+	</body>
+</html>
+

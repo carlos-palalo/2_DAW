@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>cookies_08 - Ejercicio: Simular un banco</title>
+		<style type="text/css">
+			#parrafoSaldo {
+				font-size: 50px;
+				font-weight: bold;
+				color: black;
+			}	
+		</style>
+	</head>
+	<body onload="leerSaldo();">
+		<h1>cookies_08 - Ejercicio: Simular un banco</h1>
+		<hr />
+
+		<p id="parrafoSaldo"></p>
+		
+		<br />
+
+		<input type="radio" id="ingresar" name="operacion" value="ingresar" />Hacer un ingreso
+
+		<br /><br />
+
+		<input type="radio" id="sacar" name="operacion" value="sacar" />Sacar dinero
+		
+		<br /><br />
+
+		<input type="text" id="cantidad" name="cantidad" />
+		
+		<br /><br />
+
+		<button onclick="operar();">Operar</button>
+
+		<script type="text/javascript">
+	
+			var saldo = 0;
+			
+			function leerCookie(clave) {
+				var resultado = "";
+				var busqueda = clave + "=";
+	
+				var listCookies = document.cookie.split(';');
+				var par = "";
+	
+				for(var i = 0; i <listCookies.length; i++) {
+					par = listCookies[i]; //Cada elemento del array de cookies: nombre de la cookie y carácter =
+	
+					//Se quitan los espacios en blanco 
+					while (par.charAt(0)==' ') {
+						par = par.substring(1);
+					}
+	
+					//Se compara los que buscamos con el elemento del array. Si devuelve como índice 0 se ha encontrado
+					if (par.indexOf(busqueda) == 0) {
+						resultado = par.substring(busqueda.length,par.length);
+					}
+				}
+				return resultado;
+			}
+		
+	
+			function leerSaldo() {
+				var saldoCookie = leerCookie("saldo");
+				if(saldoCookie=="")	{
+					saldo = 0;
+				} else {
+					saldo = parseInt(saldoCookie);
+				}
+	
+				actualizarSaldo();
+			}
+	
+	
+			function actualizarSaldo() {
+				var d = new Date();
+				d.setTime(d.getTime() + (5*24*60*60*1000)); //5 días de validez
+				var expires = "expires="+ d.toUTCString();
+				document.cookie="saldo=" + saldo  + ";" + expires;
+	
+				document.getElementById("parrafoSaldo").innerHTML = saldo;
+			}
+	
+	
+			function operar() {
+				if(/^\d+$/.test(document.getElementById("cantidad").value))
+				{
+					var cantidad = parseInt(document.getElementById("cantidad").value);
+	
+					if(document.getElementById("ingresar").checked)	{
+						saldo = saldo + cantidad;
+					}
+	
+					if(document.getElementById("sacar").checked) {
+						saldo = saldo - cantidad;	
+					}
+	
+					actualizarSaldo();
+				} else {
+					alert("Cantidad no válida");
+				}
+			}
+	
+		</script>
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>cookies_07 - Ejercicio: Recordar un usuario</title>
+	</head>
+	<body onload="iniciarCampo();">
+		<h1>cookies_07 - Ejercicio: Recordar un usuario</h1>
+		<hr />
+
+		Usuario<br />
+		<input type="text" id="usuario" name="usuario" />
+
+		<br /><br />
+
+		Clave<br />
+		<input type="password" id="clave" name="clave" />
+
+		<br /><br />
+
+		<input type="checkbox" id="recordar" name="recordar" />Recordar usuario
+
+		<br /><br />
+
+		<button onclick="login();">Entrar</button>
+
+		<script type="text/javascript">
+
+			function leerCookie(clave) {
+				var resultado = "";
+				var busqueda = clave + "=";
+		
+				var listCookies = document.cookie.split(';');
+				var par = "";
+		
+				for(var i = 0; i <listCookies.length; i++) {
+					par = listCookies[i]; //Cada elemento del array de cookies: nombre de la cookie y carácter =
+		
+					//Se quitan los espacios en blanco 
+					while (par.charAt(0)==' ') {
+						par = par.substring(1);
+					}
+		
+					//Se compara los que buscamos con el elemento del array. Si devuelve como índice 0 se ha encontrado
+					if (par.indexOf(busqueda) == 0) {
+						resultado = par.substring(busqueda.length,par.length);
+					}
+				}
+				return resultado;
+			}
+	
+		
+			function iniciarCampo() {
+				var cookieUsuario = leerCookie("usuario");
+				if(cookieUsuario!="") {
+					document.getElementById("usuario").value = cookieUsuario;
+				} else {
+					document.getElementById("usuario").value = "";
+				}
+			}
+	
+	
+			function login() {
+				var u = document.getElementById("usuario").value;
+				var c = document.getElementById("clave").value;
+	
+				if( (u=="jperez" && c=="1234") || (u=="mgarcia" && c=="4321") )	{
+					if(document.getElementById("recordar").checked) {
+						var d = new Date();
+						d.setTime(d.getTime() + (5*24*60*60*1000)); //5 días de validez
+						var expires = "expires="+ d.toUTCString();
+						document.cookie="usuario=" + u  + ";" + expires;
+					}
+					alert("Usuario correcto");
+				}
+				else {
+					alert("Usuario o clave incorrectos");
+				}
+			}
+	
+		</script>
+	</body>
+</html>

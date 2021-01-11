@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>storage_07 - Ejercicios: Pasar cookies a localStorage</title>
+		<style>
+			td {
+				border: 2px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>storage_07 - Ejercicios: Pasar cookies a localStorage</h1>
+		<hr />
+
+		<button onclick="verCookies();">Ver cookies</button>
+		<button onclick="verLocalStorage();">Ver localStorage</button>
+		<button onclick="cookiesAlocalStorage();">Pasar de cookies a localStorage</button>
+		<button onclick="localStorageAcookies();">Pasar de localStorage a cookies</button>
+
+		<hr />
+
+		<table>
+			<tbody>
+				<th>COOKIES</th><th>localStorage</th>
+			</tbody>
+				<tr>
+					<td id="celdaCookies"></td><td id="celdaLocalStorage"></td>
+				</tr>
+		</table>
+
+		<script type="text/javascript">
+
+			function leerUnaCookie(nombre) {
+				var resultado = "";
+				var buscada = nombre + "=";
+	
+				var listaCookies = document.cookie.split(';');
+	
+				for(var i = 0; i <listaCookies.length; i++) {
+					var c = listaCookies[i]; //Cada elemento del array de cookies: nombre de la cookie y car�cter =
+	
+					while (c.charAt(0)==' ') {
+						c = c.substring(1);
+					}
+	
+					if (c.indexOf(buscada) == 0) {
+						resultado = c.substring(buscada.length,c.length);
+					}
+				}
+				return resultado;
+			}
+	
+	
+			function verCookies() {
+				var listaCookies = document.cookie.split(';');
+				var c = "";
+				for(var i = 0; i <listaCookies.length; i++) {
+					if(listaCookies[i].split('=')[0].trim().length>0) {
+						c += listaCookies[i].split('=')[0].trim() + ": ";
+						c += leerUnaCookie(listaCookies[i].split('=')[0].trim()) + "<br />";
+					}
+				}
+				document.getElementById("celdaCookies").innerHTML = c;
+			}
+	
+	
+			function verLocalStorage() {
+				var c = "";
+				for(i=0;i<localStorage.length;i++) {
+					c += localStorage.key(i) + ": " + localStorage.getItem(localStorage.key(i)) + "<br />";
+				}
+				document.getElementById("celdaLocalStorage").innerHTML = c;
+	
+			}
+	
+	
+			function cookiesAlocalStorage() {
+				var listaCookies = document.cookie.split(';');
+				var nombreCookie,valorCookie;
+				for(var i = 0; i <listaCookies.length; i++) {
+					nombreCookie = listaCookies[i].split('=')[0].trim();
+					valorCookie = leerUnaCookie(listaCookies[i].split('=')[0].trim());
+					window.localStorage.setItem(nombreCookie,valorCookie);
+				}
+			}
+	
+	
+			function localStorageAcookies() {
+				var nCookie = "";
+				var d = new Date();
+				d.setTime(d.getTime() + (5*24*60*60*1000));
+				var caduca = "expires="+ d.toUTCString();
+	
+				for(i=0;i<localStorage.length;i++) {
+					nCookie = localStorage.key(i) + "=" + localStorage.getItem(localStorage.key(i)) + ";" + caduca;
+					document.cookie = nCookie;
+				}
+			}
+	
+		</script>
+	</body>
+</html>

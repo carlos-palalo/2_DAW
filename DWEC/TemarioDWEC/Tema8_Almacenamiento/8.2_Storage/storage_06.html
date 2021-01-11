@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>storage_06 - sessionStorage: añadir pares clave-valor, eliminar y borrar todo</title>
+	</head>
+	<body>
+		<h1>storage_06 - sessionStorage: añadir pares clave-valor, eliminar y borrar todo</h1>
+		<hr />
+
+		Clave<br />
+		<input type="text" id="clave" />
+		<br /><br />
+
+		Valor<br />
+		<input type="text" id="valor" />
+		<br /><br />
+
+		<button onclick="ponerParClaveValor();">Poner par clave-valor</button>
+		<button onclick="obtenerValor();">Obtener valor</button>
+		<button onclick="eliminarValor();">Eliminar par clave-valor</button>
+		<br /><br />
+
+		<button onclick="borrarTodo();">Borrar todo el almacenamiento</button>
+		<br /><br />
+		<button onclick="accederPropiedad();">Acceso mediante propiedad</button>
+		<br /><br />
+		<button onclick="alert('Elementos: ' + sessionStorage.length);">Número de elementos</button>
+
+		<script type="text/javascript">
+
+			function ponerParClaveValor() {
+				var c = document.getElementById("clave").value;
+				var v = document.getElementById("valor").value;
+				window.sessionStorage.setItem(c,v);
+				sessionStorage.setItem(c,v);
+			}
+	
+			function obtenerValor() {
+				var c = document.getElementById("clave").value;
+				alert(window.sessionStorage.getItem(c));
+			}
+	
+			function accederPropiedad()	{
+				window.sessionStorage.ciudad = "Valladolid";
+				sessionStorage["color"] = "verde";
+				alert(sessionStorage.ciudad + " - " + sessionStorage["color"]);
+			}
+	
+			function eliminarValor() {
+				sessionStorage.removeItem(document.getElementById("clave").value);
+			}
+	
+			function borrarTodo() {
+				sessionStorage.clear();
+			}
+	
+		</script>
+	</body>
+<html>

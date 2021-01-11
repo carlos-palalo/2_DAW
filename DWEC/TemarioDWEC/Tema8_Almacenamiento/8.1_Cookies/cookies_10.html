@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>cookies_10 - Ejercicio: Modificar la validez de una cookie</title>
+		<style type="text/css">
+			#parrafoValidez {
+				font-size: 50px;
+				font-weight: bold;
+				color: black;
+			}	
+		</style>
+	</head>
+	<body>
+		<h1>cookies_10 - Ejercicio: Modificar la validez de una cookie</h1>
+		<hr />
+
+		Nombre de la cookie<br />
+		<input type="text" id="nombreCookie" />
+		
+		<br /><br />
+		Minutos<br />
+		<input type="number" id="minutos" min="1" max="100" step="1" />
+		
+		<br /><br />
+
+		Hasta la fecha indicada<br />
+		<input type="datetime-local" id="fecha" />
+		
+		<br /><br />
+
+		<input type="radio" name="tipoModificacion" id="validezMinutos" /> En minutos
+		<input type="radio" name="tipoModificacion" id="validezFecha" /> Hasta la fecha indicada
+
+		<br /><br />
+
+		<button onclick="modificarValidez();">Extender validez</button>
+
+		<hr />
+
+		<p id="parrafoValidez"></p>
+		
+		<script type="text/javascript">
+
+			function leerCookie(clave) {
+				var resultado = "";
+				var busqueda = clave + "=";
+	
+				var listCookies = document.cookie.split(';');
+				var par = "";
+	
+				for(var i = 0; i <listCookies.length; i++) {
+					par = listCookies[i]; //Cada elemento del array de cookies: nombre de la cookie y carácter =
+	
+					//Se quitan los espacios en blanco 
+					while (par.charAt(0)==' ') {
+						par = par.substring(1);
+					}
+	
+					//Se compara los que buscamos con el elemento del array. Si devuelve como índice 0 se ha encontrado
+					if (par.indexOf(busqueda) == 0) {
+						resultado = par.substring(busqueda.length,par.length);
+					}
+				}
+				return resultado;
+			}
+			
+		
+			function modificarValidez()	{
+				var d;
+				var nCookie = document.getElementById("nombreCookie").value;
+
+				if(nCookie!="")	{
+					if(document.getElementById("validezMinutos").checked) {
+						var min = document.getElementById("minutos").value;
+						d = new Date();
+						d.setTime(d.getTime() + (min*60*1000)); 
+					}
+
+					if(document.getElementById("validezFecha").checked) {
+						console.log(document.getElementById("fecha").value);
+						d = new Date(document.getElementById("fecha").value);
+					}
+
+					var expires = "; expires="+ d.toUTCString();
+					document.cookie = nCookie + "=" + leerCookie(nCookie) + expires;
+				}
+			}
+
+		</script>
+	</body>
+</html>
