@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_04 - keys: in-line vs out-of-line y keypath múltiple</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+	</head>
+	<body>
+		<h1>indexedDB_04 - keys: in-line vs out-of-line y keypath múltiple</h1>
+		<h2>La base de datos no debe estar creada previamente</h2>
+		<h2>Ver consola</h2>
+		<hr />
+
+		<button onclick="abrirBD();">CREAR BASE DE DATOS</button>
+
+		<script type="text/javascript">
+
+			var peticion,bd;
+
+			function abrirBD() {
+
+				if (window.indexedDB) {
+					peticion = window.indexedDB.open("sociedad");
+
+					peticion.onsuccess = function (evento) {
+						console.log("ONSUCCESS: Base de datos abierta correctamente: " + event.target.result.name);
+						event.target.result.close();
+					};
+
+
+					peticion.onerror = function (evento) {
+						console.log("ONERROR: No se ha creado la base de datos: " + event.target.errorCode);
+					};
+
+
+					peticion.onupgradeneeded = function (evento) {
+						console.log("ONUPGRADENEEDED");
+
+						bd = peticion.result;
+
+						//CASO 1: in-line keys (al especificar keyPath se considera in-line)
+						var store1 = bd.createObjectStore("almacen1",{keyPath:"Id"});
+						console.log("\nCASO 1");
+						console.log("keyPath: " + store1.keyPath);
+						console.log("autoIncrement: " + store1.autoIncrement);
+						store1.put({Id:1,name:"n1"});
+						//store1.put({Id:2,name:"n2"},2); //Falla --> El objectstore use in-line keys y se proporciona el parámetro
+						//store1.put({name:"n3"}); //Falla --> No se proporcina un valor para la key
+						//store1.put({name:"n4"},4); //Falla --> El objectstore use in-line keys y se proporciona el parámetro
+
+
+						//CASO 2: out-of-line keys (al no especificar keyPath se considera key out-of-line)
+						var store2 = bd.createObjectStore("almacen2");
+						console.log("\nCASO 2");
+						console.log("keyPath: " + store2.keyPath);
+						console.log("autoIncrement: " + store2.autoIncrement);
+						//store2.put({Id:1,name:"n1"}); //Falla --> El objectstore usa out-of-line keys y no hay generador ni se proporciona el parámetro
+						store2.put({Id:2,name:"n2"},56); //Id no es clave
+						//store2.put({name:"n3"}); //Falla --> El objectstore usa out-of-line keys y no hay generador ni se proporciona el parámetro
+						store2.put({name:"n4"},4);
+
+
+						//CASO 3: Uso de keyPath múltiple
+						var store3 = bd.createObjectStore("almacen3",{keyPath:["Id1","Id2"]});
+						console.log("\nCASO 3");
+						console.log("keyPath: " + store3.keyPath);
+						console.log("autoIncrement: " + store3.autoIncrement);
+						store3.put({Id1:1,Id2:11,name:"n1"});
+						store3.put({Id1:2,Id2:22,name:"n2"});
+						store3.put({Id1:3,Id2:33,name:"n3"});
+
+						
+					};
+				} else {
+					console.log("IndexedDB no está soportado");
+				}
+			}
+
+		</script>
+	</body>
+</html>

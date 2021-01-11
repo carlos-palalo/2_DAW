@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_01 - Crear una base de datos indexedDB (abrir y cerrar)</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+	</head>
+	<body>
+		<h1>indexedDB_01 - Crear una base de datos indexedDB (abrir y cerrar)</h1>
+		<hr />
+
+		Nombre de la base de datos
+		<input type="text" id="bdnombre" />
+		<br /><br />
+
+		Versión
+		<input type="number" id="bdversion" />
+		
+		<br /><br />
+
+		<button onclick="abrirBD();">ABRIR</button>
+
+		<br /><br />
+
+		<button onclick="cerrarBD();">CERRAR</button>
+
+		<br /><br />
+
+		<span id="ultimabd"></span>
+		
+		<br /><br />
+
+		<textarea id="info" cols="120" rows="20"></textarea>
+
+		<script type="text/javascript">
+
+			var peticion,bd;
+
+			function mensaje(texto) {
+				document.getElementById("info").value += "\n\n" + texto;
+			}
+
+
+			function abrirBD() {
+				var nombre = document.getElementById("bdnombre").value;
+							
+				if (window.indexedDB) { //if('indexedDB' in window) {
+					if(document.getElementById("bdnombre").value.length!="") {
+						if(document.getElementById("bdversion").value.length=="") {
+							peticion = window.indexedDB.open(nombre);
+						} else {
+							var version = parseInt(document.getElementById("bdversion").value);
+							peticion = window.indexedDB.open(nombre,version);
+						}
+					} else {
+						alert("Introduce un nombre para la base de datos");
+					}
+					
+
+					//ONSUCCESS
+					peticion.onsuccess =  function (evento) {
+						//Escribir el código para acceder a la BD --> DML
+						//request es igual a evento.target
+
+						mensaje("EVENTO: success\nSe ha abierto correctamente la base de datos: " + peticion.result.name + " con versión " + peticion.result.version);
+						document.getElementById("ultimabd").innerText = evento.target.result.name.toUpperCase();
+						
+						bd = peticion.result;
+					};
+			
+
+					//ONERROR
+					peticion.onerror = function (evento) {
+						//Se produce por ejemplo al intentar abrir la base de datos con una versión anterior a la existente
+						mensaje("EVENTO: error\nNo se ha abierto la base de datos");
+					};
+
+
+					//ONUPGRADENEEDED
+					peticion.onupgradeneeded = function (evento) {
+						//Escribir el código para crear o modificar la estructura de la BD --> DDL
+						mensaje("EVENTO: upgradedneeded\nSe modifica la versión o es nueva");
+					};
+		
+
+					//ONBLOCKED
+					peticion.onblocked = function (evento) {
+						//Se produce por ejemplo al intentar abrir la base de datos con nueva versión y no fue cerrada
+						mensaje("EVENTO: blocked\nBase de datos bloqueada");
+					};
+		
+				} else {
+					console.log("IndexedDB no está soportado");
+				}
+			}
+
+
+			function cerrarBD() {
+				bd.close();
+				mensaje("Se cierra la base de datos: " + bd.name);
+				document.getElementById("ultimabd").innerText = "";
+			}
+			
+		</script>
+	</body>
+</html>

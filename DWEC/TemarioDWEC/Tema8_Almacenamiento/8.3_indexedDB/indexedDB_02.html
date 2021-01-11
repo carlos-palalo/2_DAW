@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_02 - Eliminar una base de datos indexedDB</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+	</head>
+	<body>
+		<h1>indexedDB_02 - Eliminar una base de datos indexedDB</h1>
+		<hr />
+
+		Nombre de la base de datos
+		<input type="text" id="bdnombre" />
+		<br /><br />
+
+		<button id="botonEliminar" onclick="eliminarBD();">ELIMINAR</button>
+
+		<br /><br />
+
+		<textarea id="info" cols="120" rows="20"></textarea>
+
+		<script type="text/javascript">
+
+			var peticion,bd;
+
+			function mensaje(texto) {
+				document.getElementById("info").value += "\n\n" + texto;
+			}
+
+
+			function eliminarBD() {
+				var nombre = document.getElementById("bdnombre").value;
+
+				if(nombre!="") {
+					var peticion = window.indexedDB.deleteDatabase(nombre);
+
+					peticion.onsuccess = function (evento) {
+						//OJO --> Eliminar una base de datos no existente no produce error
+						mensaje("EVENTO: success\nBase de datos eliminada correctamente");
+					}
+
+					peticion.onerror = function (evento) {
+						mensaje("EVENTO: error\nError al eliminar base de datos");
+					}
+				} else {
+					alert("Introduce un nombre para la base de datos");
+				}
+			}
+	
+		</script>
+	</body>
+</html>
