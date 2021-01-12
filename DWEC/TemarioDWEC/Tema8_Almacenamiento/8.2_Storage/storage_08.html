@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>storage_08 - Ejercicio: pasar valores de un select a otro en otra página</title>
+	</head>
+	<body>
+		<h1>storage_08 - Ejercicio: pasar valores de un select a otro en otra página</h1>
+		<hr />
+
+		<select id="seleccion">
+			<option value="1">UNO</option>
+			<option value="2">DOS</option>
+			<option value="3">TRES</option>
+			<option value="4">CUATRO</option>
+			<option value="5">CINCO</option>
+			<option value="6">SEIS</option>
+			<option value="7">SIETE</option>
+		</select>
+		
+		<button onclick="pasarElemento();">Pasar elemento</button>
+
+		<a href="storage_08_A.html">Abrir la otra página en otra pestaña</a>
+
+		<script type="text/javascript">
+
+			function pasarElemento() {
+				var s = document.getElementById("seleccion");
+				var i = s.selectedIndex;
+	
+				window.localStorage.setItem(s.value,s.children[i].innerHTML);
+				console.log(s.value);
+				console.log(s.children[i].innerHTML);
+				
+				s.removeChild(s.children[i]);
+			}
+	
+		</script>
+	</body>
+</html>

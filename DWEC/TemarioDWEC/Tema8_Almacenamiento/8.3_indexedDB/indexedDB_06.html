@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_06 - Introducir datos en un almacén</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+	</head>
+	<body>
+		<h1>indexedDB_06 - Introducir datos en un almacén</h1>
+		<h2>El almacén Personas debe estar previamente creado (ejecutar ejercicio 3)</h2>
+		<h2>Ver consola</h2>
+		<hr />
+
+		<button id="botonCrear" onclick="crearBD();">CREAR</button>
+
+		<br /><br />
+
+		<textarea id="info" cols="120" rows="20"></textarea>
+
+		<script type="text/javascript">
+
+			var peticion,bd,almacenPersonas,almacenCoches,almacenCiudades;
+
+			function mensaje(t) {
+				document.getElementById("info").value += "\n\n" + t;;
+			}
+
+
+			function crearBD() {
+				if (window.indexedDB) {
+					peticion = window.indexedDB.open("sociedad",2); //Cada vez que se ejecute incrementar la versión
+					
+					//ONSUCCESS
+					peticion.onsuccess =  function (evento) {
+						//Escribir el código para realizar consultas, inserciones, etc...(DML)
+						mensaje("EVENTO: success\nSe ha abierto correctamente la base de datos: " + peticion.result.name + " con versión " + peticion.result.version);
+
+						bd = peticion.result;
+						var transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
+						
+						console.log(bd.objectStoreNames);
+
+						almacenPersonas = transaccion.objectStore("personas"); //Almacén creado en otro ejercicio anterior
+						almacenPersonas.put({dni:"12376875A",nombre:"Ana",edad:34,localidad:"Valladolid"});
+						almacenPersonas.put({dni:"52614576R",nombre:"José",edad:25,localidad:"Madrid"});
+						almacenPersonas.put({dni:"38834565Q",nombre:"Marta",edad:31,localidad:"Zamora"});
+						almacenPersonas.put({dni:"85332346E",nombre:"Luis",edad:23,localidad:"Orense"});
+						almacenPersonas.put({dni:"94728682J",nombre:"María",edad:65,localidad:"Valencia"});
+						almacenPersonas.put({dni:"93956772U",nombre:"Lucía",edad:28,localidad:"Huesca"});
+						almacenPersonas.put({dni:"48666206H",nombre:"Fernando",edad:48,localidad:"Ávila"});
+						almacenPersonas.put({dni:"12223867A",nombre:"Lorenzo",edad:41,localidad:"Guadalajara"});
+						almacenPersonas.put({dni:"77124452F",nombre:"Susana",edad:39,localidad:"Cáceres"});
+						almacenPersonas.put({dni:"72545452T",nombre:"Joaquín",edad:53,localidad:"Sevilla"});
+
+						almacenCiudades = transaccion.objectStore("ciudades"); //Almacén creado en el evento UPGRADENEEDED
+						almacenCiudades.put({cp:"47",nombre:"Valladolid",poblacion:300000});
+						almacenCiudades.put({cp:"28",nombre:"Madrid",poblacion:6000000});
+						almacenCiudades.put({cp:"41",nombre:"Sevilla",poblacion:2000000});
+						almacenCiudades.put({cp:"34",nombre:"Palencia",poblacion:100000});
+						almacenCiudades.put({cp:"09",nombre:"Burgos",poblacion:200000});
+						almacenCiudades.put({cp:"08",nombre:"Barcelona",poblacion:5000000});
+						almacenCiudades.put({cp:"46",nombre:"Valencia",poblacion:2000000});
+						almacenCiudades.put({cp:"50",nombre:"Zaragoza",poblacion:1500000});
+						almacenCiudades.put({cp:"32",nombre:"Orense",poblacion:175000});
+						almacenCiudades.put({cp:"02",nombre:"Albacete",poblacion:150000});
+
+
+						//DOS COSAS NO PERMITIDAS
+						//1.Añadir datos en este evento con una variable global obtenida en UPGRADENEEDED: Error por consola
+						//almacenCoches.put({matricula:"4561WSF",marca:"BMW",modelo:"320",color:"blanco"});	//Falla
+
+						//2.Usar el método add en lugar de put un con keypath ya usado: Se produce una excepción 
+						//y no se completa la transacción, por lo que los put anteriores del código no se completan
+						//var insercion = almacenCiudades.add({cp:"02",nombre:"Albacete",poblacion:150000});
+
+						//Se cierra la base de datos
+						bd.close();
+					};
+			
+					//ONERROR
+					peticion.onerror = function (evento) {
+						//Se produce por ejemplo al intentar abrir la base de datos con una versión anterior a la existente
+						mensaje("EVENTO: error\nNo se ha abierto la base de datos");
+					};
+
+		
+					//ONUPGRADENEEDED
+					peticion.onupgradeneeded = function (evento) {
+						//Escribir el código para crear o modificar la estructura de la BD (DDL)
+						//Recordatorio: Este evento sólo se ejecuta si se abre la base de datos con una versión nueva superior
+						mensaje("EVENTO: upgradedneeded\nSe modifica la versión o es nueva");
+
+						bd = peticion.result;
+
+						mensaje("SE CREAN LOS ALMACENES QUE FALTAN");
+
+						almacenCiudades = bd.createObjectStore("ciudades", {keyPath:"cp"});
+						//Los datos de este almacén se pondrán en el evento success
+
+						almacenCoches = bd.createObjectStore("coches", {keyPath:"matricula"});
+						//Se introducen datos datos: No es el evento adecuado para introducir datos aunque es posible a partir del
+						mensaje("SE PONEN DATOS EN LOS ALMACENES");
+
+						almacenCoches.put({matricula:"8452RTG",marca:"Opel",modelo:"Corsa",color:"negro"});
+						almacenCoches.put({matricula:"3962HJT",marca:"Renault",modelo:"Clio",color:"azul"});
+						almacenCoches.put({matricula:"2749WDS",marca:"Seat",modelo:"Ibiza",color:"blanco"});
+						almacenCoches.put({matricula:"6357RDF",marca:"Kia",modelo:"Stonic",color:"gris"});
+						almacenCoches.put({matricula:"9890RYH",marca:"Volkswagen",modelo:"Golf",color:"rojo"});
+						almacenCoches.put({matricula:"1231TMN",marca:"Audi",modelo:"A4",color:"azul"});
+						almacenCoches.put({matricula:"7623JKS",marca:"Fiat",modelo:"Punto",color:"amarillo"});
+						almacenCoches.put({matricula:"4587LKM",marca:"Ford",modelo:"Focus",color:"verde"});
+						almacenCoches.put({matricula:"4251FCD",marca:"Dacia",modelo:"Sandero",color:"marrón"});
+						almacenCoches.put({matricula:"5482NBH",marca:"Citroen",modelo:"C4",color:"blanco"});
+					};
+		
+					//ONBLOCKED
+					peticion.onblocked = function (evento) {
+						//Se produce por ejemplo al intentar abrir la base de datos con nueva versión y no fue cerrada
+						mensaje("EVENTO: blocked\nBase de datos bloqueada");
+					};
+		
+				} else {
+					console.log("IndexedDB no está soportado");
+				}
+			}
+
+			
+		</script>
+	</body>
+</html>

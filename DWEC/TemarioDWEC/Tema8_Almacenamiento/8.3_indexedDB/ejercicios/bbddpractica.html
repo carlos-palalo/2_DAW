@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>BBDD Practica</title>
+	<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+</head>
+
+<body>
+	<h1>BBDD Practica</h1>
+	<h2>No debe estar creada la base de datos</h2>
+	<h2>Ver consola</h2>
+	<hr />
+
+	<button onclick="crearIndicesBD();">Crear índices en los almacenes</button>
+
+	<br /><br />
+
+	<textarea id="info" cols="120" rows="20"></textarea>
+
+	<script type="text/javascript">
+
+		var peticion, bd, almacenPersonas, almacenCoches, almacenCiudades;
+
+		function mensaje(texto) {
+			document.getElementById("info").value += "\n\n" + texto;
+		}
+
+		function crearIndicesBD() {
+			var peticion, bd, almacenAutor, almacenComponentes, almacenCancion, almacenAlbum, almacenConcierto, almacenLista;
+
+			if (window.indexedDB) {
+				peticion = window.indexedDB.open("musica", 1);
+
+				peticion.onsuccess = function (evento) {
+					//Escribir el código para realizar consultas, inserciones, etc...(DML)
+					mensaje("EVENTO: success\nSe ha abierto correctamente la base de datos: " + peticion.result.name + " con versión " + peticion.result.version);
+
+					bd = peticion.result;
+					var transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
+
+					almacenAutor = transaccion.objectStore("personas",{keyPath:"Id",autoIncrement:true});
+					almacenAutor.put({nombre: "Desakato", tipo: "grupo", generos: "Punk y Rock", origen: "España", web: "https://desakato.es/", idComponentes: "1"});
+
+					almacenCiudades = transaccion.objectStore("ciudades");
+					almacenCiudades.put({ cp: "47", nombre: "Valladolid", poblacion: 300000 });
+					
+					almacenCoches = transaccion.objectStore("coches");
+					almacenCoches.put({ matricula: "8452RTG", marca: "Opel", modelo: "Corsa", color: "negro" });
+				};
+
+
+				peticion.onerror = function (evento) {
+					alert("No se ha creado la base de datos: " + event.target.errorCode);
+				};
+
+
+				peticion.onupgradeneeded = function (evento) {
+					//Escribir el código para crear o modificar la estructura de la BD (DDL)
+					//Recordatorio: Este evento sólo se ejecuta si se abre la base de datos con una versión nueva superior
+
+					mensaje("EVENTO: upgradedneeded\nSe modifica la versión o es nueva");
+					bd = peticion.result;
+
+					almacenPersonas = bd.createObjectStore("personas", { keyPath: "dni" });
+					almacenCiudades = bd.createObjectStore("ciudades", { keyPath: "cp" });
+					almacenCoches = bd.createObjectStore("coches", { keyPath: "matricula" });
+
+					mensaje("SE CREAN LOS ÍNDICES");
+
+					almacenPersonas.createIndex("por_dni", "dni", { unique: true });
+					almacenPersonas.createIndex("por_nombre", "nombre");
+					almacenPersonas.createIndex("por_edad", "edad");
+
+					almacenCiudades.createIndex("por_cp", "cp", { unique: true });
+					almacenCiudades.createIndex("por_nombre", "nombre");
+					almacenCiudades.createIndex("por_poblacion", "poblacion");
+
+					almacenCoches.createIndex("por_matricula", "matricula", { unique: true });
+					almacenCoches.createIndex("por_marca", "marca");
+					almacenCoches.createIndex("por_modelo", "modelo");
+
+
+				};
+			} else {
+				console.log("IndexedDB no está soportado");
+			}
+		}
+
+	</script>
+</body>
+
+</html>

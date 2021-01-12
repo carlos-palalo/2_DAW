@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>storage_08_A - Ejercicio: pasar valores de un select a otro en otra página</title>
+	</head>
+	<body>
+		<h1>storage_08_A - Ejercicio: pasar valores de un select a otro en otra página</h1>
+		<hr />
+
+		<select id="seleccion"></select>
+
+		<script type="text/javascript">
+
+			window.addEventListener("storage",function (){
+				
+				var value,dato;
+				value = window.localStorage.key(0);
+				dato = window.localStorage.getItem(localStorage.key(0));
+				console.log(value + " - " + dato);
+	
+				var opcion = document.createElement("option");
+				opcion.setAttribute("value",value);
+				opcion.appendChild(document.createTextNode(dato));
+	
+				document.getElementById("seleccion").appendChild(opcion);
+		
+				window.localStorage.removeItem(value);
+			});
+	
+		</script>
+	</body>
+</html>

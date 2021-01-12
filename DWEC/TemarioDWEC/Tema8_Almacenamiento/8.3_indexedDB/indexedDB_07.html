@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_07 - Crear índices</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+	</head>
+	<body>
+		<h1>indexedDB_07 - Crear índices</h1>
+		<h2>No debe estar creada la base de datos</h2>
+		<h2>Ver consola</h2>
+		<hr />
+
+		<button onclick="crearIndicesBD();">Crear índices en los almacenes</button>
+
+		<br /><br />
+
+		<textarea id="info" cols="120" rows="20"></textarea>
+
+		<script type="text/javascript">
+
+			var peticion,bd,almacenPersonas,almacenCoches,almacenCiudades;
+
+			function mensaje(texto) {
+				document.getElementById("info").value += "\n\n" + texto;
+			}
+
+			function crearIndicesBD() {
+				var peticion,bd,almacenPersonas,almacenCoches,almacenCiudades;			
+
+				if (window.indexedDB) {
+					peticion = window.indexedDB.open("sociedad",4);
+
+					peticion.onsuccess = function (evento) {
+						//Escribir el código para realizar consultas, inserciones, etc...(DML)
+						mensaje("EVENTO: success\nSe ha abierto correctamente la base de datos: " + peticion.result.name + " con versión " + peticion.result.version);
+
+						bd = peticion.result;
+						var transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
+
+						almacenPersonas = transaccion.objectStore("personas");
+						almacenPersonas.put({dni:"12376875A",nombre:"Ana",edad:34,localidad:"Valladolid"});
+						almacenPersonas.put({dni:"52614576R",nombre:"José",edad:25,localidad:"Madrid"});
+						almacenPersonas.put({dni:"38834565Q",nombre:"Marta",edad:31,localidad:"Zamora"});
+						almacenPersonas.put({dni:"85332346E",nombre:"Luis",edad:23,localidad:"Orense"});
+						almacenPersonas.put({dni:"94728682J",nombre:"María",edad:65,localidad:"Valencia"});
+						almacenPersonas.put({dni:"93956772U",nombre:"Lucía",edad:28,localidad:"Huesca"});
+						almacenPersonas.put({dni:"48666206H",nombre:"Fernando",edad:48,localidad:"Ávila"});
+						almacenPersonas.put({dni:"12223867A",nombre:"Lorenzo",edad:41,localidad:"Guadalajara"});
+						almacenPersonas.put({dni:"77124452F",nombre:"Susana",edad:39,localidad:"Cáceres"});
+						almacenPersonas.put({dni:"72545452T",nombre:"Joaquín",edad:53,localidad:"Sevilla"});
+
+						almacenCiudades = transaccion.objectStore("ciudades");
+						almacenCiudades.put({cp:"47",nombre:"Valladolid",poblacion:300000});
+						almacenCiudades.put({cp:"28",nombre:"Madrid",poblacion:6000000});
+						almacenCiudades.put({cp:"41",nombre:"Sevilla",poblacion:2000000});
+						almacenCiudades.put({cp:"34",nombre:"Palencia",poblacion:100000});
+						almacenCiudades.put({cp:"09",nombre:"Burgos",poblacion:200000});
+						almacenCiudades.put({cp:"08",nombre:"Barcelona",poblacion:5000000});
+						almacenCiudades.put({cp:"46",nombre:"Valencia",poblacion:2000000});
+						almacenCiudades.put({cp:"50",nombre:"Zaragoza",poblacion:1500000});
+						almacenCiudades.put({cp:"32",nombre:"Orense",poblacion:175000});
+						almacenCiudades.put({cp:"02",nombre:"Albacete",poblacion:150000});
+
+						almacenCoches = transaccion.objectStore("coches");
+						almacenCoches.put({matricula:"8452RTG",marca:"Opel",modelo:"Corsa",color:"negro"});
+						almacenCoches.put({matricula:"3962HJT",marca:"Renault",modelo:"Clio",color:"azul"});
+						almacenCoches.put({matricula:"2749WDS",marca:"Seat",modelo:"Ibiza",color:"blanco"});
+						almacenCoches.put({matricula:"6357RDF",marca:"Kia",modelo:"Stonic",color:"gris"});
+						almacenCoches.put({matricula:"9890RYH",marca:"Volkswagen",modelo:"Golf",color:"rojo"});
+						almacenCoches.put({matricula:"1231TMN",marca:"Audi",modelo:"A4",color:"azul"});
+						almacenCoches.put({matricula:"7623JKS",marca:"Fiat",modelo:"Punto",color:"amarillo"});
+						almacenCoches.put({matricula:"4587LKM",marca:"Ford",modelo:"Focus",color:"verde"});
+						almacenCoches.put({matricula:"4251FCD",marca:"Dacia",modelo:"Sandero",color:"marrón"});
+						almacenCoches.put({matricula:"5482NBH",marca:"Citroen",modelo:"C4",color:"blanco"});
+					};
+
+
+					peticion.onerror = function (evento) {
+						alert("No se ha creado la base de datos: " + event.target.errorCode);
+					};
+
+
+					peticion.onupgradeneeded = function (evento) {
+						//Escribir el código para crear o modificar la estructura de la BD (DDL)
+						//Recordatorio: Este evento sólo se ejecuta si se abre la base de datos con una versión nueva superior
+
+						mensaje("EVENTO: upgradedneeded\nSe modifica la versión o es nueva");
+						bd = peticion.result;
+
+						almacenPersonas = bd.createObjectStore("personas", {keyPath:"dni"});
+						almacenCiudades = bd.createObjectStore("ciudades", {keyPath:"cp"});
+						almacenCoches = bd.createObjectStore("coches", {keyPath:"matricula"});
+
+						mensaje("SE CREAN LOS ÍNDICES");
+
+						almacenPersonas.createIndex("por_dni", "dni", {unique: true});
+						almacenPersonas.createIndex("por_nombre", "nombre");
+						almacenPersonas.createIndex("por_edad", "edad");
+
+						almacenCiudades.createIndex("por_cp", "cp", {unique: true});
+						almacenCiudades.createIndex("por_nombre", "nombre");
+						almacenCiudades.createIndex("por_poblacion", "poblacion");
+
+						almacenCoches.createIndex("por_matricula", "matricula", {unique: true});
+						almacenCoches.createIndex("por_marca", "marca");
+						almacenCoches.createIndex("por_modelo", "modelo");
+						
+						
+					};
+				} else {
+					console.log("IndexedDB no está soportado");
+				}
+			}
+
+		</script>
+	</body>
+</html>
