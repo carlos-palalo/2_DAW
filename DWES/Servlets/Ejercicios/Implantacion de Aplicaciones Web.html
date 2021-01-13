@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://dis.um.es/~lopezquesada/documentos/IES_1213/IAW/curso/UT5/ActividadesAlumnos/7/e.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<title>Implantacion de Aplicaciones Web</title>
+<link href="./Implantacion de Aplicaciones Web_files/style.css" rel="stylesheet" type="text/css" media="screen">
+</head>
+<body>
+<div id="wrapper">
+	<div id="menu">
+					<ul>
+			<li><a href="http://dis.um.es/~lopezquesada/documentos/IES_1213/IAW/curso/UT5/ActividadesAlumnos/7/a.html">Servlet </a></li>
+			<li><a href="http://dis.um.es/~lopezquesada/documentos/IES_1213/IAW/curso/UT5/ActividadesAlumnos/7/b.html">Formularios HTML</a></li>
+			<li><a href="http://dis.um.es/~lopezquesada/documentos/IES_1213/IAW/curso/UT5/ActividadesAlumnos/7/c.html">GET y POST</a></li>
+			<li><a href="http://dis.um.es/~lopezquesada/documentos/IES_1213/IAW/curso/UT5/ActividadesAlumnos/7/d.html">Sesiones</a></li>
+			<li><a href="http://dis.um.es/~lopezquesada/documentos/IES_1213/IAW/curso/UT5/ActividadesAlumnos/7/e.html">Cookies I</a></li>
+			<li><a href="http://dis.um.es/~lopezquesada/documentos/IES_1213/IAW/curso/UT5/ActividadesAlumnos/7/f.html">Cookies II</a></li>
+					</ul>
+	</div>
+	<!-- end #menu -->
+	<div id="header">
+		<div id="logo">
+			<h1><a>Cookies  <br>
+			    <span> CREACION Y RECUPERACION </span></a></h1>
+			 <p> 
+		</p></div>
+	</div>
+	<!-- end #header -->
+	<div id="page">
+	<div id="page-bgtop">
+	<div id="page-bgbtm">
+<div id="content">
+			
+			
+				 <div class="post">
+			  
+				<div style="clear: both;">&nbsp;</div>
+				
+				<p>Las sesiones vistas anteriormente basan su funcionamiento en los cookies. Cuando
+						se hace uso de la interfaz HttpSession de forma interna y totalmente transparente al
+						programador se está haciendo uso de los cookies. De hecho cuando a través de una página
+						JSP se comienza una sesión, se crea un cookie llamado JSSESIONID.La diferencia es que
+						este cookie es temporal y durará el tiempo que permanezca el navegador ejecutándose,
+						siendo borrada cuando el usuario cierre el navegador.
+						
+						<br></p>
+					
+				    </div>
+					
+			 <div class="post">
+			  <h2 class="title">creacion de cookies </h2>
+				<div style="clear: both;">&nbsp;</div>
+			<p> </p><p>
+						Un cookie almacenado en el ordenador de un usuario está compuesto por un nombre
+						y un valor asociado al mismo. Además, asociada a este cookie pueden existir una serie de
+						atributos que definen datos como su tiempo de vida, alcance, dominio, etc.</p><p>
+						Cabe reseñar que los cookies, no son más que ficheros de texto, que no pueden
+						superar un tamaño de 4Kb, además los navegadores tan sólo pueden aceptar 20 cookies de
+						un mismo servidor web (300 cookies en total).</p><p>
+						Para crear un objeto de tipo Cookie se utiliza el constructor de la clase Cookie que
+						requiere su nombre y el valor a guardar. El siguiente ejemplo crearía un objeto Cookie que
+						contiene el nombre “nombre” y el valor “objetos”.</p><p><b>
+						&lt;%
+						Cookie miCookie=new Cookie(“nombre”,”objetos”);
+						%&gt;</b></p><p>
+						También es posible crear cookies con contenido que se genere de forma dinámica.
+						El siguiente código muestra un cookie que guarda un texto que está concatenado a la
+						fecha/hora en ese momento:</p><p>
+						&lt;%@page contentType="text/html; charset=iso-8859-1" session="true"
+						language="java" import="java.util.*" %&gt;
+						&lt;%
+						Cookie miCookie=null;
+						Date fecha=new Date();
+						String texto= “Este es el texto que vamos a guardar en el
+						cookie”+fecha;
+						miCookie=new Cookie(“nombre”,texto);
+						%&gt;</p>
+						En esta ocasión el contenido del valor a guardar en el cookie está en la variable
+						“texto”.<p>
+						También se pueden guardar valores o datos que provengan de páginas anteriores y
+						que hayan sido introducidas a través de un formulario:</p><p><b>
+						&lt;%
+						Cookie miCookie=null;<br>
+						String ciudad= request.getParameter(“formCiudad”);<br>
+						miCookie=new Cookie(“ciudadFavorita”,ciudad);<br>
+						%&gt;</b></p>
+						Una vez que se ha creado un cookie, es necesario establecer una serie de atributos
+						para poder ser utilizado. El primero de esos atributos es el que se conoce como tiempo de
+						vida.<p>
+						Por defecto, cuando creamos un cookie, se mantiene mientras dura la ejecución del
+						navegador. Si el usuario cierra el navegador, los cookies que no tengan establecido un
+						tiempo de vida serán destruidos.</p><p>
+						Por tanto, si se quiere que un cookie dure más tiempo y esté disponible para otras
+						situaciones es necesario establecer un valor de tiempo (en segundos) que será la duración o
+						tiempo de vida del cookie. Para establecer este atributo se utiliza el método setMaxAge().<br>
+						El siguiente ejemplo establece un tiempo de 31 días de vida para el cookie “unCookie”:</p><p><b>
+						&lt;%
+						unCookie.setMaxAge(60*60*24*31);
+						%&gt;</b></p><br>
+						Si se utiliza un valor positivo, el cookie será destruido después de haber pasado ese
+						tiempo, si el valor es negativo el cookie no será almacenado y se borrará cuando el usuario
+						cierre el navegador. Por último si el valor que se establece como tiempo es cero, el cookie
+						será borrado.<p>
+						Otros de los atributos que se incluye cuando se crea un cookie es el path desde el
+						que será visto, es decir, si el valor del path es “/” (raíz), quiere decir que en todo el site se
+						podrá utilizar ese cookie, pero si el valor es “/datos” quiere decir que el valor del cookie
+						sólo será visible dentro del directorio “datos”. Este atributo se establece mediante el método
+						setPath().</p><p><b>
+						&lt;%
+						unCookie.setPath(“/”);
+						%&gt;</b></p>
+						Para conocer el valor de path, se puede utilizar el método getPath().<p><b>
+						&lt;%
+						out.println(“cookie visible en: “+unCookie.getPath());
+						%&gt;</b></p>
+						Existe un método dentro de la clase Cookie que permite establecer el dominio desde
+						el cual se ha generado el cookie. Este método tiene su significado porque un navegador sólo
+						envía al servidor los cookies que coinciden con el dominio del servidor que los envió. Si en
+						alguna ocasión se requiere que estén disponibles desde otros subdominios se especifica con
+						el método setDomain(). Por ejemplo, si existe el servidor web en la página
+						www.paginasjsp.com , pero al mismo tiempo también existen otros subdominios como
+						usuario1.paginasjsp.com, usuario2.paginasjsp.com, etc.<p>
+						Si no se establece la propiedad domain se entiende que el cookie será visto sólo
+						desde el dominio que lo creó, pero sin embardo si se especifica un nombre de dominio se
+						entenderá que el cookie será visto en aquellos dominios que contengan el nombre
+						especificado.</p><p>
+						En el siguiente ejemplo hace que el cookie definido en el objeto “unCookie” esté
+						disponible para todos los dominios que contengan el nombre “.paginasjsp.com”. Un
+						nombre de dominio debe comenzar por un punto.</p><p><b>
+						&lt;%
+						unCookie.setDomain(“.paginasjsp.com”);
+						%&gt;</b></p>
+						Igualmente, para conocer el dominio sobre el que actúa el cookie, basta con utilizar
+						el método getDomain() para obtener esa información.
+						Una vez que se ha creado el objeto Cookie, y se ha establecido todos los atributos
+						necesarios es el momento de crear realmente, ya que hasta ahora sólo se tenía un objeto que
+						representa ese cookie.<p>
+						Para crear el fichero cookie real, se utiliza el método addCookie() de la interfaz
+						HttpServletResponse:</p><p><b>
+						&lt;%
+						response.addCookie(unCookie);
+						%&gt;</b></p>
+						Una vez ejecutada esta línea es cuando el cookie existe en el disco del cliente que
+						ha accedido a la página JSP.
+						Es importante señalar que si no se ejecuta esta última línea el cookie no habrá sido
+						grabado en el disco, y por lo tanto, cualquier aplicación o página que espere encontrar
+						dicho cookie no lo encontrará.<p>
+						<br>
+							
+							</p></div>
+							
+					<div class="post">
+					<h2 class="title">Recuperar cookies </h2>
+					<div style="clear: both;">&nbsp;</div>
+					<p> El proceso de recuperar un cookie determinado puede parecer algo complejo, ya que
+						no hay una forma de poder acceder a un cookie de forma directa. Por este motivo es
+						necesario recoger todos los cookies que existen hasta ese momento e ir buscando aquél que
+						se quiera, y que al menos, se conoce su nombre.<br>
+						Para recoger todos los cookies que tenga el usuario guardados se crea un array de
+						tipo Cookie, y se utiliza el método getCookies() de la interfaz HttpServletRequest para
+						recuperarlos:<br><b>
+						&lt;%
+						Cookie [] todosLosCookies=request.getCookies();<br>
+						/*El siguiente paso es crear un bucle que vaya leyendo todos los
+						cookies.*/<br>
+						for(int i=0;i<todosloscookies.length;i++) {<br="">
+						Cookie unCookie=todosLosCookies[i];<br><br>
+						/*A continuación se compara los nombres de cada uno de los
+						cookies con el que se está buscando. Si se encuentra un cookie con
+						ese nombre se ha dado con el que se está buscando, de forma que se
+						sale del bucle mediante break. */<br><br>
+						if(unCookie.getName().equals(“nombre”))
+						break;
+						}<br><br>
+						/*Una vez localizado tan sólo queda utilizar los métodos apropiados
+						para obtener la información necesaria que contiene.*/<br><br>
+						out.println(“Nombre: “+unCookie.getName()+”);<br>
+						out.println(“Valor: “+unCookie.getValue()+”);<br>
+						out.println(“Path: “+unCookie.getPath()+”);<br>
+						out.println(“Tiempo de vida:“+unCookie.getMaxAge()+”);<br>
+						out.println(“Dominio: “+unCookie.getDomain()+”);
+						%&gt;</todosloscookies.length;i++)></b></p><b>
+							
+			</b></div><b>
+
+				<ul>
+				
+				<li><a href="http://dis.um.es/~lopezquesada/documentos/IES_1213/IAW/curso/UT5/ActividadesAlumnos/7/e.html#">SUBIR</a></li>
+			
+				<li></li>
+				</ul>
+			  </b></div><b>
+				
+			</b></div><b>
+			
+		</b></div><b>
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+
+	</b></div><b>
+	</b></div><b>
+	
+	<!-- end #page -->
+
+	<div id="footer">
+		<p>-//- ISMAEL GARCÍA VIDAL -//-</p>
+	</div>
+	<!-- end #footer -->
+
+
+</b></body></html>
