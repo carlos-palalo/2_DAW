@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_09 - Recuperar datos: get y getKey</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<style>
+			p {
+				border: 2px solid blue;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>indexedDB_09 - Recuperar datos: get y getKey</h1>
+		<h2>La base de datos biblioteca debe estar creada y con datos</h2>
+		<hr />
+
+		Libro<input type="number" id="idLibro" /><br />
+		<button onclick="obtenerDatos();">OBTENER DATOS</button>
+
+		<h3>get</h3>
+		<p id="datosGet"></p>
+
+		<hr />
+
+		<h3>getKey</h3>
+		<p id="datosGetKey"></p>
+
+		<script type="text/javascript">
+
+			function obtenerDatos() {
+
+				var peticion, bd, transaccion, almacenLibros, idLibro;
+				
+				idLibro = document.getElementById("idLibro").value;
+
+				if(window.indexedDB) {
+					if (idLibro!="") {
+						peticion = window.indexedDB.open("biblioteca");
+
+						peticion.onsuccess = function (event) {
+							bd = peticion.result;
+							transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
+
+							transaccion.oncomplete = function(evento) {
+								console.log("Consulta terminada")
+							};
+
+							almacenLibros = transaccion.objectStore("libros");
+
+							//USAMOS GET
+							var registro1 = almacenLibros.get(parseInt(idLibro));
+							registro1.onsuccess = function(event) {
+								var c = "";
+								c += "<br />" + registro1.result.isbn;
+								c += "<br />" + registro1.result.titulo;
+								c += "<br />" + registro1.result.autor;
+								c += "<br />" + registro1.result.paginas;
+								c += "<br />" + registro1.result.precio;
+								document.getElementById("datosGet").innerHTML = c;
+							}
+
+
+							//USAMOS GETKEY
+							var registro2 = almacenLibros.getKey(parseInt(idLibro));
+							registro2.onsuccess = function(evento) {
+								var c = "";
+								c += "<br />" + registro2.result;
+								document.getElementById("datosGetKey").innerHTML = c;
+							}
+
+							//SE CIERRA LA BASE DE DATOS
+							bd.close();
+						};
+
+						peticion.onerror = function (evento) {
+							alert("No se ha creado la base de datos: " + event.target.errorCode);
+						};
+					} else {
+						alert("Introduce un valor");	
+					}
+				} else {
+					console.log("IndexedDB no está soportado");
+				}
+				
+			}
+
+		</script>
+	</body>
+</html>

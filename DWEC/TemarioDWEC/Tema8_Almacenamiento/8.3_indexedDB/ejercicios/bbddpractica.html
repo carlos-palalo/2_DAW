@@ -28,7 +28,7 @@
 		}
 
 		function crearIndicesBD() {
-			var peticion, bd, almacenAutor, almacenComponentes, almacenCancion, almacenAlbum, almacenConcierto, almacenLista;
+			var peticion, bd, almacenAlbum;
 
 			if (window.indexedDB) {
 				peticion = window.indexedDB.open("musica", 1);
@@ -40,21 +40,21 @@
 					bd = peticion.result;
 					var transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
 
-					almacenAutor = transaccion.objectStore("personas",{keyPath:"Id",autoIncrement:true});
-					almacenAutor.put({nombre: "Desakato", tipo: "grupo", generos: "Punk y Rock", origen: "España", web: "https://desakato.es/", idComponentes: "1"});
-
-					almacenCiudades = transaccion.objectStore("ciudades");
-					almacenCiudades.put({ cp: "47", nombre: "Valladolid", poblacion: 300000 });
-					
-					almacenCoches = transaccion.objectStore("coches");
-					almacenCoches.put({ matricula: "8452RTG", marca: "Opel", modelo: "Corsa", color: "negro" });
+					almacenAlbum = transaccion.objectStore("album");
+					almacenAlbum.put({nombre: "La Miel de las Flores Muertas", fecha: "2020" });
+					almacenAlbum.put({nombre: "La Teoría del Fuego", fecha: "2016" });
+					almacenAlbum.put({nombre: "Buen Viaje", fecha: "2014" });
+					almacenAlbum.put({nombre: "Inercia", fecha: "2012" });
+					almacenAlbum.put({nombre: "Miseria, Sangre y Plomo", fecha: "2010" });
+					almacenAlbum.put({nombre: "Con el Viento de Cara", fecha: "2008" });
+					almacenAlbum.put({nombre: "Agujero social", fecha: "2004" });
+					almacenAlbum.put({nombre: "Gritando en silencio", fecha: "2005" });
+					almacenAlbum.put({nombre: "Antártida", fecha: "2018" });
 				};
-
 
 				peticion.onerror = function (evento) {
 					alert("No se ha creado la base de datos: " + event.target.errorCode);
 				};
-
 
 				peticion.onupgradeneeded = function (evento) {
 					//Escribir el código para crear o modificar la estructura de la BD (DDL)
@@ -63,25 +63,13 @@
 					mensaje("EVENTO: upgradedneeded\nSe modifica la versión o es nueva");
 					bd = peticion.result;
 
-					almacenPersonas = bd.createObjectStore("personas", { keyPath: "dni" });
-					almacenCiudades = bd.createObjectStore("ciudades", { keyPath: "cp" });
-					almacenCoches = bd.createObjectStore("coches", { keyPath: "matricula" });
+					almacenAlbum = bd.createObjectStore("album", { keyPath: "id", autoIncrement: true });
 
 					mensaje("SE CREAN LOS ÍNDICES");
 
-					almacenPersonas.createIndex("por_dni", "dni", { unique: true });
-					almacenPersonas.createIndex("por_nombre", "nombre");
-					almacenPersonas.createIndex("por_edad", "edad");
-
-					almacenCiudades.createIndex("por_cp", "cp", { unique: true });
-					almacenCiudades.createIndex("por_nombre", "nombre");
-					almacenCiudades.createIndex("por_poblacion", "poblacion");
-
-					almacenCoches.createIndex("por_matricula", "matricula", { unique: true });
-					almacenCoches.createIndex("por_marca", "marca");
-					almacenCoches.createIndex("por_modelo", "modelo");
-
-
+					almacenAlbum.createIndex("por_id", "id", { unique: true });
+					almacenAlbum.createIndex("por_nombre", "nombre");
+					almacenAlbum.createIndex("por_fecha", "fecha");
 				};
 			} else {
 				console.log("IndexedDB no está soportado");

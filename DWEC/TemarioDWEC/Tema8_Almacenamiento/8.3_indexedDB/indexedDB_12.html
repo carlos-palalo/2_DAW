@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_12 - Contar registros: count</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+	</head>
+	<body>
+		<h1>indexedDB_12 - Contar registros: count</h1>
+		<hr />
+
+		<button onclick="contarBD();">CONTAR LIBROS</button>
+
+
+		<script type="text/javascript">
+
+			var peticion, bd, transaccion, almacen, rango;
+
+
+			function contarBD() {
+
+				if (window.indexedDB) {
+					peticion = window.indexedDB.open("biblioteca");
+
+
+					peticion.onsuccess = function (evento) {
+						console.log("Success");
+
+						bd = event.target.result;
+						
+    					transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
+						almacen = transaccion.objectStore("libros");
+						
+						var contadorRegistros = almacen.count();
+
+						//var rango = IDBKeyRange.bound(7,34);
+						//var contadorRegistros = store.count(rango);
+
+						contadorRegistros.onsuccess = function () {
+							alert("Hay " + contadorRegistros.result + " elementos");
+						}
+
+					}
+
+
+					peticion.onerror = function (evento) {
+						alert("No se ha creado la base de datos: " + event.target.errorCode);
+					};
+
+
+					peticion.onupgradeneeded = function (evento) {
+						console.log("Upgradeneeded");
+					};
+				} else {
+					console.log("IndexedDB no está soportado");
+				}
+			}
+
+		</script>
+	</body>
+</html>

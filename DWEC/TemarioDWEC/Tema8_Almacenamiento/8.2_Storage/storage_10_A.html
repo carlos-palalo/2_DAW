@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>storage_10_A - Ejercicio: pasar un formulario a otra página</title>
+	</head>
+	<body>
+		<h1>storage_10_A - Ejercicio: pasar un formulario a otra página</h1>
+		<hr />
+		
+		<p id="studentInfo"></p>
+
+		<script type="text/javascript">
+
+			window.addEventListener("storage",function (event){
+				var studentJSON= localStorage.getItem("student");
+				//localStorage.removeItem(student);
+				var student = JSON.parse(studentJSON);
+	
+				var c = "";
+				c += "<br />Nombre: " + student.firstname;
+				c += "<br />Apellidos: " + student.lastname;
+				c += "<br />Fecha de nacimiento: " + student.birthdate;
+				c += "<br />Domicilio";
+				c += "<br />Calle: " + student.address.street;
+				c += "<br />Número" + student.address.number;
+				c += "<br />Módulos: " + student.subjectList;
+				c += "<br />FCT: ";
+				if(student.fct) {
+					c += "Sí";
+				} else {
+					c += "No";
+				}
+	
+				document.getElementById("studentInfo").innerHTML = c;
+			});
+	
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ejercicio</title>
+	</head>
+	<body>
+		<h1>Pasar un formulario</h1>
+		<hr />
+        Nombre: <input type="text" id="nombre"><br><br>
+        Apellido: <input type="text" id="apellido"><br><br>
+		
+		<button onclick="pasarElemento();">Pasar elemento</button><br><br>
+
+		<a href="ej2_B.html">Abrir la otra página en otra pestaña</a>
+
+		<script type="text/javascript">
+
+			function pasarElemento() {
+				var nom = document.getElementById("nombre").value;
+                var ape = document.getElementById("apellido").value;
+
+                var cad = JSON.stringify({nombre: nom, apellido: ape});
+
+				window.localStorage.setItem("prueba",cad);
+			}
+	
+		</script>
+	</body>
+</html>

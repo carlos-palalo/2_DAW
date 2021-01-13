@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>storage_10 - Ejercicio: pasar un formulario a otra página</title>
+		<style>
+			td {
+				border: 2px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>storage_10 - Ejercicio: pasar un formulario a otra página</h1>
+		<hr />
+		
+		Nombre<input type="text" id="firstname" required="required" /><br /><br />
+		
+		Apellidos<input type="text" id="lastname" required="required" /><br /><br />
+		
+		Fecha de nacimiento<input type="date" id="birthdate" required="required" /><br /><br />
+		
+		Dirección<br />
+		calle<input type="text" id="street" required="required" />&nbsp;&nbsp;Número<input type="number" id="housenumber" required="required" /><br /><br />
+		
+		Módulos<br />
+		<select id="modulos" size="5" multiple="multiple" required="required">
+			<option value="programacion">Programación</option>
+			<option value="redes">Redes de ordenadores</option>
+			<option value="sistemas">Sistemas operativos</option>
+			<option value="bases">Bases de datos</option>
+			<option value="marcas">Lenguajes de marcas</option>
+			<option value="ofimatica">Ofimática</option>
+			<option value="fol">FOL</option>
+		</select>
+		<br /><br />
+
+		Cursará FCT<input type="checkbox" id="fct" /><br /><br />
+
+		<button onclick="send();">Enviar</button>
+
+		<script type="text/javascript">
+
+			function send () {
+				var student = {};
+				
+				student.firstname = document.getElementById("firstname").value;
+				
+				student.lastname = document.getElementById("lastname").value;
+				
+				student.birthdate = document.getElementById("birthdate").value;
+				
+				student.address = {};
+				student.address.street = document.getElementById("street").value;
+				student.address.number = document.getElementById("housenumber").value;
+	
+				var subjects = [];
+				for(i=0;i<document.getElementById("modulos").options.length;i++) {
+					if(document.getElementById("modulos").options[i].selected) {
+						subjects.push(document.getElementById("modulos").options[i].textContent);
+					}
+				}
+				student.subjectList = subjects;
+	
+				if(document.getElementById("fct").checked) {
+					student.fct = true;
+				} else {
+					student.fct = false;
+				}
+				
+				var studentInfo = JSON.stringify(student);
+				localStorage.setItem("student",studentInfo);
+				
+			}
+		</script>
+	</body>
+</html>
