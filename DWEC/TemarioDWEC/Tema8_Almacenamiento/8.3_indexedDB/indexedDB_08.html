@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_08 - Introducir muchos datos para la biblioteca (libros, préstamos y socios)</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+	</head>
+	<body>
+		<h1>indexedDB_08 - Base de datos biblioteca (libros, préstamos y socios)</h1>
+		<hr />
+
+		<button onclick="crearBD();">CREAR LIBROS, PRÉSTAMOS Y SOCIOS CON DATOS</button>
+
+		<script type="text/javascript">
+
+			function fecha(dias) {
+				return (new Date((new Date()).getTime() + 1000*60*60*24*dias)).toUTCString();
+			}
+
+
+
+			var peticion, bd, almacenLibros, almacenSocios, almacenPrestamos;
+
+			function crearBD() {
+
+				if (window.indexedDB) {
+					peticion = window.indexedDB.open("biblioteca",3);
+
+					peticion.onsuccess = function (event) {
+						bd = peticion.result;
+						var transaccion = bd.transaction(bd.objectStoreNames,"readwrite");
+
+						var almacenLibros = transaccion.objectStore("libros");
+						var almacenSocios = transaccion.objectStore("socios");
+						var almacenPrestamos = transaccion.objectStore("prestamos");
+
+						almacenLibros.put({isbn:1,titulo:"1080 recetas de cocina",autor:"Simone Ortega",editorial:"ALIANZA EDITORIAL",paginas:864,precio:16});
+						almacenLibros.put({isbn:2,titulo:"La cocina y los alimentos",autor:"Harold McGee",editorial:"DEBATE",paginas:960,precio:45});
+						almacenLibros.put({isbn:3,titulo:"Pedaleando en la oscuridad",autor:"David Millar",editorial:"CONTRA",paginas:424,precio:20});
+						almacenLibros.put({isbn:4,titulo:"Correr o morir",autor:"Kilian Hornet",editorial:"NOW BOOKS",paginas:200,precio:19});
+						almacenLibros.put({isbn:5,titulo:"Correr para estar en forma",autor:"Sean Fishpool",editorial:"CONTRA",paginas:400,precio:32});
+						almacenLibros.put({isbn:6,titulo:"Guía de bolsillo de Linux",autor:"Daniel J. Barret",editorial:"ANAYA",paginas:140,precio:25});
+						almacenLibros.put({isbn:7,titulo:"SQL Server 2012. Guía del administrador",autor:"William R. Stanek",editorial:"ANAYA",paginas:260,precio:60});
+						almacenLibros.put({isbn:8,titulo:"YouTube",autor:"Marse Blai",editorial:"PROFIT",paginas:150,precio:12});
+						almacenLibros.put({isbn:9,titulo:"Me Gusta. Conseguir éxito en las redes sociales",autor:"Dave Kerpen",editorial:"ANAYA",paginas:130,precio:20});
+						almacenLibros.put({isbn:10,titulo:"Domine php 5",autor:"Jose Luis Lopez Quijado",editorial:"RA-MA",paginas:140,precio:24});
+						almacenLibros.put({isbn:11,titulo:"Mesías de Dune",autor:"Frank Herbert",editorial:"LA FACTORÍA DE IDEAS",paginas:320,precio:21});
+						almacenLibros.put({isbn:12,titulo:"El árbol de Saliva",autor:"Brian Aldiss",editorial:"EDHASA",paginas:409,precio:14});
+						almacenLibros.put({isbn:13,titulo:"Tropas del Espacio",autor:"Robert A. Heinlein",editorial:"LA FACTORÍA DE IDEAS",paginas:288,precio:19});
+						almacenLibros.put({isbn:14,titulo:"Neuromante",autor:"William Gibson",editorial:"MINOTAURO",paginas:208,precio:17});
+						almacenLibros.put({isbn:15,titulo:"Trilogía de la Fundación",autor:"Isaac Asimov",editorial:"ALAMUNT",paginas:544,precio:33});
+						almacenLibros.put({isbn:16,titulo:"La fragmentación del poder europeo",autor:"José Ignacio Torreblanca",editorial:"ICARIA",paginas:229,precio:20});
+						almacenLibros.put({isbn:17,titulo:"Europa y el mito de Occidente : la construccion de una historia",autor:"Georges Corm",editorial:"ATALAYA",paginas:434,precio:35});
+						almacenLibros.put({isbn:18,titulo:"Terrorismo sin fronteras : actores, escenarios y respuestas en un mundo global",autor:"Carlos Ochoa Mateo", editorial:"ARANZADI", paginas:237,precio:30});
+						almacenLibros.put({isbn:19,titulo:"La identidad europea de seguridad y defensa : el pilar estratégico de la Unión",autor:"Félix Arteaga",editorial:"ESTUDIOS DE POLITICA EXTERIOR",paginas:316,precio:45});
+						almacenLibros.put({isbn:20,titulo:"La aldea global",autor:"Noan Chomsky",editorial:"TXALAPARTA",paginas:207,precio:25});
+						almacenLibros.put({isbn:21,titulo:"Dibujo Técnico",autor:"Pedro Company",editorial:"UNIVERSIDAD JAUME I. SERVICIO DE COMUNICACION Y PUBLICACIONES",paginas:252,precio:15});
+						almacenLibros.put({isbn:22,titulo:"Subway Art",autor:"Martha Cooper",editorial:"Henry Chalfant",paginas:"104",precio:20});
+						almacenLibros.put({isbn:23,titulo:"La Perspectiva En El Dibujo",autor:"Mark Way",editorial:"OMEGA",paginas:96,precio:22});
+						almacenLibros.put({isbn:24,titulo:"Tecnicas De Dibujo Con Lapices De Colores",autor:"Iain Hutton-Jamieson",editorial:"TURSEN-HERMANN BLUME",paginas:176,precio:10});
+						almacenLibros.put({isbn:25,titulo:"Constructive Anatomy",autor:"George B. Bridgman",editorial:"DOVER",paginas:170,precio:8});
+						almacenLibros.put({isbn:26,titulo:"El Señor de los Anillos",autor:"J. R. R. Tolkien",editorial:"MINOTAURO",paginas:435,precio:70});
+						almacenLibros.put({isbn:27,titulo:"Cien años de soledad",autor:"Gabriel García Márquez",editorial:"SUDAMERICANA",paginas:178,precio:38});
+						almacenLibros.put({isbn:28,titulo:"La sombra del viento",autor:"Carlos Ruiz Zafón",editorial:"PLANETA",paginas:360,precio:53});
+						almacenLibros.put({isbn:29,titulo:"El ingenioso hidalgo don Quijote de La Mancha",autor:"Miguel de Cervantes",editorial:"ALGAR",paginas:1005,precio:90});
+						almacenLibros.put({isbn:30,titulo:"Los pilares de la tierra",autor:"Ken Follet",editorial:"DEBOLSILLO",paginas:43,precio:45});
+						almacenLibros.put({isbn:30,titulo:'Los pilares de la tierra',autor:'Ken Follet',editorial:'DEBOLSILLO',paginas:43,precio:45} );
+						almacenLibros.put({isbn:31,titulo:'Ojos de hielo',autor:'Carolina Solé',editorial:'PLANETA',paginas:696,precio:20} );
+						almacenLibros.put({isbn:32,titulo:'En busca de April',autor:'Benjamin Black',editorial:'PUNTO DE LECTURA',paginas:336,precio:9} );
+						almacenLibros.put({isbn:33,titulo:'Muerte en Verano',autor:'Benjamin Black',editorial:'ALFAGUARA',paginas:304,precio:20} );
+						almacenLibros.put({isbn:34,titulo:'Dispara, yo ya estoy muerto',autor:'Julia Navarro',editorial:'PLAZA & JANES',paginas:912,precio:22} );
+						almacenLibros.put({isbn:35,titulo:'Discos Ocultos',autor:'Juan Vitoria',editorial:'AVANTPRESS',paginas:240,precio:23} );
+						almacenLibros.put({isbn:36,titulo:'Jim Morrison Vida Muerte y Leyenda',autor:'Stephen Davis',editorial:'MA NON TROPPO',paginas:233,precio:21} );
+						almacenLibros.put({isbn:37,titulo:'Jimi Hendrix',autor:'Charles R. Cross',editorial:'MA NON TROPPO',paginas:123,precio:21} );
+						almacenLibros.put({isbn:38,titulo:'1001 discos que escuchar antes de morir',autor:'Varios autores',editorial:'GRIJALBO',paginas:142,precio:19} );
+						almacenLibros.put({isbn:39,titulo:'Todo lo que hay que saber del negocio musical',autor:'Josep Maria Romero Fillat',editorial:'ALBA EDITORIAL',paginas:175,precio:23} );
+						almacenLibros.put({isbn:40,titulo:"El puente de los asesinos",autor:"Artruro Perez Reverte",editorial:"PUNTO DE LECTURA",paginas:352,precio:10});
+						almacenLibros.put({isbn:41,titulo:"El tango de la guardia vieja",autor:"Artruro Perez Reverte",editorial:"ALFAGUARA",paginas:504,precio:20});
+						almacenLibros.put({isbn:42,titulo:"Los barcos se pierden en tierra",autor:"Artruro Perez Reverte",editorial:"PUNTO DE LECTURA",paginas:368,precio:9});
+						almacenLibros.put({isbn:43,titulo:"Cadix, ou la diaganale du fou",autor:"Artruro Perez Reverte",editorial:"SEUIL",paginas:300,precio:26});
+						almacenLibros.put({isbn:44,titulo:"Enigmas sin resolver",autor:"Iker Jiménez",editorial:"EDAF",paginas:359,precio:10});
+						almacenLibros.put({isbn:45,titulo:"Consciencia más allá de la vida",autor:"Pim Van Lommel",editorial:"ATALANTA",paginas:496,precio:32});
+						almacenLibros.put({isbn:46,titulo:"Una introducción básica a un curso de milagros",autor:"Kenneth Wapnick",editorial:"EL GRANO paginas:DE MOSTAZA",paginas:164,precio:12});
+						almacenLibros.put({isbn:47,titulo:"El gran libro del tarot",autor:"Emilio salas",editorial:"ROBINBOOK",paginas:384,precio:24});
+						almacenLibros.put({isbn:48,titulo:"Al otro lado del tunel",autor:"Jose Miguel Gaona",editorial:"LA ESFERA DE LOS LIBROS",paginas:236,precio:20});
+						almacenLibros.put({isbn:49,titulo:"Manual de espeleología",autor:"José Martínez Hernández",editorial:"DESNIVEL",paginas:304,precio:25});
+						almacenLibros.put({isbn:50,titulo:"Camino de Santiago en BTT ",autor:"Juan Menéndez Granados",editorial:"DESNIVEL",paginas:264,precio:17});
+						almacenLibros.put({isbn:51,titulo:"Deshielo",autor:"Lija Trojanow",editorial:"DESNIVEL",paginas:176,precio:16 });
+						almacenLibros.put({isbn:52,titulo:"Cómo montar un rápel",autor:"Toño Guerra",editorial:"DESNIVEL",paginas:96,precio:11 });
+						almacenLibros.put({isbn:53,titulo:"Ascensiones míticas",autor:"Daniel Friebe",editorial:"DESNIVEL",paginas:224,precio:23 });
+						almacenLibros.put({isbn:54,titulo:"La biblia del LCD y Plasma",autor:"Alberto Picerno",editorial:"EPRENDA",paginas:580,precio:19 });
+						almacenLibros.put({isbn:55,titulo:"Istrumentos Especiales ",autor:"Alberto Picerno",editorial:"EPRENDA",paginas:248,precio:10 });
+						almacenLibros.put({isbn:56,titulo:"La biblia de Las Fuentes Conmutadas",autor:"Alberto Picerno",editorial:"EPRENDA",paginas:262,precio:19 });
+						almacenLibros.put({isbn:57,titulo:"Python: Crear, modificar, reutilizar",autor:"Jim Knowlton",editorial:"ANAYA MULTIMEDIA",paginas:272,precio:107 }); 
+						almacenLibros.put({isbn:58,titulo:"Visual Basic 6: curso de iniciación",autor:"Luis Navarro; Sergio Arboles",editorial:"INFOR BOOK S EDICIONES",paginas:504,precio:26 });   
+						almacenLibros.put({isbn:59,titulo:"La Biblia de Delphi 7",autor:"Marco Cantu",editorial:"ANAYA MULTIMEDIA",paginas:1184,precio:40 });
+						almacenLibros.put({isbn:60,titulo:"Las cosas que no nos dijimos ",autor:"Marc Levy",editorial:"PLANETA",paginas:352,precio:7 });
+						almacenLibros.put({isbn:61,titulo:"La Tienda",autor:"Stephen King",editorial:"DEBOLSILLO",paginas:860,precio:12});
+						almacenLibros.put({isbn:62,titulo:"El nombre del viento",autor:"Patrick Rothfuss",editorial:"PLAZA & JANES",paginas:1200,precio:25});
+						almacenLibros.put({isbn:63,titulo:"El maestro del Prado",autor:"Javier Sierra",editorial:"PLANETA",paginas:328,precio:19});
+						almacenLibros.put({isbn:64,titulo:"Sacrificio a Málek",autor:"Asa Larsson",editorial:"SEIX BARRAL",paginas:416,precio:18});
+						almacenLibros.put({isbn:65,titulo:"Y las montañas hablaron",autor:"Khaled HalmacenLibrosseini",editorial:"SALAMANDRA",paginas:384,precio:20});
+						almacenLibros.put({isbn:66,titulo:"LalmacenLibros jardines de la Luna",autor:"Steve Erikson",editorial:"LA FACTORÍA DE IDEAS",paginas:505,precio:26});
+						almacenLibros.put({isbn:67,titulo:"El puente de Alcántara",autor:"Frank Baer",editorial:"EDHASA",paginas:1080,precio:13});
+						almacenLibros.put({isbn:68,titulo:"Notas sobre el cinematógrafo",autor:"Robert Bresson",editorial:"ARDORA EDICIONES",paginas:136,precio:13});
+						almacenLibros.put({isbn:69,titulo:"Acceso a DatalmacenLibros",autor:"Alicia RamalmacenLibros Martín,Mª Jesús RamalmacenLibros Martín",editorial:"GARCETA",paginas:308,precio:22});
+						almacenLibros.put({isbn:70,titulo:"Sistemas de Gestión Empresarial",autor:"César San Juan",editorial:"GARCETA",paginas:292,precio:22});
+						almacenLibros.put({isbn:71,titulo:"Sistemas Informáticos",autor:"Isabel Mª Jiménez Cumbreras",editorial:"GARCETA",paginas:534,precio:26 });
+						almacenLibros.put({isbn:72,titulo:"Rebeldes",autor:"Susane E. Hinton",editorial:"ALFAGUARA",paginas:200,precio:9 });
+						almacenLibros.put({isbn:73,titulo:"Rebelion en la granja",autor:"George Orwell",editorial:"DESTINO",paginas:184,precio:8 });
+						almacenLibros.put({isbn:74,titulo:"Matilda",autor:"Roald Dahl",editorial:"ALFAGUARA",paginas:134,precio:8 });
+						almacenLibros.put({isbn:75,titulo:"Inferno",autor:"Dan Brown",editorial:"PLANETA",paginas:640,precio:13 });
+						almacenLibros.put({isbn:76,titulo:"Ángeles y Demonios",autor:"Dan Brown",editorial:"UMBRIEL",paginas:606,precio:18 });
+						almacenLibros.put({isbn:77,titulo:"Juego de Tronos Cancion de Hielo y Fuego",autor:"George R.R. Martin",editorial:"GIGAMESH",paginas:798,precio:20 });
+						almacenLibros.put({isbn:78,titulo:"El héroe discreto",autor:"Mario Vargas Llosa",editorial:"ALFAGUARA",paginas:392,precio:20 });
+						almacenLibros.put({isbn:79,titulo:"La verdad sobre el caso Harry Quebert",autor:"Joél Dicker",editorial:"ALFAGUARA",paginas:672,precio:22 });
+						almacenLibros.put({isbn:80,titulo:"Circo maximo",autor:"Santiago Posteguillo",editorial:"PLANETA",paginas:342,precio:10 });
+						almacenLibros.put({isbn:81, titulo:'Pan, educacion, libertad', autor:'Petros Markaris', editorial:'TUSQUETS EDITORES', paginas:256, precio:17});
+						almacenLibros.put({isbn:82, titulo:'Cronica de una muerte anunciada', autor:'Gabriel Garcia Marquez', editorial:'DEBOLSILLO', paginas:144, precio:7});
+						almacenLibros.put({isbn:83, titulo:'Cincuenta sombras de Grey', autor:'E.L. JAMES', editorial:'GRIJALBO', paginas:544, precio:18});
+						almacenLibros.put({isbn:84, titulo:'Fantasmas del pasado', autor:'Nicholas Sparks', editorial:'ROCABOLSILLO', paginas:354, precio:9});
+						almacenLibros.put({isbn:85, titulo:'Querido John', autor:'Nicholas Sparks', editorial:'ROCABOLSILLO', paginas:320, precio:9});
+						almacenLibros.put({isbn:86, titulo:'La Isla del Tesoro', autor:'Robert Louis Stevenson', editorial:'RIALP', paginas:176, precio:6});
+						almacenLibros.put({isbn:87, titulo:'35 Kilos de esperanza', autor:'Anna Gavalda', editorial:'ALFAGUARA', paginas:96, precio:7});
+						almacenLibros.put({isbn:88, titulo:'Números pares, impares e idiotas', autor:'JUAN JOSÉ MILLÁS', editorial:'SM', paginas:237, precio:8});
+						almacenLibros.put({isbn:89, titulo:'Diversos destinos consulares', autor:'Antonio Romar', editorial:'YA LO DIJO CASIMIRO PARKER', paginas:64, precio:25});
+						almacenLibros.put({isbn:90, titulo:'Raro', autor:'Benjamín Prado', editorial:'YA LO DIJO CASIMIRO PARKER', paginas:180, precio:8});
+						almacenLibros.put({isbn:91,titulo:"Hay una jaula en cada pájaro",autor:"Oscar Curieses",editorial:"YA LO DIJO CASIMIRO PARKER",paginas:80,precio:12});
+						almacenLibros.put({isbn:92,titulo:"El club de la lucha",autor:"Chuck Palahniuk",editorial:"DEBOLSILLO",paginas:224,precio:9});
+						almacenLibros.put({isbn:93,titulo:"Recuerdos del futuro",autor:"Robert J. Sawyer",editorial:"LA FACTORIA DE IDEAS",paginas:292,precio:11});
+						almacenLibros.put({isbn:94,titulo:"El perfume",autor:" historia de un asesino",editorial:"PATRICK SUSKIND",paginas:288,precio:256});
+						almacenLibros.put({isbn:95,titulo:"La interpretadora de sueños",autor:"Rafael R. Costa",editorial:"ESPASA CALPE",paginas:400,precio:10});
+						almacenLibros.put({isbn:96,titulo:"El coleccionista de libros",autor:"Charlie Lovett",editorial:"PLAZA & JANES",paginas:400,precio:18});
+						almacenLibros.put({isbn:97,titulo:"La biblioteca de los muertos",autor:"Glenn Cooper",editorial:"GRIJALBO",paginas:432,precio:21});
+						almacenLibros.put({isbn:98,titulo:"El mundo de Sofía",autor:"Jostein Gaarder",editorial:"SIRUELA",paginas:640,precio:30});
+						almacenLibros.put({isbn:99,titulo:"El amor en los tiempos del cólera",autor:"Gabriel García Márquez",editorial:"DEBOLSILLO",paginas:496,precio:12});
+						almacenLibros.put({isbn:100,titulo:"Abejas",autor:"John Saul",editorial:"VERGARA",paginas:356,precio:5});
+						almacenLibros.put({isbn:101,titulo:"El susurro de los muertos",autor:"Simon Beckett",editorial:"ARROBA@BOOKS",paginas:317,precio:8});
+						almacenLibros.put({isbn:102,titulo:"Memorias de Idhún. La resistencia",autor:"Laura Gallego",editorial:"SM",paginas:558,precio:21});
+						almacenLibros.put({isbn:103,titulo:"La ciudad de las bestias",autor:"Isabel Allende",editorial:"PLAZA & JANES",paginas:304,precio:22});
+						almacenLibros.put({isbn:104,titulo:"Cañas y barro",autor:"Vicente Blasco Ibáñez",editorial:"ALIANZA EDITORIAL",paginas:336,precio:11});
+						almacenLibros.put({isbn:105,titulo:"Los cuatro jinetes del apocalipsis",autor:"Vicente Blasco Ibáñez",editorial:"AKAL",paginas:464,precio:11});
+						almacenLibros.put({isbn:106,titulo:"Tirano banderas",autor:"Ramón María del Valle-Inclán",editorial:"S.L.U. ESPASA LIBROS",paginas:224,precio:3});
+						almacenLibros.put({isbn:107,titulo:"La saga de yago",autor:"Manuel Velasco",editorial:"EDICIONES ALCÁNTARA",paginas:301,precio:16});
+						almacenLibros.put({isbn:108,titulo:"Pedir lo imposible",autor:"Slavoj Zizek",editorial:"AKAL",paginas:160,precio:15});
+						almacenLibros.put({isbn:109,titulo:"Somos el 99%",autor:"David Graeber",editorial:"CAPITAN SWING",paginas:304,precio:22});
+						almacenLibros.put({isbn:110,titulo:"Bajo los cielos de Asia",autor:" Iñaki Ochoa De Olza",editorial:"SAGA EDITORIAL SL",paginas:356,precio:23});
+						almacenLibros.put({isbn:111,titulo:"Aprende a programar con java",autor:"Francisco Perez Montes",editorial:"PARANINFO",paginas:396,precio:26});
+						almacenLibros.put({isbn:112,titulo:"Pideme lo que quieras ahora y siempre",autor:"Megan Maxwell",editorial:"Planeta",paginas:432,precio:7});
+						almacenLibros.put({isbn:113,titulo:"Java 2: Curso de programación",autor:"Francisco Javier Ceballos Sierra",editorial:"RA-MA",paginas:800,precio:42});
+						almacenLibros.put({isbn:114,titulo:"Windows 8",autor:"José María Delgado",editorial:"ANAYA MULTIMEDIA",paginas:440,precio:32});
+						almacenLibros.put({isbn:115,titulo:"Cancion de Hielo y Fuego I. Juego de Tronos",autor:"George R. R. Martin",editorial:"GIGAMESH",paginas:800,precio:34});
+						almacenLibros.put({isbn:116,titulo:"El Alquimista",autor:"Paulo Coelho",editorial:"PLANETA",paginas:192,precio:20});
+						almacenLibros.put({isbn:117,titulo:"Vida de una Geisha",autor:"Mineko Iwasaki",editorial:"ZETA BOLSILLO",paginas:304,precio:6});
+						almacenLibros.put({isbn:118,titulo:"Redes y servicios de telecomunicaciones",autor:"José Manuel Huidobro Moya",editorial:"PARANINFO",paginas:477,precio:42});
+						almacenLibros.put({isbn:119,titulo:"Soy Leyenda",autor:"Richard Matheson",editorial:"BOOKET",paginas:178,precio:7});
+						almacenLibros.put({isbn:120,titulo:"La carretera",autor:"Cormac McCarthy",editorial:"LITERATURA RANDOM HOUSE",paginas:224,precio:8});
+						almacenLibros.put({isbn:121,titulo:'Android 4. Desarrollo de aplicaciones',autor:'Wei-Meng Lee ',editorial:'ANAYA MULTIMEDIA',paginas:592,precio:53});
+						almacenLibros.put({isbn:122,titulo:'Desarrollo de aplicaciones para Android',autor:'Joan Ribas Lequerica',editorial:'ANAYA MULTIMEDIA',paginas:432,precio:26});
+						almacenLibros.put({isbn:123,titulo:'HTML5 y CSS3',autor:'Alexis Goldstein',editorial:'ANAYA MULTIMEDIA',paginas:336,precio:26});
+						almacenLibros.put({isbn:124,titulo:'Harry Potter y la Piedra Filosofal',autor:'J. K. Rowling',editorial:'SALAMANDRA',paginas:256,precio:15});
+						almacenLibros.put({isbn:125,titulo:'Harry Potter y la cámara secreta',autor:'J. K. Rowling',editorial:'SALAMANDRA',paginas:288,precio:16});
+						almacenLibros.put({isbn:126,titulo:'Harry Potter y el prisionero de Azkaban',autor:'J. K. Rowling',editorial:'SALAMANDRA',paginas:360,precio:18});
+						almacenLibros.put({isbn:127,titulo:'la llamada de Cthulhu',autor:'H. P. Lovecraft',editorial:'ALPHA DECAY',paginas:128,precio:9});
+						almacenLibros.put({isbn:128,titulo:'hongos de yuggoth: y otros poemas fantasticos',autor:'H.P. Lovecraft',editorial:'VALDEMAR',paginas:168,precio:8});
+						almacenLibros.put({isbn:129,titulo:'mas alla de los eones',autor:'H. P. Lovecraft',editorial:'VALDEMAR',paginas:608,precio:34});
+						almacenLibros.put({isbn:130,titulo:'Por el camino de Swann',autor:'Marcel Proust',editorial:'ALIANZA EDITORIAL',paginas:560,precio:15});
+						almacenLibros.put({isbn:131,titulo:'Danza de dragones',autor:'George R.R. Martin',editorial:'GIGAMESH',paginas:1152,precio:32});
+						almacenLibros.put({isbn:132,titulo:'Dracula',autor:'Bram Stoker',editorial:'ALIANZA EDITORIAL',paginas:512,precio:13});
+						almacenLibros.put({isbn:133,titulo:'El tragaluz',autor:'Antonio Buero Vallejo',editorial:'VICENS-VIVES',paginas:192,precio:12});
+						almacenLibros.put({isbn:134,titulo:'Tres sombreros de copa',autor:'Miguel Mihura',editorial:'CATEDRA',paginas:144,precio:8});
+						almacenLibros.put({isbn:135,titulo:'La música del silencio',autor:'Patrick Rothfuss',editorial:'PLAZA & JANES',paginas:160,precio:12});
+						almacenLibros.put({isbn:136,titulo:'Yo, Zatu Y Mi Severa Fractura De Kraneo',autor:'Saturnino Rey',editorial:'BOA MUSIC',paginas:210,precio:10});
+						almacenLibros.put({isbn:137,titulo:'Familia de luz',autor:'Barbara Marciniak',editorial:'OBELISCO',paginas:320,precio:16});
+						almacenLibros.put({isbn:138,titulo:'Adulterio',autor:'Paulo Coelho',editorial:'PLANETA',paginas:288,precio:19});
+						almacenLibros.put({isbn:139,titulo:'La Celestina',autor:'Fernando de Rojas',editorial:'EDEBE',paginas:304,precio:10});
+						almacenLibros.put({isbn:140,titulo:'Posmodernismo',autor:'Fredric Jameson',editorial:'LA MARCA',paginas:208,precio:25});
+						almacenLibros.put({isbn:141,titulo:"El diario de Ana Frank",autor:"Frank, Anne",editorial:"DEBOLSILLO",paginas:384,precio:7});
+						almacenLibros.put({isbn:142,titulo:"La catedral del mar",autor:"Falcones, Idelfonso",editorial:"GRIJALBO",paginas:672,precio:19});
+						almacenLibros.put({isbn:143,titulo:"The Boy in the Striped Pajamas",autor:"Boyne, John",editorial:"SALAMANDRA",paginas:224,precio:29});
+						almacenLibros.put({isbn:144,titulo:"Drácula",autor:"Bram Stoker",editorial:"ALIANZA EDITORIAL",paginas:512,precio:13});
+						almacenLibros.put({isbn:145,titulo:"Eldest",autor:"Christopher Paolini",editorial:"ROCA EDITORIAL",paginas:704,precio:17});
+						almacenLibros.put({isbn:146,titulo:"Brisingr",autor:"Christopher Paolini",editorial:"ROCA EDITORIAL",paginas:700,precio:17});
+						almacenLibros.put({isbn:147,titulo:"El retorno de los dragones",autor:"Larry Elmore",editorial:"RANDOM HOUSE",paginas:448,precio:39});
+						almacenLibros.put({isbn:148,titulo:"La tumba de Huma",autor:"Larry Elmore",editorial:"RANDOM HOUSE",paginas:399,precio:11});
+						almacenLibros.put({isbn:149,titulo:"La Reina de la Oscuridad",autor:"Larry Elmore",editorial:"RANDOM HOUSE",paginas:432,precio:7});
+						almacenLibros.put({isbn:150,titulo:"En la vida real",autor:"Cory Doctorow",editorial:"SAPRISTI",paginas:178,precio:20});
+
+
+						almacenSocios.put({socio:"jperezg",clave:"1234",nombre:"Javier",apellidos:"Pérez García",direccion:"C/ Mirabel 45, 2ºA"});
+						almacenSocios.put({socio:"amartinf",clave:"1234",nombre:"Ana",apellidos:"Martín Fernández",direccion:"C/ Gabilondo 3, 6ºB"});
+						almacenSocios.put({socio:"lgarciar",clave:"1234",nombre:"Laura",apellidos:"García Rodríguez",direccion:"C/ Cardenal Torquemada 17, 1ºA"});
+						almacenSocios.put({socio:"msanchezm",clave:"1234",nombre:"Manuel",apellidos:"Sánchez Marcos",direccion:"C/ Nebrija 34, 4ºC"});
+						almacenSocios.put({socio:"jfernandezl",clave:"1234",nombre:"Juan",apellidos:"Fernández López",direccion:"C/ Panaderos 23, 1ºC"});
+						almacenSocios.put({socio:"mgarciam",clave:"1234",nombre:"María",apellidos:"García Martín",direccion:"C/ Ferrari 10, 2ºA"});
+						almacenSocios.put({socio:"pgonzalezh",clave:"1234",nombre:"Pedro",apellidos:"González Hernández",direccion:"Avd. Segovia 40, 5ºB"});
+						almacenSocios.put({socio:"amarcosi",clave:"1234",nombre:"Ana",apellidos:"Marcos Iglesias",direccion:"C/ Estadio 12, 4ºA"});
+						almacenSocios.put({socio:"lmediavillar",clave:"1234",nombre:"Luis",apellidos:"Mediavilla Ramos",direccion:"C/ Muro 30, 5ºC"});
+						almacenSocios.put({socio:"sperezs",clave:"1234",nombre:"Susana",apellidos:"Pérez Sánchez",direccion:"C/ Independencia 11, 3ºB"});
+						almacenSocios.put({socio:"amartinezh",clave:"1234",nombre:"Alberto",apellidos:"Martínez Heras",direccion:"Avd. Palencia 31, 2ºB"});
+						almacenSocios.put({socio:"aprietoh",clave:"1234",nombre:"Alberto",apellidos:"Prieto Hernández",direccion:"C/ Soto 22, 3ºD"});
+						almacenSocios.put({socio:"prodriguezc",clave:"1234",nombre:"Pedro",apellidos:"Rodríguez Carrascal",direccion:"C/ Mirabel 25, 3ºA"});
+						almacenSocios.put({socio:"llopezs",clave:"1234",nombre:"Luis",apellidos:"López Soto",direccion:"C/ Soto 13, 2ºA"});
+						almacenSocios.put({socio:"msaavedrap",clave:"1234",nombre:"Marcos",apellidos:"Saavedra Pérez",direccion:"Plaza Alberto Fernández 5, 3ºC"});
+						almacenSocios.put({socio:"jgilf",clave:"1234",nombre:"Juanjo",apellidos:"Gil Fernández",direccion:"Avd. Salamanca 30, 3ºD"});
+						almacenSocios.put({socio:"layusoc",clave:"1234",nombre:"Laura",apellidos:"Ayuso Carrascal",direccion:"Plaza Mayor 32, 4ºA"});
+						almacenSocios.put({socio:"arevertep",clave:"1234",nombre:"Ana",apellidos:"Reverte Punset",direccion:"C/ Mayor 51, 5ºE"});
+						almacenSocios.put({socio:"jsanchezo",clave:"1234",nombre:"Juan",apellidos:"Sánchez Ozores",direccion:"Avd. Santander 12, 1ºA"});
+						almacenSocios.put({socio:"aperezr",clave:"1234",nombre:"Alejandro",apellidos:"Pérez Rodríguez",direccion:"Plaza Trinidad 39, 3ºC"});
+						almacenSocios.put({socio:"bfernandezs",clave:"1234",nombre:"Belén",apellidos:"Fernández Sousa",direccion:"C/ Principal 2, 2ºB"});
+						almacenSocios.put({socio:"cprietor",clave:"1234",nombre:"Carmen",apellidos:"Prieto Rodríguez",direccion:"C/ Real de Burgos 15, 8ºH"});
+						almacenSocios.put({socio:"amartinr",clave:"1234",nombre:"Alberto",apellidos:"Martin Rosa",direccion:"C/ Penitencia 14, 4ºC"});
+						almacenSocios.put({socio:"jlopezg",clave:"1234",nombre:"Juan",apellidos:"Lopez Gomez",direccion:"C/ Portillo del prado 23, 2ºB"});
+						almacenSocios.put({socio:"jortegar",clave:"1234",nombre:"Jose",apellidos:"Ortega Rodriguez",direccion:"C/ Real de Burgos 32, 5ºD"});
+						almacenSocios.put({socio:"dblancog",clave:"1234",nombre:"Diego",apellidos:"Blanco Gonzalez",direccion:"C/ Amor de Dios 2, 6ºB"});
+						almacenSocios.put({socio:"mcrespos",clave:"1234",nombre:"Marino",apellidos:"Crespo Sanchez",direccion:"C/ Chancilleria 14, 7ºA"});
+						almacenSocios.put({socio:"jescardaa",clave:"1234",nombre:"Jorge",apellidos:"Escarda Alonso",direccion:"Plaza Alberto Fernández 6, 1º"});
+						almacenSocios.put({socio:"rescuderob",clave:"1234",nombre:"Ruben",apellidos:"Escudero Barrio",direccion:"C/ Góngora 5, 5ºA"});
+						almacenSocios.put({socio:"efernandezp",clave:"1234",nombre:"Enrique",apellidos:"Fernández Polo",direccion:"Avd. Palencia 15, 5ºD"});
+						almacenSocios.put({socio:"durdialesc",clave:"1234",nombre:"Daniel",apellidos:"Urdiales Creus",direccion:"C/ Linares 8, 3ºC"});
+						almacenSocios.put({socio:"mfernandezc",clave:"1234",nombre:"Mónica",apellidos:"Fernández Casado",direccion:"C/ Calderón de la Barca 5, 2ºC"});
+						almacenSocios.put({socio:"sgomezg",clave:"1234",nombre:"Sergio",apellidos:"Gómez García",direccion:"C/ Mantería 35, 1ºA"});
+						almacenSocios.put({socio:"phernandezr",clave:"1234",nombre:"Pedro",apellidos:"Hernández Rubio",direccion:"C/ Olmo 2, 1ºC"});
+						almacenSocios.put({socio:"mprietor",clave:"1234",nombre:"María",apellidos:"Prieto Rodriguez",direccion:"C/ Mirador 34, 3ºD"});
+						almacenSocios.put({socio:"rrodriguezf",clave:"1234",nombre:"Rebeca",apellidos:"Rodríguez Fuentes",direccion:"C/ Labradores 11, 5ºB"});
+						almacenSocios.put({socio:"mrojoa",clave:"1234",nombre:"Marta",apellidos:"Rojo Alonso",direccion:"C/ Castilla 50, 2ºA"});
+						almacenSocios.put({socio:"gperezm",clave:"1234",nombre:"Guillermo",apellidos:"Péez Morales",direccion:"C/ Portugal 42, 3ºF"});
+						almacenSocios.put({socio:"acasaress",clave:"1234",nombre:"Adrián",apellidos:"Casares Suárez",direccion:"C/ Padilla 8, 2ºC"});
+						almacenSocios.put({socio:"pgarciag",clave:"1234",nombre:"Pablo",apellidos:"García González",direccion:"C/ Carreras 35, 4ºA"});
+						almacenSocios.put({socio:"mtesorerop",clave:"1234",nombre:"Miguel",apellidos:"Tesorero Pérez",direccion:"C/ Lope de Vega 21, 1ºD"});
+						almacenSocios.put({socio:"rsaezf",clave:"1234",nombre:"Raúl",apellidos:"Sáez Fernández",direccion:"C/ del Pozo 8, 4ºH"});
+						almacenSocios.put({socio:"ggutierrezc",clave:"1234",nombre:"Guillermo",apellidos:"Gutiérrez Casado",direccion:"C/ Concordia 22, 2ºA"});
+						almacenSocios.put({socio:"arutiap",clave:"1234",nombre:"Ana",apellidos:"Rutia Pérez",direccion:"C/ Salvación 19, 10ºC"});
+						almacenSocios.put({socio:"bmatiasc",clave:"1234",nombre:"Bruno",apellidos:"Matías Cerezo",direccion:"C/ Cardo Vil 1, 5ºD"});
+						almacenSocios.put({socio:"nortegad",clave:"1234",nombre:"Numancio",apellidos:"Ortega Damás",direccion:"C/ Camino de los Prados 31, 3ºB"});
+
+
+
+
+						almacenPrestamos.put({isbn:12,socio:"jperezg",fechaprestamo:fecha(0),fechadevolucion:fecha(7)});
+						almacenPrestamos.put({isbn:23,socio:"jperezg",fechaprestamo:fecha(-3),fechadevolucion:fecha(12)});
+						almacenPrestamos.put({isbn:42,socio:"jperezg",fechaprestamo:fecha(-7),fechadevolucion:fecha(10)});
+						almacenPrestamos.put({isbn:65,socio:"amartinf",fechaprestamo:fecha(-2),fechadevolucion:fecha(6)});
+						almacenPrestamos.put({isbn:23,socio:"lgarciar",fechaprestamo:fecha(-5),fechadevolucion:fecha(8)});
+						almacenPrestamos.put({isbn:17,socio:"lgarciar",fechaprestamo:fecha(-4),fechadevolucion:fecha(12)});
+						almacenPrestamos.put({isbn:58,socio:"lgarciar",fechaprestamo:fecha(0),fechadevolucion:fecha(9)});
+						almacenPrestamos.put({isbn:44,socio:"msanchezm",fechaprestamo:fecha(-4),fechadevolucion:fecha(7)});
+						almacenPrestamos.put({isbn:51,socio:"aprietoh",fechaprestamo:fecha(-8),fechadevolucion:fecha(9)});
+						almacenPrestamos.put({isbn:67,socio:"amarcosi",fechaprestamo:fecha(-1),fechadevolucion:fecha(5)});
+						almacenPrestamos.put({isbn:72,socio:"lmediavillar",fechaprestamo:fecha(-9),fechadevolucion:fecha(7)});
+						almacenPrestamos.put({isbn:81,socio:"sperezs",fechaprestamo:fecha(-8),fechadevolucion:fecha(3)});
+						
+					};
+
+
+					peticion.onerror = function (evento) {
+						console.log("No se ha creado la base de datos: " + event.target.errorCode);
+					};
+
+
+					peticion.onupgradeneeded = function (evento) {
+
+						bd = peticion.result;
+
+						var almacenLibros = bd.createObjectStore("libros",{keyPath:"isbn"});
+						var almacenSocios = bd.createObjectStore("socios",{keyPath:"socio"});
+						var almacenPrestamos = bd.createObjectStore("prestamos",{keyPath:["isbn","socio"]});
+
+						almacenLibros.createIndex("por_isbn", "isbn", {unique: true});
+						almacenLibros.createIndex("por_titulo", "titulo", {unique: true});
+						almacenLibros.createIndex("por_autor", "autor");
+						almacenLibros.createIndex("por_editorial", "editorial");
+
+						almacenSocios.createIndex("por_socio", "socio", {unique: true});
+						almacenSocios.createIndex("por_nombre", "nombre");
+						almacenSocios.createIndex("por_apellidos", "apellidos");
+
+						almacenPrestamos.createIndex("por_isbn", "isbn");
+						almacenPrestamos.createIndex("por_socio", "socio");
+						almacenPrestamos.createIndex("por_fechaprestamo", "fechaprestamo");
+						almacenPrestamos.createIndex("por_fechadevolucion", "fechadevolucion");
+					};
+					
+				} else {
+					console.log("IndexedDB no está soportado");
+				}
+			}
+
+		</script>
+	</body>
+</html>
