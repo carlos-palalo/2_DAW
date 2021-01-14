@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_13 - Agregar/modificar datos: add, put</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+	</head>
+	<body>
+		<h1>indexedDB_13 - Agregar/modificar datos: add, put</h1>
+		<hr />
+
+		<button onclick="insertarBD();">INSERTAR</button>
+
+		<script type="text/javascript">
+
+			var peticion, bd, transaccion, almacenSocios, rango;
+
+			function insertarBD() {
+
+				if (window.indexedDB) {
+					request = window.indexedDB.open("biblioteca");
+
+					request.onsuccess = function (evento) {
+						console.log("Success");
+
+						bd = event.target.result;
+						transaccion = bd.transaction(bd.objectStoreNames,"readwrite");
+
+						almacenSocios = transaccion.objectStore("socios");
+
+						//PUT --> Añade o modifica. Si escribe un registro con clave ya existente lo sobrescribe
+						almacenSocios.put({socio:"lmarting",clave:"1234",nombre:"Raúl",apellidos:"Sáez Fernández",direccion:"C/ Fuencarral, 4ºB"});
+						almacenSocios.put({socio:"lmarting",clave:"1234",nombre:"Luis",apellidos:"Martín López",direccion:"C/ Mayor 18,5ºH"});
+
+
+						//ADD --> Añade siempre
+						almacenSocios1.add({socio:"cperezv",clave:"1234",nombre:"César",apellidos:"Pérez Velasco",direccion:"C/ Herreros, 2ºA"});
+						
+						//Si añadimos con add uno ya existente dará error y no completa la transacción de tal modo que tampoco se añaden los
+						//modificados con put ni añadidos con add previamente
+						/*var duplicado = almacenSocios1.add({socio:"cperezv",clave:"1234",nombre:"María",apellidos:"García Sánchez",direccion:"C/ Panaderos, 4ºC"});
+						duplicado.onerror = function () {
+							console.log("error al insertar");
+						}*/
+					};
+
+
+					request.onerror = function (evento) {
+						alert("No se ha creado la base de datos: " + event.target.errorCode);
+					};
+
+
+					request.onupgradeneeded = function (evento) {
+						console.log("Upgradeneeded");
+					};
+				} else {
+					console.log("IndexedDB no está soportado");
+				}
+			}
+
+		</script>
+	</body>
+</html>

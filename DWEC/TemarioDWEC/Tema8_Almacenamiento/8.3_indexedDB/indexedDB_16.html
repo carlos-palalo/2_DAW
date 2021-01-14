@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_16 - Recorrer un almacén con un cursor</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+	</head>
+	<body>
+		<h1>indexedDB_16 - Recorrer un almacén con un cursor</h1>
+		<hr />
+
+		<button onclick="usarCursorBD();">LEER TODOS LOS LIBROS CON CURSOR</button>
+
+		<ul id="listaLibros"></ul>
+
+
+		<script type="text/javascript">
+
+			var peticion, bd, transaccion, almacen;
+
+			function usarCursorBD() {
+
+				if (window.indexedDB) {
+					peticion = window.indexedDB.open("biblioteca");
+
+					peticion.onsuccess = function (evento) {
+						console.log("Success");
+
+						bd = event.target.result;
+						
+    					transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
+						almacen = transaccion.objectStore("libros");
+
+						var range = IDBKeyRange.bound(7,34);
+
+						var peticionCursor = almacen.openCursor();
+						//var peticionCursor = almacen.openCursor(range);
+						//var peticionCursor = almacen.openCursor(range,"nextunique");
+						//var peticionCursor = almacen.openCursor(null,"prev");
+
+						peticionCursor.onsuccess = function (evento) {
+							var cursor = peticionCursor.result;
+
+							if(cursor) {
+								console.log("key: " + cursor.key);
+								console.log("primaryKey: " + cursor.primaryKey);
+								console.log("\n");
+								
+								insertarElemento(cursor.value);
+									
+								//cursor.continue(); //continue incrementa el cursor una posición
+								
+								cursor.advance(5); //advance incrementa el cursos las posiciones especificadas
+							} else {
+								console.log("FIN");
+							}
+						}
+
+					};
+
+
+					peticion.onerror = function (evento) {
+						alert("No se ha creado la base de datos: " + event.target.errorCode);
+					};
+
+
+					peticion.onupgradeneeded = function (evento) {
+						console.log("Upgradeneeded");
+					};
+				} else {
+					console.log("IndexedDB no está soportado");
+				}
+			}
+
+
+			function insertarElemento(libro) {
+				var htmlTexto = libro.isbn + " - " + libro.titulo + " - " + libro.autor + " - " + libro.editorial + " - " + libro.paginas + " - " + libro.precio;
+				var listaItem = document.createElement("li");
+				listaItem.textContent = htmlTexto;
+
+				document.getElementById("listaLibros").appendChild(listaItem);
+			}
+
+		</script>
+
+	</body>
+</html>

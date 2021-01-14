@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_15 - Vaciar un almacén: clear</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+	</head>
+	<body>
+		<h1>indexedDB_15 - Vaciar un almacén: clear</h1>
+		<hr />
+		<input type="radio" name="almacen" id="radioLibros" />Libros<br />
+		<input type="radio" name="almacen" id="radioSocios" />Socios<br />
+		<input type="radio" name="almacen" id="radioPrestamos" />Préstamos<br />
+
+		<button onclick="vaciarAlmacen();">VACIAR ALMACÉN</button>
+
+
+		<script type="text/javascript">
+
+			var peticion, bd, transaccion, almacen;
+
+			function vaciarAlmacen() {
+
+				if (window.indexedDB) {
+					peticion = window.indexedDB.open("biblioteca");
+
+					peticion.onsuccess = function (evento) {
+						console.log("Success");
+
+						bd = event.target.result;
+						
+    					transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
+						
+						var nombreAlmacen;
+						if(document.getElementById("radioLibros").checked) {
+							nombreAlmacen = "libros";
+						}
+						if(document.getElementById("radioSocios").checked) {
+							nombreAlmacen = "socios";
+						}
+						if(document.getElementById("radioPrestamos").checked) {
+							nombreAlmacen = "prestamos";
+						}
+
+						var borrado;
+						almacen = transaccion.objectStore(nombreAlmacen);
+						borrado = almacen.clear();
+
+						borrado.onsuccess = function () {
+							alert("Almacén vaciado: " + nombreAlmacen);
+						}
+					}
+
+
+					peticion.onerror = function (evento) {
+						alert("No se ha creado la base de datos: " + event.target.errorCode);
+					};
+
+
+					peticion.onupgradeneeded = function (evento) {
+						console.log("Upgradeneeded");
+					};
+				} else {
+					console.log("IndexedDB no está soportado");
+				}
+			}
+
+		</script>
+	</body>
+</html>

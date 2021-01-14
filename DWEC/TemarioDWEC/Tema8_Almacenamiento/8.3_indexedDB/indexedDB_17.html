@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>indexedDB_17 - Rangos: IDBKeyRange</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+	</head>
+	<body>
+		<h1>indexedDB_17 - Rangos: IDBKeyRange</h1>
+		<hr />
+		<button onclick="rangosBD();">CONSULTA CON RANGOS</button>
+		<ul id="listaLibros"></ul>
+
+		<script type="text/javascript">
+
+			var peticion, bd, transaccion, almacen;
+
+			function rangosBD() {
+
+				if (window.indexedDB) {
+					peticion = window.indexedDB.open("biblioteca");
+
+					peticion.onsuccess = function (evento) {
+						console.log("Success");
+
+						bd = event.target.result;
+						
+    					transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
+						almacen = transaccion.objectStore("libros");
+						
+						//MÉTODOS ESTÁTICOS
+						var rango = IDBKeyRange.bound(7,34);
+						//var rango = IDBKeyRange.lowerBound(74,false);
+						//var rango = IDBKeyRange.upperBound(17);
+						//var rango = IDBKeyRange.only(17);
+
+
+						//MÉTODOS DE INSTANCIA
+						if(rango.includes(25)) {
+							console.log("Se incluye el 25");
+						} else {
+							console.log("No se incluye el 25");
+						}
+
+						var peticionCursor = almacen.openCursor(rango);
+
+						peticionCursor.onsuccess = function (evento) {
+							var cursor = event.target.result;
+							if(cursor) {
+								insertarElemento(cursor.value);
+								console.log(cursor.value);
+								cursor.continue();
+							} else {
+								console.log("Sin resultados");
+							}
+						}
+
+					}
+
+
+					peticion.onerror = function (event) {
+						alert("No se ha creado la base de datos: " + event.target.errorCode);
+					};
+
+
+					peticion.onupgradeneeded = function (event) {
+						console.log("Upgradeneeded");
+					};
+				} else {
+					console.log("IndexedDB no está soportado");
+				}
+			}
+
+
+			function insertarElemento(libro) {
+				var htmlTexto = libro.isbn + " - " + libro.titulo + " - " + libro.autor + " - " + libro.editorial + " - " + libro.paginas + " - " + libro.precio;
+				var listaItem = document.createElement("li");
+				listaItem.textContent = htmlTexto;
+
+				document.getElementById("listaLibros").appendChild(listaItem);
+			}
+
+		</script>
+	</body>
+</html>
