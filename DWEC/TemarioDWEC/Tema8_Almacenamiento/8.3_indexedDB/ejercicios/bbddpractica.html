@@ -27,85 +27,417 @@
         }
 
 
-        var peticion, bd, almacenAlbum;
+        var peticion, bd, almacenAutor, almacenGenero, almacenAutorGenero, almacenConcierto, almacenAutorConcierto, almacenAlbum, almacenAutorAlbum, almacenPista, almacenLista, almacenPistaLista;
 
         if (window.indexedDB) {
             peticion = window.indexedDB.open("musica", 1);
 
-            peticion.onsuccess = function(evento) {
+            peticion.onsuccess = function (evento) {
                 //Escribir el código para realizar consultas, inserciones, etc...(DML)
                 mensaje("EVENTO: success\nSe ha abierto correctamente la base de datos: " + peticion.result.name + " con versión " + peticion.result.version);
 
                 bd = peticion.result;
                 var transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
 
-                almacenAlbum = transaccion.objectStore("album");
+                almacenAutor = transaccion.objectStore("autor");
                 /*almacenAlbum.put({
                     nombre: "La Miel de las Flores Muertas",
                     fecha: "2020"
                 });*/
             };
 
-            peticion.onerror = function(evento) {
+            peticion.onerror = function (evento) {
                 alert("No se ha creado la base de datos: " + event.target.errorCode);
             };
 
-            peticion.onupgradeneeded = function(evento) {
+            peticion.onupgradeneeded = function (evento) {
                 //Escribir el código para crear o modificar la estructura de la BD (DDL)
                 //Recordatorio: Este evento sólo se ejecuta si se abre la base de datos con una versión nueva superior
 
                 mensaje("EVENTO: upgradedneeded\nSe modifica la versión o es nueva");
                 bd = peticion.result;
 
-                /* Creación e Inserción tuplas almacenAlbum */
-                almacenAlbum = bd.createObjectStore("album", {
-                    keyPath: "id",
-                    autoIncrement: true
-                });
-                almacenAlbum.put({
-                    nombre: "La Miel de las Flores Muertas",
-                    fecha: "2020"
-                });
-                almacenAlbum.put({
-                    nombre: "La Teoría del Fuego",
-                    fecha: "2016"
-                });
-                almacenAlbum.put({
-                    nombre: "Buen Viaje",
-                    fecha: "2014"
-                });
-                almacenAlbum.put({
-                    nombre: "Inercia",
-                    fecha: "2012"
-                });
-                almacenAlbum.put({
-                    nombre: "Miseria, Sangre y Plomo",
-                    fecha: "2010"
-                });
-                almacenAlbum.put({
-                    nombre: "Con el Viento de Cara",
-                    fecha: "2008"
-                });
-                almacenAlbum.put({
-                    nombre: "Agujero social",
-                    fecha: "2004"
-                });
-                almacenAlbum.put({
-                    nombre: "Gritando en silencio",
-                    fecha: "2005"
-                });
-                almacenAlbum.put({
-                    nombre: "Antártida",
-                    fecha: "2018"
-                });
+                /***** Tabla almacenAutor *****/
+                almacenAutor = bd.createObjectStore("autor", { keyPath: "id", autoIncrement: true });
+                almacenAutor.put({ nombre: "Desakato", email: "desakato@gmail.com", password: "desakato", fecha_creacion: "2020", origen: "Asturias, España", foto_perfil: "/", fondo_perfil: "/" });
+                almacenAutor.put({ nombre: "Mono Inc.", email: "monoinc@gmail.com", password: "monoinc", fecha_creacion: "2020", origen: "Hamburgo, Alemania", foto_perfil: "/", fondo_perfil: "/" });
+                almacenAutor.put({ nombre: "Lord of the Lost", email: "lordofthelost@gmail.com", password: "lordofthelost", fecha_creacion: "2020", origen: "Hamburgo, Alemania", foto_perfil: "/", fondo_perfil: "/" });
+                almacenAutor.put({ nombre: "Jinjer", email: "jinjer@gmail.com", password: "jinjer", fecha_creacion: "2020", origen: "Ucrania", foto_perfil: "/", fondo_perfil: "/" });
+                almacenAutor.put({ nombre: "La Raíz", email: "laraiz@gmail.com", password: "laraiz", fecha_creacion: "2020", origen: "Valencia, España", foto_perfil: "/", fondo_perfil: "/" });
+                almacenAutor.put({ nombre: "Extremoduro", email: "extremoduro@gmail.com", password: "extremoduro", fecha_creacion: "2020", origen: "Cáceres, España", foto_perfil: "/", fondo_perfil: "/" });
 
+                /***** Tabla almacenGenero *****/
+                almacenGenero = bd.createObjectStore("genero", { keyPath: "id", autoIncrement: true });
+                almacenGenero.put({ nombre: "Hard rock" });
+                almacenGenero.put({ nombre: "Ska" });
+                almacenGenero.put({ nombre: "Rock" });
+                almacenGenero.put({ nombre: "Reggae" });
+                almacenGenero.put({ nombre: "Fusion" });
+                almacenGenero.put({ nombre: "Rap" });
+                almacenGenero.put({ nombre: "Metal progresivo" });
+                almacenGenero.put({ nombre: "Groove metal" });
+                almacenGenero.put({ nombre: "Metalcore" });
+                almacenGenero.put({ nombre: "Djent" });
+                almacenGenero.put({ nombre: "Death Metal progresivo" });
+                almacenGenero.put({ nombre: "Metal gótico" });
+                almacenGenero.put({ nombre: "Metal industrial" });
+                almacenGenero.put({ nombre: "Rock gótico" });
+                almacenGenero.put({ nombre: "Punk" });
+                almacenGenero.put({ nombre: "Rock alternativo" });
+
+                /***** Tabla almacenAutorGenero *****/
+                almacenAutorGenero = bd.createObjectStore("autorGenero", { keyPath: ["idAutor", "idGenero"] });
+                //Desakato
+                almacenAutorGenero.put({ idAutor: 1, idGenero: 3 });
+                almacenAutorGenero.put({ idAutor: 1, idGenero: 15 });
+                //Mono Inc.
+                almacenAutorGenero.put({ idAutor: 2, idGenero: 16 });
+                almacenAutorGenero.put({ idAutor: 2, idGenero: 14 });
+                almacenAutorGenero.put({ idAutor: 2, idGenero: 12 });
+                almacenAutorGenero.put({ idAutor: 2, idGenero: 13 });
+                //Lord of the Lost
+                almacenAutorGenero.put({ idAutor: 3, idGenero: 12 });
+                almacenAutorGenero.put({ idAutor: 3, idGenero: 13 });
+                almacenAutorGenero.put({ idAutor: 3, idGenero: 14 });
+                almacenAutorGenero.put({ idAutor: 3, idGenero: 1 });
+                //Jinjer
+                almacenAutorGenero.put({ idAutor: 4, idGenero: 7 });
+                almacenAutorGenero.put({ idAutor: 4, idGenero: 8 });
+                almacenAutorGenero.put({ idAutor: 4, idGenero: 9 });
+                almacenAutorGenero.put({ idAutor: 4, idGenero: 10 });
+                almacenAutorGenero.put({ idAutor: 4, idGenero: 11 });
+                //La Raíz
+                almacenAutorGenero.put({ idAutor: 5, idGenero: 2 });
+                almacenAutorGenero.put({ idAutor: 5, idGenero: 3 });
+                almacenAutorGenero.put({ idAutor: 5, idGenero: 4 });
+                almacenAutorGenero.put({ idAutor: 5, idGenero: 5 });
+                almacenAutorGenero.put({ idAutor: 5, idGenero: 6 });
+                //Extremoduro
+                almacenAutorGenero.put({ idAutor: 6, idGenero: 1 });
+
+                /***** Tabla almacenConcierto *****/
+                almacenConcierto = bd.createObjectStore("concierto", { keyPath: "id", autoIncrement: true });
+                almacenConcierto.put({ nombre: "Viñarock", latitud: "/", longitud: "/", fecha: "2020" });
+
+                /***** Tabla almacenAutorConcierto *****/
+                almacenAutorConcierto = bd.createObjectStore("autorConcierto", { keyPath: ["idAutor", "idConcierto"] });
+                //Desakato
+                almacenAutorConcierto.put({ idAutor: 1, idConcierto: 1 });
+
+                /**** Tabla almacenAlbum ****/
+                almacenAlbum = bd.createObjectStore("album", { keyPath: "id", autoIncrement: true });
+                //Desakato
+                almacenAlbum.put({ nombre: "Con el viento de cara", lanzamiento: "2008", caratula: "/" });
+                almacenAlbum.put({ nombre: "Miseria, sangre y plomo", lanzamiento: "2010", caratula: "/" });
+                almacenAlbum.put({ nombre: "Inercia", lanzamiento: "2012", caratula: "/" });
+                almacenAlbum.put({ nombre: "Buen Viaje", lanzamiento: "2014", caratula: "/" });
+                almacenAlbum.put({ nombre: "La teoría del fuego", lanzamiento: "2016", caratula: "/" });
+                almacenAlbum.put({ nombre: "Antártida", lanzamiento: "2018", caratula: "/" });
+                almacenAlbum.put({ nombre: "La miel de las flores muertas", lanzamiento: "2020", caratula: "/" });
+                //Mono Inc.
+                almacenAlbum.put({ nombre: "Head Under Water", lanzamiento: "2004", caratula: "/" });
+                almacenAlbum.put({ nombre: "Temple of the Torn", lanzamiento: "2007", caratula: "/" });
+                almacenAlbum.put({ nombre: "Pain, Love & Poetry", lanzamiento: "2008", caratula: "/" });
+                almacenAlbum.put({ nombre: "Voices of Doom", lanzamiento: "2009", caratula: "/" });
+                almacenAlbum.put({ nombre: "Viva Hades", lanzamiento: "2011", caratula: "/" });
+                almacenAlbum.put({ nombre: "After the War", lanzamiento: "2012", caratula: "/" });
+                almacenAlbum.put({ nombre: "Nimmermehr", lanzamiento: "2013", caratula: "/" });
+                almacenAlbum.put({ nombre: "Terlingua", lanzamiento: "2015", caratula: "/" });
+                almacenAlbum.put({ nombre: "Together Till the End", lanzamiento: "2017", caratula: "/" });
+                almacenAlbum.put({ nombre: "Welcome to Hell", lanzamiento: "2018", caratula: "/" });
+                almacenAlbum.put({ nombre: "The Book of Fire", lanzamiento: "2020", caratula: "/" });
+                //Lord of the Lost
+                almacenAlbum.put({ nombre: "Fears", lanzamiento: "2010", caratula: "/" });
+                almacenAlbum.put({ nombre: "Antagony", lanzamiento: "2011", caratula: "/" });
+                almacenAlbum.put({ nombre: "Die Tomorrow", lanzamiento: "2012", caratula: "/" });
+                almacenAlbum.put({ nombre: "From the Flame Into the Fire", lanzamiento: "2014", caratula: "/" });
+                almacenAlbum.put({ nombre: "Empyrean", lanzamiento: "2016", caratula: "/" });
+                almacenAlbum.put({ nombre: "Thornstar", lanzamiento: "2018", caratula: "/" });
+                //Jinjer
+                almacenAlbum.put({ nombre: "Inhale, Don't Breathe", lanzamiento: "2012", caratula: "/" });
+                almacenAlbum.put({ nombre: "Cloud Factory", lanzamiento: "2014", caratula: "/" });
+                almacenAlbum.put({ nombre: "King of Everything", lanzamiento: "2016", caratula: "/" });
+                almacenAlbum.put({ nombre: "Macro", lanzamiento: "2019", caratula: "/" });
+                //La Raíz
+                almacenAlbum.put({ nombre: "Guerra al Silencio", lanzamiento: "2009", caratula: "/" });
+                almacenAlbum.put({ nombre: "El Lado de los Rebeldes", lanzamiento: "2011", caratula: "/" });
+                almacenAlbum.put({ nombre: "Así en el Cielo cmo en la Selva", lanzamiento: "2013", caratula: "/" });
+                almacenAlbum.put({ nombre: "Entre Poetas y Presos", lanzamiento: "2016", caratula: "/" });
+                almacenAlbum.put({ nombre: "Nos Volveremos a Ver", lanzamiento: "2018", caratula: "/" });
+                //Extremoduro
+                almacenAlbum.put({ nombre: "Rock transgresivo", lanzamiento: "1989", caratula: "/" });
+                almacenAlbum.put({ nombre: "Somos unos animales", lanzamiento: "1991", caratula: "/" });
+                almacenAlbum.put({ nombre: "Deltoya", lanzamiento: "1992", caratula: "/" });
+                almacenAlbum.put({ nombre: "¿Dónde están mis amigos?", lanzamiento: "1993", caratula: "/" });
+                almacenAlbum.put({ nombre: "Pedrá", lanzamiento: "1995", caratula: "/" });
+                almacenAlbum.put({ nombre: "Agila", lanzamiento: "1996", caratula: "/" });
+                almacenAlbum.put({ nombre: "Canciones prohibidas", lanzamiento: "1998", caratula: "/" });
+                almacenAlbum.put({ nombre: "Yo, minoría absoluta", lanzamiento: "2002", caratula: "/" });
+                almacenAlbum.put({ nombre: "La ley innata", lanzamiento: "2008", caratula: "/" });
+                almacenAlbum.put({ nombre: "Material defectuoso", lanzamiento: "2011", caratula: "/" });
+                almacenAlbum.put({ nombre: "Para todos los públicos", lanzamiento: "2013", caratula: "/" });
+
+                /***** Tabla almacenAutorAlbum *****/
+                almacenAutorAlbum = bd.createObjectStore("autorAlbum", { keyPath: ["idAutor", "idAlbum"] });
+                //Desakato 1 7
+                for (var i = 1; i <= 7; i++) {
+                    almacenAutorAlbum.put({
+                        idAutor: 1,
+                        idAlbum: i
+                    });
+                }
+                //Mono Inc. 8 18
+                for (var i = 8; i <= 18; i++) {
+                    almacenAutorAlbum.put({
+                        idAutor: 2,
+                        idAlbum: i
+                    });
+                }
+                //Lord of the Lost 19 24
+                for (var i = 19; i <= 24; i++) {
+                    almacenAutorAlbum.put({
+                        idAutor: 3,
+                        idAlbum: i
+                    });
+                }
+                //Jinjer 25 28
+                for (var i = 25; i <= 28; i++) {
+                    almacenAutorAlbum.put({
+                        idAutor: 4,
+                        idAlbum: i
+                    });
+                }
+                //La Raíz 29 33
+                for (var i = 29; i <= 33; i++) {
+                    almacenAutorAlbum.put({
+                        idAutor: 5,
+                        idAlbum: i
+                    });
+                }
+                //Extremoduro 34 44
+                for (var i = 34; i <= 44; i++) {
+                    almacenAutorAlbum.put({
+                        idAutor: 6,
+                        idAlbum: i
+                    });
+                }
+
+                /**** Tabla almacenPista *****/
+                almacenPista = bd.createObjectStore("pista", { keyPath: "id", autoIncrement: true });
+                //Desakato
+                almacenPista.put({ nombre: "Ritcher 7.5", archivo: "/", idAlbum: 1 });
+                almacenPista.put({ nombre: "Los mineros", archivo: "/", idAlbum: 1 });
+                almacenPista.put({ nombre: "Tu disfraz", archivo: "/", idAlbum: 1 });
+                almacenPista.put({ nombre: "Contra el dolor", archivo: "/", idAlbum: 1 });
+                almacenPista.put({ nombre: "África", archivo: "/", idAlbum: 2 });
+                almacenPista.put({ nombre: "En el Ojo Ajerno", archivo: "/", idAlbum: 2 });
+                almacenPista.put({ nombre: "Cada Vez", archivo: "/", idAlbum: 2 });
+                almacenPista.put({ nombre: "Contra la Pared", archivo: "/", idAlbum: 2 });
+                almacenPista.put({ nombre: "...", archivo: "/", idAlbum: 3 });
+                almacenPista.put({ nombre: "Iceberg", archivo: "/", idAlbum: 3 });
+                almacenPista.put({ nombre: "R.I.P.", archivo: "/", idAlbum: 3 });
+                almacenPista.put({ nombre: "Cuando Salga el Sol", archivo: "/", idAlbum: 3 });
+                almacenPista.put({ nombre: "Estepa", archivo: "/", idAlbum: 4 });
+                almacenPista.put({ nombre: "Héroes", archivo: "/", idAlbum: 4 });
+                almacenPista.put({ nombre: "La Tormenta", archivo: "/", idAlbum: 4 });
+                almacenPista.put({ nombre: "Pánico en Frankfurt", archivo: "/", idAlbum: 4 });
+                almacenPista.put({ nombre: "Tiempos de Cobardes", archivo: "/", idAlbum: 5 });
+                almacenPista.put({ nombre: "Animales Hambrientos", archivo: "/", idAlbum: 5 });
+                almacenPista.put({ nombre: "Estigma", archivo: "/", idAlbum: 5 });
+                almacenPista.put({ nombre: "Heridas Abiertas", archivo: "/", idAlbum: 5 });
+                almacenPista.put({ nombre: "Humo Negro", archivo: "/", idAlbum: 6 });
+                almacenPista.put({ nombre: "Salvajes", archivo: "/", idAlbum: 6 });
+                almacenPista.put({ nombre: "La Cura", archivo: "/", idAlbum: 6 });
+                almacenPista.put({ nombre: "Huellas", archivo: "/", idAlbum: 6 });
+                almacenPista.put({ nombre: "Apátridas", archivo: "/", idAlbum: 7 });
+                almacenPista.put({ nombre: "Hipnotizados", archivo: "/", idAlbum: 7 });
+                almacenPista.put({ nombre: "Nuestro Legado", archivo: "/", idAlbum: 7 });
+                almacenPista.put({ nombre: "Elegante Entierro", archivo: "/", idAlbum: 7 });
+                //Mono Inc. 8 18
+                almacenPista.put({ nombre: "Burn Me", archivo: "/", idAlbum: 8 });
+                almacenPista.put({ nombre: "The Last Waltz", archivo: "/", idAlbum: 8 });
+                almacenPista.put({ nombre: "The Hole", archivo: "/", idAlbum: 8 });
+                almacenPista.put({ nombre: "Superman", archivo: "/", idAlbum: 8 });
+                almacenPista.put({ nombre: "Temple Of The Torn", archivo: "/", idAlbum: 9 });
+                almacenPista.put({ nombre: "Won't Forget This Day", archivo: "/", idAlbum: 9 });
+                almacenPista.put({ nombre: "The Condemned", archivo: "/", idAlbum: 9 });
+                almacenPista.put({ nombre: "Two Sinners", archivo: "/", idAlbum: 9 });
+                almacenPista.put({ nombre: "Pain, Love & Poetry", archivo: "/", idAlbum: 10 });
+                almacenPista.put({ nombre: "This Is The Day", archivo: "/", idAlbum: 10 });
+                almacenPista.put({ nombre: "The Last Waltz (Album version)", archivo: "/", idAlbum: 10 });
+                almacenPista.put({ nombre: "Teach Me To Love (Album version)", archivo: "/", idAlbum: 10 });
+                almacenPista.put({ nombre: "Voices of Doom", archivo: "/", idAlbum: 11 });
+                almacenPista.put({ nombre: "Gothic Queen", archivo: "/", idAlbum: 11 });
+                almacenPista.put({ nombre: "Pain", archivo: "/", idAlbum: 11 });
+                almacenPista.put({ nombre: "If I Fail", archivo: "/", idAlbum: 11 });
+                almacenPista.put({ nombre: "Admiration Hill", archivo: "/", idAlbum: 12 });
+                almacenPista.put({ nombre: "Symphony Of Pain", archivo: "/", idAlbum: 12 });
+                almacenPista.put({ nombre: "A Love That Never Dies", archivo: "/", idAlbum: 12 });
+                almacenPista.put({ nombre: "Viva Hades", archivo: "/", idAlbum: 12 });
+                almacenPista.put({ nombre: "My Worst Enemy", archivo: "/", idAlbum: 13 });
+                almacenPista.put({ nombre: "No More Fear", archivo: "/", idAlbum: 13 });
+                almacenPista.put({ nombre: "After The War", archivo: "/", idAlbum: 13 });
+                almacenPista.put({ nombre: "Wave No Flag", archivo: "/", idAlbum: 13 });
+                almacenPista.put({ nombre: "Heile, Heile Segen", archivo: "/", idAlbum: 14 });
+                almacenPista.put({ nombre: "Seligkeit", archivo: "/", idAlbum: 14 });
+                almacenPista.put({ nombre: "My Deal With God", archivo: "/", idAlbum: 14 });
+                almacenPista.put({ nombre: "Kein Weg Zu Weit", archivo: "/", idAlbum: 14 });
+                almacenPista.put({ nombre: "Mondschein", archivo: "/", idAlbum: 15 });
+                almacenPista.put({ nombre: "Never-Ending Love Song", archivo: "/", idAlbum: 15 });
+                almacenPista.put({ nombre: "Heiland", archivo: "/", idAlbum: 15 });
+                almacenPista.put({ nombre: "It Never Rains", archivo: "/", idAlbum: 15 });
+                almacenPista.put({ nombre: "The Banks of Eden", archivo: "/", idAlbum: 16 });
+                almacenPista.put({ nombre: "Together Till The End", archivo: "/", idAlbum: 16 });
+                almacenPista.put({ nombre: "Boatman", archivo: "/", idAlbum: 16 });
+                almacenPista.put({ nombre: "Out In The Fields", archivo: "/", idAlbum: 16 });
+                almacenPista.put({ nombre: "The Heart Of The Raven", archivo: "/", idAlbum: 17 });
+                almacenPista.put({ nombre: "Welcome To Hell", archivo: "/", idAlbum: 17 });
+                almacenPista.put({ nombre: "Long Live Death", archivo: "/", idAlbum: 17 });
+                almacenPista.put({ nombre: "Risk It All", archivo: "/", idAlbum: 17 });
+                almacenPista.put({ nombre: "The Book Of Fire", archivo: "/", idAlbum: 18 });
+                almacenPista.put({ nombre: "Louder Than Hell", archivo: "/", idAlbum: 18 });
+                almacenPista.put({ nombre: "Warriors", archivo: "/", idAlbum: 18 });
+                almacenPista.put({ nombre: "Shining Light", archivo: "/", idAlbum: 18 });
+                //Lord of the Lost 19 24
+                almacenPista.put({ nombre: "Last Words", archivo: "/", idAlbum: 19 });
+                almacenPista.put({ nombre: "Break Your Heart", archivo: "/", idAlbum: 19 });
+                almacenPista.put({ nombre: "Dry The Rain", archivo: "/", idAlbum: 19 });
+                almacenPista.put({ nombre: "My Deepest Fear", archivo: "/", idAlbum: 19 });
+                almacenPista.put({ nombre: "Preludium: About Love, Death & The Devil", archivo: "/", idAlbum: 20 });
+                almacenPista.put({ nombre: "We Are The Lost", archivo: "/", idAlbum: 20 });
+                almacenPista.put({ nombre: "Sex On Legs", archivo: "/", idAlbum: 20 });
+                almacenPista.put({ nombre: "Fragmenting Façade", archivo: "/", idAlbum: 20 });
+                almacenPista.put({ nombre: "Live Today", archivo: "/", idAlbum: 21 });
+                almacenPista.put({ nombre: "Die Tomorrow", archivo: "/", idAlbum: 21 });
+                almacenPista.put({ nombre: "Black Lolita", archivo: "/", idAlbum: 21 });
+                almacenPista.put({ nombre: "Blood For Blood", archivo: "/", idAlbum: 21 });
+                almacenPista.put({ nombre: "Fists Up In The Air", archivo: "/", idAlbum: 22 });
+                almacenPista.put({ nombre: "Kingdom Come", archivo: "/", idAlbum: 22 });
+                almacenPista.put({ nombre: "La Bomba", archivo: "/", idAlbum: 22 });
+                almacenPista.put({ nombre: "Afterlife", archivo: "/", idAlbum: 22 });
+                almacenPista.put({ nombre: "Miss Machine", archivo: "/", idAlbum: 23 });
+                almacenPista.put({ nombre: "Drag Me To Hell", archivo: "/", idAlbum: 23 });
+                almacenPista.put({ nombre: "The Love Of God", archivo: "/", idAlbum: 23 });
+                almacenPista.put({ nombre: "Raining Stars", archivo: "/", idAlbum: 23 });
+                almacenPista.put({ nombre: "On This Rock I Will Build My Church", archivo: "/", idAlbum: 24 });
+                almacenPista.put({ nombre: "Loreley", archivo: "/", idAlbum: 24 });
+                almacenPista.put({ nombre: "Black Halo", archivo: "/", idAlbum: 24 });
+                almacenPista.put({ nombre: "In Our Hands", archivo: "/", idAlbum: 24 });
+                //Jinjer 25 28
+                almacenPista.put({ nombre: "Until The End", archivo: "/", idAlbum: 25 });
+                almacenPista.put({ nombre: "Waltz", archivo: "/", idAlbum: 25 });
+                almacenPista.put({ nombre: "Scissors", archivo: "/", idAlbum: 25 });
+                almacenPista.put({ nombre: "Exposed As A Liar", archivo: "/", idAlbum: 25 });
+                almacenPista.put({ nombre: "Outlander", archivo: "/", idAlbum: 26 });
+                almacenPista.put({ nombre: "A Plus Or A Minus", archivo: "/", idAlbum: 26 });
+                almacenPista.put({ nombre: "No Hoard Of Value", archivo: "/", idAlbum: 26 });
+                almacenPista.put({ nombre: "Cloud Factory", archivo: "/", idAlbum: 26 });
+                almacenPista.put({ nombre: "Prologue", archivo: "/", idAlbum: 27 });
+                almacenPista.put({ nombre: "Captains Clock", archivo: "/", idAlbum: 27 });
+                almacenPista.put({ nombre: "Words Of Wisdom", archivo: "/", idAlbum: 27 });
+                almacenPista.put({ nombre: "Just Another", archivo: "/", idAlbum: 27 });
+                almacenPista.put({ nombre: "On The Top", archivo: "/", idAlbum: 28 });
+                almacenPista.put({ nombre: "Pit Of Consciousness", archivo: "/", idAlbum: 28 });
+                almacenPista.put({ nombre: "Judgement (& Punishment)", archivo: "/", idAlbum: 28 });
+                almacenPista.put({ nombre: "Retrospection", archivo: "/", idAlbum: 28 });
+                //La Raíz 29 34
+                almacenPista.put({ nombre: "Intro", archivo: "/", idAlbum: 29 });
+                almacenPista.put({ nombre: "Malos Tiempos", archivo: "/", idAlbum: 29 });
+                almacenPista.put({ nombre: "Pobre Manuel", archivo: "/", idAlbum: 29 });
+                almacenPista.put({ nombre: "África", archivo: "/", idAlbum: 29 });
+                almacenPista.put({ nombre: "El Lado de los Rebeldes", archivo: "/", idAlbum: 30 });
+                almacenPista.put({ nombre: "La Voz", archivo: "/", idAlbum: 30 });
+                almacenPista.put({ nombre: "De Mar en Mar", archivo: "/", idAlbum: 30 });
+                almacenPista.put({ nombre: "Noches en Babilón", archivo: "/", idAlbum: 30 });
+                almacenPista.put({ nombre: "Jilgueros", archivo: "/", idAlbum: 31 });
+                almacenPista.put({ nombre: "Nuestra Nación", archivo: "/", idAlbum: 31 });
+                almacenPista.put({ nombre: "A la Sombra de la Sierra", archivo: "/", idAlbum: 31 });
+                almacenPista.put({ nombre: "Llueve en Semana Santa", archivo: "/", idAlbum: 31 });
+                almacenPista.put({ nombre: "Intro 'Las Miserias de sus Crímenes'", archivo: "/", idAlbum: 32 });
+                almacenPista.put({ nombre: "Entre Poetas y Presos", archivo: "/", idAlbum: 32 });
+                almacenPista.put({ nombre: "Rueda la Corona", archivo: "/", idAlbum: 32 });
+                almacenPista.put({ nombre: "Por Favor", archivo: "/", idAlbum: 32 });
+                almacenPista.put({ nombre: "Intro 'Las Miserias de sus Crímenes'", archivo: "/", idAlbum: 33 });
+                almacenPista.put({ nombre: "Entre Poetas y Presos", archivo: "/", idAlbum: 33 });
+                almacenPista.put({ nombre: "Borracha y Callejera", archivo: "/", idAlbum: 33 });
+                almacenPista.put({ nombre: "La Voz", archivo: "/", idAlbum: 33 });
+                //Extremoduro 34 44
+                almacenPista.put({ nombre: "Extremaydura", archivo: "/", idAlbum: 34 });
+                almacenPista.put({ nombre: "Emparedado", archivo: "/", idAlbum: 34 });
+                almacenPista.put({ nombre: "Decidí", archivo: "/", idAlbum: 34 });
+                almacenPista.put({ nombre: "Romperás", archivo: "/", idAlbum: 34 });
+                almacenPista.put({ nombre: "Tu Corazón", archivo: "/", idAlbum: 35 });
+                almacenPista.put({ nombre: "La Canción De Los Oficios", archivo: "/", idAlbum: 35 });
+                almacenPista.put({ nombre: "Quemando Tus Recuerdos", archivo: "/", idAlbum: 35 });
+                almacenPista.put({ nombre: "V Centenario", archivo: "/", idAlbum: 35 });
+                almacenPista.put({ nombre: "Sol De Invierno", archivo: "/", idAlbum: 36 });
+                almacenPista.put({ nombre: "De Acero", archivo: "/", idAlbum: 36 });
+                almacenPista.put({ nombre: "Última Generación", archivo: "/", idAlbum: 36 });
+                almacenPista.put({ nombre: "Lucha Contigo", archivo: "/", idAlbum: 36 });
+                almacenPista.put({ nombre: "El Duende Del Parque", archivo: "/", idAlbum: 37 });
+                almacenPista.put({ nombre: "No Me Calientes Que Me Hundo", archivo: "/", idAlbum: 37 });
+                almacenPista.put({ nombre: "Sin Dios Ni Amo", archivo: "/", idAlbum: 37 });
+                almacenPista.put({ nombre: "Pepe Botika (¿Dónde Están Mis Amigos?)", archivo: "/", idAlbum: 37 });
+                almacenPista.put({ nombre: "Pedrá", archivo: "/", idAlbum: 38 });
+                almacenPista.put({ nombre: "Buscando Una Luna", archivo: "/", idAlbum: 39 });
+                almacenPista.put({ nombre: "Prometeo", archivo: "/", idAlbum: 39 });
+                almacenPista.put({ nombre: "Sucede", archivo: "/", idAlbum: 39 });
+                almacenPista.put({ nombre: "So Payaso", archivo: "/", idAlbum: 39 });
+                almacenPista.put({ nombre: "Salir", archivo: "/", idAlbum: 40 });
+                almacenPista.put({ nombre: "Esclarecido", archivo: "/", idAlbum: 40 });
+                almacenPista.put({ nombre: "Érase Una Vez", archivo: "/", idAlbum: 40 });
+                almacenPista.put({ nombre: "Golfa", archivo: "/", idAlbum: 40 });
+                almacenPista.put({ nombre: "A Fuego", archivo: "/", idAlbum: 41 });
+                almacenPista.put({ nombre: "La Vereda De La Puerta De Atrás", archivo: "/", idAlbum: 41 });
+                almacenPista.put({ nombre: "Hoy Te La Meto Hasta Las Orejas", archivo: "/", idAlbum: 41 });
+                almacenPista.put({ nombre: "Standby", archivo: "/", idAlbum: 41 });
+                almacenPista.put({ nombre: "Dulce Introducción Al Caos", archivo: "/", idAlbum: 42 });
+                almacenPista.put({ nombre: "Primer Movimiento: El Sueño", archivo: "/", idAlbum: 42 });
+                almacenPista.put({ nombre: "Segundo Movimiento: Lo De Fuera", archivo: "/", idAlbum: 42 });
+                almacenPista.put({ nombre: "Tercer Movimiento: Lo De Dentro", archivo: "/", idAlbum: 42 });
+                almacenPista.put({ nombre: "Desarraigo", archivo: "/", idAlbum: 43 });
+                almacenPista.put({ nombre: "Mi Espíritu Imperecedero", archivo: "/", idAlbum: 43 });
+                almacenPista.put({ nombre: "Otra Inútil Canción Para La Paz", archivo: "/", idAlbum: 43 });
+                almacenPista.put({ nombre: "Si Te Vas...", archivo: "/", idAlbum: 43 });
+                almacenPista.put({ nombre: "Locura Transitoria", archivo: "/", idAlbum: 44 });
+                almacenPista.put({ nombre: "Entre Interiores", archivo: "/", idAlbum: 44 });
+                almacenPista.put({ nombre: "¡Qué Borde Era Mi Valle!", archivo: "/", idAlbum: 44 });
+                almacenPista.put({ nombre: "Poema Sobrecogido", archivo: "/", idAlbum: 44 });
+
+                /**** Tabla almacenLista ****/
+                almacenLista = bd.createObjectStore("lista", { keyPath: "id", autoIncrement: true });
+                almacenLista.put({ nombre: "Desakato - Favoritas", fecha: "2020", idAutor: 1 });
+
+                /**** Tabla almacenPistaLista ****/
+                almacenPistaLista = bd.createObjectStore("pistaLista", { keyPath: ["idPista", "idLista"] });
+                almacenPistaLista.put({ idPista: 5, idLista: 1 });
+                almacenPistaLista.put({ idPista: 7, idLista: 1 });
+                almacenPistaLista.put({ idPista: 8, idLista: 1 });
+                almacenPistaLista.put({ idPista: 10, idLista: 1 });
+                almacenPistaLista.put({ idPista: 12, idLista: 1 });
+                almacenPistaLista.put({ idPista: 13, idLista: 1 });
+                almacenPistaLista.put({ idPista: 14, idLista: 1 });
+                almacenPistaLista.put({ idPista: 15, idLista: 1 });
+                almacenPistaLista.put({ idPista: 17, idLista: 1 });
+                almacenPistaLista.put({ idPista: 22, idLista: 1 });
+                almacenPistaLista.put({ idPista: 23, idLista: 1 });
+                almacenPistaLista.put({ idPista: 25, idLista: 1 });
+
+                /***************************/
+                /********* ÍNDICES *********/
+                /***************************/
                 mensaje("SE CREAN LOS ÍNDICES");
 
-                almacenAlbum.createIndex("por_id", "id", {
-                    unique: true
-                });
+                almacenAlbum.createIndex("por_id", "id", { unique: true });
                 almacenAlbum.createIndex("por_nombre", "nombre");
-                almacenAlbum.createIndex("por_fecha", "fecha");
+                almacenAlbum.createIndex("por_lanzamiento", "lanzamiento");
+                almacenAlbum.createIndex("por_caratula", "caratula");
+
+                almacenAutor.createIndex("por_id", "id", { unique: true });
+                almacenAutor.createIndex("por_nombre", "nombre");
+                almacenAutor.createIndex("por_nombre", "nombre");
+                almacenAutor.createIndex("por_nombre", "nombre");
+                almacenAutor.createIndex("por_nombre", "nombre");
             };
 
         }

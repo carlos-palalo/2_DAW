@@ -1,0 +1,81 @@
+#cuadroIzquierda {
+    border: 12px solid gray;
+    width: 30%;
+    float: left;
+    margin:20px;
+    padding: 30px 30px;
+    background-color: bisque;
+}
+
+#cuadroDerecha {
+    border: 12px solid gray;
+    width: 30%;
+    float: left;
+    margin:20px;
+    padding: 30px 30px;
+    background-color: bisque;
+}
+
+#cuadroBotones {
+    width: 50%;
+    margin:20px;
+    padding: 30px 30px;
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+}
+
+button[disabled] {
+    background-color: gray;
+}
+
+input[type=text], input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Verdana', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: teal;
+}
+
+select {
+    width: 100%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Verdana', sans-serif;
+    font-weight: 800;
+    color:teal;
+}
+
+option {
+    background-color:tan;
+    padding: 10px;
+    font-size: 20px;
+}
+
+span {
+    color:steelblue;
+    font-family: verdana;
+    font-size: 20px;
+}
+
+#cuadroDerecha div {
+    padding: 10px 10px;
+}
