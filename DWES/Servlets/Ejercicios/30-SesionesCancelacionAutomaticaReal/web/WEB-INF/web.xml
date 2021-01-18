@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <servlet>
+        <servlet-name>Servlet1</servlet-name>
+        <servlet-class>Servlets.Servlet1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Servlet2</servlet-name>
+        <servlet-class>Servlets.Servlet2</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Cancelar</servlet-name>
+        <servlet-class>Clases.Cancelar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Desconectar</servlet-name>
+        <servlet-class>Servlets.Desconectar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet1</servlet-name>
+        <url-pattern>/Servlet1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet2</servlet-name>
+        <url-pattern>/Servlet2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cancelar</servlet-name>
+        <url-pattern>/Cancelar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Desconectar</servlet-name>
+        <url-pattern>/Desconectar</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
