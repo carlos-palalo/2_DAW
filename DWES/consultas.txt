@@ -1,0 +1,17 @@
+consultas
+num emple input casila cadena exacta
+apellido cadena exacta
+oficio cadena
+salario desde hasta
+departamenteo desde hasta
+construir la sentencia manualmente  radio
+construir sentencia con preparedstatement   radio
+enviar
+
+si error libreria -> btn derecho limpiar y construir
+
+tabla
+
+registros encontrados
+
+inicio
