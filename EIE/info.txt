@@ -342,3 +342,19 @@ Ejercicios
 		Proveedores a corto plazo 1800
 		Reservas 1200
 		Calcular balance situacion, fondo maniobra y explicar el significado
+
+19/01/2021
+	Balance de situacion fondo de maniobra
+	Test Repaso
+		1 a
+		2 b
+		3 b
+		4 b
+		5 a
+		6 b
+		7 c
+		8 c
+		9 b
+		10 c
+
+	T.5 Punto Muerto, Balance y Fondo Maniobra
