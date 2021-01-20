@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_01 - Básico</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+
+		<!--
+			<script type="text/javascript" src="recursos/jquery-3.5.1.js"></script>
+			Descargar la API
+			Llamar a jQuery
+			Sintaxis básica -> $(selector).action()
+			Situación del código
+			
+			Todas las instrucciones jQuery se articular alrededor de un modelo único:
+			jQuery(function() {
+				//...
+			});
+
+
+			Para simplificar usamos $ como alias de jQuery
+			$(function() {
+				//...
+			});
+
+
+			De igual modo, lo anterior es la forma abreviada de lo siguiente:
+			$(document).ready(function() {
+				//..
+			});
+			Los elementos se cargan tan pronto están disponibles incluso antes de la carga completa de la página.
+
+		-->
+
+		<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>-->
+
+		<!--<script src="https://code.jquery.com/jquery-3.5.1.js"></script>-->
+
+		<!--<script type="text/javascript" src="ttps://code.jquery.com/jquery-3.5.1.js"></script>-->
+	</head>
+	<body>
+		<h1>jQuery_01 - Básico</h1>
+		<hr />
+
+		<p>Esto es un párrafo</p>
+		
+		<input type="button" value="A" onclick="$('#capa').html('Clic en el botón <b>A</b>')">
+		<input type="button" id="botonB" value="B">
+
+		<div id="capa">Haz clic en un botón</div>
+
+		<script>
+
+			$(document).ready(function(){
+				$("p").css({color:"green"});
+
+				$("<p>AAA<b>BBB</b></p>").appendTo("body");
+
+				$('#botonB').click(function (){
+					$('#capa').html('Pulsó el botón <b>B</b>');
+				});	
+			});
+
+			$(function () {
+				$("p").css({color:"yellow"});
+			});
+
+			jQuery(function () {
+				$("p").css({color:"red"});
+			});
+
+			//$(function () {
+				$("p").css({color:"aqua"});//No se ejecuta si no está dentro de un función
+			//});
+
+		</script>
+	</body>
+</html>
