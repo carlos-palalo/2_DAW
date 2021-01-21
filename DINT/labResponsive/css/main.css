@@ -1,0 +1,54 @@
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    margin: 25px 0 25px 0;
+    text-align: center;
+}
+
+article {
+    max-width: 50em;
+    width: 90vw;
+    border-bottom: 1px solid gainsboro;
+}
+
+h1 {
+    color: #b30505;
+    font-size: 35px;
+    font-weight: normal;
+    padding-bottom: 30px;
+    border-bottom: 1px solid gainsboro;
+}
+
+p {
+    color: gray;
+    line-height: 1.6em;
+    text-align: justify;
+}
+
+figure {
+    margin: 0px;
+}
+
+img {
+    max-width: 100%;
+}
+
+img#sfo {
+    transition: width 0.5s;
+    width: 50vw;
+}
+
+figcaption {
+    color: red;
+    padding: 2em 0;
+    text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+    img#sfo {
+        max-width: 90vw;
+        width: 90vw;
+    }
+}
