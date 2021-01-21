@@ -23,7 +23,7 @@
 					peticion.onsuccess = function (evento) {
 						console.log("Success");
 
-						bd = event.target.result;
+						bd = evento.target.result;
 						
     					transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
 						almacen = transaccion.objectStore("libros");
@@ -45,7 +45,7 @@
 						var peticionCursor = almacen.openCursor(rango);
 
 						peticionCursor.onsuccess = function (evento) {
-							var cursor = event.target.result;
+							var cursor = evento.target.result;
 							if(cursor) {
 								insertarElemento(cursor.value);
 								console.log(cursor.value);
@@ -58,12 +58,12 @@
 					}
 
 
-					peticion.onerror = function (event) {
-						alert("No se ha creado la base de datos: " + event.target.errorCode);
+					peticion.onerror = function (evento) {
+						alert("No se ha creado la base de datos: " + evento.target.errorCode);
 					};
 
 
-					peticion.onupgradeneeded = function (event) {
+					peticion.onupgradeneeded = function (evento) {
 						console.log("Upgradeneeded");
 					};
 				} else {

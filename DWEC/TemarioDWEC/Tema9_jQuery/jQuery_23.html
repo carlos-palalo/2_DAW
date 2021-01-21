@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_23 - Filtros de contenido - :has(selector)</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_23 - Filtros de contenido - :has(selector)</h1>
+		<hr />
+
+		<p>Este es el primer texto del párrafo.</p>
+		
+		<p>Este <b>es el <span>segundo</span> texto </b>del párrafo.</p>
+
+		<p>Este es el tercer <b>texto</b> del párrafo.</p>
+
+		<p>Este es el cuarto <span>texto</span> del párrafo.</p>
+
+		<script>
+			
+			$(function (){
+				$("p:has(span)").css("backgroundColor","yellow");
+
+				$("p span").css("color","red"); //Diferente al anterior. Selecciona la negrita			
+			});
+
+		</script>
+	</body>
+</html>

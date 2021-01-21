@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_19 - Filtros hijo - :only-of-type</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style>
+			div {
+				border: 2px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_19 - Filtros hijo - :only-of-type</h1>
+		<hr />
+
+		<div id="c1">
+			<p id="p1">Párrafo 1</p>
+			<p id="p2">Párrafo 2</p>
+			<p id="p3">Párrafo 3</p>
+		</div>
+
+		<div id="c2">
+			<p id="p4">Párrafo 4</p>
+		</div>
+
+		<div id="c3">
+			<p id="p5">Párrafo 5</p>
+			<span id="p6">
+				Párrafo 6 (SPAN)
+				<p>Párrafo 7 (dentro del span)</p>
+			</span>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("p:only-of-type").css("backgroundColor","yellow");
+				//Se pone en P5 ya que el otro hermano no es párrafo
+
+				//Es el anterior (only-child) para ver la diferencia
+				//$("p:only-child").css("color","red");
+			});
+
+		</script>
+	</body>
+</html>

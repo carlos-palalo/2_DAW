@@ -7,6 +7,7 @@
 	</head>
 	<body>
 		<h1>indexedDB_12 - Contar registros: count</h1>
+		<h2>La base de datos biblioteca debe estar creada y con datos</h2>
 		<hr />
 
 		<button onclick="contarBD();">CONTAR LIBROS</button>
@@ -26,7 +27,7 @@
 					peticion.onsuccess = function (evento) {
 						console.log("Success");
 
-						bd = event.target.result;
+						bd = evento.target.result;
 						
     					transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
 						almacen = transaccion.objectStore("libros");

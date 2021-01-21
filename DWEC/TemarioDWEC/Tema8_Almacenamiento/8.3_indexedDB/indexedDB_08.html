@@ -2,11 +2,12 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>indexedDB_08 - Introducir muchos datos para la biblioteca (libros, préstamos y socios)</title>
+		<title>indexedDB_08 - Crear desde cero e introducir muchos datos para la biblioteca (libros, préstamos y socios)</title>
 		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
 	</head>
 	<body>
-		<h1>indexedDB_08 - Base de datos biblioteca (libros, préstamos y socios)</h1>
+		<h1>indexedDB_08 - Crear desde cero e introducir muchos datos para la biblioteca (libros, préstamos y socios)</h1>
+		<h2>La base de datos no debe estar creada previamente</h2>
 		<hr />
 
 		<button onclick="crearBD();">CREAR LIBROS, PRÉSTAMOS Y SOCIOS CON DATOS</button>
@@ -26,7 +27,7 @@
 				if (window.indexedDB) {
 					peticion = window.indexedDB.open("biblioteca",3);
 
-					peticion.onsuccess = function (event) {
+					peticion.onsuccess = function (evento) {
 						bd = peticion.result;
 						var transaccion = bd.transaction(bd.objectStoreNames,"readwrite");
 

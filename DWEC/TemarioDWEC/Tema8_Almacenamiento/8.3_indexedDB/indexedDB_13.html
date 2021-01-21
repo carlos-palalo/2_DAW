@@ -7,6 +7,7 @@
 	</head>
 	<body>
 		<h1>indexedDB_13 - Agregar/modificar datos: add, put</h1>
+		<h2>La base de datos biblioteca debe estar creada y con datos</h2>
 		<hr />
 
 		<button onclick="insertarBD();">INSERTAR</button>
@@ -23,7 +24,7 @@
 					request.onsuccess = function (evento) {
 						console.log("Success");
 
-						bd = event.target.result;
+						bd = evento.target.result;
 						transaccion = bd.transaction(bd.objectStoreNames,"readwrite");
 
 						almacenSocios = transaccion.objectStore("socios");
@@ -46,7 +47,7 @@
 
 
 					request.onerror = function (evento) {
-						alert("No se ha creado la base de datos: " + event.target.errorCode);
+						alert("No se ha creado la base de datos: " + evento.target.errorCode);
 					};
 
 

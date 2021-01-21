@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>cookies_09 - Rutas en cookies</title>
+		<style type="text/css">
+			#parrafoSaldo {
+				font-size: 50px;
+				font-weight: bold;
+				color: black;
+			}	
+		</style>
+	</head>
+	<body>
+		<h1>cookies_09 - Rutas en cookies</h1>
+		<h2>Este ejercicio tiene una parte A que debe estar en la subcarpeta "ruta"</h2>
+		<hr />
+
+		<!-- <button onclick="ponerCookie('ciudad','valladolid');">Poner cookie1</button> -->
+		<!-- Cambiar la línea anterior por la siguiente para establecer una ruta -->
+		<button onclick="ponerCookie('ciudad','valladolid','/ruta');">Poner ciudad</button>
+		<button onclick="ponerCookie('color','amarillo');">Poner color</button>
+		<button onclick="alert(leerCookie('ciudad'));">Leer ciudad</button>
+		<button onclick="alert(leerCookie('color'));">Leer color</button>
+
+		<hr />
+		Mover el archivo a otro directorio y probar
+
+		<script type="text/javascript">
+
+			function leerCookie(clave) {
+				var resultado = "";
+				var busqueda = clave + "=";
+	
+				var listCookies = document.cookie.split(';');
+				var par = "";
+	
+				for(var i = 0; i <listCookies.length; i++) {
+					par = listCookies[i]; //Cada elemento del array de cookies: nombre de la cookie y carácter =
+	
+					//Se quitan los espacios en blanco 
+					while (par.charAt(0)==' ') {
+						par = par.substring(1);
+					}
+	
+					//Se compara los que buscamos con el elemento del array. Si devuelve como índice 0 se ha encontrado
+					if (par.indexOf(busqueda) == 0) {
+						resultado = par.substring(busqueda.length,par.length);
+					}
+				}
+				return resultado;
+			}
+		
+
+			function ponerCookie(parametro,valor,ruta) {
+				var d = new Date();
+				d.setTime(d.getTime() + (5*24*60*60*1000)); //5 días de validez
+				var expires = " expires="+ d.toUTCString();
+				document.cookie=parametro + "=" + valor  + ";" + expires +"; path=" + ruta;
+			}
+	
+		</script>
+	</body>
+</html>

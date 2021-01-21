@@ -7,6 +7,7 @@
 	</head>
 	<body>
 		<h1>indexedDB_15 - Vaciar un almacén: clear</h1>
+		<h2>La base de datos biblioteca debe estar creada y con datos</h2>
 		<hr />
 		<input type="radio" name="almacen" id="radioLibros" />Libros<br />
 		<input type="radio" name="almacen" id="radioSocios" />Socios<br />
@@ -27,7 +28,7 @@
 					peticion.onsuccess = function (evento) {
 						console.log("Success");
 
-						bd = event.target.result;
+						bd = evento.target.result;
 						
     					transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
 						

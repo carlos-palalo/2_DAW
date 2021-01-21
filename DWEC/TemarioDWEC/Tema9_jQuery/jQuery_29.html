@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_29 - Filtros de atributo múltiples</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_29 - Filtros de atributo múltiples</h1>
+		<hr />
+
+		<a href="http://www.iesribera.es">IES Ribera de Castilla</a>
+		<br /><br />
+		<a href="http://www.w3.org">World Wide Web Consortium</a>
+		<br /><br />
+		<a href="http://www.w3.org" target="_blank">World Wide Web Consortium</a>
+		<br /><br />
+		<a href="http://www.w3schools.com">W3schools</a>
+		<br /><br />
+		<a href="mailto:cuenta@servidor">Manda un correo</a>
+
+		<script>
+			
+			$(function (){
+				$("a[href$=org][href*=w3][target]").css("backgroundColor","yellow");
+			});
+
+		</script>
+	</body>
+</html>

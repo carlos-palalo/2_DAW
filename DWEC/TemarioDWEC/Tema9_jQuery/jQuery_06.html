@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_06 - Selectores jerárquicos - hermano siguiente</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_06 - Selectores jerárquicos - hermano siguiente</h1>
+		<hr />
+		Selecciona el hermano que siguen al elemento seleccionado y tiene el mismo padre
+		<hr />
+
+		<h2>Lista 1</h2>
+		<ul>
+			<li id="uno">UNO</li>
+			<li id="dos">DOS</li>
+			<li id="tres">TRES</li>
+			<li id="cuatro">CUATRO</li>
+			<li id="cinco">CINCO</li>
+			<li id="seis">SEIS</li>
+		</ul>
+
+		<h2>Lista 2</h2>
+		<ul>
+			<li id="siete">SIETE</li>
+			<li id="ocho">OCHO</li>
+			<li id="nueve">NUEVE</li>
+			<li id="diez">DIEZ</li>
+			<li id="once">ONCE</li>
+			<li id="doce">DOCE</li>
+		</ul>
+
+		<div>
+			<p id="p1">Esto es el párrafo 1</p>
+			<p id="p2">Esto es el párrafo 2</p>
+			<p id="p3">Esto es el párrafo 3</p>
+			<p id="p4">Esto es el párrafo 4</p>
+		</div>
+		<div>
+			<p id="p5">Esto es el párrafo 5</p>
+			<p id="p6">Esto es el párrafo 6</p>
+		</div>
+		<div>
+			<p id="p7">Esto es el párrafo 7</p>
+			<p id="p8">Esto es el párrafo 8</p>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("#tres + li").css("color","blue");
+				$("#tres + li").css("color","red"); //Sobrescribe el anterior
+				$("#tres + li").css("fontFamily","arial");
+
+				$("#nueve + li").css("color","green");
+				$("#once + li").css("color","yellow");
+
+				$("#p2 + p").css("textDecoration","underline");
+				//$("#p6 + p").css("textDecoration","underline"); //No se selecciona ninguno puesto que p7 tiene otro padre
+			});
+
+		</script>
+	</body>
+</html>

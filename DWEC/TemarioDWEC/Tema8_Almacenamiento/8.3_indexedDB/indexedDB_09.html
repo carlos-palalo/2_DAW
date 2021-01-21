@@ -38,7 +38,7 @@
 					if (idLibro!="") {
 						peticion = window.indexedDB.open("biblioteca");
 
-						peticion.onsuccess = function (event) {
+						peticion.onsuccess = function (evento) {
 							bd = peticion.result;
 							transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
 
@@ -50,7 +50,7 @@
 
 							//USAMOS GET
 							var registro1 = almacenLibros.get(parseInt(idLibro));
-							registro1.onsuccess = function(event) {
+							registro1.onsuccess = function(evento) {
 								var c = "";
 								c += "<br />" + registro1.result.isbn;
 								c += "<br />" + registro1.result.titulo;
@@ -74,7 +74,7 @@
 						};
 
 						peticion.onerror = function (evento) {
-							alert("No se ha creado la base de datos: " + event.target.errorCode);
+							alert("No se ha creado la base de datos: " + evento.target.errorCode);
 						};
 					} else {
 						alert("Introduce un valor");	

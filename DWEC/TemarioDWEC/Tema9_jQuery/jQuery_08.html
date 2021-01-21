@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_08 - Filtros básicos - :even y :odd</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_08 - Filtros básicos - :even y :odd</h1>
+		<hr />
+
+		<h2>:even (pares) y :odd (impares)</h2>
+		<ul>
+			<li id="uno">UNO</li>
+			<li id="dos">DOS</li>
+			<li id="tres">TRES</li>
+			<li id="cuatro">CUATRO</li>
+			<li id="cinco">CINCO</li>
+		</ul>
+
+		<ul>
+			<li id="seis">SEIS</li>
+			<li id="siete">SIETE</li>
+			<li id="ocho">OCHO</li>
+			<li id="nueve">NUEVE</li>
+			<li id="diez">DIEZ</li>
+			<li id="once">ONCE</li>
+			<li id="doce">DOCE</li>
+		</ul>
+
+		<table border="2">
+			<tr>
+				<td>A</td><td>B</td><td>C</td>
+			</tr>
+			<tr>
+				<td>D</td><td>E</td><td>F</td>
+			</tr>
+			<tr>
+				<td>G</td><td>H</td><td>I</td>
+			</tr>
+		</table>
+
+		<script>
+			
+			$(function (){
+				//Elementos pares --> :even
+				$("li:even").css("color","red");
+				$("tr:even").css("backgroundColor","yellow");
+
+				//Elementos impares --> :odd
+				$("li:odd").css("color","green");
+				$("tr:odd").css("textDecoration","line-through");
+			});
+
+		</script>
+	</body>
+</html>

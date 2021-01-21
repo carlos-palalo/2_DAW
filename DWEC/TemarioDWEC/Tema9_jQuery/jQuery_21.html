@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_21 - Filtros de contenido - :empty</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_21 - Filtros de contenido - :empty</h1>
+		<hr />
+
+		<table border="2">
+			<tr>
+				<td>UNO</td><td></td><td>TRES</td>
+			</tr>
+			<tr>
+				<td></td><td>CUATRO</td><td></td>
+			</tr>
+			<tr>
+				<td>CINCO</td><td></td><td>SEIS</td>
+			</tr>
+		</table>
+
+		<script>
+			
+			$(function (){
+				$("td:empty").css("backgroundColor","gray");
+				$("td:not(:empty)").css("backgroundColor","yellow");
+			});
+
+		</script>
+	</body>
+</html>

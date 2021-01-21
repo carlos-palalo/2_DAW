@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_02 - Selectores básicos</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_02 - Selectores básicos</h1>
+		<hr />
+
+		<p id="p1">Este es el párrafo 1</p>
+		<p id="p2">Este es el párrafo 2</p>
+		<p id="p3" class="clase1">Este es el párrafo 3</p>
+
+		<div id="c1">Este es el cuadro 1</div>
+		<div id="c2">Este es el cuadro 2</div>
+		<div id="c3">Este es el cuadro 3</div>
+
+		<a href="http://www.iesribera.es">IES Ribera de Castilla</a>
+
+		<script>
+			
+			$(function (){
+				//Selector de etiqueta
+				$("div").css("border","solid black 2px");
+
+				//Selector por identificador
+				$("#p1").css("fontSize","30px");
+
+				//Selector por clase
+				$(".clase1").css("border","solid red 2px");
+
+				//Selector múltiple
+				$("a,div").css("fontFamily","arial");
+				$("a").css("textDecoration","none");
+
+				//Selector todo
+				$("*").css("textDecoration","underline");				
+			});
+
+		</script>
+	</body>
+</html>

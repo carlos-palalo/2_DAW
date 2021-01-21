@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>storage_09_A - Ejercicio: tres en raya (JUGADOR A)</title>
+		<style>
+			td {
+				width: 100px;
+				height: 100px;
+				border: 2px solid black;
+			}
+
+			span {
+				font-family: arial;
+				font-weight: bold;
+				font-size: 80px;
+			}
+
+			.fichaA {
+				color: red;
+			}
+
+			.fichaB {
+				color: green;
+				visibility: hidden;
+			}
+
+			h1 {
+				color: red;
+			}
+		</style>
+	</head>
+	<body onload="iniciar();">
+		<h1>storage_09_A - Ejercicio: tres en raya (JUGADOR A)</h1>
+		<hr />
+
+		<table>
+			<tbody>
+				<tr>
+					<td></td><td></td><td></td>
+				</tr>
+				<tr>
+					<td></td><td></td><td></td>
+				</tr>
+				<tr>
+					<td></td><td></td><td></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<hr />
+		<span id="jugadorA" class="fichaA" draggable="true" ondragstart="fase1(event);">X</span>
+		<span id="jugadorB" class="fichaB">O</span>
+		<hr />
+		<p id="final"></p>
+
+		<script type="text/javascript">
+
+			function iniciar(){
+	
+				window.addEventListener("storage",function (pEvento) {
+					if(localStorage.getItem("movimientoB")!=null) {
+						if(!document.getElementById(localStorage.getItem("movimientoB")).hasChildNodes()) {
+							var clonado = document.getElementById("jugadorB").cloneNode(true);
+							clonado.style.visibility = "visible";
+							document.getElementById(localStorage.getItem("movimientoB")).appendChild(clonado);
+						}
+					}
+				});
+	
+				var celdas = document.getElementsByTagName("td");
+				
+				for(var i=0;i<celdas.length;i++) {
+	
+					celdas[i].id = i + 1;
+					celdas[i].setAttribute("align","center");
+	
+					celdas[i].addEventListener("dragover",function (pEvento) {
+						pEvento.preventDefault();
+					});
+	
+					celdas[i].addEventListener("drop",function (pEvento) {
+						if(localStorage.getItem("turno")=="turnoA") {
+							if(!document.getElementById(pEvento.target.id).hasChildNodes()) {
+								var clonado = document.getElementById("jugadorA").cloneNode(true);
+								   pEvento.target.appendChild(clonado);
+								   localStorage.setItem("movimientoA",pEvento.target.id);
+								   localStorage.setItem("turno","turnoB");
+								   comprobar("jugadorA");
+							}
+						}
+					});
+				}
+			}
+	
+	
+			function fase1(pEvento) {
+				pEvento.dataTransfer.setData("", pEvento.target.id);
+			}
+			
+	
+			function comprobar(f) {
+				if (linea(1,2,3,f) || linea(4,5,6,f) || linea(7,8,9,f) ||
+					linea(1,4,7,f) || linea(2,5,8,f) || linea(3,6,9,f) ||
+					linea(1,5,9,f) || linea(3,5,7,f) ) {
+						alert("Ganador A");
+				}
+			}
+	
+	
+			function linea(a,b,c,ficha) {
+				var flag = false;
+				var celdas = document.getElementsByTagName("td");
+				a--;
+				b--;
+				c--;
+				if(celdas[a].hasChildNodes() && celdas[b].hasChildNodes() && celdas[c].hasChildNodes()) {
+					if(celdas[a].children[0].id==celdas[b].children[0].id) {
+						if(celdas[a].children[0].id==celdas[c].children[0].id) {
+							if(ficha=="jugadorA") {
+								flag = true;
+							}
+						}
+					}
+				}
+				return flag;
+			}
+	
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_15 - Filtros hijo - :first-of-type y last-of-type</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_15 - Filtros hijo - :first-of-type y last-of-type</h1>
+		<hr />
+
+		<h2>Lista 1</h2>
+		<ul id="lista1">
+			<span>Esto van antes del uno</span>
+			<li id="uno">UNO</li>
+			<li id="dos">DOS</li>
+			<li id="tres">TRES</li>
+			<li id="cuatro">CUATRO</li>
+			<li id="cinco">CINCO</li>
+			<li id="seis">SEIS</li>
+		</ul>
+		
+
+		<br /><br />
+
+		<h2>Lista 2</h2>
+		<div id="lista2">
+			<p id="siete">SIETE</p>
+			<span>Entre el siete y el ocho</span>
+			<p id="ocho">OCHO</p>
+			<p id="nueve">NUEVE</p>
+			<p id="diez">DIEZ</p>
+			<p id="once">ONCE</p>
+			<span>Entre el once y el doce</span>
+			<p id="doce">DOCE</p>
+		</div>
+
+		<script>
+			
+			$(function (){ 
+				$("li:first-of-type").css("backgroundColor","yellow");
+				$("p:first-of-type").css("color","red");
+				$("#lista2 p:not(:first-of-type)").css("textDecoration","underline");//No se incluyen los SPAN
+
+				$("li:last-of-type").css("fontSize","1cm");
+				$("span:last-of-type").css("fontFamily","arial");
+			});
+
+		</script>
+	</body>
+</html>

@@ -7,6 +7,7 @@
 	</head>
 	<body>
 		<h1>indexedDB_16 - Recorrer un almacén con un cursor</h1>
+		<h2>La base de datos biblioteca debe estar creada y con datos</h2>
 		<hr />
 
 		<button onclick="usarCursorBD();">LEER TODOS LOS LIBROS CON CURSOR</button>
@@ -26,7 +27,7 @@
 					peticion.onsuccess = function (evento) {
 						console.log("Success");
 
-						bd = event.target.result;
+						bd = evento.target.result;
 						
     					transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
 						almacen = transaccion.objectStore("libros");
@@ -60,7 +61,7 @@
 
 
 					peticion.onerror = function (evento) {
-						alert("No se ha creado la base de datos: " + event.target.errorCode);
+						alert("No se ha creado la base de datos: " + evento.target.errorCode);
 					};
 
 

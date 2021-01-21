@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_14 - Filtros hijo - :first-child</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_14 - Filtros hijo - :first-child</h1>
+		<hr />
+
+		<h2>Lista 1</h2>
+		<ul id="lista1">
+			<li id="uno">UNO</li>
+			<li id="dos">DOS</li>
+			<li id="tres">TRES</li>
+			<li id="cuatro">CUATRO</li>
+			<li id="cinco">CINCO</li>
+			<li id="seis">SEIS</li>
+		</ul>
+
+		<h2>Lista 2</h2>
+		<ul id="lista2">
+			<li id="siete">SIETE</li>
+			<li id="ocho">OCHO</li>
+			<li id="nueve">NUEVE</li>
+			<li id="diez">DIEZ</li>
+			<li id="once">ONCE</li>
+			<li id="doce">DOCE</li>
+		</ul>
+
+		<script>
+			
+			$(function (){
+				$("li:first-child").css("backgroundColor","yellow");
+				$("#lista2 li:not(:first-child)").css("color","red");
+			});
+
+		</script>
+	</body>
+</html>

@@ -7,6 +7,7 @@
 	</head>
 	<body>
 		<h1>indexedDB_10 - Recuperar datos: getAll (con rangos)</h1>
+		<h2>La base de datos biblioteca debe estar creada y con datos</h2>
 		<hr />
 		<button onclick="getAllDB();">getAll</button>
 		<ul id="listaLibros"></ul>
@@ -36,12 +37,12 @@
 
 
 						//DE LAS SIGUIENTES LÍNEAS SÓLO UNA DEBE ESTAR EN BLANCO
-						//var peticionGetAll = almacenLibros.getAll(); //Todos
+						var peticionGetAll = almacenLibros.getAll(); //Todos
 						//var peticionGetAll = almacenLibros.getAll(5); //El de clave 5
 						//
 						//var peticionGetAll = almacenLibros.getAll(rango1); //El rango
 						//var peticionGetAll = almacenLibros.getAll(rango2); //El rango
-						var peticionGetAll = almacenLibros.getAll(rango2,5); //5 de ese rango
+						//var peticionGetAll = almacenLibros.getAll(rango2,5); //5 de ese rango
 						
 
 						peticionGetAll.onsuccess = function () {
@@ -55,8 +56,8 @@
 					}
 
 
-					peticion.onerror = function (eventoo) {
-						alert("No se ha creado la base de datos: " + event.target.errorCode);
+					peticion.onerror = function (evento) {
+						alert("No se ha creado la base de datos: " + evento.target.errorCode);
 					};
 
 

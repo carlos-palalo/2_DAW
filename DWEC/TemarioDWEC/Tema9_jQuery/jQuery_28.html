@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_28 - Filtros de atributo - [atributo^=valor] [atributo$=valor] [atributo*=valor]</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_28 - Filtros de atributo - [atributo^=valor] [atributo$=valor] [atributo*=valor]</h1>
+		<hr />
+
+		<a href="http://www.iesribera.es">IES Ribera de Castilla</a>
+		<br /><br />
+		<a href="http://www.w3.org">World Wide Web Consortium</a>
+		<br /><br />
+		<a href="http://www.w3schools.com">W3schools</a>
+		<br /><br />
+		<a href="mailto:cuenta@servidor">Manda un correo</a>
+
+		<script>
+			
+			$(function (){
+				//El valor de un atributo empieza por --> ^=
+				$("a[href^=mailto]").css("border","1px solid black");
+
+				//El valor de un atributo termina por --> $=
+				$("a[href$=org]").css("backgroundColor","yellow");
+
+				//El valor de un atributo contiene --> *=
+				$("a[href*=w3]").css("fontFamily","courier");
+			});
+
+		</script>
+	</body>
+</html>

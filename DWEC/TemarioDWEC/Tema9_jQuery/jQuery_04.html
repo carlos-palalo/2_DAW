@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_04 - Selectores jerárquicos - hijos directos</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_04 - Selectores jerárquicos - hijos directos</h1>
+		<hr />
+
+		<div id="cuadro">
+			<span>
+				<!-- Los p no son hijos directos del div -->
+				<p id="p1">Este es el párrafo 1</p>
+				<p id="p2">Este es el párrafo 2</p>
+				<p id="p3">Este es el párrafo 3</p>
+			</span>
+		</div>
+
+		<div>
+			<p id="p4">Este es el párrafo 4</p>
+			<p id="p5">Este es el párrafo 5</p>
+			<p id="p6">Este es el párrafo 6</p>
+		</div>
+
+		<span>
+			<div>
+				<p id="p7">Este es el párrafo 7</p>
+				Texto fuera del último párrafo
+			</div>
+		</span>
+
+		<script>
+			
+			$(function (){
+				$("div > p").css("textDecoration","underline");
+				$("span > div > p").css("color","red");
+			});
+
+		</script>
+	</body>
+</html>

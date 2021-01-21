@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_09 - Filtros básicos - :eq(índice)</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_09 - Filtros básicos - :eq(índice)</h1>
+		<hr />
+
+		<h2>:eq(índice)</h2>
+		<ul id="lista1">
+			<li id="uno">UNO</li>
+			<li id="dos">DOS</li>
+			<li id="tres">TRES</li>
+			<li id="cuatro">CUATRO</li>
+			<li id="cinco">CINCO</li>
+			<li id="seis">SEIS</li>
+		</ul>
+
+		<br /><br />
+
+		<ul id="lista2">
+			<li id="siete">SIETE</li>
+			<li id="ocho">OCHO</li>
+			<li id="nueve">NUEVE</li>
+			<li id="diez">DIEZ</li>
+			<li id="once">ONCE</li>
+			<li id="doce">DOCE</li>
+		</ul>
+
+		<br /><br />
+
+		<table id="tabla1" border="2">
+			<tr>
+				<td>A</td><td>B</td><td>C</td><td>D</td>
+			</tr>
+			<tr>
+				<td>E</td><td>F</td><td>G</td><td>H</td>
+			</tr>
+			<tr>
+				<td>I</td><td>J</td><td>K</td><td>L</td>
+			</tr>
+		</table>
+
+		<br /><br />
+
+		<table id="tabla2" border="2">
+			<tr>
+				<td>A</td><td>B</td><td>C</td><td>D</td>
+			</tr>
+			<tr>
+				<td>E</td><td>F</td><td>G</td><td>H</td>
+			</tr>
+			<tr>
+				<td>I</td><td>J</td><td>K</td><td>L</td>
+			</tr>
+		</table>
+
+		<script>
+			
+			$(function (){
+				//Elemento concreto a partir de un índice GENERAL que empieza en 0
+				$("li:eq(3)").css("color","red");
+				$("ul li:eq(5)").css("color","yellow");
+				$("li:eq(8)").css("color","aqua");
+				$("td:eq(3)").css("backgroundColor","yellow");
+
+				//Elemento concreto descendiente de un determinado elemento
+				$("#tabla2 td:eq(5)").css("backgroundColor","red");
+
+				$("td:eq(15)").css("backgroundColor","green");
+			});
+
+		</script>
+	</body>
+</html>
