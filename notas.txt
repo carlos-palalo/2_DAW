@@ -1,0 +1,8 @@
+DINT Leer
+    Imagenes para la Web. Imagenes vectoriales
+    Imagenes en Mozilla developer
+    Imagenes W3School
+    Progressive Web Apps Training -> responsive
+
+Hacer
+    Laboratorio Responsive Images
