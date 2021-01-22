@@ -4,14 +4,18 @@ apellido cadena exacta
 oficio cadena
 salario desde hasta
 departamenteo desde hasta
-construir la sentencia manualmente  radio
-construir sentencia con preparedstatement   radio
+construir la sentencia manualmente  radio           Statement
+construir sentencia con preparedstatement   radio   PreparedStatement
 enviar
 
 si error libreria -> btn derecho limpiar y construir
-
+------
 tabla
 
 registros encontrados
 
 inicio
+
+Ejercicio 2
+
+Hacer un contador por cada uno de los diferentes tipos de atributos que conocemos. PageContent
