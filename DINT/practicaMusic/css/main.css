@@ -1,0 +1,144 @@
+/* Colores
+    primary - #0277bd
+    light primary - #58a5f0
+    dark primary - #004c8c
+    secundary - #4fc2f7
+    light secundary - #8bf5ff
+    dark secundary - #0092c4
+*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Roboto", sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+header {
+    display: flex;
+    align-items: center;
+    background-color: #004c8c;
+    color: whitesmoke;
+}
+body {
+    background-color: whitesmoke;
+}
+#logo {
+    flex: auto;
+    font-size: x-large;
+    padding: 15px;
+}
+
+#logo:hover {
+    color: white;
+    font-weight: bold;
+}
+
+.hamburger {
+    background-color: #004c8c;
+    color: whitesmoke;
+    border: none;
+    padding: 15px;
+}
+
+.hamburger span {
+    font-size: xx-large;
+}
+
+.hamburger:hover {
+    color: white;
+}
+
+header form {
+    display: flex;
+}
+
+#search {
+    margin-right: 10px;
+}
+
+#search input {
+    padding: 10px;
+}
+
+#search button {
+    background-color: #004c8c;
+    color: whitesmoke;
+    border: none;
+}
+
+#search button:hover {
+    color: white;
+}
+
+#search span {
+    font-size: x-large;
+    padding: 5px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+main{
+    padding: 0px 30px;
+}
+
+section{
+    border-bottom: 1px solid gainsboro;
+}
+
+footer{
+    padding: 20px;
+    position: sticky;
+    text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+    #menu{
+        display: none;
+    }
+    .dropdown a {
+        display: block;
+        color: whitesmoke;
+    }
+
+    .dropdown > a {
+        padding: 10px;
+        background-color: #0371b1;
+        font-size: large;
+        font-weight: 500;
+    }
+    .dropdown > a:hover {
+        color: white;
+        font-weight: 700;
+    }
+
+    .dropdown-content a {
+        display: block;
+        background-color: #58a5f0;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: 400;
+    }
+
+    .dropdown-content a:hover {
+        color: white;
+        font-weight: 500;
+    }
+
+    .dropdown-content a:first-child {
+        padding-top: 10px;
+    }
+
+    .dropdown-content a:last-child {
+        padding-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 701px) {
+}
