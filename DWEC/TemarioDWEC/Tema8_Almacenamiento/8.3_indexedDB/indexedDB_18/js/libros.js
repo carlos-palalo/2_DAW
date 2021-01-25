@@ -1,14 +1,14 @@
 function codigo() {
 	var peticion, bd, transaccion, almacen;
 
-	
+
 	function refrescarListaLibros() {
 		if (window.indexedDB) {
 			peticion = window.indexedDB.open("biblioteca");
 
 			peticion.onsuccess = function (evento) {
 				bd = evento.target.result;
-							
+
 				transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
 				almacen = transaccion.objectStore("libros");
 
@@ -18,7 +18,7 @@ function codigo() {
 				peticionCursor.onsuccess = function (evento) {
 					var cursor = peticionCursor.result;
 
-					if(cursor) {
+					if (cursor) {
 						insertarElementoControlLista(cursor.value);
 
 						cursor.continue(); //continue incrementa el cursor una posición
@@ -52,7 +52,7 @@ function codigo() {
 		//var htmlTexto = libro.isbn + "  <----->  " + libro.titulo;
 		var htmlTexto = libro.titulo;
 		var listaItem = document.createElement("option");
-		listaItem.setAttribute("value",libro.isbn);
+		listaItem.setAttribute("value", libro.isbn);
 		listaItem.textContent = htmlTexto;
 
 		var lista = document.getElementById("listaLibros");
@@ -64,7 +64,7 @@ function codigo() {
 			var almacenEvento = transaccionEvento.objectStore("libros");
 			var registroEvento = almacenEvento.get(parseInt(isbn));
 
-			registroEvento.onsuccess = function(evento) {
+			registroEvento.onsuccess = function (evento) {
 				document.getElementById("isbn").value = registroEvento.result.isbn;
 				document.getElementById("titulo").value = registroEvento.result.titulo;
 				document.getElementById("autor").value = registroEvento.result.autor;
@@ -79,7 +79,7 @@ function codigo() {
 	 * INSERTAR ****************************************************
 	 **************************************************************/
 	document.getElementById("botonInsertar").onclick = function () {
-		var transaccionInsertar = bd.transaction(bd.objectStoreNames,"readwrite");
+		var transaccionInsertar = bd.transaction(bd.objectStoreNames, "readwrite");
 		var almacenInsertar = transaccionInsertar.objectStore("libros");
 		var nuevoLibro = {};
 
@@ -99,7 +99,7 @@ function codigo() {
 	 * MODIFICAR ***************************************************
 	 **************************************************************/
 	document.getElementById("botonModificar").onclick = function () {
-		var transaccionModificar = bd.transaction(bd.objectStoreNames,"readwrite");
+		var transaccionModificar = bd.transaction(bd.objectStoreNames, "readwrite");
 		var almacenModificar = transaccionModificar.objectStore("libros");
 		var nuevoLibro = {};
 
@@ -119,7 +119,7 @@ function codigo() {
 	 * ELIMINAR ****************************************************
 	 **************************************************************/
 	document.getElementById("botonEliminar").onclick = function () {
-		var transaccionEliminar = bd.transaction(bd.objectStoreNames,"readwrite");
+		var transaccionEliminar = bd.transaction(bd.objectStoreNames, "readwrite");
 		var almacenEliminar = transaccionEliminar.objectStore("libros");
 
 		peticionEliminacion = almacenEliminar.delete(parseInt(document.getElementById("isbn").value));
