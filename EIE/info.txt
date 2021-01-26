@@ -367,3 +367,27 @@ Siendo autónomo, el cónyuge responde a las deudas de la pareja, si es ganancia
 Responsabilidad del autónomo y su conyuge. Si el empresario esta casado, da lugar a que la responsabilidad derivada de sus actividades empresariales, alcance al otro conyuge. En regimen de gananciales, los bienes comunes del matrimonio, para que esos bienes esten ligados hace falta el consentimiento de ambos conyuges. El consentimiento se presume cuando se ejerce la actividad empresarial con consentimiento y sin oposición expresa del conyuge y tambien cuando al contraer matrimonio, uno de los conyuges ejerce una actividad y continua con ella sin oposición del otro.
 Empresario Individual: el Regimen de Seguridad Social es el de autónomos, los empresarios individuales así como los familiares que convivan con él o convivan en su domicilio, deberán de darse de alta en el regimen de autónomos.
 Sociedad Limitada: el regimen de Seguridad Social, los socios que sean administradores deberán darse de alta en el regimen de autónomos, los socios que solo sean contratados como trabajadores, se dan de alta en el regimen general por cuenta ajena, y los socios que solo aporten capital, no se tienen que dar de alta, salvo que aporten más del 50 % del capital y en ese caso se dan de alta como autónomos. 
+
+Actividades Pag 126
+	23	a)	72000 €
+		b)	260000 €
+	24	a)	100 €
+		b)	800 €
+	25	SL vs SA. Participaciones vs Acciones, las participaciones no se pueden vender libremente, las acciones si. El capital minimo 3000 vs 60000
+	26	Beneficios 21000
+		Distribuye 16800
+		16800 / 125 Acciones = 134.4
+		Carmen 20 acciones
+		Que cantidad le corresponde a Carmen en concepto de dividendos? 20 * 134,40 € = 2688 €
+	27	a) Verdadero
+		b) Falso. Siempre es necesario Escritura Pública
+		c) Verdadero
+		d) Falso. Interesa más el capital que los socios
+		e) Verdadero
+		f) Falso. Junta general de accionistas, administradores y auditores de cuenta... No procuradores.
+		g) Falso. Hay que dejar reservas
+
+Sociedad Laboral
+	Los socios trabajadores entre sí deben de tener el 51% del Kapital. Ningún socio por si solo puede tener más del 33% del Kapital.
+	Los socios no trabajadores no pueden tener más del 49% del Kapital. 
+	SAL o SLL. Sin capital minimo.
