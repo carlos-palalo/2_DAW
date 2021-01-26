@@ -22,8 +22,10 @@
     <br>
     <form method="post">
         <p>Número de departamento: <input name="deptno" type="text" size="5"></p>
-        <p>Número de departamento: <input name="deptno" type="text" size="5"></p>
-        <p>Número de departamento: <input name="deptno" type="text" size="5"></p>
+        <p>Nombre: <input name="dnombre" type="text" size="15"></p>
+        <p>Localidad: <input name="loc" type="text" size="15"></p>
+        <input type="submit" name="insertar" value="Insertar departamento.">
+        <input name="loc" type="text" size="15">
     </form>
     </body>
 </html>
