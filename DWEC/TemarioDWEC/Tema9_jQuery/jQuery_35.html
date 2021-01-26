@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_35 - Valor de un atributo - attr(atributo)</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			.colorRojo {color:red;}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_35 - Valor de un atributo - attr(atributo)</h1>
+		<hr />
+		Devuelve el valor del atributo indicado del elemento seleccionado o del primer elemento seleccionado si hay varios.
+		<hr />
+
+		<div>
+			<p align="left">Este es el primer párrafo</p>
+			<p class="colorRojo">Este es el segundo párrafo</p>
+			<p style="color:green">Este es el tercer párrafo</p>
+			<p align="center">Este es el cuarto párrafo</p>
+			<button>Obtener el valor de los atributos</button>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("button").click(function (){
+					var c = "";
+					c += "align: " + $("p").attr("align");
+					c += "\nclass: " + $("p").attr("class"); //undefined ya que el primer párrafo no tiene atributo class
+					c += "\nclass: " + $("p:nth-child(2)").attr("class");
+					c += "\nalign: " + $("p:last").attr("align");
+					alert(c);
+				});
+			});
+
+		</script>
+	</body>
+</html>

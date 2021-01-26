@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_40 - Modificar el atributo value - val(valor)</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			.colorRojo {color:red;}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_40 - Modificar el atributo value - val(valor)</h1>
+		<hr />
+		Simplemente inspeccionar las propiedades value
+		<hr />
+
+		<form>
+			Nombre<br />
+			<input type="text" name="nombre" />
+			<br /><br />
+			Apellidos<br />
+			<input type="text" name="apellidos" />
+			<br /><br />
+			Mayor de edad<br />
+			<input type="checkbox" name="si" />
+			<br /><br />
+			Sexo<br />
+			<input type="radio" name="sexo" />Hombre<br />
+			<input type="radio" name="sexo" />Mujer<br />
+			<br /><br />
+			Idioma<br />
+			<select name="idioma">
+				<option value="español">Español</option>
+				<option value="ingles">Inglés</option>
+				<option value="aleman">Alemán</option>
+			</select>
+		</form>
+
+		<script>
+			
+			$(function (){
+				$(":input[name='nombre']").val("minombre"); 
+				$(":input[name='apellidos']").val("miapellido");
+				
+				//Para los siguientes inspeccionar el código
+				$(":checkbox").val("mayor").attr("checked","checked");
+				
+				$(":radio[name='sexo']:first").val("h");
+				$(":radio[name='sexo']:last").val("m");
+				$(":radio[name='sexo']:first").attr("checked","checked");
+				
+				//Las tres primeras modifican el atributo val
+				$("option:nth-child(1)").val("esp");
+				$("option:nth-child(2)").val("ing");
+				$("option:nth-child(3)").val("ale");
+				$("option:nth-child(2)").attr("selected","selected"); //Esta última selecciona dinámicamente
+			});
+
+		</script>
+	</body>
+</html>

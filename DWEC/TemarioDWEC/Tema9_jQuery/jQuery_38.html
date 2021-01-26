@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_38 - Eliminar un atributo - removeAttr(atributo)</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			.colorRojo {color:red;}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_38 - Eliminar un atributo - removeAttr(atributo)</h1>
+		<hr />
+
+		<p align="right" class="colorRojo">Este es el primer párrafo</p>
+
+		<p class="colorRojo">Este es el segundo párrafo</p>
+
+		<p style="color:green">Este es el tercer párrafo</p>
+
+		<p align="center">Este es el cuarto párrafo</p>
+
+		<input type="text" disabled="disabled" />
+		<br />
+		<input type="checkbox" disabled="disabled" />
+		<br />
+		<input type="radio" disabled="disabled" />
+		<br />
+
+		<button>Quitar el atributo align y habilitar controles</button>
+
+		<script>
+			
+			$(function (){
+				$("button").click(function (){
+					$("p").removeAttr("align");
+					$("*").removeAttr("disabled");
+				});
+			});
+
+		</script>
+	</body>
+</html>

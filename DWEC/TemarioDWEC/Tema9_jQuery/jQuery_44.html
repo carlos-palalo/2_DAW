@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_44 - Posicionamiento: position y offset</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.3.1.js"></script>
+		<style>
+			div {
+				border : 5px solid red;
+				padding-left: 30px;
+				padding-top: 50px;
+				height : 200px;
+				width : 450px;
+				position: absolute;
+				top: 100px;
+				left: 30px;
+			}
+
+			#datos {
+				border: 3px solid blue;
+				position: absolute;
+				top: 400px;
+				left: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_44 - Posicionamiento: position y offset</h1>
+		<hr />
+
+		<div>
+			<p id="p1">Este es el primer párrafo</p>
+			<p id="p2">Este es el segundo párrafo</p>
+			<p id="p3">Este es el tercer párrafo</p>
+			<p id="p4">Este es el cuarto párrafo</p>
+			<p id="p5">Este es el quinto párrafo</p>
+			<p id="p6">Este es el sexto párrafo</p>
+		</div>
+
+		<p id="datos"></p>
+
+		<script>
+			
+			$(function (){
+				$("p:first").css("backgroundColor","yellow");
+				var c = "";
+				var coordenadas = $("p:first").position();
+				c += "<br /><br /><b>position()</b>";
+				c += "<br />Posición del primer párrafo respecto al div que lo contiene (left): " + coordenadas.left;
+				c += "<br />Posición del primer párrafo respecto al div que lo contiene (top): " + coordenadas.top;
+
+				coordenadas = $("p:first").offset();
+				c += "<br /><br /><b>offset()</b>";
+				c += "<br />Posición del primer párrafo respecto al documento (left): " + coordenadas.left;
+				c += "<br />Posición del primer párrafo respecto al documento (top): " + coordenadas.top;
+				$("#datos").html(c);
+			});
+
+		</script>
+	</body>
+</html>
