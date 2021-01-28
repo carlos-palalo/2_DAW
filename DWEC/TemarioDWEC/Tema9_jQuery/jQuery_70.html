@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_70 - Recorrer el DOM: Padre más cercano: closest(selector)</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			div {
+				border: 1px solid black;
+				margin: 1cm;
+				padding: 1cm
+			}
+			table {
+				border: 1px solid black;
+				border-collapse: collapse;;
+			}
+
+			td {
+				border: 1px solid black;
+				text-align: center;
+			}
+
+			li {
+				margin: 10px;
+			}
+
+			.colorFondo {
+				background-color: yellow;
+			}
+
+			.bordeRojo {
+				border: 2px solid red;
+			}
+
+			.bordeAzul {
+				border: 2px solid blue;
+			}
+
+			.fuenteArialGrande {
+				font-family: arial;
+				font-size: 35px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_70 - Recorrer el DOM: Padre más cercano: closest(selector)</h1>
+		<hr />
+		closest() --> 
+		<hr />
+
+		<p>Lista1</p>
+		<ul id="lista1">
+			<li>Elemento 1</li>
+			<li>Elemento 2</li>
+			<li>Elemento 3</li>
+			<li>Elemento <b>4</b></li>
+			<li>Elemento 5</li>
+		</ul>
+
+		<p>Lista2</p>
+		<ul id="lista2">
+			<li>Elemento 5</li>
+			<li>Elemento 6</li>
+			<li>Elemento 7</li>
+			<li>Elemento <b>8</b></li>
+			<li>Elemento 9</li>
+		</ul>
+		
+		<table width="210" id="tabla1">
+			<tbody>
+				<tr id="fila1">
+					<td id="celda1">1</td>
+					<td id="celda2"><span id="span1">2</span></td>
+				</tr>
+				<tr id="fila2">
+					<td id="celda3"><span id="span2"><b id="negrita1">3</b></span></td>
+					<td id="celda4">4</td>
+				</tr>
+				<tr id="fila3">
+					<td id="celda5"><span>5</span></td>
+					<td id="celda6">6</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<script>
+			
+			$(function (){
+				//Selector
+				$("b").closest("li").addClass("bordeRojo");
+				$("b").closest("ul").addClass("bordeAzul");
+				$("b").closest("#lista1").addClass("colorFondo");
+
+				//Selección
+				$("span").closest($("#fila1 td")).addClass("fuenteArialGrande");
+				
+				//Element
+				var elemento = document.getElementById("fila2");
+				$("span").closest(elemento).css("color","red");
+			});
+
+		</script>
+	</body>
+</html>

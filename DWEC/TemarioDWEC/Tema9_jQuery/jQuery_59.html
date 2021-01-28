@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_59 - Recorrer el DOM: Encontrar los padres directos: parent()</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			table {
+				border: 1px solid black;
+				border-collapse: collapse;;
+			}
+
+			td {
+				border: 1px solid black;
+				text-align: center;
+			}
+
+			.borde {
+				border: 1px solid red;
+			}
+
+			.colorFondo {
+				background-color: yellow;
+			}
+
+			.fuentearial {
+				font-family: arial;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_59 - Recorrer el DOM: Encontrar los padres directos: parent()</h1>
+		<hr />
+		parent() --> Devuelve  los padres directos. Se incluyen padres de nodos de texto.
+		<hr />
+
+		<div class="contenido">
+			<p>Lista</p>
+
+			<ul>
+				<li class="fuentearial">Elemento 1</li>
+				<li>Elemento <b>2</b></li>
+				<li>Elemento 3</li>
+				<li class="fuentearial">Elemento <b>4</b></li>
+				<li>Elemento 5</li>
+			</ul>
+
+			<table width="210">
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td id="celda3"><span>3</span></td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+			</table>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("#celda3").parent().addClass("colorFondo");
+				$("b").parent().css("font-style","italic");
+				$("li:first").parent().addClass("borde");
+				
+				//Admite selectores
+				//Los padres de los <b> con fuente arial
+				$("b").parent(".fuentearial").css("background-color","aqua");
+
+				//Parecido con filtros. Alternar. Se selecciona también el primer elemento de la lista
+				//Son los li (que son padres) con fuente arial
+				$("li:parent.fuentearial").css("background-color","yellow");
+			});
+
+		</script>
+	</body>
+</html>

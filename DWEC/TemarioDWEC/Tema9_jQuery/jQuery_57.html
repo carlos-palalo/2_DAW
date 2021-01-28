@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_57 - Efectos: Crear una animación: animate</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			div {
+				position: relative;
+				border: 1px solid black;
+				width: 120px;
+				height: 30px;
+				font: 0.75em Arial;
+				text-align: center;
+				background-color: yellow;
+				margin: 20px 0px;
+				padding-left: 20px;
+				padding-right: 20px;
+				padding-top: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_57 - Efectos: Crear una animación: animate</h1>
+		<hr />
+
+		<button id="iniciar">Iniciar</button>
+
+		<hr />
+		
+		<div id="objeto">Animate en jQuery</div>
+
+		<script>
+			
+			$(function (){
+				$("#iniciar").click(function() {
+					$("#objeto").animate({left:150,width:"200px",opacity: 0.25},1500);
+					$("#objeto").animate({fontSize:"24px"},1000);
+					$("#objeto").animate({borderLeftWidth:"15px"},1000).animate({opacity:1},1000);
+				});
+			});
+
+		</script>
+	</body>
+</html>

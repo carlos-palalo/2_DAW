@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_64 - Recorrer el DOM: Hermanos anteriores: prevAll()</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			table {
+				border: 1px solid black;
+				border-collapse: collapse;;
+			}
+
+			td {
+				border: 1px solid black;
+				text-align: center;
+			}
+
+			li {margin: 10px;}
+
+			.colorFondo {background-color: yellow;}
+
+			.bordeRojo {border: 1px solid red;}
+
+			.bordeAzul {border: 2px solid blue;}
+
+			.fuenteArialGrande {
+				font-family: arial;
+				font-size: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_64 - Recorrer el DOM: Hermanos anteriores: prevAll()</h1>
+		<hr />
+		prevAll() --> Devuelve los hermanos anteriores sin ser necesariamente del mismo tipo.
+		<hr />
+
+		<div class="contenido">
+			<p>Lista</p>
+
+			<ul class="">
+				<li>Elemento 1</li>
+				<li>Elemento 2</li>
+				<li id="el3">Elemento 3</li>
+				<li>Elemento 4</li>
+				<li>Elemento 5</li>
+			</ul>
+
+			<table width="210">
+				<tr>
+					<td class="colorFondo">1</td>
+					<td>2</td>
+					<td class="colorFondo"><span>3</span></td>
+					<td class="colorFondo">4</td>
+					<td id="celda5">5</td>
+				</tr>
+			</table>
+
+			<p>Este es el primer párrafo</p>
+
+			<span>Esto es texto suelto</span>
+
+			<p id="p2">Este es el segundo párrafo</p>
+
+			<p>Este es el tercer párrafo</p>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("#el3").prevAll().addClass("bordeAzul");
+				$("#celda5").prevAll(".colorFondo").addClass("fuenteArialGrande");
+				$("#p2").prevAll().css("color","red");
+			});
+
+		</script>
+	</body>
+</html>

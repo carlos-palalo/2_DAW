@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_52 - Efectos: Mostrar y ocultar: show y hide</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style>
+			div {
+				border: 3px solid black;
+				width: 150px;
+				height: 250px;
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_52 - Efectos: Mostrar y ocultar: show y hide</h1>
+		<hr />
+
+		<button id="b1">Mostrar</button>
+		<button id="b2">Ocultar</button>
+		Ocultar en primer lugar
+
+		<br /><br />
+
+		<img src="recursos/ribera.jpg" />
+		<br /><br />
+		<div></div>
+
+		<script>
+			
+			$(function (){
+				$("#b1").click(function () {
+					//show (velocidad,funcion) --> Velocidad: slow, normal, fast, milisegundos
+					$("div,img").show(5000,function () {
+						$("div,img").css("border","25px solid black"); //Se ejecuta al final del efecto
+					});
+					$("div,img").css("border","25px solid red"); //Se ejecuta durante el efecto
+				});
+
+				$("#b2").click(function () {
+					//hide (velocidad,funcion) --> Velocidad: slow, normal, fast, milisegundos
+					$("div,img").hide("fast");
+				});
+			});
+
+		</script>
+	</body>
+</html>

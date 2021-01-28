@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_61 - Recorrer el DOM: Encontrar todos los padres hasta parar: parentsUntil(elemento)</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			table {
+				border: 1px solid black;
+				border-collapse: collapse;;
+			}
+
+			td {
+				border: 1px solid black;
+				text-align: center;
+			}
+
+			.colorFondo {
+				background-color: yellow;
+			}
+
+			.bordeRojo {
+				border: 1px solid red;
+			}
+
+			.bordeAzul {
+				border: 1px solid blue;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_61 - Recorrer el DOM: Encontrar todos los padres hasta parar: parentsUntil(elemento)</h1>
+		<hr />
+		parentsUntil() --> Devuelve todos los padres o ascendientes hasta parar en un elemento. El elemento en el que se para no se incluye.
+		<hr />
+
+		<div class="contenido">
+			<p>Lista</p>
+
+			<ul>
+				<li>Elemento 1</li>
+				<li>Elemento 2</li>
+				<li>Elemento 3</li>
+				<li>Elemento <b>4</b></li>
+				<li>Elemento 5</li>
+			</ul>
+
+			<table width="210">
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td id="celda3"><span>3</span></td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+			</table>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("b").parentsUntil("ul").addClass("colorFondo"); //1
+
+				$("b").parentsUntil("div").addClass("bordeAzul"); //Varios
+			});
+
+		</script>
+	</body>
+</html>

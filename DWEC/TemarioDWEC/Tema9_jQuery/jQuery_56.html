@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_56 - Efectos: Retrasar un efecto: delay</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			div {
+				border: 3px solid black;
+				width: 60px;
+				height: 60px;
+				float: left;
+				font-size: 52px;
+				text-align: center;
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_56 - Efectos: Retrasar un efecto: delay</h1>
+		<hr />
+
+		<button>Producir efecto</button>
+
+		<hr />
+		
+		<div class="primero">1</div>
+		<div class="segundo">2</div>
+
+		<script>
+			
+			$(function (){
+				$("button").click(function() {
+					$("div.primero").slideUp(2000).fadeIn(600);
+					$("div.segundo").slideUp(2000).delay(2000).fadeIn(600);
+				});
+			});
+
+		</script>
+	</body>
+</html>
