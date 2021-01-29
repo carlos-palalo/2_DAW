@@ -20,9 +20,9 @@ public class Consultar extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String url_BD = "jdbc:mysql://localhost:3306/joseluis";
-            String usuario_BD = "joseluis";
-            String clave_BD = "joseluis";
+            String url_BD = "jdbc:mysql://localhost:3306/carlos";
+            String usuario_BD = "carlos";
+            String clave_BD = "carlos";
 
             conexion = java.sql.DriverManager.getConnection(url_BD, usuario_BD, clave_BD);
 

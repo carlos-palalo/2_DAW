@@ -17,8 +17,8 @@ public class OperacionesBD {
     public Connection getConnection() {
         Connection conexion = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver"); //Cargar el driver
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost/carlos", "carlos", "carlos");
+            Class.forName("com.mysql.jdbc.Driver").newInstance(); //Cargar el driver
+            conexion = java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/carlos", "carlos", "carlos");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -31,7 +31,7 @@ public class OperacionesBD {
         try {
             Connection conexion = getConnection();
             Statement sentencia = conexion.createStatement();
-            String sql = "SELECT * FROM departamento";
+            String sql = "SELECT * FROM departamentos";
             ResultSet resul = sentencia.executeQuery(sql);
             while (resul.next()) {  //Se crea un array con los datos de los departamentos
                 Departamento d = new Departamento(resul.getByte("dept_no"), resul.getString("dnombre"), resul.getString("loc"));
@@ -50,7 +50,7 @@ public class OperacionesBD {
         try {
             Connection conexion = getConnection();
             Statement sentencia = conexion.createStatement();
-            String sql = "INSERT INTO departamentos VALUES('" + d.getDeptno() + "','" + d.getDnombre() + "','" + d.getLoc() + "'}";
+            String sql = "INSERT INTO departamentos VALUES(" + d.getDeptno() + ",'" + d.getDnombre() + "','" + d.getLoc() + "')";
             if (d.getDeptno() != 0) {
                 sentencia.execute(sql);
             }

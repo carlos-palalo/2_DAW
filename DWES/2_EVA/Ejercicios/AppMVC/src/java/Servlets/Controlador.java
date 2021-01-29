@@ -18,6 +18,14 @@ import javax.servlet.http.*;
  */
 public class Controlador extends HttpServlet {
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //parámetro acción, se obtiene de la URL de index.html, puede ser 'alta' o 'listado'
         String op = request.getParameter("accion");

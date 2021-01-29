@@ -15,6 +15,9 @@ public class Departamento {
     private String dnombre;
     private String loc;
 
+    public Departamento() {
+    }
+
     public Departamento(byte deptno, final String dnombre, final String loc) {
         this.deptno = deptno;
         this.dnombre = dnombre;
