@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page import="ejemplo.*,java.util.*"%>
+<%@page import="MisClases.*,java.util.*"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,7 +22,7 @@
                 <th>Localidad</th>
             </tr>
             <%
-                ArrayList listadep=(ArrayList)request.getAttribute("departamento");
+                ArrayList listadep=(ArrayList)request.getAttribute("departamentos");
                 if(listadep!=null){
                     for(int i=0; i<listadep.size(); i++){
                         Departamento d=(Departamento)listadep.get(i); %>
