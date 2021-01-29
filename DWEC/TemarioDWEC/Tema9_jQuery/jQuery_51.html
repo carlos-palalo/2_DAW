@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_51 - Eventos: trigger vs triggerHandler</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			div {
+				border: 3px solid black;
+				width: 300px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_51 - Eventos: trigger vs triggerHandler</h1>
+		<hr />
+
+		<input type="text" />
+		<br />
+		PULSAR LOS BOTONES ESTANDO EL FONDO DE LA CAJA DE TEXTO DE COLOR BLANCO (PULSAR F5)
+		<br />
+		<button id="b1">trigger</button>
+		<button id="b2">triggerHandler</button>
+
+		<script>
+			
+			$(function (){
+				$("input").select(function () {
+					$("input").css("backgroundColor","yellow");
+				});
+
+				$("#b1").click(function () {
+					//Pone fondo de la caja amarillo y selecciona el texto (acción por defecto de select)
+					$("input").trigger("select");
+				});
+
+				$("#b2").click(function () {
+					//Pone fondo de la caja amarillo y NO selecciona el texto
+					$("input").triggerHandler("select");
+				});
+			});
+
+		</script>
+	</body>
+</html>

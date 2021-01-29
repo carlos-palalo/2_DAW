@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_49 - Eventos: Datos de eventos</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_49 - Eventos: Datos de eventos</h1>
+		<hr />
+
+		<p id="p1">Este es el primer párrafo</p>
+
+		<script>
+			
+			$(function (){
+				var objeto = {atributo1:"valor1",atributo2:"valor2"};
+				$("#p1").click(objeto,function (evento){
+					var c = "";
+
+					c += "DATOS PASADOS AL EVENTO";
+					c += "\nAtributo1: " + evento.data.atributo1;
+					c += "\nAtributo2: " + evento.data.atributo2;
+
+					c += "\n\nCREADO HACE";
+					c += "\n" + evento.timeStamp + " milisegundos";
+
+
+					c += "\n\nTIPO";
+					c += "\n" + evento.type;
+
+					var objetoDOM = evento.target;
+					objetoDOM.innerHTML += " <b>texto adicional</b>";
+
+					c += "\n\nTECLA";
+					c += "\n" + evento.which; //No tiene sentido
+
+					c += "\n\nPULSACIÓN DEL RATÓN";
+					c += "\nX: " + evento.pageX;
+
+					c += "\nY: " + evento.pageY;
+
+					alert(c);
+				});
+			});
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_50 - Eventos: Listado de eventos</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			div {
+				border: 3px solid black;
+				width: 300px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_50 - Eventos: Listado de eventos</h1>
+		<hr />
+
+		<p id="p1">Párrafo para click</p>
+
+		<p id="p2">Párrafo para doble click</p>
+
+		<p id="p3">Este es el tercer párrafo<input type="text" /></p>
+		<span><input type="text"></span>
+
+		<br /><br />
+
+		<textarea cols="60" rows="5">Se utiliza principalmente en su forma del lado del cliente (client-side), implementado como parte de un navegador web permitiendo mejoras en la interfaz de usuario y páginas web dinámicas4 aunque existe una forma de JavaScript del lado del servidor(Server-side JavaScrip o SSJS). Su uso en aplicaciones externas a la web, por ejemplo en documentos PDF, aplicaciones de escritorio (mayoritariamente widgets) es también significativo. Tradicionalmente se venía utilizando en páginas web HTML para realizar operaciones y únicamente en el marco de la aplicación cliente, sin acceso a funciones del servidor. Actualmente es ampliamente utilizado para enviar y recibir información del servidor junto con ayuda de otras tecnologías como AJAX. JavaScript se interpreta en el agente de usuario al mismo tiempo que las sentencias van descargándose junto con el código HTML.</textarea>
+		<p id=p4></p>
+
+		<div id="c1"></div>
+		<p id="p5"></p>
+		<p id="p6"></p>
+
+		<p id="p7">Este es el séptimo párrafo<form><input type="submit" /></form></p>
+
+		<input id="cajatexto" type="text" />
+		<p id="p8"></p>
+
+		<p id="p9">Este es el noveno párrafo</p>
+
+		<script>
+			
+			$(function (){
+				$("#p1").click(function (){
+					$("#p1").html($("#p1").html() + " --> <b>CLICK</b>");
+				});
+
+				$("#p2").dblclick(function (){
+					$("#p2").html($("#p2").html() + " --> <b>DBLCLICK</b>");
+				});
+
+				$("#p3 input").focus(function (){
+					$("#p3 input").css("backgroundColor","yellow");
+				});
+
+				$("#p3 input").blur(function (){
+					$("#p3 input").css("backgroundColor","white");
+				});
+
+				$("span").focusin(function (){//Cambiar por focus y ver que no funciona. Bubbling
+					$("span input").css("backgroundColor","olive");
+				});
+
+				$("span").focusout(function (){//Cambiar por blur y ver que no funciona
+					$("span input").css("backgroundColor","white");
+				});
+
+				$("textarea").scroll(function (){
+					$("#p4").html($("#p4").html() + " --> <b>SCROLL</b>");
+				});
+
+				$("#c1").mouseover(function (){
+					$("#p6").html($("#p6").html() + "<br /> --> <b>MOUSEOVER</b>");
+				});
+
+				$("#c1").mouseout(function (){
+					$("#p6").html($("#p6").html() + "<br /> --> <b>MOUSEOUT</b>");
+				});
+
+				$("#c1").mouseenter(function (){
+					$("#p6").html($("#p6").html() + "<br /> --> <b>MOUSEENTER</b>");
+				});
+
+				$("#c1").mouseleave(function (){
+					$("#p6").html($("#p6").html() + "<br /> --> <b>MOUSELEAVE</b>");
+				});
+
+				$("#c1").mousedown(function (evento){
+					$("#p6").html($("#p6").html() + "<br /> --> <b>MOUSEDOWN</b>");
+					$("#p6").html($("#p6").html() + "(" + evento.pageX + "," + evento.pageY + ")");
+				});
+
+				$("#c1").mouseup(function (){
+					$("#p6").html($("#p6").html() + "<br /> --> <b>MOUSEUP</b>");
+				});
+
+				$("#c1").mousemove(function (evento){
+					$("#p5").html("--> <b>MOUSEMOVE</b>");
+					$("#p5").html($("#p5").html() + "(" + evento.pageX + "," + evento.pageY + ")");
+				});
+
+				$("#c1").hover(function (){
+					$("#c1").css("backgroundColor","yellow");
+				},function (){
+					$("#c1").css("backgroundColor","white");
+				});
+
+				$("form").submit(function (){
+					alert("SUBMIT");
+				});
+
+				$("#cajatexto").change(function (){
+					alert("CHANGE");
+				});
+
+				$("#cajatexto").select(function (){
+					alert("SELECT");
+				});
+
+				$("#cajatexto").keydown(function (evento){
+					$("#p8").html($("#p8").html() + "<br /> --> <b>KEYDOWN</b>");
+					$("#p8").html($("#p8").html() + "--> " + evento.which);
+					$("#p8").html($("#p8").html() + "--> " + String.fromCharCode(evento.which));
+				});
+
+				$("#cajatexto").keyup(function (evento){
+					$("#p8").html($("#p8").html() + "<br /> --> <b>KEYUP</b>");
+					$("#p8").html($("#p8").html() + "--> " + evento.which);
+					$("#p8").html($("#p8").html() + "--> " + String.fromCharCode(evento.which));
+				});
+
+				$("#cajatexto").keypress(function (evento){
+					$("#p8").html($("#p8").html() + "<br /> --> <b>KEYPRESS</b>");
+					$("#p8").html($("#p8").html() + "--> " + evento.which);
+					$("#p8").html($("#p8").html() + "--> " + String.fromCharCode(evento.which));
+				});
+
+				var x = 0;
+				$(window).resize(function(){
+					$("#p9").text(x += 1);
+				});				
+			});
+
+		</script>
+	</body>
+</html>

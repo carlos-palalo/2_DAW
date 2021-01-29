@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_71 - Recorrer el DOM: Determinados descendientes: find(selector)</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			li {
+				margin: 10px;
+			}
+
+			.colorFondo {
+				background-color: yellow;
+			}
+
+			.bordeRojo {
+				border: 2px solid red;
+			}
+
+			.bordeAzul {
+				border: 2px solid blue;
+			}
+
+			.fuenteArialGrande {
+				font-family: arial;
+				font-size: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_71 - Recorrer el DOM: Determinados descendientes: find(selector)</h1>
+		<hr />
+		find() --> Encuentra determinados descendientes hacia abajo
+		<hr />
+
+		<div id="contenido1">
+			<div id="contenido2">
+				<p>Lista1</p>
+				<ul id="lista1">
+					<li>Elemento 1</li>
+					<li>Elemento 2</li>
+					<li>Elemento 3</li>
+					<li>Elemento <b>4</b></li>
+					<li>Elemento 5</li>
+				</ul>
+			</div>
+
+			<p>Lista2</p>
+			<ul id="lista2">
+				<li>Elemento 5</li>
+				<li>Elemento 6</li>
+				<li>Elemento 7</li>
+				<li>Elemento <b>8</b></li>
+				<li>Elemento 9</li>
+			</ul>
+		</div>
+
+		<script>
+			
+			$(function (){
+				//$("#contenido1").find("li").addClass("bordeRojo");
+				//$("#contenido1").find("#lista1").addClass("colorFondo");
+				//$("#contenido1").find("#lista1").addClass("fuenteArialGrande");
+
+				//find vs children
+				//$("#contenido1").children("#lista1").addClass("fuenteArialGrande"); //No se aplica. Children son descendientes directos
+				//$("#contenido1").children("#lista2").addClass("fuenteArialGrande"); //Se aplica ya que lista2 es descendiente de contenido1
+			});
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_58 - Recorrer el DOM: Encontrar los hijos: children()</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			td {
+				border: 1px solid black;
+				text-align: center;
+			}
+
+			.borde {
+				border: 1px solid red;
+			}
+
+			.colorAmarillo {
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_58 - Recorrer el DOM: Encontrar los hijos: children()</h1>
+		<hr />
+		children() --> Devuelve  los hijos inmediatos del elemento indicado en la selección.
+		<hr />
+
+		<div class="contenido">
+			<p>Lista</p>
+
+			<ul>
+				<li>Elemento 1</li>
+				<li>Elemento 2</li>
+				<li class="cursiva">Elemento 3</li>
+				<li>Elemento 4</li>
+				<li class="cursiva">Elemento 5</li>
+			</ul>
+
+			<table width="210">
+				<tr>
+					<td>1</td>
+					<td id="celda2">2</td>
+					<td id="celda3"><span>3</span></td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+			</table>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$(".contenido").children().addClass("borde");
+				$("#celda2").children().addClass("colorAmarillo"); //No incluye nodos DE TEXTO
+				$("#celda3").children().addClass("colorAmarillo");
+				$("ul").children(".cursiva").css("fontStyle","italic");
+			});
+
+		</script>
+	</body>
+</html>
