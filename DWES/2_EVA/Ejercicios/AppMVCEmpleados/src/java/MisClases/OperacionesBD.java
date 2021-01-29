@@ -25,39 +25,40 @@ public class OperacionesBD {
         return conexion;
     }
 
-    //LISTAR - Devuelve un array con la lista de departamentos
-    public ArrayList listarDep() {
-        ArrayList departamentos = new ArrayList();
+    //LISTAR - Devuelve un array con la lista de empleados
+    public ArrayList listarEmp() {
+        ArrayList empleados = new ArrayList();
         try {
             Connection conexion = getConnection();
             Statement sentencia = conexion.createStatement();
-            String sql = "SELECT * FROM departamentos";
+            String sql = "SELECT * FROM empleados";
             ResultSet resul = sentencia.executeQuery(sql);
-            while (resul.next()) {  //Se crea un array con los datos de los departamentos
-                Departamento d = new Departamento(resul.getByte("dept_no"), resul.getString("dnombre"), resul.getString("loc"));
+            while (resul.next()) {  //Se crea un array con los datos de los empleados
+                //Empleado e = new Empleado(resul.getInt("dept_no"), resul.getString("dnombre"), resul.getString("loc"));
+                Empleado e = new Empleado(resul.getInt("emp_no"), resul.getString("apellido"), resul.getString("oficio"), resul.getInt("dir"), resul.getDate("fecha_alt"), resul.getFloat("salario"), resul.getFloat("comision"), resul.getByte("dept_no"));
 
-                departamentos.add(d); //Añadir dep al array
+                empleados.add(e); //Añadir dep al array
             }
             conexion.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        return (departamentos);
+        return (empleados);
     } //fin listarDep
 
     //INSERTAR - Recibe los datos del departamento a insertar en la tabla
-    public void insertaDepartamento(Departamento d) {
+    public void insertaEmpleado(Empleado e) {
         try {
             Connection conexion = getConnection();
             Statement sentencia = conexion.createStatement();
-            String sql = "INSERT INTO departamentos VALUES(" + d.getDeptno() + ",'" + d.getDnombre() + "','" + d.getLoc() + "')";
-            if (d.getDeptno() != 0) {
+            String sql = "INSERT INTO empleados VALUES(" + e.getEmpno() + ",'" + e.getApellido() + "','" + e.getOficio() + "'," + e.getDir() + "," + e.getFechaalt() + "," + e.getSalario() + "," + e.getComision() + "," + e.getDeptno() + ")";
+            if (e.getDeptno() != 0) {
                 sentencia.execute(sql);
             }
             System.out.println("SQL: " + sql);
             conexion.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     } //fin insertaDepartamento
 } //fin clase OperacionesBD

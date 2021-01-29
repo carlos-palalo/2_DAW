@@ -5,46 +5,100 @@
  */
 package MisClases;
 
+import java.sql.Date;
+
 /**
  *
  * @author daw
  */
-public class Departamento {
+public class Empleado {
 
+    private int empno;
+    private String apellido;
+    private String oficio;
+    private int dir;
+    private Date fechaalt;
+    private float salario;
+    private float comision;
     private byte deptno;
-    private String dnombre;
-    private String loc;
 
-    public Departamento() {
+    public Empleado() {
     }
 
-    public Departamento(byte deptno, final String dnombre, final String loc) {
+    public Empleado(int empno, String apellido, String oficio, int dir, Date fechaalt, float salario, float comision, byte deptno) {
+        this.empno = empno;
+        this.apellido = apellido;
+        this.oficio = oficio;
+        this.dir = dir;
+        this.fechaalt = fechaalt;
+        this.salario = salario;
+        this.comision = comision;
         this.deptno = deptno;
-        this.dnombre = dnombre;
-        this.loc = loc;
+    }
+
+    public int getEmpno() {
+        return empno;
+    }
+
+    public void setEmpno(int empno) {
+        this.empno = empno;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getOficio() {
+        return oficio;
+    }
+
+    public void setOficio(String oficio) {
+        this.oficio = oficio;
+    }
+
+    public int getDir() {
+        return dir;
+    }
+
+    public void setDir(int dir) {
+        this.dir = dir;
+    }
+
+    public Date getFechaalt() {
+        return fechaalt;
+    }
+
+    public void setFechaalt(Date fechaalt) {
+        this.fechaalt = fechaalt;
+    }
+
+    public float getSalario() {
+        return salario;
+    }
+
+    public void setSalario(float salario) {
+        this.salario = salario;
+    }
+
+    public float getComision() {
+        return comision;
+    }
+
+    public void setComision(float comision) {
+        this.comision = comision;
     }
 
     public byte getDeptno() {
-        return this.deptno;
+        return deptno;
     }
 
     public void setDeptno(byte deptno) {
         this.deptno = deptno;
     }
 
-    public String getDnombre() {
-        return this.dnombre;
-    }
-
-    public void setDnombre(String dnombre) {
-        this.dnombre = dnombre;
-    }
-
-    public String getLoc() {
-        return this.loc;
-    }
-
-    public void setLoc(String loc) {
-        this.loc = loc;
-    }
-}   //fin clase Departamento
+    
+}   //fin clase Empleado

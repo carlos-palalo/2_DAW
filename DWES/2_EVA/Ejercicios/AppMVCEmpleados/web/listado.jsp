@@ -10,26 +10,36 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>LISTADO DE DEPARTAMENTOS</title>
+        <title>LISTADO DE EMPLEADOS</title>
     </head>
     <body>
     <center>
-        <h2>LISTADO DE DEPARTAMENTOS</h2>
+        <h2>LISTADO DE EMPLEADOS</h2>
         <table border="1">
             <tr>
+                <th>Empleado</th>
+                <th>Apellido</th>
+                <th>Oficio</th>
+                <th>Dir</th>
+                <th>Fecha de Alta</th>
+                <th>Salario</th>
+                <th>Comisión</th>
                 <th>Departamento</th>
-                <th>Nombre</th>
-                <th>Localidad</th>
             </tr>
             <%
-                ArrayList listadep=(ArrayList)request.getAttribute("departamentos");
-                if(listadep!=null){
-                    for(int i=0; i<listadep.size(); i++){
-                        Departamento d=(Departamento)listadep.get(i); %>
+                ArrayList listaemp=(ArrayList)request.getAttribute("empleados");
+                if(listaemp!=null){
+                    for(int i=0; i<listaemp.size(); i++){
+                        Empleado e=(Empleado)listaemp.get(i); %>
             <tr>
-                <td><%=d.getDeptno() %></td>
-                <td><%=d.getDnombre() %></td>
-                <td><%=d.getLoc() %></td>
+                <td><%=e.getEmpno() %></td>
+                <td><%=e.getApellido() %></td>
+                <td><%=e.getOficio() %></td>
+                <td><%=e.getDir() %></td>
+                <td><%=e.getFechaalt() %></td>
+                <td><%=e.getSalario() %></td>
+                <td><%=e.getComision() %></td>
+                <td><%=e.getDeptno() %></td>
             </tr>
             <%}
             }

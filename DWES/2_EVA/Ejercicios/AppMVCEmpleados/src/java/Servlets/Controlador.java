@@ -33,20 +33,20 @@ public class Controlador extends HttpServlet {
         if (op.equals("alta")) {
             response.sendRedirect("alta.jsp");
         }
-        //Si se ha pulsado en listado, primero se cargan los datos de departamentos en una lista y luego se envian a listado.jsp
+        //Si se ha pulsado en listado, primero se cargan los datos de empleados en una lista y luego se envian a listado.jsp
         if (op.equals("listado")) {
             OperacionesBD operBD = new OperacionesBD();
-            ArrayList lista = operBD.listarDep(); //se cargan los datos de los dep
-            request.setAttribute("departamentos", lista); //se preparan para enviar al jsp
+            ArrayList lista = operBD.listarEmp(); //se cargan los datos de los dep
+            request.setAttribute("empleados", lista); //se preparan para enviar al jsp
             RequestDispatcher rd = request.getRequestDispatcher("/listado.jsp");
             rd.forward(request, response);
         }
 
         //Se insertar departamento en la tabla y luego se visualiza index.html
         if (op.equals("insertar")) {
-            Departamento dep = (Departamento) request.getAttribute("depart"); //obtener deps
+            Empleado emp = (Empleado) request.getAttribute("emple"); //obtener deps
             OperacionesBD operBD = new OperacionesBD();
-            operBD.insertaDepartamento(dep); //se insertan en tabla departamentos
+            operBD.insertaEmpleado(emp); //se insertan en tabla empleados
             response.sendRedirect("index.html"); //se muestra la página inicial
         }
     }
