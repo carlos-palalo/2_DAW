@@ -1,0 +1,18 @@
+.hamburger{
+    background-color: $black;
+    color: $white;
+    border: none;
+    color: $white;
+    border: none;
+    padding: 20px;
+
+}
+
+.hamburger span{
+    font-size: 25px;
+}
+
+.hamburger:hover{
+    background-color: $light;
+    color: $black;
+}
