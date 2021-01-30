@@ -13,125 +13,146 @@
 
 <body>
     <header>
-        <button class="hamburger" onclick="openNav()">
-            <span class="material-icons">menu</span>
-        </button>
-        <div id="logo">LOGO</div>
-        <div id="search" class="right">
-            <form>
-                <input type="text" placeholder="Search..."></input>
-                <button>
-                    <span class="material-icons">search</span>
-                </button>
-            </form>
+        <div class="container">
+            <button class="hamburger" onclick="openNav()">
+                <span class="material-icons">menu</span>
+            </button>
+            <div id="logo">LOGO</div>
+            <div id="search" class="right">
+                <form>
+                    <input type="text" placeholder="Search..."></input>
+                    <button>
+                        <span class="material-icons">search</span>
+                    </button>
+                </form>
+            </div>
         </div>
     </header>
     <nav id="menu">
-        <div class="dropdown">
-            <a href="">Viento</a>
-            <div class="dropdown-content">
-                <a href="">Instrumentos de metal</a>
-                <a href="">Instrumentos de madera</a>
+        <div class="container">
+            <div class="dropdown">
+                <a href="" class="dropbtn">Viento</a>
+                <div class="dropdown-content">
+                    <a href="">Instrumentos de metal</a>
+                    <a href="">Instrumentos de madera</a>
+                </div>
             </div>
-        </div>
-        <div class="dropdown">
-            <a href="">Cuerda</a>
-            <div class="dropdown-content">
-                <a href="">Cuerda frotada</a>
-                <a href="">Cuerda pulsada</a>
-                <a href="">Cuerda percutida</a>
+            <div class="dropdown">
+                <a href="" class="dropbtn">Cuerda</a>
+                <div class="dropdown-content">
+                    <a href="">Cuerda frotada</a>
+                    <a href="">Cuerda pulsada</a>
+                    <a href="">Cuerda percutida</a>
+                </div>
             </div>
-        </div>
-        <div class="dropdown">
-            <a href="">Percusión</a>
-            <div class="dropdown-content">
-                <a href="">Membranófonos</a>
-                <a href="">Idiófonos</a>
+            <div class="dropdown">
+                <a href="" class="dropbtn">Percusión</a>
+                <div class="dropdown-content">
+                    <a href="">Membranófonos</a>
+                    <a href="">Idiófonos</a>
+                </div>
             </div>
-        </div>
-        <div class="dropdown">
-            <a href="">Instrumentos eléctricos</a>
-            <div class="dropdown-content">
-                <a href="">Aerófonos</a>
-                <a href="">Cordófonos</a>
-                <a href="">Idiófonos</a>
-                <a href="">Membranófonos</a>
-                <a href="">Electrófono</a>
+            <div class="dropdown">
+                <a href="" class="dropbtn">Instrumentos eléctricos</a>
+                <div class="dropdown-content">
+                    <a href="">Aerófonos</a>
+                    <a href="">Cordófonos</a>
+                    <a href="">Idiófonos</a>
+                    <a href="">Membranófonos</a>
+                    <a href="">Electrófono</a>
+                </div>
             </div>
         </div>
     </nav>
     <main>
-        <article>
-            <div>Viento</div>
-            <section>
-                <figure>
-                    <img id="sfo" src="images/saxophone-medium-800.jpg"
-                        srcset="images/saxophone-large-1000.jpg 1000w, images/saxophone-medium-800.jpg 800w, images/saxophone-small-500.jpg 500w"
-                        sizes="(max-width: 700px) 100vw, 50vw" alt="Saxofones">
-                    <figcaption>Saxofones</figcaption>
-                </figure>
-                <figure>
-                    <img id="sfo" src="images/flauta-medium-800.jpg"
-                        srcset="images/flauta-large-1000.jpg 1000w, images/flauta-medium-800.jpg 800w, images/flauta-small-500.jpg 500w"
-                        sizes="(max-width: 700px) 100vw, 50vw" alt="Flautas">
-                    <figcaption>Flautas</figcaption>
-                </figure>
-            </section>
-        </article>
-        <article>
-            <div>Cuerda</div>
-            <section>
-                <figure>
-                    <img id="sfo" src="images/cello-medium-800.jpg"
-                        srcset="images/cello-large-1000.jpg 1000w, images/cello-medium-800.jpg 800w, images/cello-small-500.jpg 500w"
-                        sizes="(max-width: 700px) 100vw, 50vw" alt="Violonchelo">
-                    <figcaption>Violonchelo</figcaption>
-                </figure>
-                <figure>
-                    <img id="sfo" src="images/violin-medium-800.jpg"
-                        srcset="images/violin-large-1000.jpg 1000w, images/violin-medium-800.jpg 800w, images/violin-small-500.jpg 500w"
-                        sizes="(max-width: 700px) 100vw, 50vw" alt="Violín">
-                    <figcaption>Violín</figcaption>
-                </figure>
-            </section>
-        </article>
-        <article>
-            <div>Percusión</div>
-            <section>
-                <figure>
-                    <img id="sfo" src="images/bateria-medium-800.jpg"
-                        srcset="images/bateria-large-1000.jpg 1000w, images/bateria-medium-800.jpg 800w, images/bateria-small-500.jpg 500w"
-                        sizes="(max-width: 700px) 100vw, 50vw" alt="Batería">
-                    <figcaption>Batería</figcaption>
-                </figure>
-                <figure>
-                    <img id="sfo" src="images/tambor-medium-800.jpg"
-                        srcset="images/tambor-large-1000.jpg 1000w, images/tambor-medium-800.jpg 800w, images/tambor-small-500.jpg 500w"
-                        sizes="(max-width: 700px) 100vw, 50vw" alt="Tambor">
-                    <figcaption>Tambor</figcaption>
-                </figure>
-            </section>
-        </article>
-        <article>
-            <div>Instrumentos Eléctricos</div>
-            <section>
-                <figure>
-                    <img id="sfo" src="images/bajo-medium-800.jpg"
-                        srcset="images/bajo-large-1000.jpg 1000w, images/bajo-medium-800.jpg 800w, images/bajo-small-500.jpg 500w"
-                        sizes="(max-width: 700px) 100vw, 50vw" alt="Bajo">
-                    <figcaption>Bajo</figcaption>
-                </figure>
-                <figure>
-                    <img id="sfo" src="images/guitar-medium-800.jpg"
-                        srcset="images/guitar-large-1000.jpg 1000w, images/guitar-medium-800.jpg 800w, images/guitar-small-500.jpg 500w"
-                        sizes="(max-width: 700px) 100vw, 50vw" alt="Guitarra eléctrica">
-                    <figcaption>Guitarra Eléctrica</figcaption>
-                </figure>
-            </section>
-        </article>
+        <div class="container">
+            <article>
+                <div>Viento</div>
+                <section>
+                    <figure>
+                        <img id="sfo" src="images/saxophone-medium-800.jpg"
+                            srcset="images/saxophone-large-1000.jpg 1000w, images/saxophone-medium-800.jpg 800w, images/saxophone-small-500.jpg 500w"
+                            sizes="(max-width: 700px) 100vw, 50vw" alt="Saxofones">
+                        <figcaption>Saxofones</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="sfo" src="images/flauta-medium-800.jpg"
+                            srcset="images/flauta-large-1000.jpg 1000w, images/flauta-medium-800.jpg 800w, images/flauta-small-500.jpg 500w"
+                            sizes="(max-width: 700px) 100vw, 50vw" alt="Flautas">
+                        <figcaption>Flautas</figcaption>
+                    </figure>
+                </section>
+            </article>
+            <article>
+                <div>Cuerda</div>
+                <section>
+                    <figure>
+                        <img id="sfo" src="images/cello-medium-800.jpg"
+                            srcset="images/cello-large-1000.jpg 1000w, images/cello-medium-800.jpg 800w, images/cello-small-500.jpg 500w"
+                            sizes="(max-width: 700px) 100vw, 50vw" alt="Violonchelo">
+                        <figcaption>Violonchelo</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="sfo" src="images/violin-medium-800.jpg"
+                            srcset="images/violin-large-1000.jpg 1000w, images/violin-medium-800.jpg 800w, images/violin-small-500.jpg 500w"
+                            sizes="(max-width: 700px) 100vw, 50vw" alt="Violín">
+                        <figcaption>Violín</figcaption>
+                    </figure>
+                </section>
+            </article>
+            <article>
+                <div>Percusión</div>
+                <section>
+                    <figure>
+                        <img id="sfo" src="images/bateria-medium-800.jpg"
+                            srcset="images/bateria-large-1000.jpg 1000w, images/bateria-medium-800.jpg 800w, images/bateria-small-500.jpg 500w"
+                            sizes="(max-width: 700px) 100vw, 50vw" alt="Batería">
+                        <figcaption>Batería</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="sfo" src="images/tambor-medium-800.jpg"
+                            srcset="images/tambor-large-1000.jpg 1000w, images/tambor-medium-800.jpg 800w, images/tambor-small-500.jpg 500w"
+                            sizes="(max-width: 700px) 100vw, 50vw" alt="Tambor">
+                        <figcaption>Tambor</figcaption>
+                    </figure>
+                </section>
+            </article>
+            <article>
+                <div>Instrumentos Eléctricos</div>
+                <section>
+                    <figure>
+                        <img id="sfo" src="images/bajo-medium-800.jpg"
+                            srcset="images/bajo-large-1000.jpg 1000w, images/bajo-medium-800.jpg 800w, images/bajo-small-500.jpg 500w"
+                            sizes="(max-width: 700px) 100vw, 50vw" alt="Bajo">
+                        <figcaption>Bajo</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="sfo" src="images/guitar-medium-800.jpg"
+                            srcset="images/guitar-large-1000.jpg 1000w, images/guitar-medium-800.jpg 800w, images/guitar-small-500.jpg 500w"
+                            sizes="(max-width: 700px) 100vw, 50vw" alt="Guitarra eléctrica">
+                        <figcaption>Guitarra Eléctrica</figcaption>
+                    </figure>
+                </section>
+            </article>
+            <article>
+                <div>Instrumentos y sus sonidos</div>
+                <section>
+                    <video controls poster="images/instrumentos.jpg">
+                        <source src="video/instrumentos.avi" type="video/avi" />
+                        <source src="video/instrumentos.mp4" type="video/mp4" />
+                        <source src="video/instrumentos.webm" type="video/webm" />
+                        <track src="video/instrumentos.vtt" label="Spanish captions" kind="captions" srclang="es"
+                            default />
+                        <p>This browser does not support the video element.</p>
+                    </video>
+                </section>
+            </article>
+        </div>
     </main>
     <footer>
-        <p>&copy; Carlos Palacios Alonso, 2º DAW | 2021</p>
+        <div class="container">
+            <p>&copy; Carlos Palacios Alonso, 2º DAW </p>
+        </div>
     </footer>
 </body>
 
