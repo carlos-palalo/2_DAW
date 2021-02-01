@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_72 - Recorrer el DOM: Añadir elementos a la selección: add</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			li {
+				margin: 10px;
+			}
+
+			.colorFondo {
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_72 - Recorrer el DOM: Añadir elementos a la selección: add</h1>
+		<hr />
+		add() --> Añade elementos a la selección realizada
+		<hr />
+
+		<button>Procesar</button>
+
+		<hr />
+
+		<div id="contenido1">
+			<p>Esta es la primera línea.</p>
+			<p>Esta es la segunda línea.</p>
+			<p>Esta es la tercera línea.</p>
+
+			<ul>
+				<li>Elemento 1</li>
+				<li>Elemento 2</li>
+				<li>Elemento 3</li>
+			</ul>
+
+			<table border="2" cellspacing="5">
+				<tr>
+					<td>A</td><td id="celda2">B</td>
+				</tr>
+				<tr>
+					<td>C</td><td>D</td>
+				</tr>
+			</table>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("button").click(function () {
+					$("p").add("li").add("#celda2").addClass("colorFondo");
+					
+					//Es igual al anterior
+					//$("p,li,#celda2").addClass("colorFondo");
+				});
+			});
+
+		</script>
+	</body>
+</html>

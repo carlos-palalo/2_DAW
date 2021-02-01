@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_86 - Filtrar el DOM: Primer y último elemento: first, last</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.3.1.js"></script>
+		<style>
+			div {
+				border: 2px solid black;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_86 - Filtrar el DOM: Primer y último elemento: first, last</h1>
+		<hr />
+		first --> Primer elemento
+		<br />
+		last --> Último elemento
+		<hr />
+
+		<ul>
+			<li>Elemento 1</li>
+			<li>Elemento 2</li>
+			<li>Elemento 3</li>
+		</ul>
+		<ul>
+			<li>Elemento 4</li>
+			<li>Elemento 5</li>
+			<li>Elemento 5</li>
+		</ul>
+
+		<div>
+			<span>Primera línea</span>
+			<br />
+			<span>Segunda línea</span>
+		</div>
+
+		<div>
+			<p>Primera línea</p>
+			<br />
+			<p>Segunda línea</p>
+		</div>
+
+		<script>
+			
+			$(function (){
+				//first y last actúan sobre un índice general de elementos
+
+				$("li").first().css("background-color","yellow"); 
+
+				$("div").children().first().css("background-color","yellow");
+
+				$("li").last().css("border","2px solid red");
+
+				$("div").children().last().css("border","2px solid red");
+			});
+
+		</script>
+	</body>
+</html>

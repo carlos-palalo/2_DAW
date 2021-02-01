@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_76 - Manipular el DOM: Insertar al principio del interior: prepend, prependTo</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			#cuadro {
+				border: 2px solid blue;
+				width: 300px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_76 - Manipular el DOM: Insertar al principio del interior: prepend, prependTo</h1>
+		<hr />
+		prepend(contenido) --> Inserta el contenido al principio del interior del elemento seleccionado texto, html, objetos del DOM, arrays de elementos, etc.
+		<br />
+		prependTo(destino) --> Inserta al principio del destino el elemento seleccionado.
+		<hr />
+
+		<div class="contenido">
+			<p>Lista</p>
+
+			<ul>
+				<li id="el1">Elemento 1</li>
+				<li id="el2">Elemento 2</li>
+				<li id="el3">Elemento 3</li>
+				<li id="el4">Elemento 4</li>
+				<li id="el5">Elemento 5</li>
+			</ul>
+
+			<div id="cuadro">
+				<h3>Cabecera del cuadro</h3>
+			</div>
+
+			<br /><br />
+
+			<button>Procesar</button>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("button").click(function() {
+					//prepend(contenido) --> Añade contenido al principio pero en el interior del elemento especificado. Puede ser texto, html o un objeto jQuery
+					$("#el1").prepend("TEXTO AÑADIDO - ");
+					$("#el2").prepend("<b>TEXTO AÑADIDO</b> - ");
+					$("ul").prepend("<li>Elemento 0</li>");
+
+					var nodo = document.createElement("li");
+					var nodoTexto = document.createTextNode("Elemento -1");
+					nodo.appendChild(nodoTexto);
+					$("ul").prepend(nodo);
+
+					//prepend(function(indice,valorantiguo)) --> Añade lo que devuelve la función al principio pero en el interior del elemento especificado. Puede ser texto, html o un objeto jQuery
+					$("#el3").prepend(function () {
+						return "TEXTO AÑADIDO CON UNA FUNCIÓN - ";
+					});
+
+					$("li").prepend(function (i,v) {
+						var cadena;;
+						if(i!=5) {
+							cadena = "";
+						} else {
+							cadena = v + " -->";
+						}
+						return cadena;
+					});
+
+					//prependTo(destino) --> Se inserta el elemento seleccionado al principio del destino especificado
+					$("li:first").prependTo("#cuadro");
+				});
+			});
+
+		</script>
+	</body>
+</html>

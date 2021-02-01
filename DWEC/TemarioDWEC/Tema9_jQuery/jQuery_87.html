@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_87 - Filtrar el DOM: Reducir a un elemento concreto: has</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.3.1.js"></script>
+		<style>
+			div {
+				border: 2px solid black;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_87 - Filtrar el DOM: Reducir a un elemento concreto: has</h1>
+		<hr />
+		has --> Reduce el conjunto de elementos seleccionados a aquellos que tienen un descendiente indicado por el selector o un elemento del DOM
+		<hr />
+
+		<ul>
+			<li>Elemento 1</li>
+			<li>Elemento 2
+				<ul>
+					<li>Elemento 2.1</li>
+					<li>Elemento 2.2</li>
+					<li>Elemento 2.3</li>
+				</ul>
+			</li>
+			<li>Elemento 3</li>
+			<li><span><b>Elemento 4</b></span></li>
+			<li>Elemento 5</li>
+			<li><span id="span6">Elemento 6</span></li>
+			<li><span class="clase7">Elemento 7</span></li>
+			<li><span id="span8">Elemento 8</span></li>
+		</ul>
+
+		<script>
+			
+			$(function (){
+				$("li").has("ul").css("background-color","aqua");
+
+				$("li").has("b").css("background-color","yellow"); //No es necesario ser descendiente directo
+
+				var elemento = document.getElementById("span6");
+				$("li").has(elemento).css("background-color","green");
+				/*
+				$("li").has(".clase7").css("border","2px solid red");
+
+				$("li").has($("#span8")).css("border","2px solid green");*/
+			});
+
+		</script>
+	</body>
+</html>

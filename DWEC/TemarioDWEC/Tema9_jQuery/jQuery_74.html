@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_74 - Manipular el DOM: Modificar el contenido: text, html</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			table {
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+
+			td {
+				border: 1px solid black;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_74 - Manipular el DOM: Modificar el contenido: text, html</h1>
+		<hr />
+		text --> Obtiene o establece texto
+		<br />
+		html --> Obtiene o establece código HTML
+		<hr />
+
+		<div class="contenido">
+			<p>Lista</p>
+
+			<ul>
+				<li id="el1">Elemento 1</li>
+				<li id="el2">Elemento 2</li>
+				<li id="el3">Elemento 3</li>
+				<li id="el4">Elemento 4</li>
+				<li id="el5">Elemento 5</li>
+			</ul>
+
+			<table>
+				<tr>
+					<td id="celda1">A</td>
+					<td id="celda2">B</td>
+					<td id="celda3">C</td>
+					<td id="celda4">D</td>
+					<td id="celda5">E</td>
+				</tr>
+				<tr>
+					<td id="celda6">A</td>
+					<td id="celda7">B</td>
+					<td id="celda8">C</td>
+					<td id="celda9">D</td>
+					<td id="celda10">E</td>
+				</tr>
+			</table>
+
+			<br /><br />
+
+			<button>Procesar</button>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("button").click(function() {
+					//TEXT
+					/*
+					//text() --> Sin parámetros devuelve el texto del elemento
+					alert($("#el1").text());
+					
+					//text(contenido) --> Si el parámetro es contenido se establece un valor de texto para un elemento. Ignora marcas de html.
+					$("#el2").text("Este es el <b>segundo</b> elemento");
+					
+					//text(funcion(indice,valoranterior)) --> Si el parámetro es una función se establece un valor de texto para un elemento obtenido a partir de lo que devuelve la función. Se le pasa como parámetro un índice (del elemento dentro del conjunto) y el valor antiguo (del elemento dentro del conjunto).
+					$("#el3").text(function () {
+						return "Texto del tercer elemento";
+					});
+					
+					$("table tr td").text(function (i,v) {
+						return "Posición: " + i + " - Valor anterior: " + v;
+					});*/
+					
+					
+					//HTML
+					
+					//html() --> Sin parámetros devuelve el código html del elemento
+					alert($("ul").html());
+
+					//html(contenido) --> Si el parámetro es contenido se establece el código html para un elemento. Tiene en cuenta marcas de html.
+					$("#el4").html("Este es el <b>cuarto</b> elemento");
+
+					//html(funcion(indice,valoranterior)) --> Si el parámetro es una función se establece un valor de texto para un elemento obtenido a partir de lo que devuelve la función. Se le pasa como parámetro un índice (del elemento dentro del conjunto) y el valor antiguo (del elemento dentro del conjunto).
+					$("#el5").html(function () {
+						return "Texto del <b>quinto</b> elemento";
+					});
+
+					$("table tr td:last").html(function (i,v) {
+						//return "<b>Posición:</b> " + i + " - <b>Valor anterior:</b> " + v;
+					});
+					$("table tr").each(function (i,v) {
+						$(this).children("td:last").html(function (ind,val) {
+							return "<b>Posición:</b> " + i + " - <b>Valor anterior:</b> " + val;
+						});
+					});
+				});
+			});
+
+		</script>
+	</body>
+</html>

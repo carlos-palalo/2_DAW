@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_80 - Manipular el DOM: Eliminar un elemento: remove, detach</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style>
+			.colorFondo {
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_80 - Manipular el DOM: Eliminar un elemento: remove, detach</h1>
+		<hr />
+		remove --> Elimina un elemento (todo)
+		<br />
+		detach --> Elimina un elemento conservando algunos datos (p.e. eventos)
+		<hr />
+
+		<button id="boton1">Probar remove</button>
+		
+		<br /><br />
+
+		<div class="contenido">
+			<div id="cuadro1">
+				<span id="p1">Este es el primer párrafo</span>
+				<br />
+				<span id="p2">Este es el segundo párrafo</span>
+			</div>
+
+			<hr />
+
+			<div id="cuadro2">
+				<span id="p3">Este es el tercer párrafo</span>
+				<br />
+				<span id="p4">Este es el cuarto párrafo</span>
+			</div>
+
+			<hr />
+
+			<button id="boton2">Probar detach</button>
+
+			<p id="parrafo">Este es el quinto párrafo</p>
+		</div>
+
+		<script>
+			
+			$(function (){
+				//remove
+				$("#boton1").click(function() {
+					$("#cuadro1").remove();
+					$("span").remove(":contains('tercer')");
+				});
+
+				//detach
+				$("#parrafo").hover(function () {
+					$(this).addClass("colorFondo");
+				}, function () {
+					$(this).removeClass("colorFondo");
+				});
+
+				var p = null;
+				$("#boton2").click(function() {
+					if(p) {
+						p.appendTo( "body" );
+						p = null;
+					} else {
+						p = $("p").detach();
+						//detach también se puede ejecutar con un selector --> detach(selector)
+
+						//Comentar la línea de detach y ejecutar remove para ver la diferencia
+						//p = $("p").remove(); //El evento hover desaparece
+					}
+				});
+			});
+
+		</script>
+	</body>
+</html>

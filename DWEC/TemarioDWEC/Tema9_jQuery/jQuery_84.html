@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_84 - Filtrar el DOM: Encontrar una secuencia de elementos: slice</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.3.1.js"></script>
+		<style>
+			table {
+				border: 2px solid blue;
+				border-spacing: 10px;
+			}
+
+			td {
+				border: 1px solid black;
+				padding: 10px;
+				font: 20px arial;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_84 - Filtrar el DOM: Encontrar una secuencia de elementos: slice</h1>
+		<hr />
+		slice --> Reduce el conjunto de elementos a la indicada en un índice inicial y final (no incluida y opcional)
+		<hr />
+
+		<button id="boton1">Cambiar</button>
+
+		<br /><br />
+
+		<table>
+			<tr>
+				<td>1</td><td>2</td><td>3</td><td>4</td>
+			</tr>
+			<tr>
+				<td>5</td><td>6</td><td>7</td><td>8</td>
+			</tr>
+			<tr>
+				<td>9</td><td>10</td><td>11</td><td>12</td>
+			</tr>
+		</table>
+
+		<script>
+			
+			$(function (){
+				$("#boton1").click(function() {
+					$("td").slice(3,8).css("background-color","olive");
+					$("td").slice(6).css("color","red");
+					$("td").slice(-3).css("border","3px solid green");
+				});
+			});
+
+		</script>
+	</body>
+</html>

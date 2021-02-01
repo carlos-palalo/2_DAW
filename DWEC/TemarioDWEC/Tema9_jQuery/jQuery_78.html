@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_78 - Manipular el DOM: Rodear un elemento: wrap, wrapAll, wrapInner, unwrap</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			#cuadro5 {
+				border: 3px solid black;
+			}
+
+			#cuadro6,#cuadro7 {
+				border: 2px solid red;
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_78 - Manipular el DOM: Rodear un elemento: wrap, wrapAll, wrapInner, unwrap</h1>
+		<hr />
+		wrap --> Rodea con otro elemento que puede ser un elemento o cadena html.
+		<br />
+		wrapAll --> Rodea los elementos seleccionados con otro elemento.
+		<br />
+		wrapInner --> Rodea todos los hijos (incluyendo texto) con otro elemento.
+		<br />
+		unwrap --> Elimina los padres de un elemento.
+		<hr />
+
+		<div class="contenido">
+			<h2>wrap</h2>
+			<div id="cuadro1">
+				<span id="p1">Este es el primer párrafo</span>
+				<br />
+				<span id="p2">Este es el segundo párrafo</span>
+			</div>
+
+			<hr />
+
+			<div id="cuadro2">
+				<span id="p3">Este es el tercer párrafo</span>
+				<br />
+				<span id="p4">Este es el cuarto párrafo</span>
+			</div>
+
+			<hr />
+
+			<h2>wrapAll</h2>
+
+			<div id="cuadro3">
+				<span id="p5">Este es el quinto párrafo</span>
+				<br />
+				<span id="p6">Este será el sexto párrafo</span>
+			</div>
+
+			<hr />
+
+			<div id="cuadro4">
+				<span id="p7">Este es el séptimo párrafo</span>
+				<br />
+				<span id="p8">Este es el octavo párrafo</span>
+			</div>
+
+			<hr />
+
+			<h2>wrapInner</h2>
+			<div id="cuadro5">
+				<span id="p9">Este es el noveno párrafo</span>
+				<br />
+				<span id="p10">Este es el décimo párrafo</span>
+			</div>
+
+			<hr />
+
+			<h2>unwrap</h2>
+			<div id="cuadro6">
+				<span id="p11">Este es el undécimo párrafo</span>
+				<br />
+				<span id="p12">Este es el duodécimo párrafo</span>
+			</div>
+
+			<hr />
+
+			<div id="cuadro7">
+				<span id="p13">Este es el decimotercer párrafo</span>
+				<br />
+				<span id="p14">Este es el decimocuarto párrafo</span>
+			</div>
+
+
+			<br /><br />
+
+			<button>Procesar</button>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("button").click(function() {
+					//wrap
+					$("#p1").wrap("<b>");
+					$("#p2").wrap("<span style='color:red'></span>");
+
+					$("#cuadro2 span").wrap(function (i) {
+						var cadena = "";
+						if(i==1) {
+							cadena = "<p style='background-color:yellow'></p>";
+						}
+						return cadena;
+					});
+
+					//wrapAll
+					$("#cuadro3 span").wrap("<p style='border:1px solid blue'></p>");
+					$("#cuadro4 span").wrapAll("<p style='border:1px solid blue'></p>");
+					
+					//wrapInner
+					$("#cuadro5").wrapInner("<p style='border:3px solid green'></p>");
+					$("#cuadro5").wrap("<p style='border:3px solid yellow'></p>");
+					
+					//unwrap
+					$("#p11").unwrap();
+					$("#p13").unwrap("#cuadro7"); //Cambiar por cuadro5 y ver que no funciona
+					
+				});
+			});
+
+		</script>
+	</body>
+</html>

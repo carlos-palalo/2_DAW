@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_75 - Manipular el DOM: Insertar al final del interior: append, appendTo</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			#cuadro {
+				border: 2px solid blue;
+				width: 300px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_75 - Manipular el DOM: Insertar al final del interior: append, appendTo</h1>
+		<hr />
+		append(contenido) --> Inserta el contenido al final del interior del elemento seleccionado. Se inserta texto, html, objetos del DOM, arrays de elementos, etc.
+		<br />
+		appendTo(destino) --> Inserta al final del destino el elemento seleccionado.
+		<hr />
+
+		<div class="contenido">
+			<p>Lista</p>
+
+			<ul>
+				<li id="el1">Elemento 1</li>
+				<li id="el2">Elemento 2</li>
+				<li id="el3">Elemento 3</li>
+				<li id="el4">Elemento 4</li>
+				<li id="el5">Elemento 5</li>
+			</ul>
+
+			<div id="cuadro">
+				<h3>Cabecera del cuadro</h3>
+			</div>
+
+			<br /><br />
+
+			<button>Procesar</button>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("button").click(function() {
+					//append(contenido) --> Añade contenido al final pero en el interior del elemento especificado. Puede ser texto, html o un objeto jQuery
+					$("#el1").append(" - TEXTO AÑADIDO");
+					$("#el2").append(" - <b>TEXTO AÑADIDO</b>");
+					$("ul").append("<li>Elemento 6</li>");
+					
+					var nodo = document.createElement("li");
+					var nodoTexto = document.createTextNode("Elemento 7");
+					nodo.appendChild(nodoTexto);
+					$("ul").append(nodo);
+					
+					//append(function(indice,valorantiguo)) --> Añade lo que devuelve la función al final pero en el interior del elemento especificado. Puede ser texto, html o un objeto jQuery
+					$("#el3").append(function () {
+						return " - TEXTO AÑADIDO CON UNA FUNCIÓN";
+					});
+					
+					$("li").append(function (i,v) {
+						var cadena;
+						if(i==4) {
+							cadena = " >>> " + v;
+						} else {
+							cadena = "";
+						}
+						return cadena;
+					});
+
+					//appendTo(destino) --> Se inserta el elemento seleccionado al final del destino especificado
+					$("li:first").appendTo("#cuadro");
+				});
+			});
+
+		</script>
+	</body>
+</html>

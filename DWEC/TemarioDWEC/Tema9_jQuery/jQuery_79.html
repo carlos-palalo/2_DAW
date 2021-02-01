@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_79 - Manipular el DOM: Sustituir un elemento: replaceWith</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_79 - Manipular el DOM: Sustituir un elemento: replaceWith</h1>
+		<hr />
+		replaceWith --> Sustituye un elemento por otro (elemento y contenido) que puede ser una cadena html, elemento del DOM, lista de elementos del DOM, etc.
+		<hr />
+
+		<div class="contenido">
+			<p id="parrafo">Lista</p>
+
+			<div id="cuadro1">
+				<span id="p1">Este es el primer párrafo</span>
+				<br />
+				<span id="p2">Este es el segundo párrafo</span>
+			</div>
+
+			<hr />
+
+			<div id="cuadro2">
+				<span id="p3">Este es el tercer párrafo</span>
+				<br />
+				<span id="p4">Este es el cuarto párrafo</span>
+			</div>
+
+			<hr />
+
+			<div id="cuadro3">
+				<span id="p5">Este es el quinto párrafo</span>
+				<br />
+				<span id="p6">Este es el sexto párrafo</span>
+			</div>
+
+			<hr />
+
+			<div id="cuadro4">
+				<span id="p7">Este es el séptimo párrafo</span>
+				<br />
+				<span id="p8">Este es el octavo párrafo</span>
+			</div>
+
+			<hr />
+
+			<div id="cuadro5">
+				<span id="p9" class="noveno">Este es el noveno párrafo</span>
+				<br />
+				<span id="p10" class="decimo">Este es el décimo párrafo</span>
+				<br />
+				<span id="p11" class="undecimo">Este es el undécimo párrafo</span>
+			</div>
+
+			<br /><br />
+
+			<button>Procesar</button>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("button").click(function() {
+					$("#cuadro1").replaceWith("<ul><li>A</li><li>B</li><li>C</li></ul>");
+
+
+					var nodo = document.createElement("h3");
+					var nodoTexto = document.createTextNode("Cabecera en el cuadro2");
+					nodo.appendChild(nodoTexto);
+					$("#cuadro2").replaceWith(nodo);
+
+
+					var listaElementos = [];
+					var nodo1 = document.createElement("h4");
+					var nodoTexto1 = document.createTextNode("Cabecera en el cuadro3 A");
+					nodo1.appendChild(nodoTexto1);
+					listaElementos.push(nodo1);
+					var nodo2 = document.createElement("h4");
+					var nodoTexto2 = document.createTextNode("Cabecera en el cuadro3 B");
+					nodo2.appendChild(nodoTexto2);
+					listaElementos.push(nodo2);
+					$("#cuadro3").replaceWith(listaElementos);
+
+
+					$("#cuadro4").replaceWith(function () {
+						return "<table border='2'><tr><td>A</td><td>B</td></tr></table>";
+					});	
+
+
+					$("span.noveno").replaceWith($(".decimo"));				
+				});
+			});
+
+		</script>
+	</body>
+</html>

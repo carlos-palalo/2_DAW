@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_77 - Manipular el DOM: Insertar en el exterior: after, before</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_77 - Manipular el DOM: Insertar en el exterior: after, before</h1>
+		<hr />
+		after --> Inserta en el exterior después del elemento(s) seleccionado
+		<br />
+		before --> Inserta en el exterior antes del elemento(s) seleccionado
+		<hr />
+
+		<div class="contenido">
+			<p id="parrafo">Lista</p>
+
+			<ul>
+				<li id="el1">Elemento 1</li>
+				<li id="el2">Elemento 2</li>
+				<li id="el3">Elemento 3</li>
+				<li id="el4">Elemento 4</li>
+				<li id="el5">Elemento 5</li>
+			</ul>
+
+			<div id="cuadro">
+				<p>Este es el primer párrafo</p>
+				<p>Este es el segundo párrafo</p>
+				<p>Este es el tercer párrafo</p>
+				<p>Este es el cuarto párrafo</p>
+				<p>Este es el quinto párrafo</p>
+			</div>
+
+			<br /><br />
+
+			<button>Procesar</button>
+		</div>
+
+		<script>
+			
+			$(function (){
+				$("button").click(function() {
+					//COMENTAR PARTE DE AFTER O BEFORE PARA EXPLICAR LA CONTRARIA
+
+					//AFTER
+					$("#parrafo").after("Texto suelto después del párrafo"); //Elemento de texto
+					$("#el1").after("<li>Elemento 1.1</li>"); //Cádena HTML
+					
+					var nodo = document.createElement("li");
+					var nodoTexto = document.createTextNode("Elemento último");
+					nodo.appendChild(nodoTexto);
+					$("li:last").after(nodo);
+					
+					$("#el2").after(function() {
+						return "<li>Entre el dos y el tres</li>";
+					});
+					
+					$("#cuadro p").after(function(i,v) {
+						var cadena = "";
+						if(i==3) {
+							cadena = "<hr />";
+						}
+						return cadena;
+					});
+
+
+					//BEFORE
+					/*$("#parrafo").before("Texto suelto antes del párrafo"); //Elemento de texto
+					$("#el1").before("<li>Elemento 0</li>"); //Cádena HTML
+
+					var nodo = document.createElement("li");
+					var nodoTexto = document.createTextNode("Elemento penúltimo");
+					nodo.appendChild(nodoTexto);
+					$("li:last").before(nodo);
+
+					$("#el2").before(function() {
+						return "<li>Entre el uno y el dos</li>";
+					});
+
+					$("#cuadro p").before(function(i,v) {
+						var cadena = "";
+						if(i==3) {
+							cadena = "<hr />";
+						}
+						return cadena;
+					});*/
+					
+				});
+			});
+
+		</script>
+
+	</body>
+</html>
