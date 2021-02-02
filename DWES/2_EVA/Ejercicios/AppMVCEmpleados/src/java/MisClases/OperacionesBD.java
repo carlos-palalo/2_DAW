@@ -51,7 +51,7 @@ public class OperacionesBD {
         try {
             Connection conexion = getConnection();
             Statement sentencia = conexion.createStatement();
-            String sql = "INSERT INTO empleados VALUES(" + e.getEmpno() + ",'" + e.getApellido() + "','" + e.getOficio() + "'," + e.getDir() + "," + e.getFechaalt() + "," + e.getSalario() + "," + e.getComision() + "," + e.getDeptno() + ")";
+            String sql = "INSERT INTO empleados VALUES(" + e.getEmpno() + ",'" + e.getApellido() + "','" + e.getOficio() + "'," + e.getDir() + ",'" + e.getFechaalt() + "'," + e.getSalario() + "," + e.getComision() + "," + e.getDeptno() + ")";
             if (e.getDeptno() != 0) {
                 sentencia.execute(sql);
             }

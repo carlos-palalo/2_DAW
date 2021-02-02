@@ -100,5 +100,8 @@ public class Empleado {
         this.deptno = deptno;
     }
 
+    private Date fecha(){
+        return new java.sql.Date(new java.util.Date().getTime()); 
+    }
     
 }   //fin clase Empleado
