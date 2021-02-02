@@ -391,3 +391,13 @@ Sociedad Laboral
 	Los socios trabajadores entre sí deben de tener el 51% del Kapital. Ningún socio por si solo puede tener más del 33% del Kapital.
 	Los socios no trabajadores no pueden tener más del 49% del Kapital. 
 	SAL o SLL. Sin capital minimo.
+
+TEST_FORMAS JURIDICAS.
+1- a
+2- b
+3- c
+4- a
+5- c
+6- a
+7- b
+8- c
