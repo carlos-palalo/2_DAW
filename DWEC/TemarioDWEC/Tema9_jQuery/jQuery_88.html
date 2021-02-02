@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_88 - Filtrar el DOM: Eliminar un elemento: not</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.3.1.js"></script>
+		<style>
+			table {
+				border: 2px solid black;
+				border-spacing: 10px;
+			}
+
+			td {
+				border: 1px solid black;
+				padding: 10px;
+			}
+			div {
+				border: 2px solid black;
+				margin: 10px;
+			}
+
+			li {
+				margin: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_88 - Filtrar el DOM: Eliminar un elemento: not</h1>
+		<hr />
+		not --> Elimina un elemento del conjunto
+		<hr />
+
+		<ul>
+			<li>Elemento 1</li>
+			<li>Elemento 2</li>
+			<li>Elemento 3</li>
+			<li>Elemento 4</li>
+			<li id="el5">Elemento 5</li>
+			<li>Elemento 6</li>
+			<li>Elemento 7</li>
+			<li>Elemento 8</li>
+			<li>Elemento 9</li>
+		</ul>
+
+		<table>
+			<tr>
+				<td>1</td><td>2</td><td>3</td><td>4</td>
+			</tr>
+			<tr>
+				<td>5</td><td>6</td><td>7</td><td>8</td>
+			</tr>
+			<tr>
+				<td>9</td><td>10</td><td>11</td><td>12</td>
+			</tr>
+		</table>
+
+		<script>
+			
+			$(function (){
+				//Usando selectores
+				$("li").not(":first").css("background-color","yellow"); 
+				$("li").not(":last").css("border","2px solid red");
+
+				//Usando elementos del DOM (puede también usarse un array)
+				var elemento = document.getElementById("el5");
+				$("li").not(elemento).css("font","20px arial");
+
+				//Usando un objeto jQuery
+				$("tr").not($("tr:first")).css("background-color","aqua");
+
+				//Usando una función
+				$("td").not(function (i,e) {
+					if(i==2) return true;
+				}).css("border","4px solid green");
+			});
+
+		</script>
+	</body>
+</html>

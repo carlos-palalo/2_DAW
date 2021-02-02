@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_89 - Otras utilidades: iteraciones - $.each</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.3.1.js"></script>
+		<style type="text/css">
+			ul {
+				list-style-type: none; 
+				width: 8em;
+				border: 1px solid black;
+				font-family: Arial; 
+				font-size: 0.9em;
+			}
+
+			li {
+				padding: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_89 - Otras utilidades: iteraciones - $.each</h1>
+		<hr />
+
+		<button>Poner números</button>
+		<ul>
+			<li>Elemento</li>
+			<li>Elemento</li>
+			<li>Elemento</li>
+			<li>Elemento</li>
+			<li>Elemento</li>
+		</ul>
+
+		<script>
+
+			$(document).ready(function() {				
+				var lista = ["A","B","C","D","E"];
+				$.each(lista,function(indice,valor) {
+					console.log(indice + " - " + valor);
+				});
+
+
+				var objeto = {
+					marca: "opel",
+					modelo: "corsa",
+					color: "rojo"
+				};
+				$.each(objeto,function(clave,valor) {
+					console.log(clave + " - " + valor);
+				});
+
+
+				//No confundir $.each con $(selector).each
+				$("button").click(function () {
+					$("li").each(function(i) {
+						$(this).html($(this).html() + " " + (i+1));
+					});
+				});
+			});
+
+		</script>
+	</body>
+</html>
