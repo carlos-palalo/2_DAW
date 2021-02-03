@@ -17,7 +17,7 @@ public class Empleado {
     private String apellido;
     private String oficio;
     private int dir;
-    private Date fechaalt;
+    private java.sql.Date fechaalt;
     private float salario;
     private float comision;
     private byte deptno;
@@ -25,7 +25,7 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(int empno, String apellido, String oficio, int dir, Date fechaalt, float salario, float comision, byte deptno) {
+    public Empleado(int empno, String apellido, String oficio, int dir, java.sql.Date fechaalt, float salario, float comision, byte deptno) {
         this.empno = empno;
         this.apellido = apellido;
         this.oficio = oficio;
@@ -68,11 +68,11 @@ public class Empleado {
         this.dir = dir;
     }
 
-    public Date getFechaalt() {
+    public java.sql.Date getFechaalt() {
         return fechaalt;
     }
 
-    public void setFechaalt(Date fechaalt) {
+    public void setFechaalt(java.sql.Date fechaalt) {
         this.fechaalt = fechaalt;
     }
 
@@ -99,9 +99,4 @@ public class Empleado {
     public void setDeptno(byte deptno) {
         this.deptno = deptno;
     }
-
-    private Date fecha(){
-        return new java.sql.Date(new java.util.Date().getTime()); 
-    }
-    
 }   //fin clase Empleado

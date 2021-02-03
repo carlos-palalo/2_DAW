@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_93 - Ejercicio: Galería básica</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.3.1.js"></script>
+		<style type="text/css">
+			body {
+				padding: 3px; 
+				margin: 0px;
+			}
+
+			.contenedor {
+				position: absolute;
+				top: 150px; 
+				left: 10px;
+			}
+
+			ul.imagenes {
+				padding: 0px; 
+				list-style-type: none; 
+				margin: 0px; 
+				width: 260px; 
+				float: left;
+			}
+
+			ul.imagenes li {
+				position: relative; 
+				padding: 0px; 
+				margin: 0px;  
+				width: 100px; 
+				height: 100px;
+				float: left;
+			}
+
+			ul.imagenes li img {
+				position: absolute; 
+				width: 90px;  
+				height: 60px;  
+				left: 0px; 
+				border: none;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_93 - Ejercicio: Galería básica</h1>
+		<hr />
+
+		<p> Pasar el ratón por encima de la miniatura para agrandar la imagen.</p>
+
+		<div class="contenedor">
+			<ul class="imagenes">
+				<li><img alt="" src="recursos/iceberg1.jpg" /></li>
+				<li><img alt="" src="recursos/iceberg2.jpg" /></li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("ul.imagenes li").hover(function() {
+					$(this).css({'z-index': '10'});
+					$(this).find('img').animate({marginTop:'-90px',marginLeft:'-50px',top:'50%',left:'50%',width:'225px',height:'150px'},600); 
+				},function() {
+					$(this).find('img').animate({marginTop:'0',marginLeft:'0',top:'0',left:'0',width:'90px',height:'60px'},600);//.animate({'z-index': '0'},100);
+					$(this).css({'z-index': '0'});
+				});
+			});
+		</script>
+	</body>
+</html>

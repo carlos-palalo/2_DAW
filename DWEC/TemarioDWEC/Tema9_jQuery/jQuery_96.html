@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_96 - Ejercicio: Filtrar una lista</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.3.1.js"></script>
+		<style type="text/css">
+			ul {
+				list-style-type: none; 
+				width: 8em;
+				border: 1px solid black;
+				font-family: Arial; 
+				font-size: 0.9em;
+			}
+
+			li {
+				padding: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_96 - Ejercicio: Filtrar una lista</h1>
+		<hr />
+		Seleccione la categoría:
+		<select id="categoria"> 
+			<option selected="selected" value="todos">Todos</option> 
+			<option value="italia">Italia</option> 
+			<option value="españa">España</option>
+			<option value="alemania">Alemania</option>
+			<option value="francia">Francia</option>
+		</select> 
+		
+		<ul>
+			<li class="item italia">Roma</li>
+			<li class="item españa">Madrid</li>
+			<li class="item alemania">Berlín</li>
+			<li class="item francia">París</li>
+			<li class="item italia">Milán</li>
+			<li class="item españa">Barcelona</li>
+			<li class="item alemania">Hamburgo</li>
+			<li class="item francia">Marsella</li>
+			<li class="item italia">Verona</li>
+			<li class="item españa">Oviedo</li>
+			<li class="item alemania">Bremen</li>
+			<li class="item francia">Lyon</li>
+			<li class="item italia">Turín</li>
+			<li class="item españa">Valladolid</li>
+			<li class="item alemania">Frankfurt</li>
+			<li class="item francia">Burdeos</li>
+		</ul>
+
+		<script>
+
+			$(document).ready(function() {				
+				$("#categoria").change(function() {
+					var selection = $("#categoria").val();
+					if (selection == "todos") {
+						$("li").filter(".item").show();
+					} else {					
+						$("li").filter(".item").hide();
+						$("li").filter("."+selection).show();
+					}
+				});
+			});
+
+		</script>
+	</body>
+</html>

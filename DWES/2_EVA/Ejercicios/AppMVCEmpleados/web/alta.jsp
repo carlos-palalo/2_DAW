@@ -31,7 +31,7 @@
                 java.util.Date hoy = new java.util.Date();
                 java.sql.Date fhoy = new java.sql.Date(hoy.getTime());
             %>
-            <p>Fecha de alta: <input name="fechaalt" type="text" size="15" value="<%=fhoy%>"></p>
+            <p>Fecha de alta: <input name="fechaalt" readonly="readonly" type="text" size="15" placeholder="<%=fhoy%>"></p>
             <p>Salario: <input name="salario" type="text" size="10"></p>
             <p>Comisión: <input name="comision" type="text" size="5"></p>
             <p>Departamento: <input name="deptno" type="text" size="5"></p>
