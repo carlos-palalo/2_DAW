@@ -11,7 +11,8 @@
             border: 1px solid black;
             padding: 15px;
         }
-        table{
+
+        table {
             margin: 20px 0px;
         }
     </style>
@@ -23,7 +24,7 @@
 
     <button id="btn1">Lista de celdas</button>
     <button id="btn2">Lista de columnas</button>
-    <button id="btn3">Lista de otra cosa</button>
+    <button id="btn3">Lista de filas</button>
 
     <table>
         <tr>
@@ -53,19 +54,33 @@
         </tr>
     </table>
 
-    <ul id="lista"></ul>
+    <div id="lista"></div>
 
     <script>
         $(function () {
-            $("#btn1").click("click",function(){
-                var li = $("li").append($("td").text());
-                $("#lista").append(li);
+            $("#btn1").click("click", function () {
+                $("ul").remove();
+                $("td").each(function (i) {
+                    $("#lista").append("<li>" + $(this).text() + "</li>");
+                });
             });
-            $("#btn2").click("click",function(){
-                
+            $("#btn2").click("click", function () {
+                $("ul").remove();
+                $("table tr:first").children().each(function (x) {
+                    $("#lista").append("<ul>");
+                    $("table tr").each(function () {
+                        $("#lista ul:last").append("<li>" + $(this).children().eq(x).text() + "</li>");
+                    });
+                });
             });
-            $("#btn3").click("click",function(){
-                
+            $("#btn3").click("click", function () {
+                $("ul").remove();
+                $("table tr").each(function () {
+                    $("#lista").append("<ul>");
+                    $(this).children().each(function (x) {
+                        $("#lista ul:last").append("<li>" + $(this).text() + "</li>");
+                    });
+                });
             });
         });
     </script>

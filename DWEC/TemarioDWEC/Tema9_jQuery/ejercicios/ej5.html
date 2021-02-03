@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio 3: Mostrar texto sobre foto que desaparece</title>
+    <link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+    <script src="../recursos/jquery-3.5.1.js"></script>
+    <style type="text/css">
+        .hover {}
+
+        ul {
+            padding: 0px;
+            width: 200px;
+            list-style: none;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        li {
+            padding: 5px;
+        }
+
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio 5: Filtrar una lista</h1>
+    <hr />
+    Seleccione una categoria
+    <select id="categoria">
+        <option value="todos" selected>Todos</option>
+        <option value="italia">Italia</option>
+        <option value="españa">España</option>
+        <option value="alemania">Alemania</option>
+        <option value="francia">Francia</option>
+    </select>
+    <ul class="hover">
+        <li class="item italia">Italia 1</li>
+        <li class="item españa">España 1</li>
+        <li class="item alemania">Alemania 1</li>
+        <li class="item francia">Francia 1</li>
+        <li class="item italia">Italia 2</li>
+        <li class="item españa">España 2</li>
+        <li class="item alemania">Alemania 2</li>
+        <li class="item francia">Francia 2</li>
+        <li class="item italia">Italia 3</li>
+        <li class="item españa">España 3</li>
+        <li class="item alemania">Alemania 3</li>
+        <li class="item francia">Francia 3</li>
+        <li class="item italia">Italia 4</li>
+        <li class="item españa">España 4</li>
+        <li class="item alemania">Alemania 4</li>
+        <li class="item francia">Francia 4</li>
+    </ul>
+    <script>
+        $(function () {
+            $("#categoria").on("change",function(){
+                var opcion =$("#categoria option:selected").val();
+                $("li").filter(".item").hide();
+                if(opcion=="todos"){
+                    $("li").show();
+                }else{
+                    $("li").filter("."+opcion).show();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
