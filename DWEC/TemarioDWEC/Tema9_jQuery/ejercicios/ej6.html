@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio 6: Altas, bajas y modificaciones en una tabla</title>
+    <link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+    <script src="../recursos/jquery-3.5.1.js"></script>
+    <style type="text/css">
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        td,
+        th {
+            padding: 5px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio 6: Altas, bajas y modificaciones en una tabla</h1>
+    <hr />
+    <h1>Datos de usuarios</h1>
+    <p>DNI: <input id="dni" name="dni" type="text"></p>
+    <p>Nombre: <input id="nombre" name="nombre" type="text"></p>
+    <p>Edad: <input id="edad" name="edad" type="text"></p>
+    <button id="btn">Cambiar</button>
+    <table id="tabla">
+        <tr>
+            <th>DNI</th>
+            <th>NOMBRE</th>
+            <th>EDAD</th>
+        </tr>
+    </table>
+    <script>
+
+        $(function () {
+            $("#btn").click("click", function () {
+                var flag = false;
+
+                var dni = $("#dni").val();
+                var nombre = $("#nombre").val();
+                var edad = $("#edad").val();
+
+                $("table tr").each(function (i) {
+                    var celda = $(this).children().filter("td").first().text();
+                    if (celda == dni) {
+                        flag = true;
+                        $(this).html("<td>" + dni + "</td><td>" + nombre + "</td><td>" + edad + "</td>");
+                    }
+                });
+
+                if (!flag) {
+                    $("#tabla").append("<tr><td>" + dni + "</td><td>" + nombre + "</td><td>" + edad + "</td></tr>");
+
+                }
+
+                $('#tabla tr:last td:first').click("click", function () {
+                    $(this).parent().remove();
+                });
+
+                $("#tabla td").dblclick("click", function () {
+                    $(this)
+                        .animate({ width: "+=50" }, 350)
+                        .animate({ height: "+=50" }, 350)
+                        .animate({ fontSize: "+=2em" }, 350)
+                        .animate({ borderWidth: "+=15" }, 350)
+                        .animate({ borderWidth: "-=15" }, 350)
+                        .animate({ fontSize: "-=2em" }, 350)
+                        .animate({ height: "-=50" }, 350)
+                        .animate({ width: "-=50" }, 350);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

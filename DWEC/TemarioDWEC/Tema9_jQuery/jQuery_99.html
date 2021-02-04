@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_99 - Ejercicio: Manipular tablas</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.3.1.js"></script>
+		<style>
+			td {
+				border : 2px solid black;
+				width : 40px;
+				height : 40px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_99 - Ejercicio: Manipular tablas</h1>
+		<hr />
+			<h3>Enunciado</h3>
+			<h4>En la primera tabla</h4>
+			<ul>
+				<li><b>Click en una celda impar de la primera fila:</b> Se duplica la fila</li>
+				<li><b>Click en una celda par de la primera fila:</b> Se elimina la última filada</li>
+			</ul>
+			<h4>En la segunda tabla</h4>
+			<ul>
+				<li><b>Click en una celda impar:</b> Se introduce una fila nueva con valores aleatorios en cada celda</li>
+				<li><b>Click en una celda par:</b> Se elimina la última filada</li>
+			</ul>
+		<hr />
+
+		<h3>TABLA 1</h3>
+		<h4>Los eventos de click únicamente en la primera fila</h4>
+		<table id="tabla1">
+			<tbody>
+				<tr>
+					<td>A</td>
+					<td>B</td>
+					<td>C</td>
+					<td>D</td>
+					<td>E</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br /><br /><br />
+
+		<h3>TABLA 2</h3>
+		<h4>Los eventos de click en todas las filas</h4>
+		<table id="tabla2">
+			<tbody>
+				<tr>
+					<td>A</td>
+					<td>B</td>
+					<td>C</td>
+					<td>D</td>
+					<td>E</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<hr />
+
+		<script>
+
+			function ponerEventoInsertar(j) {
+				j.parent("#tabla2 tr").clone().appendTo("#tabla2 tbody");
+				
+				$("#tabla2 tr:last td").each(function (i,e) {
+					var contenido = Math.trunc(Math.random()*100);
+					$(this).text(contenido);
+				});
+
+				$("#tabla2 tr:last").children("td:even").each(function (i,e) {
+					$(this).on("click",function (event) {
+						ponerEventoInsertar($(this));
+					});
+				});
+
+				$("#tabla2 tr:last").children("td:odd").each(function (i,e) {
+					$(this).on("click",function (event) {
+						$("#tabla2 tr:last").remove();
+					});
+				});
+			};
+
+
+			$(function (){
+				$("#tabla1 tr").on("click","td:even",function(event) {
+					$(this).parent("tr").clone().appendTo("#tabla1 tbody"); //Sin clonar eventos
+					//$(this).parent("tr").clone(true).appendTo("#tabla1 tbody"); //Clonando eventos y el efecto es el mismo para las filas creadas
+				});
+
+				$("#tabla1 tr td:odd").click(function(event) {
+					$("#tabla1 tr:last").remove();
+				});
+
+				$("#tabla2 tr td:even").click(function(event) {
+					ponerEventoInsertar($(this));
+				});
+
+				$("#tabla2 tr td:odd").click(function(event) {
+					$("#tabla2 tr:last").remove();
+				});
+			});
+
+		</script>
+	</body>
+</html>

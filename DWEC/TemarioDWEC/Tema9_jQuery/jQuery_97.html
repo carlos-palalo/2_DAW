@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_97 - Ejercicio: Convertir tabla en listas de distinto tipo</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.3.1.js"></script>
+	</head>
+	<body>
+		<h1>jQuery_97 - Ejercicio: Convertir tabla en listas de distinto tipo</h1>
+		<hr />
+
+		<button id="b1">Un única lista con todos los elementos de la tabla</button>
+		<button id="b2">Una lista por cada columna de la tabla</button>
+		<button id="b3">Una lista por cada fila de la tabla</button>
+
+		<br /><br />
+
+		<table id="tabla1" border="2">
+			<tr>
+				<td>Capítulo 1</td>
+				<td>A</td>
+				<td>B</td>
+				<td>C</td>
+			</tr>
+			<tr>
+				<td>Capítulo 2</td>
+				<td>D</td>
+				<td>E</td>
+				<td>F</td>
+			</tr>
+			<tr>
+				<td>Capítulo 3</td>
+				<td>G</td>
+				<td>H</td>
+				<td>I</td>
+			</tr>
+			<tr>
+				<td>Capítulo 4</td>
+				<td>J</td>
+				<td>K</td>
+				<td>L</td>
+			</tr>
+			<tr>
+				<td>Capítulo 5</td>
+				<td>M</td>
+				<td>N</td>
+				<td>O</td>
+			</tr>
+			<tr>
+				<td>Capítulo 6</td>
+				<td>P</td>
+				<td>Q</td>
+				<td>R</td>
+			</tr>
+		</table>
+
+		<br />
+		<p id="titulo"></p>
+		<br />
+
+		<script>
+			
+			$(function (){
+				$("#b1").click(function () {
+					$("body ul").remove();
+					$("body").append("<ul>");
+					$("table tr td").each(function(i) {
+						$("body ul").append("<li>" + $(this).text() + "</li>");
+					});
+					$("#titulo").html("<h2>Un única lista con todos los elementos de la tabla</h2>");
+				});
+
+
+				$("#b2").click(function () {
+					$("body ul").remove();
+					$("table tr:first").children().each(function(x) {
+						$("body").append("<ul>");
+						$("table tr").each(function(i) {
+							$("body ul:last").append("<li>" + $(this).children().eq(x).text() + "</li>");
+						});
+					});
+					$("#titulo").html("<h2>Una lista por cada columna de la tabla</h2>");
+				});
+
+
+				$("#b3").click(function () {
+					$("body ul").remove();
+
+					$("table tr").each(function(x) {
+						$("body").append("<ul>");
+						$(this).children().each(function(i) {
+							$("body ul:last").append("<li>" + $(this).text() + "</li>");
+						});
+					});
+					$("#titulo").html("<h2>Una lista por cada fila de la tabla</h2>");
+				});
+			});
+
+		</script>
+	</body>
+</html>

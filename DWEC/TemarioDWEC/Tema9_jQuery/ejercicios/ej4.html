@@ -77,7 +77,7 @@
                 $("ul").remove();
                 $("table tr").each(function () {
                     $("#lista").append("<ul>");
-                    $(this).children().each(function (x) {
+                    $(this).children().each(function () {
                         $("#lista ul:last").append("<li>" + $(this).text() + "</li>");
                     });
                 });

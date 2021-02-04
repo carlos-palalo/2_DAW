@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_98 - Ejercicio: Altas, bajas y moodificaciones en una tabla</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.3.1.js"></script>
+		<style>
+			table, th, td {
+				border: 2px solid black;
+				font-Size: 18px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_98 - Ejercicio: Altas, bajas y moodificaciones en una tabla</h1>
+		<hr />
+			<h3>Enunciado</h3>
+			<ul>
+				<li><b>Introducir nuevas filas en la tabla:</b> El usuario introduce los campos en las cajas de texto y al pulsar el botón "Cambiar" los datos se agregan al final de la tabla. No se puede dejar el DNI vacío.</li>
+				<li><b>Modificar datos:</b> Si introduce un DNI ya existente no se agregará una fila nueva. Se sustituirán el nombre y la edad de la tabla por los introducidos en las cajas de texto.</li>
+				<li><b>Eliminar filas:</b> Al hacer clic con el ratón en cualquiera de las celdas de datos correspondientes al DNI se eliminará la fila entera.</li>
+				<li><b>Poner datos:</b> Al hacer clic con el ratón en cualquiera de las celdas de datos (salvo la del DNI que es utilizada para eliminar) se completarán las cajas de texto con los valores de la fila sobre la que se ha hecho clic.</li>
+				<li><b>Animación:</b> Al realizar la operación anterior se producirá una animación sobre la celda sobre la que se ha hecho clic. Se debe aumentar el tamaño de la fuente. Se debe aumentar el borde. Al final debe quedar como al principio.</li>
+			</ul>
+		<hr />
+
+		<h2>Datos de usuarios</h2>
+
+		DNI<br />
+		<input type="text" id="dni">
+		<br />
+		
+		Nombre<br />
+		<input type="text" id="nombre">
+		<br />
+
+		Edad<br />
+		<input type="text" id="edad">
+		<br /><br /><br />
+
+		<button id="bCambiar">Cambiar</button>
+		<br /><br />
+
+		<table id="datos">
+			<tbody id="bodydatos">
+				<tr><td>DNI</td><td>NOMBRE</td><td>EDAD</td></tr>
+				
+			</tbody>
+		</table>
+
+		<script>
+
+			$(function (){
+				$("#bCambiar").click(function() {
+					var dni = $("#dni").val().toUpperCase();
+					var nombre = $("#nombre").val().toUpperCase();
+					var edad = $("#edad").val().toUpperCase();
+					$("#dni").val("");
+					$("#nombre").val("");
+					$("#edad").val("");
+					var existe = false;
+
+
+					$("#datos > tbody").children("tr").each(function(indice,texto) {
+						if(indice!=0) {
+							if(dni==$(this).children("td").eq(0).text().toUpperCase()) {
+								existe = true;
+								$(this).children("td").eq(1).text(nombre);
+								$(this).children("td").eq(2).text(edad);
+							}
+						}
+					});
+
+					
+					if(!existe) {
+						var stringHTML = "";
+						stringHTML += "<td>" + dni + "</td>";
+						stringHTML += "<td>" + nombre + "</td>";
+						stringHTML += "<td>" + edad + "</td>";
+						$("#datos > tbody").append("<tr>"+stringHTML+"</tr>");
+
+
+						$("#datos > tbody").children("tr").last().children("td").each(function(i) {
+							$(this).on("click", {x:i}, function(evento) {
+								if(evento.data.x!=0) {
+									//Animación
+									$(this).animate({fontSize:"48px"},1000).animate({borderWidth:"15px"},1000).fadeOut(1000).fadeIn(1000);
+									$(this).animate({fontSize:"18px"},1000).animate({borderWidth:"2px"},1000);
+
+									//Escribir en los input
+									$("#dni").val($(this).parent("tr").children("td").eq(0).text());
+									$("#nombre").val($(this).parent("tr").children("td").eq(1).text());
+									$("#edad").val($(this).parent("tr").children("td").eq(2).text());
+								} else {
+									$(this).parent("tr").remove();
+								}
+							});
+						});
+					}
+				});
+			});
+
+	</script>
+	</body>
+</html>
