@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS vacunas;
 CREATE TABLE vacunas(
 id 					INT AUTO_INCREMENT PRIMARY KEY,
 comunidad 			VARCHAR(45) NOT NULL,
-pzifer 				INT NOT NULL,
-moderna 			INT NOT NULL,
+pzifer 				INT,
+moderna 			INT,
 dosis_administradas 	INT NOT NULL,
 pauta_Completa 		INT NOT NULL,
 fecha_Ult_Vacuna 		DATE NOT NULL
