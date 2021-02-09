@@ -403,3 +403,11 @@ TEST_FORMAS JURIDICAS.
 8- c
 
 ------------------- Tema 7 --------------------
+
+Si el socio trabaja en la empresa y no va a dirigir o administrar -> Regimen general
+Si el socio no trabaja y no recibe salario (participa de los beneficios) -> RETA
+Si el socio trabaja en la empresa y dirige o administra -> RETA
+
+Calculo ->
+	17 - Nombre
+	
