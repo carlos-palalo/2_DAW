@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ajax_03 - Básico con acceso a una base de datos</title>
+		<link rel="icon" type="image/x-icon" href="../recursos/favicon.ico">
+		<style type="text/css">
+			div {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>ajax_03 - Básico con acceso a una base de datos</h1>
+		<hr />
+		
+		<br /><br />
+
+		<!-- PASO 1: petición javascript -->
+		<button onclick="realizarPeticion();">Realizar petición</button>
+
+		<br /><br />
+
+		<div id="contenido"></div>
+
+		<script type="text/javascript">
+
+			function procesarDatos1(_libros) {
+				var cadenaHTML = "";
+
+				_libros.forEach(function (_elemento) {
+					if(_elemento.hasOwnProperty("isbn"))
+						cadenaHTML += "ISBN: " + _elemento.isbn + "<br />";
+					if(_elemento.hasOwnProperty("titulo"))
+						cadenaHTML += "TITULO: " + _elemento.titulo + "<br />";
+					if(_elemento.hasOwnProperty("autor"))
+						cadenaHTML += "AUTOR: " + _elemento.autor + "<br />";
+					if(_elemento.hasOwnProperty("editorial"))
+						cadenaHTML += "EDITORIAL: " + _elemento.editorial + "<br />";
+					if(_elemento.hasOwnProperty("paginas"))
+						cadenaHTML += "PAGINAS: " + _elemento.paginas + "<br />";
+					if(_elemento.hasOwnProperty("precio"))
+						cadenaHTML += "PRECIO: " + _elemento.precio + "<br />";
+					cadenaHTML += "<br /><hr /><br />";
+				});
+
+				document.getElementById("contenido").innerHTML = cadenaHTML;
+			}
+
+
+			function procesarDatos2(_libros) {
+				var cadenaHTML = "";
+
+				_libros.forEach(function (_elemento) {
+					for(var i in _elemento) {
+						cadenaHTML += i.toUpperCase() + ": " + _elemento[i] + "<br />";
+					}
+					cadenaHTML += "<br /><hr /><br />";
+				});
+
+				document.getElementById("contenido").innerHTML = cadenaHTML;
+			}
+
+
+			function realizarPeticion() {
+				var peticion;
+
+				//PASO 2: Creación del objeto XMLHttpRequest
+				if(window.XMLHttpRequest) {
+					peticion = new XMLHttpRequest();
+				} else if(window.ActiveXObject) {
+					peticion = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				//PASO 3: Realizar la petición al servidor
+				peticion.open('GET','ajax_03.php',true);
+  				peticion.send(null);
+
+  				//PASO 4: Gestionar la respuesta (en este caso con una función anónima)
+  				peticion.onreadystatechange = function (evento) {
+					if((peticion.readyState == 4) && ((peticion.status == 200) )){
+						//PASO 5: procesar la respuesta
+						//document.getElementById("contenido").innerHTML = peticion.responseText;
+
+						var libros = JSON.parse(peticion.responseText);
+						//procesarDatos1(libros);
+						procesarDatos2(libros);
+					}
+  				};
+			}
+			
+		</script>
+	</body>
+</html>

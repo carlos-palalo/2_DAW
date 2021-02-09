@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ajax_01 - Básico</title>
+		<link rel="icon" type="image/x-icon" href="../recursos/favicon.ico">
+		<style type="text/css">
+			div {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>ajax_01 - Básico</h1>
+		<hr />
+		
+		<br /><br />
+
+		<!-- PASO 1: petición javascript -->
+		<button onclick="realizarPeticion();">Realizar petición</button>
+
+		<br /><br />
+
+		<div id="contenido"></div>
+
+		<script type="text/javascript">
+			function realizarPeticion() {
+				var peticion;
+
+  				//PASO 2: Creación del objeto XMLHttpRequest
+				if(window.XMLHttpRequest) {
+					peticion = new XMLHttpRequest();
+				} else if(window.ActiveXObject) {
+					peticion = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+
+  				//PASO 3: Realizar la petición al servidor
+				peticion.open('GET','ajax_01.txt',true);
+  				peticion.send(null);
+
+
+  				//PASO 4: Gestionar la respuesta (en este caso con una función anónima)
+  				peticion.onreadystatechange = function (evento) {
+					if((peticion.readyState == 4) && ((peticion.status == 200) )){
+						//PASO 5: procesar la respuesta
+						document.getElementById("contenido").innerHTML = peticion.responseText;
+					}
+					/*console.log(evento.target.readyState);
+					if((evento.target.readyState == 4) && ((evento.target.status == 200) )){
+						//PASO 5: procesar la respuesta
+						document.getElementById("contenido").innerHTML = peticion.responseText;
+					}*/
+  				};
+			}
+		</script>
+	</body>
+</html>

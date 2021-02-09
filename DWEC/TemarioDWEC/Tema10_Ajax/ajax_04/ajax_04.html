@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ajax_04 - Paso de parámetros</title>
+		<link rel="icon" type="image/x-icon" href="../recursos/favicon.ico">
+		<style type="text/css">
+			div {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>ajax_04 - Paso de parámetros</h1>
+		<hr />
+		
+		<br /><br />
+
+		<!-- PASO 1: petición javascript -->
+		<button onclick="realizarPeticion();">Realizar petición</button>
+
+		<br /><br />
+
+		<div id="contenido"></div>
+
+		<script type="text/javascript">
+
+			function realizarPeticion() {
+				var peticion1,peticion2;
+
+				//PASO 2: Creación del objeto XMLHttpRequest
+				if(window.XMLHttpRequest) {
+					peticion1 = new XMLHttpRequest();
+					peticion2 = new XMLHttpRequest();
+				} else if(window.ActiveXObject) {
+					peticion1 = new ActiveXObject("Microsoft.XMLHTTP");
+					peticion2 = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				//PASO 3: Realizar la petición al servidor
+				var vmarca = "opel";
+				var vmodelo = "corsa";
+				var vcolor = "rojo";
+				var vprecio = "8000"
+
+				//GET
+				peticion1.open('GET','ajax_04get.php?marca=' + vmarca + '&modelo=' + vmodelo,true);
+				peticion1.send(null);
+
+				//PASO 4: Gestionar la respuesta (en este caso con una función anónima)
+  				peticion1.onreadystatechange = function (evento) {
+					if((peticion1.readyState == 4) && ((peticion1.status == 200) )){
+						//PASO 5: procesar la respuesta
+						document.getElementById("contenido").innerHTML += peticion1.responseText;
+					}
+  				};
+
+				//POST
+				peticion2.open('POST','ajax_04post.php',true);
+				peticion2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				peticion2.send('color=' + vcolor + '&precio=' + vprecio);
+
+				//PASO 4: Gestionar la respuesta (en este caso con una función anónima)
+  				peticion2.onreadystatechange = function (evento) {
+					if((peticion2.readyState == 4) && ((peticion2.status == 200) )){
+						//PASO 5: procesar la respuesta
+						document.getElementById("contenido").innerHTML += peticion2.responseText;
+					}
+  				};
+			}
+
+		</script>
+	</body>
+</html>
