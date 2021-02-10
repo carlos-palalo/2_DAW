@@ -30,24 +30,21 @@ public class Controlador extends HttpServlet {
         //parámetro acción, se obtiene de la URL de index.html, puede ser 'alta' o 'listado'
         String op = request.getParameter("accion");
         //Si se ha pulsado en alta de departameno se visualiza la pantalla de alta
-        if (op.equals("alta")) {
-            response.sendRedirect("alta.jsp");
-        }
-        //Si se ha pulsado en listado, primero se cargan los datos de empleados en una lista y luego se envian a listado.jsp
-        if (op.equals("listado")) {
-            OperacionesBD operBD = new OperacionesBD();
-            ArrayList lista = operBD.listarEmp(); //se cargan los datos de los dep
-            request.setAttribute("empleados", lista); //se preparan para enviar al jsp
-            RequestDispatcher rd = request.getRequestDispatcher("/listado.jsp");
-            rd.forward(request, response);
-        }
 
-        //Se insertar departamento en la tabla y luego se visualiza index.html
-        if (op.equals("insertar")) {
-            Empleado emp = (Empleado) request.getAttribute("emple"); //obtener deps
-            OperacionesBD operBD = new OperacionesBD();
-            operBD.insertaEmpleado(emp); //se insertan en tabla empleados
-            response.sendRedirect("index.html"); //se muestra la página inicial
+        switch (op) {
+            case "consulta":
+                OperacionesBD operBD = new OperacionesBD();
+                ArrayList lista = operBD.listar();
+                request.setAttribute("empleados", lista);
+                RequestDispatcher rd = request.getRequestDispatcher("/consulta.jsp");
+                rd.forward(request, response);
+                break;
+            case "contador":
+                response.sendRedirect("baja.jsp");
+                break;
+            case "contadortodos":
+                response.sendRedirect("modificar.jsp");
+                break;
         }
     }
 } //fin de la clase Controlador

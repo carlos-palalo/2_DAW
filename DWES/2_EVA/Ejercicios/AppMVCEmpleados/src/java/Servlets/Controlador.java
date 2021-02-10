@@ -30,24 +30,42 @@ public class Controlador extends HttpServlet {
         //parámetro acción, se obtiene de la URL de index.html, puede ser 'alta' o 'listado'
         String op = request.getParameter("accion");
         //Si se ha pulsado en alta de departameno se visualiza la pantalla de alta
-        if (op.equals("alta")) {
-            response.sendRedirect("alta.jsp");
-        }
-        //Si se ha pulsado en listado, primero se cargan los datos de empleados en una lista y luego se envian a listado.jsp
-        if (op.equals("listado")) {
-            OperacionesBD operBD = new OperacionesBD();
-            ArrayList lista = operBD.listarEmp(); //se cargan los datos de los dep
-            request.setAttribute("empleados", lista); //se preparan para enviar al jsp
-            RequestDispatcher rd = request.getRequestDispatcher("/listado.jsp");
-            rd.forward(request, response);
-        }
 
-        //Se insertar departamento en la tabla y luego se visualiza index.html
-        if (op.equals("insertar")) {
-            Empleado emp = (Empleado) request.getAttribute("emple"); //obtener deps
-            OperacionesBD operBD = new OperacionesBD();
-            operBD.insertaEmpleado(emp); //se insertan en tabla empleados
-            response.sendRedirect("index.html"); //se muestra la página inicial
+        switch (op) {
+            case "alta":
+                response.sendRedirect("alta.jsp");
+                break;
+            case "baja":
+                response.sendRedirect("baja.jsp");
+                break;
+            case "modificar":
+                response.sendRedirect("modificar.jsp");
+                break;
+            case "listado":
+                OperacionesBD operBD = new OperacionesBD();
+                ArrayList lista = operBD.listarEmp(); //se cargan los datos de los dep
+                request.setAttribute("empleados", lista); //se preparan para enviar al jsp
+                RequestDispatcher rd = request.getRequestDispatcher("/listado.jsp");
+                rd.forward(request, response);
+                break;
+            case "insertar":
+                Empleado emp = (Empleado) request.getAttribute("emple"); //obtener deps
+                OperacionesBD insBD = new OperacionesBD();
+                insBD.insertaEmpleado(emp); //se insertan en tabla empleados
+                response.sendRedirect("index.html"); //se muestra la página inicial
+                break;
+            case "actualizar":
+                Empleado empAct = (Empleado) request.getAttribute("emple");
+                OperacionesBD actBD = new OperacionesBD();
+                actBD.actualizarEmpleado(empAct);
+                response.sendRedirect("index.html");
+                break;
+            case "eliminar":
+                Empleado empDel = (Empleado) request.getAttribute("emple");
+                OperacionesBD delBD = new OperacionesBD();
+                delBD.eliminarEmpleado(empDel);
+                response.sendRedirect("index.html");
+                break;
         }
     }
 } //fin de la clase Controlador

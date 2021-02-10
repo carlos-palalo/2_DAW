@@ -60,4 +60,36 @@ public class OperacionesBD {
             e.printStackTrace();
         }
     } //fin insertaDepartamento
+
+    //ELIMINAR
+    public void eliminarDepartamento(Departamento d) {
+        try {
+            Connection conexion = getConnection();
+            Statement sentencia = conexion.createStatement();
+            String sql = "DELETE FROM departamentos WHERE dept_no=" + d.getDeptno();
+            if (d.getDeptno() != 0) {
+                sentencia.execute(sql);
+            }
+            System.out.println("SQL: " + sql);
+            conexion.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //MODIFICAR
+    public void actualizarDepartamento(Departamento d) {
+        try {
+            Connection conexion = getConnection();
+            Statement sentencia = conexion.createStatement();
+            String sql = "UPDATE departamentos SET dnombre='" + d.getDnombre() + "', loc='" + d.getLoc() + "' WHERE dept_no=" + d.getDeptno();
+            if (d.getDeptno() != 0 && !"".equals(d.getLoc()) && !"".equals(d.getDnombre())) {
+                sentencia.execute(sql);
+            }
+            System.out.println("SQL: " + sql);
+            conexion.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 } //fin clase OperacionesBD

@@ -13,35 +13,24 @@ import java.sql.Date;
  */
 public class Empleado {
 
-    private int empno;
+    private int emp_no;
     private String apellido;
-    private String oficio;
-    private int dir;
-    private java.sql.Date fechaalt;
-    private float salario;
-    private float comision;
     private byte deptno;
+    private String dnombre;
 
-    public Empleado() {
-    }
-
-    public Empleado(int empno, String apellido, String oficio, int dir, java.sql.Date fechaalt, float salario, float comision, byte deptno) {
-        this.empno = empno;
+    public Empleado(int emp_no, String apellido, byte deptno, String dnombre) {
+        this.emp_no = emp_no;
         this.apellido = apellido;
-        this.oficio = oficio;
-        this.dir = dir;
-        this.fechaalt = fechaalt;
-        this.salario = salario;
-        this.comision = comision;
         this.deptno = deptno;
+        this.dnombre = dnombre;
     }
 
     public int getEmpno() {
-        return empno;
+        return emp_no;
     }
 
-    public void setEmpno(int empno) {
-        this.empno = empno;
+    public void setEmpno(int emp_no) {
+        this.emp_no = emp_no;
     }
 
     public String getApellido() {
@@ -52,46 +41,6 @@ public class Empleado {
         this.apellido = apellido;
     }
 
-    public String getOficio() {
-        return oficio;
-    }
-
-    public void setOficio(String oficio) {
-        this.oficio = oficio;
-    }
-
-    public int getDir() {
-        return dir;
-    }
-
-    public void setDir(int dir) {
-        this.dir = dir;
-    }
-
-    public java.sql.Date getFechaalt() {
-        return fechaalt;
-    }
-
-    public void setFechaalt(java.sql.Date fechaalt) {
-        this.fechaalt = fechaalt;
-    }
-
-    public float getSalario() {
-        return salario;
-    }
-
-    public void setSalario(float salario) {
-        this.salario = salario;
-    }
-
-    public float getComision() {
-        return comision;
-    }
-
-    public void setComision(float comision) {
-        this.comision = comision;
-    }
-
     public byte getDeptno() {
         return deptno;
     }
@@ -99,4 +48,14 @@ public class Empleado {
     public void setDeptno(byte deptno) {
         this.deptno = deptno;
     }
+
+    public String getDnombre() {
+        return dnombre;
+    }
+
+    public void setDnombre(String dnombre) {
+        this.dnombre = dnombre;
+    }
+
+    
 }   //fin clase Empleado

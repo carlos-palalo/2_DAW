@@ -52,7 +52,7 @@ public class OperacionesBD {
             Connection conexion = getConnection();
             Statement sentencia = conexion.createStatement();
             String sql = "INSERT INTO empleados VALUES(" + e.getEmpno() + ",'" + e.getApellido() + "','" + e.getOficio() + "'," + e.getDir() + ",'" + fecha() + "'," + e.getSalario() + "," + e.getComision() + "," + e.getDeptno() + ")";
-            if (e.getDeptno() != 0) {
+            if (e.getEmpno() != 0) {
                 sentencia.execute(sql);
             }
             System.out.println("SQL: " + sql);
@@ -61,8 +61,40 @@ public class OperacionesBD {
             ex.printStackTrace();
         }
     } //fin insertaDepartamento
-    
-    private java.sql.Date fecha(){
-        return new java.sql.Date(new java.util.Date().getTime()); 
+
+    //ELIMINAR
+    public void eliminarEmpleado(Empleado e) {
+        try {
+            Connection conexion = getConnection();
+            Statement sentencia = conexion.createStatement();
+            String sql = "DELETE FROM empleados WHERE emp_no=" + e.getEmpno();
+            if (e.getEmpno() != 0) {
+                sentencia.execute(sql);
+            }
+            System.out.println("SQL: " + sql);
+            conexion.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    //ACTUALIZAR
+    public void actualizarEmpleado(Empleado e) {
+        try {
+            Connection conexion = getConnection();
+            Statement sentencia = conexion.createStatement();
+            String sql = "UPDATE empleados SET apellido='" + e.getApellido() + "', oficio='" + e.getOficio() + "', dir=" + e.getDir() + ", salario=" + e.getSalario() + ", comision=" + e.getComision() + ", dept_no=" + e.getDeptno() + " WHERE emp_no=" + e.getEmpno();
+            if (e.getEmpno() != 0) {
+                sentencia.execute(sql);
+            }
+            System.out.println("SQL: " + sql);
+            conexion.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private java.sql.Date fecha() {
+        return new java.sql.Date(new java.util.Date().getTime());
     }
 } //fin clase OperacionesBD

@@ -30,24 +30,41 @@ public class Controlador extends HttpServlet {
         //parámetro acción, se obtiene de la URL de index.html, puede ser 'alta' o 'listado'
         String op = request.getParameter("accion");
         //Si se ha pulsado en alta de departameno se visualiza la pantalla de alta
-        if (op.equals("alta")) {
-            response.sendRedirect("alta.jsp");
-        }
-        //Si se ha pulsado en listado, primero se cargan los datos de departamentos en una lista y luego se envian a listado.jsp
-        if (op.equals("listado")) {
-            OperacionesBD operBD = new OperacionesBD();
-            ArrayList lista = operBD.listarDep(); //se cargan los datos de los dep
-            request.setAttribute("departamentos", lista); //se preparan para enviar al jsp
-            RequestDispatcher rd = request.getRequestDispatcher("/listado.jsp");
-            rd.forward(request, response);
-        }
-
-        //Se insertar departamento en la tabla y luego se visualiza index.html
-        if (op.equals("insertar")) {
-            Departamento dep = (Departamento) request.getAttribute("depart"); //obtener deps
-            OperacionesBD operBD = new OperacionesBD();
-            operBD.insertaDepartamento(dep); //se insertan en tabla departamentos
-            response.sendRedirect("index.html"); //se muestra la página inicial
+        switch (op) {
+            case "alta":
+                response.sendRedirect("alta.jsp");
+                break;
+            case "baja":
+                response.sendRedirect("baja.jsp");
+                break;
+            case "modificar":
+                response.sendRedirect("modificar.jsp");
+                break;
+            case "insertar":
+                Departamento dep = (Departamento) request.getAttribute("depart"); //obtener deps
+                OperacionesBD operBD = new OperacionesBD();
+                operBD.insertaDepartamento(dep); //se insertan en tabla departamentos
+                response.sendRedirect("index.html"); //se muestra la página inicial
+                break;
+            case "eliminar":
+                Departamento depDelete = (Departamento) request.getAttribute("depart");
+                OperacionesBD delBD = new OperacionesBD();
+                delBD.eliminarDepartamento(depDelete);
+                response.sendRedirect("index.html");
+                break;
+            case "actualizar":
+                Departamento depAct = (Departamento) request.getAttribute("depart");
+                OperacionesBD actBD = new OperacionesBD();
+                actBD.actualizarDepartamento(depAct);
+                response.sendRedirect("index.html"); 
+                break;
+            case "listado":
+                OperacionesBD listBD = new OperacionesBD();
+                ArrayList lista = listBD.listarDep(); //se cargan los datos de los dep
+                request.setAttribute("departamentos", lista); //se preparan para enviar al jsp
+                RequestDispatcher rd = request.getRequestDispatcher("/listado.jsp");
+                rd.forward(request, response);
+                break;
         }
     }
 } //fin de la clase Controlador

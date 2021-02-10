@@ -24,6 +24,9 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Estructura de tabla para la tabla `departamentos`
 --
 
+DROP TABLE empleados;
+DROP TABLE departamentos;
+
 CREATE TABLE IF NOT EXISTS `departamentos` (
   `dept_no` tinyint(2) NOT NULL,
   `dnombre` varchar(15) NOT NULL,
