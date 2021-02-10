@@ -16,6 +16,14 @@
     background-color: bisque;
 }
 
+#cuadroSuperior {
+    border: 12px solid gray;
+    width: 66%;
+    margin:20px;
+    padding: 30px 30px;
+    background-color: bisque;
+}
+
 #cuadroBotones {
     width: 50%;
     margin:20px;
@@ -38,7 +46,7 @@ button[disabled] {
     background-color: gray;
 }
 
-input[type=text], input[type=number] {
+input[type=text], input[type=number], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -67,7 +75,7 @@ select {
 option {
     background-color:tan;
     padding: 10px;
-    font-size: 20px;
+    font-size: 14px;
 }
 
 span {
@@ -78,4 +86,9 @@ span {
 
 #cuadroDerecha div {
     padding: 10px 10px;
+}
+
+h3 {
+    font-family: arial;
+    color:cadetblue;
 }
