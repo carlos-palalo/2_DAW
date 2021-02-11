@@ -1,0 +1,188 @@
+<!------------------------------------->
+<!-- Carlos Palacios Alonso - 2º DAW -->
+<!------------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Examen Parte C - Botones</title>
+    <script src="jquery-3.5.1.js"></script>
+    <style>
+        button {
+            display: block;
+        }
+
+        table {
+            border: 5px solid black;
+        }
+
+        th,
+        td {
+            border: 2px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Examen Parte C - Botones</h1>
+    <hr>
+    <ul id="lista"></ul>
+    <button id="confirmar" disabled>CONFIRMAR E INSERTAR EN LA BASE DE DATOS</button><br>
+    <button id="mostrar">VER SOCIOS DE LA BASE DE DATOS</button><br>
+    <table id="tabla"></table><br>
+    <button id="jquery" disabled>HABILITAR JQUERY</button><br>
+
+    <script>
+        window.addEventListener("storage", function (event) {   //RECEPCIÓN DE DATOS
+            var socioJSON = localStorage.getItem("socio");
+            var socio = JSON.parse(socioJSON);
+
+            var c = "";
+            c += "<li><b>Identificador:</b> " + socio.identificador + "</li>";
+            c += "<li><b>Nombre:</b> " + socio.nombre + "</li>";
+            c += "<li><b>Direccion:</b> " + socio.direccion + "</li>";
+            if (socio.sexo == "") {
+                c += "<li><b>Sexo:</b> Sin determinar</li>";
+            } else {
+                c += "<li><b>Sexo:</b> " + socio.sexo + "</li>";
+            }
+            if (socio.premium == "on") {
+                c += "<li><b>Premium:</b> Si</li>";
+
+            } else {
+                c += "<li><b>Premium:</b> No</li>";
+            }
+
+            document.getElementById("lista").innerHTML = c;
+            document.getElementById("confirmar").removeAttribute("disabled");
+        });
+
+        document.getElementById("confirmar").addEventListener("click", function () {    //CONFIRMAR E INSERTAR EN LA BASE DE DATOS
+            var socioJSON = localStorage.getItem("socio");
+            var socio = JSON.parse(socioJSON);
+
+            if (window.indexedDB) {
+                peticion = window.indexedDB.open("examen");
+
+                peticion.onsuccess = function (evento) {
+                    console.log("Success");
+
+                    var bd = evento.target.result;
+
+                    var transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
+                    var almacenSocios = transaccion.objectStore("socios");
+
+                    //console.log(parseInt(socio.identificador));
+                    var peticionGetAll = almacenSocios.getAll(parseInt(socio.identificador));
+
+                    peticionGetAll.onsuccess = function () {
+                        var valores = peticionGetAll.result;
+                        //console.log(valores);
+                        if (valores[0] == undefined) {
+                            console.log("INSERCIÓN");
+                            localStorage.setItem("operacion", "INSERCIÓN");
+                            almacenSocios.add({ identificador: parseInt(socio.identificador), nombre: socio.nombre, direccion: socio.direccion, sexo: socio.sexo, premium: socio.premium });
+
+                        } else {
+                            console.log("ACTUALIZACIÓN");
+                            localStorage.setItem("operacion", "ACTUALIZACIÓN");
+                            almacenSocios.put({ identificador: parseInt(socio.identificador), nombre: socio.nombre, direccion: socio.direccion, sexo: socio.sexo, premium: socio.premium });
+                        }
+                    }
+                }
+
+                peticion.onerror = function (evento) {
+                    alert("No se ha creado la base de datos: " + evento.target.errorCode);
+                };
+
+                peticion.onupgradeneeded = function (evento) {
+                    console.log("Upgradeneeded");
+                };
+            } else {
+                console.log("IndexedDB no está soportado");
+            }
+        });
+
+        document.getElementById("mostrar").addEventListener("click", function () {  //VER SOCIOS DE LA BASE DE DATOS
+            if (window.indexedDB) {
+                var peticion = window.indexedDB.open("examen");
+
+                peticion.onsuccess = function (evento) {
+                    console.log("Sucess ");
+                    var bd = evento.target.result;
+                    var transaccion = bd.transaction(bd.objectStoreNames, "readwrite");
+                    var almacenSocios = transaccion.objectStore("socios");
+
+                    var peticion = almacenSocios.getAll();
+                    peticion.onsuccess = function () {
+                        var valores = peticion.result;
+                        var c = "";
+                        c += "<tr>";
+                        c += "<th>IDENTIFICADOR</th>";
+                        c += "<th>NOMBRE</th>";
+                        c += "<th>DIRECCIÓN</th>";
+                        c += "<th>SEXO</th>";
+                        c += "<th>PREMIUM</th>";
+                        c += "</tr>";
+
+                        for (item in valores) {
+                            c += "<tr>";
+                            c += "<td>" + parseInt(valores[item].identificador) + "</td>";
+                            c += "<td>" + valores[item].nombre + "</td>";
+                            c += "<td>" + valores[item].direccion + "</td>";
+                            if (valores[item].sexo == "") {
+                                c += "<td>Sin determinar</td>";
+                            } else {
+                                c += "<td>" + valores[item].sexo + "</td>";
+                            }
+                            if (valores[item].premium == "on") {
+                                c += "<td>Sí</td>";
+                            } else {
+                                c += "<td>No</td>";
+                            }
+                            c += "</tr>";
+                        }
+                        document.getElementById("tabla").innerHTML = c;
+                    }
+                    bd.close();
+                };
+                peticion.onerror = function (evento) {
+                    alert("No se ha creado la base de datos: " + evento.target.errorCode);
+                };
+                peticion.onupgradeneeded = function (evento) {
+                    console.log("Upgradeneeded");
+                };
+            } else {
+                console.log("IndexedDB no está soportado");
+            }
+            document.getElementById("jquery").removeAttribute("disabled");
+        });
+
+        $(function () {     //HABILITAR JQUERY
+            $("#jquery").click("click", function () {
+                $("td").click("click", function () {
+                    if ($(this).index() == 0) {
+                        $(this).parent().remove();
+                    }
+                    $(this).css("backgroundColor", "yellow");
+                })
+                $("th").click("click", function () {
+                    $(this).css("backgroundColor", "aqua");
+                    var cabecera = $(this).index();
+                    $("td").each(function (i) {
+                        if ($(this).index() == cabecera) {
+                            $(this).css("backgroundColor", "aqua");
+                        }
+                    });
+                });
+                $("th:first").dblclick("click", function () {
+                    $("th").add("td").css("backgroundColor","white");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

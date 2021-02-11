@@ -1,0 +1,85 @@
+<!------------------------------------->
+<!-- Carlos Palacios Alonso - 2º DAW -->
+<!------------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Examen Parte B - Formulario</title>
+    <script src="jquery-3.5.1.js"></script>
+    <style>
+        #operacion{
+            margin-top: 20px;
+            font-size: xx-large;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Examen Parte B - Formulario</h1>
+    <hr>
+    <label>Identificador: </label>
+    <input type="number" id="id">
+    <br><br>
+    <label>Nombre: </label>
+    <input type="text" id="nombre">
+    <br><br>
+    <label>Dirección: </label>
+    <input type="text" id="direccion">
+    <br><br>
+    <label>Sexo: </label><br>
+    <input type="radio" name="sexo" value="Masculino">Masculino
+    <input type="radio" name="sexo" value="Femenino">Femenino
+    <br><br>
+    <input type="checkbox" id="premium">
+    <label>Premium</label>
+    <br><br>
+    <button id="btn">Enviar datos</button>
+    <div id="operacion"></div>
+
+    <script>
+        $(function () {
+            $("#btn").click("click", function () {  //ENVIO DE DATOS
+                var c = "";
+                var socio = {};
+
+                c += $("#id").val();
+                c += " -- " + $("#nombre").val();
+                c += " -- " + $("#direccion").val();
+                c += " -- " + $(":radio:checked").val();
+                c += " -- " + $("#premium:checked").val();
+                console.log(c);
+
+                socio.identificador = $("#id").val();
+                socio.nombre = $("#nombre").val();
+                socio.direccion = $("#direccion").val();
+                if ($(":radio:checked").val() == undefined) {
+                    socio.sexo = "";
+                } else {
+                    socio.sexo = $(":radio:checked").val();
+                }
+                if ($("#premium:checked").val() == undefined) {
+                    socio.premium = "";
+                } else {
+                    socio.premium = $("#premium:checked").val();
+                }
+
+                var socioInfo = JSON.stringify(socio);
+                localStorage.setItem("socio", socioInfo);
+            });
+        });
+
+        window.addEventListener("storage", function (event) {   //RECEPCIÓN DE DATOS
+            var operacion = localStorage.getItem("operacion");
+            console.log(operacion);
+            if (operacion != null) {
+                document.getElementById("operacion").innerText = operacion;
+            }
+            localStorage.removeItem("operacion");
+        });
+    </script>
+</body>
+
+</html>
