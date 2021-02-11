@@ -1,90 +1,83 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery_39 - Conocer el atributo value - val()</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script src="recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			.colorRojo {color:red;}
+		</style>
+	</head>
+	<body>
+		<h1>jQuery_39 - Conocer el atributo value - val()</h1>
+		<hr />
+		Se consulta el valor de value, no el campo seleccionado. En radio y checkbox puede inducir a confusión. En el caso de radio marca el primero. En el caso de checkbox la propiedad value. En el caso del select múltiple ver la función each()
+		<hr />
 
-<head>
-	<meta charset="utf-8">
-	<title>jQuery_39 - Conocer el atributo value - val()</title>
-	<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
-	<script src="recursos/jquery-3.5.1.js"></script>
-	<style type="text/css">
-		.colorRojo {
-			color: red;
-		}
-	</style>
-</head>
+		<form>
+			Nombre<br />
+			<input type="text" name="nombre" value="pepe" />
+			<br /><br />
+			Apellidos<br />
+			<input type="text" name="apellidos" />
+			<br /><br />
+			Mayor de edad<br />
+			<input type="checkbox" name="mayoredad" value="si" />
+			<!-- En el checkbox val() no determina si está marcado, sino que determina la propiedad value -->
+			<br /><br />
+			Sexo<br />
+			<input type="radio" name="sexo" value="h" />Hombre<br />
+			<input type="radio" name="sexo" value="m" />Mujer<br />
+			<br /><br />
+			Idioma<br />
+			<select name="idioma">
+				<option value="español">Español</option>
+				<option value="ingles">Inglés</option>
+				<option value="aleman">Alemán</option>
+			</select>
+			<br /><br />
+			Ciudades<br />
+			<select name="ciudades" size="4" multiple="multiple">
+				<option value="Madrid">Madrid</option>
+				<option value="Barcelona">Barcelona</option>
+				<option value="Sevilla">Sevilla</option>
+				<option value="Valladolid">Valladolid</option>
+				<option value="Bilbao">Bilbao</option>
+				<option value="Murcia">Murcia</option>
+			</select>
+			<br /><br />
+			<button>Consultar los valores</button>
+		</form>
 
-<body>
-	<h1>jQuery_39 - Conocer el atributo value - val()</h1>
-	<hr />
-	Se consulta el valor de value, no el campo seleccionado. En radio y checkbox puede inducir a confusión. En el caso
-	de radio marca el primero. En el caso de checkbox la propiedad value. En el caso del select múltiple ver la función
-	each()
-	<hr />
+		<script>
+			
+			$(function (){
+				$("button").click(function (){
+					var c = "";
 
-	<form>
-		Nombre<br />
-		<input type="text" name="nombre" value="pepe" />
-		<br /><br />
-		Apellidos<br />
-		<input type="text" name="apellidos" />
-		<br /><br />
-		Mayor de edad<br />
-		<input type="checkbox" name="mayoredad" value="si" />
-		<!-- En el checkbox val() no determina si está marcado, sino que determina la propiedad value -->
-		<br /><br />
-		Sexo<br />
-		<input type="radio" name="sexo" value="h" />Hombre<br />
-		<input type="radio" name="sexo" value="m" />Mujer<br />
-		<br /><br />
-		Idioma<br />
-		<select name="idioma">
-			<option value="español">Español</option>
-			<option value="ingles">Inglés</option>
-			<option value="aleman">Alemán</option>
-		</select>
-		<br /><br />
-		Ciudades<br />
-		<select name="ciudades" size="4" multiple="multiple">
-			<option value="Madrid">Madrid</option>
-			<option value="Barcelona">Barcelona</option>
-			<option value="Sevilla">Sevilla</option>
-			<option value="Valladolid">Valladolid</option>
-			<option value="Bilbao">Bilbao</option>
-			<option value="Murcia">Murcia</option>
-		</select>
-		<br /><br />
-		<button>Consultar los valores</button>
-	</form>
+					c += "Nombre: " + $(":input").val(); //Muestra el primero de los input
+					c += "\nApellidos: " + $(":input[name='apellidos']").val();
 
-	<script>
+					c += "\nMayor de edad (value): " + $(":checkbox[name='mayoredad']").val();
+					c += "\nMayor de edad (si está o no marcado - undefined): " + $(":checkbox[name='mayoredad']:checked").val();
 
-		$(function () {
-			$("button").click(function () {
-				var c = "";
+					c += "\nSexo (mal): " + $(":radio").val();
+					c += "\nSexo (bien, dos filtros): " + $(":radio[name='sexo']:checked").val();
+					
+					//Para un select de selección individual
+					//Importante dejar el espacio antes de option:selected
+					c += "\nIdioma: " + $("select[name='idioma'] option:selected").val();
 
-				c += "Nombre: " + $(":input").val(); //Muestra el primero de los input
-				c += "\nApellidos: " + $(":input[name='apellidos']").val();
-
-				c += "\nMayor de edad (value): " + $(":checkbox[name='mayoredad']").val();
-				c += "\nMayor de edad (si está o no marcado - undefined): " + $(":checkbox[name='mayoredad']:checked").val();
-
-				c += "\nSexo (mal): " + $(":radio").val();
-				c += "\nSexo (bien, dos filtros): " + $(":radio[name='sexo']:checked").val();
-
-				//Para un select de selección individual
-				//Importante dejar el espacio antes de option:selected
-				c += "\nIdioma: " + $("select[name='idioma'] option:selected").val();
-
-				//Para un select de selección múltiple
-				$("select[name='ciudades'] option:selected").each(function (indice, elemento) {
-					c += "\nCiudades: " + $(this).val();
+					//Para un select de selección múltiple
+					$("select[name='ciudades'] option:selected").each(function(indice,elemento) {
+						c += "\nCiudades: " + $(this).val();
+					});
+					
+					alert(c);
 				});
-
-				alert(c);
 			});
-		});
 
-	</script>
-</body>
-
+		</script>
+	</body>
 </html>
