@@ -40,10 +40,18 @@ public class Controlador extends HttpServlet {
                 rd.forward(request, response);
                 break;
             case "contador":
-                response.sendRedirect("baja.jsp");
+                OperacionesBD contBD = new OperacionesBD();
+                ArrayList contLista = contBD.count();
+                request.setAttribute("departamentos", contLista);
+                RequestDispatcher rdCont = request.getRequestDispatcher("/contador.jsp");
+                rdCont.forward(request, response);
                 break;
             case "contadortodos":
-                response.sendRedirect("modificar.jsp");
+                OperacionesBD contAllBD = new OperacionesBD();
+                ArrayList contAllLista = contAllBD.countAll();
+                request.setAttribute("departamentos", contAllLista);
+                RequestDispatcher rdContAll = request.getRequestDispatcher("/contadortodos.jsp");
+                rdContAll.forward(request, response);
                 break;
         }
     }

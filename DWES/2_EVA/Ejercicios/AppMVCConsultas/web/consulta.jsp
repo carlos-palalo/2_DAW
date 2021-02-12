@@ -31,7 +31,7 @@
                 <td><%=e.getEmpno()%></td>
                 <td><%=e.getApellido()%></td>
                 <td><%=e.getDeptno()%></td>
-                <td><%=e.getNombre()%></td>
+                <td><%=e.getDnombre()%></td>
             </tr>
             <%}
                 }

@@ -1,0 +1,20 @@
+Construir una aplicación web java que utilizando un jsp muestre al usuario un formulario de entrada de datos con un combobox que muestre las opciones de realizar un ingreso, sacar dinero, ver el saldo. tambine habra un campo de texto para introducir la cantidad (a ingresar o sacar). el jsp llamara al servlet que utilizando cookies realizara la operacion deseada mostrando por pantalla:
+
+"El saldo anterior era de xxx €"
+"Se han ingresado/sacado (según el caso) xxx €"
+"El nuevo saldo es de xxx €"
+
+En el caso de realizar un ingreso o sacar dinero.
+
+si la operacion seleccionada es ver el saldo se mostrara:
+
+- el saldo anterior era de xxxx €
+- no se ha realizado ninguna operacion
+
+tambien ser mostrara un enlace para volver al inicio de la aplicacion
+
+se permite saldo negativo y extracciones con dicha situacion
+
+establecer la duracion de cookie a un año
+
+
