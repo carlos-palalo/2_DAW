@@ -7,7 +7,7 @@
         <title>07-ControlarLogin - Acceso de usuarios con redireccionamiento</title>
     </head>
     <body>
-        <h1>APPSaldo</h1>
+        <h1>APP Saldo</h1>
         <hr />
         <%
             Cookie cookies[] = request.getCookies();
@@ -19,7 +19,7 @@
                     String n = cookies[i].getName();
                     String v = cookies[i].getValue();
                     if (n.equals("saldo")) {
-                        out.println("<h3>Cookie: <i>" + n + " - " + v + "</i></h3>");
+                        flag = true;
                     }
                 }
                 if (!flag) {
@@ -35,7 +35,7 @@
                 <option value="sacar">Sacar dinero</option>
                 <option value="ver">Ver saldo</option>
             </select>
-            <input type="submit"/>
+            <input type="submit" value="Enviar"/>
         </form>
     </body>
 </html>

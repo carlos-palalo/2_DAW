@@ -30,6 +30,10 @@ public class OperacionesBD {
         ArrayList empleados = new ArrayList();
         try {
             Connection conexion = getConnection();
+            /*PreparedStatement psInsertar = conexion.prepareStatement("insert into person values (null,?,?,?)");
+            psInsertar.setInt(1, 23);
+            psInsertar.setString(2, "Pedro");
+            ResultSet resulp = psInsertar.executeQuery();*/
             Statement sentencia = conexion.createStatement();
             String sql = "SELECT e.emp_no, e.apellido, d.dept_no, d.dnombre FROM empleados e LEFT JOIN departamentos d ON e.dept_no=d.dept_no";
             ResultSet resul = sentencia.executeQuery(sql);
@@ -44,7 +48,7 @@ public class OperacionesBD {
         }
         return (empleados);
     } //fin listarDep
-    
+
     //CONTADOR
     public ArrayList count() {
         ArrayList departamentos = new ArrayList();
@@ -64,7 +68,7 @@ public class OperacionesBD {
         }
         return (departamentos);
     } //fin listarDep
-    
+
     //CONTADOR TODOS
     public ArrayList countAll() {
         ArrayList departamentos = new ArrayList();
