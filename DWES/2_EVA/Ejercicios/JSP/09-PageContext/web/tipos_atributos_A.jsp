@@ -28,6 +28,6 @@
         <a href="tipos_atributos_B.jsp">Siguiente página</a>
         
         <%--DESCOMENTAR LA LÍNEA SIGUIENTE PARA COMPROBAR LA REDIRECCIÓN--%>
-        <%--<jsp:forward page="tipos_atributos_B.jsp" />--%>
+        <jsp:forward page="tipos_atributos_B.jsp" />
     </body>
 </html>

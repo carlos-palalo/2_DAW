@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>07-LoginBasico - Validación de usuario básica</h1>
-        <form action="/07-LoginBasico/Entrar" method="post">
+        <form action="/05-LoginBasico/Entrar" method="post">
             Usuario<input type="text" name="usuario" />
             <br />
             Clave<input type="password" name="clave" />
