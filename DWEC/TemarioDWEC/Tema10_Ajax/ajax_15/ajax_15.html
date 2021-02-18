@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ajax_15 - Ajax con jQuery - ajaxSetup</title>
+		<link rel="icon" type="image/x-icon" href="../recursos/favicon.ico">
+		<script type="text/javascript" src="../recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			div {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body">
+		<h1>ajax_15 - Ajax con jQuery - ajaxSetup</h1>
+		<hr />
+
+		Selecciona un ISBN para ver los detalles<br />
+		<select id="isbn">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
+
+		<br /><br />
+
+		<div></div>
+
+		<script type="text/javascript">
+
+			$(document).ready(function(){
+				$.ajaxSetup({
+					url: "ajax_15.php",
+					type: "get",
+					success: function (datos,estado,xhr) {
+						$("div").html(datos);
+					},
+					error: function (xhr,estado,error) {
+						console.log(estado + " - " + error);
+					}
+				});
+				
+				$("#isbn").change(function() {
+					$.ajax({data: "isbn=" + $("select").val()});
+				});
+			});
+
+		</script>
+	</body>
+</html>

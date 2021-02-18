@@ -1,3 +1,93 @@
 <!DOCTYPE html>
-<!-- 7 11 15 34 63 tabla estatica -->
-<!-- isbn titulo autor editorial paginas precio -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ajax_14 - Ajax con jQuery - Rellenar datos de la tabla de libros</title>
+		<link rel="icon" type="image/x-icon" href="../recursos/favicon.ico">
+		<script type="text/javascript" src="../recursos/jquery-3.5.1.js"></script>
+		<style>
+			table,td {
+				border: 2px solid black;
+			}
+
+			td {
+				width: 200px;
+			}
+
+			th {
+				border: 2px solid blue;
+			}
+			span {
+				color: red;
+			}
+		</style>
+	</head>
+	<body">
+		<h1>ajax_14 - Ajax con jQuery - Rellenar datos de la tabla de libros</h1>
+		<hr />
+		
+		<button id="boton">Rellenar datos de libros</button>
+
+		<br /><br />
+		
+		<table>
+			<tr>
+				<th>ISBN</th><th>TÍTULO</th><th>AUTOR</th><th>EDITORIAL</th><th>PÁGINAS</th><th>PRECIO</th>
+			</tr>
+			<tr>
+				<td>7</td><td></td><td>A1</td><td></td><td></td><td>10</td>
+			</tr>
+			<tr>
+				<td>11</td><td></td><td>A2</td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td>15</td><td></td><td></td><td>E3</td><td>100</td><td></td>
+			</tr>
+			<tr>
+				<td>34</td><td></td><td>A4</td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td>63</td><td></td><td></td><td></td><td></td><td>20</td>
+			</tr>
+			<tr>
+				<td>71</td><td></td><td>A7</td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td>85</td><td></td><td></td><td></td><td></td><td>20</td>
+			</tr>
+		</table>
+
+		<script type="text/javascript">
+
+			$(document).ready(function(){ 
+				$("#boton").click(function() {
+					$("tr").find("td:first").text(function (fila,isbn) {
+						$.ajax({
+							url: "ajax_14.php",
+							type: "get",
+							data: "isbn=" + isbn,
+							datType: "text",
+							success: function (datos,estado,xhr) {
+								var libro = JSON.parse(datos);
+								for(campo=0;campo<=5;campo++) {
+									if($("tr").eq(fila+1).children().eq(campo).text()=="") {
+										switch(campo) {
+											case 0: $("tr").eq(fila+1).children().eq(campo).text(libro.isbn).wrapInner("<span>"); break;
+											case 1: $("tr").eq(fila+1).children().eq(campo).text(libro.titulo).wrapInner("<span>"); break;
+											case 2: $("tr").eq(fila+1).children().eq(campo).text(libro.autor).wrapInner("<span>"); break;
+											case 3: $("tr").eq(fila+1).children().eq(campo).text(libro.editorial).wrapInner("<span>"); break;
+											case 4: $("tr").eq(fila+1).children().eq(campo).text(libro.paginas).wrapInner("<span>"); break;
+											case 5: $("tr").eq(fila+1).children().eq(campo).text(libro.precio).wrapInner("<span>"); break;
+										}
+									}
+								}
+							},
+							error: function (xhr,estado,error) {alert(estado + " - " + error);}
+						});
+					});
+				});
+			});
+
+		</script>
+	</body>
+</html>
