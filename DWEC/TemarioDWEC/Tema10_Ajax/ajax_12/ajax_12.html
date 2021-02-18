@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ajax_12 - Ajax con jQuery - getScript</title>
+		<link rel="icon" type="image/x-icon" href="../recursos/favicon.ico">
+		<script type="text/javascript" src="../recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			div {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body">
+		<h1>ajax_12 - Ajax con jQuery - getScript</h1>
+		<hr />
+		
+		<button id="boton">Petición</button>
+
+		<br /><br />
+		
+		<div id="cuadro"></div>
+
+		<script type="text/javascript">
+
+			$(document).ready(function(){ 
+				$("#boton").click(function() {
+					$.getScript("ajax_12.js",function () {
+						//Se ejecuta antes el script cargado que la función de callback
+						document.getElementById("cuadro").innerHTML += "<hr />Línea escrita en la función de callback";
+						prueba();
+					});
+				});
+			});
+
+		</script>
+	</body>
+</html>

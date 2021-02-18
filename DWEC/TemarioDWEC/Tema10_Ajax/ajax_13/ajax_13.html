@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ajax_13 - Ajax con jQuery - Consulta AJAX completa</title>
+		<link rel="icon" type="image/x-icon" href="../recursos/favicon.ico">
+		<script type="text/javascript" src="../recursos/jquery-3.5.1.js"></script>
+		<style type="text/css">
+			div {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body">
+		<h1>ajax_13 - Ajax con jQuery - Consulta AJAX completa</h1>
+		<hr />
+		
+		<button id="boton">Petición</button>
+
+		<br /><br />
+		
+		<div id="cuadro"></div>
+
+		<script type="text/javascript">
+
+			$(document).ready(function(){ 
+				$("#boton").click(function() {
+					$.ajax({
+						url: "ajax_13.php",
+						type: "get",
+						data: "editorial=ANAYA",
+						datType: "html",
+						success: function (datos,estado,xhr) {
+							$("#cuadro").append(datos);
+						},
+						beforeSend: function (xhr) {
+							$("#cuadro").append("INICIO<hr />");
+						},
+						complete: function (xhr,estado) {
+							$("#cuadro").append("<hr />FINAL");
+						},
+						error: function (xhr,estado,error) {
+							alert(estado + " - " + error);
+						}
+					});
+				});
+			});
+
+		</script>
+	</body>
+</html>

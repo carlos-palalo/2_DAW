@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ajax_09 - Cabeceras de la petición</title>
+		<link rel="icon" type="image/x-icon" href="../recursos/favicon.ico">
+		<style type="text/css">
+			div {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+	<body onload="realizarPeticion();">
+		<h1>ajax_09 - Cabeceras de la petición</h1>
+		<hr />
+		
+		<h2>getAllResponseHeaders</h2>
+		<div id="c1"></div>
+		
+		<hr />
+
+		<h2>getResponseHeader</h2>
+		<div id="c2"></div>
+
+		<script type="text/javascript">
+
+			function realizarPeticion() {
+				var peticion;
+				if(window.XMLHttpRequest) {
+					peticion = new XMLHttpRequest();
+				} else if(window.ActiveXObject) {
+					peticion = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				peticion.open('GET','ajax_09.php',true);
+				peticion.send(null);
+
+
+				peticion.onreadystatechange = function (evento) {
+					if((peticion.readyState == 4) && ((peticion.status == 200) )){
+						document.getElementById("c1").innerHTML = peticion.getAllResponseHeaders();
+
+						document.getElementById("c2").innerHTML += peticion.getResponseHeader("Date") + "<br />";
+						document.getElementById("c2").innerHTML += peticion.getResponseHeader("Content-Type") + "<br />";
+						document.getElementById("c2").innerHTML += peticion.getResponseHeader("Server") + "<br />";
+						document.getElementById("c2").innerHTML += peticion.getResponseHeader("Content-Length") + "<br />";
+					}
+				};
+			}
+
+		</script>
+	</body>
+</html>
