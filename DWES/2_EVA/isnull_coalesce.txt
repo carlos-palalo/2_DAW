@@ -1,0 +1,11 @@
+ISNULL(exp1, exp2) --> Sustituye null por valor
+
+COALESCE(exp1, exp2) --> Si hay un null en una de las columnas = columna null, el resto no null --> Si estan todos = not null --> Si todos son null --> NULL
+
+isnull y coalesce sirve para comprobar valores nulos en el sql
+
+coalescence me eliminar del select los nulos para evitar errores
+
+isnull (exp1, exp2) --> si exp1 es null, devuelve exp2
+
+coalesce(exp, exp... expfinal) --> si exp null devuelve expfinal
