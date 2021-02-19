@@ -2,15 +2,15 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <context-param>
         <param-name>basedatos</param-name>
-        <param-value>jdbc:mysql://localhost:3306/joseluis</param-value>
+        <param-value>jdbc:mysql://localhost:3306/carlos</param-value>
     </context-param>
     <context-param>
         <param-name>usuario</param-name>
-        <param-value>joseluis</param-value>
+        <param-value>carlos</param-value>
     </context-param>
     <context-param>
         <param-name>clave</param-name>
-        <param-value>joseluis</param-value>
+        <param-value>carlos</param-value>
     </context-param>
     <servlet>
         <servlet-name>Actualizar</servlet-name>

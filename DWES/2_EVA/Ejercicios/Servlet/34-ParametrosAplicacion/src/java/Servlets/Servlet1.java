@@ -23,9 +23,9 @@ public class Servlet1 extends HttpServlet {
             out.println("<body>");
             out.println("<h1>34-ParametrosAplicacion - Parámetros de inicialización de la aplicación (web.xml)</h1><h2>Página 1 (Servlet1)</h2><hr />");
 
-            out.println("<h3>Parámetro de inicialización de la aplicación: <span style='color=blue'>" + getServletContext().getInitParameter("parametroAplicacion") + "</span></h3>");
-            out.println("<h3>Parámetro de inicialización del Servlet1: <span style='color=blue'>" + getInitParameter("parametroServlet1") + "</span></h3>");
-            out.println("<h3>Parámetro de inicialización del Servlet2: <span style='color=blue'>" + getInitParameter("parametroServlet2") + "</span></h3>");
+            out.println("<h3>Parámetro de inicialización de la aplicación: <span style='color:blue'>" + getServletContext().getInitParameter("parametroAplicacion") + "</span></h3>");
+            out.println("<h3>Parámetro de inicialización del Servlet1: <span style='color:blue'>" + getInitParameter("parametroServlet1") + "</span></h3>");
+            out.println("<h3>Parámetro de inicialización del Servlet2: <span style='color:blue'>" + getInitParameter("parametroServlet2") + "</span></h3>");
 
             out.println("<hr /><a href='" + request.getContextPath() + "/index.jsp'>Inicio</a>");
             out.println("</body>");

@@ -1,0 +1,114 @@
+/******************************************************/
+/************ Carlos Palacios Alonso 1º DAW ***********/
+/******************************************************/
+
+/******* Actividades Complementarias Página 155 *******/
+
+/* Ejercicio 1 */
+
+SELECT ROUND(AVG(SALARIO),2) "Sueldo Medio",
+	   ROUND(MAX(SALARIO),2) "Sueldo Máximo", 
+	   ROUND(MIN(SALARIO),2) "Sueldo Mínimo", 
+	   COUNT(COMISION) "Nº Comisiones"
+FROM EMPLE
+WHERE DEPT_NO=30;
+
+/* Ejercicio 2 */
+
+SELECT TEMA FROM LIBRERIA
+WHERE EJEMPLARES>= ALL (SELECT EJEMPLARES 
+	  			   	    FROM LIBRERIA) 
+AND TEMA LIKE '%E%';
+
+/* Ejercicio 3 */
+
+SELECT RPAD(TRANSLATE(TITULO,'."',' '),40,'-^') "RESULTADO" 
+FROM MISTEXTOS
+
+/* Ejercicio 4 */
+
+SELECT LOWER(LTRIM(RTRIM(TITULO,'."'),'"')) "TÍTULO" FROM MISTEXTOS;
+
+SELECT LOWER(TRANSLATE(TITULO,'."',' ')) "TÍTULO" FROM MISTEXTOS;
+
+/* Ejercicio 5 */
+
+SELECT AUTOR, 
+	   SUBSTR(AUTOR,INSTR(AUTOR,',')+1) "APELLIDO" 
+FROM LIBROS;
+
+/* Ejercicio 6 */
+
+SELECT TITULO, AUTOR, EDITORIAL, PAGINA, 
+	   SUBSTR(AUTOR,1,INSTR(AUTOR,',')-1) "NOMBRE" 
+FROM LIBROS;
+
+/* Ejercicio 7 */
+
+SELECT SUBSTR(AUTOR,1,INSTR(AUTOR,',')-1) "NOMBRE", 
+	   SUBSTR(AUTOR,INSTR(AUTOR,',')+1) "APELLIDO" 
+FROM LIBROS;
+
+/* Ejercicio 8 */
+
+SELECT TITULO FROM LIBROS
+ORDER BY LENGTH(TITULO);
+
+/* Ejercicio 9 */
+
+SELECT NOMBRE, FECHANAC, 
+	   '"' || TO_CHAR(FECHANAC,'"Nació el "dd" de "month"de " yyyy"') || '".' "FECHAFORMAT" 
+FROM NACIMIENTOS;
+
+/* Ejercicio 10 */
+
+SELECT TEMA, 
+	   SUBSTR(RTRIM(TEMA),-1) "LAST CHAR",
+	   LENGTH(RTRIM(TEMA)) "Nº CHAR" 
+FROM LIBRERIA
+ORDER BY TEMA;
+
+/* Ejercicio 11 */
+
+SELECT RTRIM(NOMBRE) || 
+	   TO_CHAR(FECHANAC,'" Nació el "dd" de "Month" de " yyyy"') "NOMBRE" 
+FROM NACIMIENTOS;
+
+/* Ejercicio 12 */
+
+SELECT TO_CHAR(TO_DATE('010712','ddmmyy'),'MONTH') "MES"  FROM DUAL;
+
+/* Ejercicio 13 */
+
+SELECT DECODE(EJEMPLARES,7,'SEVEN',TEMA) "TEMA", EJEMPLARES FROM LIBRERIA;
+
+/* Ejercicio 14 */
+
+SELECT APELLIDO, TRUNC(MONTHS_BETWEEN(SYSDATE,FECHA_ALT)/12) "AÑOS TRABAJADOS" 
+FROM EMPLE
+WHERE TRUNC(MONTHS_BETWEEN(SYSDATE,FECHA_ALT)/12)>15;
+
+/* Ejercicio 15 */
+
+SELECT APELLIDO, TRUNC(MONTHS_BETWEEN(SYSDATE,FECHA_ALT)/12) "AÑOS TRABAJADOS" 
+FROM EMPLE
+WHERE TRUNC(MONTHS_BETWEEN(SYSDATE,FECHA_ALT)/12)>16 
+	  AND DEPT_NO=(SELECT DEPT_NO 
+	  	  		   FROM DEPART 
+				   WHERE DNOMBRE='VENTAS');
+
+/* Ejercicio 16 */
+
+SELECT APELLIDO, SALARIO, DEPT_NO 
+FROM EMPLE
+WHERE SALARIO IN (SELECT MAX(SALARIO) 
+	  		  	  FROM EMPLE 
+				  GROUP BY DEPT_NO)
+
+/* Ejercicio 17 */
+
+SELECT APELLIDO, SALARIO, DEPT_NO 
+FROM EMPLE
+WHERE SALARIO > ALL (SELECT AVG(SALARIO) 
+	  		  		 FROM EMPLE 
+					 GROUP BY DEPT_NO)

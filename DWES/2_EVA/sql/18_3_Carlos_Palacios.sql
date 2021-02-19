@@ -1,0 +1,26 @@
+/*****************************************************/
+/*********** Carlos Palacios Alonso 1º DAW ***********/
+/*****************************************************/
+
+/********************* Ejemplos **********************/
+
+SELECT AVG(SALARIO)      "SALARIO MEDIO"  	FROM EMPLE;
+
+SELECT COUNT(*) 		 "Nº EMPLEADOS" 	FROM EMPLE;
+
+SELECT MAX(SALARIO) 	 "SALARIO MAX" 		FROM EMPLE;
+
+SELECT MIN(SALARIO) 	 "SALARIO MIN" 		FROM EMPLE;
+
+SELECT SUM(SALARIO) 	 "SUMA TOTAL" 		FROM EMPLE;
+
+SELECT VARIANCE(SALARIO) "VARIANZA" 		FROM EMPLE;
+
+SELECT COUNT(OFICIO) 	      "Nº OFICIOS" 	FROM EMPLE;
+SELECT COUNT(DISTINCT OFICIO) "Nº OFICIOS"  FROM EMPLE;
+SELECT COUNT(ALL OFICIO) 	  "Nº OFICIOS" 	FROM EMPLE;
+
+SELECT NOMBRE_ALUMNO 		  	     "NOMBRE",
+	   GREATEST(NOTA1,NOTA2,NOTA3)   "MAYOR",
+	   LEAST(NOTA1,NOTA2,NOTA3) 	 "MENOR"
+FROM NOTAS_ALUMNOS;
