@@ -46,13 +46,19 @@
             var name = document.getElementById("name").value;
             var apellidos = document.getElementById("apellidos").value;
             var edad = document.getElementById("edad").value;
-            var genero = document.getElementsByName("genero").checked;
+            var genero = document.getElementsByName("genero");
             var grado = document.getElementById("grado").value;
+
+            for(var i=0; i<genero.length; i++){
+                if(genero[i].checked){
+                    console.log(genero);
+                    break;
+                }
+            }
 
             console.log(name);
             console.log(apellidos);
             console.log(edad);
-            console.log(genero);
             console.log(grado);
 
             //var pdf = new jsPDF('portrait', 'mm', 'a4');
