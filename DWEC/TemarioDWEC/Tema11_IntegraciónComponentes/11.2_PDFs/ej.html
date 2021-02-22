@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>jsPDF_01 - Básico</title>
+    <link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+    <script type="text/javascript" src="recursos/jsPDF/jspdf.js"></script>
+</head>
+
+<body>
+    <h1>jsPDF_01 - Básico</h1>
+    <hr />
+    <p>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name">
+    </p>
+    <p>
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos">
+    </p>
+    <p>
+        <label for="edad">Edad:</label>
+        <input type="text" id="edad" name="edad">
+    </p>
+    <p>
+        Género<br>
+        <input type="radio" id="masculino" name="genero" value="Masculino">
+        <label for="masculino">Masculino</label><br>
+        <input type="radio" id="femenino" name="genero" value="Femenino">
+        <label for="femenino">Femenino</label>
+    </p>
+    <p>
+        <label for="grado">Nombre:</label>
+        <select id="grado" name="grado">
+            <option value="asir">Administración de Sistemas Informáticos en Red</option>
+            <option value="dam">Desarrollo de Aplicaciones Multiplataforma</option>
+            <option value="daw">Desarrollo de Aplicaciones Web</option>
+        </select>
+    </p>
+    <button onclick="crearPDF();">Crear documento PDF</button>
+
+    <script type="text/javascript">
+
+        function crearPDF() {
+            var pdf = new jsPDF('portrait', 'mm', 'a4');
+            /*
+                Orientación: portrait o landscape
+                Unidades: pt, mm, cm, in
+                formato: a3, a4, a5, letter
+            */
+
+            var arrayString = [];
+            arrayString[0] = "Hola Mundo";
+            arrayString[1] = "Buenas tardes";
+            pdf.text(30, 30, arrayString);
+
+            pdf.addPage();
+
+            pdf.text('Otro texto', 30, 60);
+
+            console.log(navigator.userAgent.toLowerCase());
+
+
+            //SALIDA DEL DOCUMENTO
+            var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+            if (es_chrome) {
+                var win = window.open();
+                win.document.write('<iframe src="' + pdf.output('datauri') + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+            }
+
+            var es_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+            if (es_firefox) {
+                pdf.output('datauri');
+            }
+
+            //En una nueva ventana
+            //pdf.output('dataurlnewwindow'); 
+        }
+
+    </script>
+</body>
+
+</html>
