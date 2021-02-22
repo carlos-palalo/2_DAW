@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jsPDF_05 - Elementos gráficos: triángulos, rectángulos, círculos, elipses</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script type="text/javascript" src="recursos/jsPDF/jspdf.js"></script>
+	</head>
+	<body>
+		<h1>jsPDF_05 - Elementos gráficos: triángulos, rectángulos, círculos, elipses</h1>
+		<hr />
+
+		<button onclick="crearPDF();">Crear documento PDF</button>
+
+		<script type="text/javascript">
+		
+			function crearPDF()	{
+				var pdf = new jsPDF();
+
+				//TRIÁNGULOS --> triangle(x1,y1,x2,y2,x3,y3,estilo)
+				pdf.text(10,10,"Triangulos");
+				var incH = 0, incV = 0;
+				pdf.triangle(10+incH,50+incV,35+incH,20+incV,60+incH,50+incV,'S');
+
+				incH = 60; incV = 0;
+				pdf.triangle(10+incH,50+incV,35+incH,20+incV,60+incH,50+incV,'F');
+
+				incH = 120; incV = 0;
+				pdf.triangle(10+incH,50+incV,35+incH,20+incV,60+incH,50+incV,'DF');
+
+				pdf.setLineWidth(3);
+				pdf.setFillColor(0,200,20);
+				pdf.setDrawColor(255,0,0);
+				pdf.setLineJoin(1);
+
+				var incH = 0, incV = 50;
+				pdf.triangle(10+incH,50+incV,35+incH,20+incV,60+incH,50+incV,'S');
+
+				incH = 60; incV = 50;
+				pdf.triangle(10+incH,50+incV,35+incH,20+incV,60+incH,50+incV,'F');
+
+				incH = 120; incV = 50;
+				pdf.triangle(10+incH,50+incV,35+incH,20+incV,60+incH,50+incV,'DF');
+
+
+				//CÍRCULOS --> circle(x,y,r,estilo)
+				pdf.text(10,120,"Circulos"); //Cambiar el color de relleno
+				pdf.setFillColor(0,200,20);
+				incH = 0; incV = 0;
+				pdf.circle(30+incH,150+incV,20,'S');
+
+				incH = 50; incV = 0;
+				pdf.circle(30+incH,150+incV,20,'F');
+
+				incH = 110; incV = 0;
+				pdf.circle(30+incH,150+incV,20,'DF');
+
+				pdf.setLineWidth(0.1);
+				pdf.setFillColor(0,0,0);
+				pdf.setDrawColor(0,0,0);
+
+				incH = 0; incV = 50;
+				pdf.circle(30+incH,150+incV,20,'S');
+
+				incH = 50; incV = 50;
+				pdf.circle(30+incH,150+incV,20,'F');
+
+				incH = 110; incV = 50;
+				pdf.circle(30+incH,150+incV,20,'DF');
+
+
+				//ELIPSES --> ellipse(x,y,rx,ry,estilo)
+				pdf.text(10,230,"Elipses"); //Cambiar el color de relleno
+				incH = 0; incV = 0;
+				pdf.ellipse(30+incH,260+incV,10,25,'S');
+
+				incH = 70; incV = 0;
+				pdf.ellipse(30+incH,260+incV,25,10,'S');
+
+				incH = 140; incV = 0;
+				pdf.ellipse(30+incH,260+incV,25,25,'F');
+
+
+				pdf.addPage();
+
+
+				//RECTÁNGULOS --> rect(x,y,anchura,altura,estilo)
+				pdf.text(10,10,"Rectangulos");
+				pdf.setLineWidth(2);
+				pdf.setFillColor(0,0,255);
+				pdf.setDrawColor(255,0,0);
+				pdf.setLineJoin(0);
+
+				incH = 0; incV = 0;
+				pdf.rect(10+incH,20+incV,50,20,'S');
+
+				incH = 70; incV = 0;
+				pdf.rect(10+incH,20+incV,40,30,'F');
+
+				incH = 140; incV = 0;
+				pdf.rect(10+incH,20+incV,50,20,'DF');
+
+
+
+				//RECTÁNGULOS REDONDEADOS --> roundedRect(x,y,anchura,altura,rx,ry,estilo)
+				pdf.text(10,70,"Rectangulos redondeados");
+				pdf.setLineWidth(0.1);
+				pdf.setFillColor(0,0,255);
+				pdf.setDrawColor(0,0,0);
+
+				incH = 0; incV = 0;
+				pdf.roundedRect(10+incH,80+incV,50,20,0,0,'S');
+
+				incH = 70; incV = 0;
+				pdf.roundedRect(10+incH,80+incV,50,20,50,5,'S');
+
+				incH = 0; incV =30;
+				pdf.roundedRect(10+incH,80+incV,50,20,3,10,'S');
+
+				incH = 70; incV = 30;
+				pdf.roundedRect(10+incH,80+incV,50,20,15,3,'S');
+
+			
+				//SALIDA DEL DOCUMENTO
+				var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+				if(es_chrome) {
+					var win = window.open();
+					win.document.write('<iframe src="' + pdf.output('datauri')  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+				}
+
+				var es_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+				if(es_firefox) {
+					pdf.output('datauri');
+				}
+			}
+
+		</script>
+	</body>
+</html>

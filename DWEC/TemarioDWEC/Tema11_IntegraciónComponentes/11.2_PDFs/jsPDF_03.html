@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jsPDF_03 - Elementos del texto: fuente, estilo, tamaño, color</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script type="text/javascript" src="recursos/jsPDF/jspdf.js"></script>
+	</head>
+	<body>
+		<h1>jsPDF_03 - Elementos del texto: fuente, estilo, tamaño, color</h1>
+		<hr />
+
+		<button onclick="crearPDF();">Crear documento PDF</button>
+
+		<script type="text/javascript">
+		
+			function crearPDF()	{
+				var pdf = new jsPDF();
+				
+				pdf.setFont("courier","italic");
+				pdf.text(30,10,"Linea1");
+
+				pdf.setFontSize(25);
+				pdf.text(30,20,"Linea2");
+
+				pdf.setFontSize(15);
+				pdf.text(30,30,"Linea3");
+				pdf.setFontStyle("bold");
+				pdf.text(30,40,"Linea4");
+				pdf.setFontStyle("bolditalic");
+				pdf.text(30,50,"Linea5");
+
+				pdf.setFontSize(25);
+				pdf.setTextColor(255,40,60);
+				pdf.text(30,60,"Linea6");
+				pdf.setTextColor("#360AFF");
+				pdf.text(30,70,"Linea7");
+
+				//SALIDA DEL DOCUMENTO
+				var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+				if(es_chrome) {
+					var win = window.open();
+					win.document.write('<iframe src="' + pdf.output('datauri')  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+				}
+
+				var es_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+				if(es_firefox) {
+					pdf.output('datauri');
+				}
+			}
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jsPDF_04 - Elementos gráficos: líneas</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script type="text/javascript" src="recursos/jsPDF/jspdf.js"></script>
+	</head>
+	<body>
+		<h1>jsPDF_04 - Elementos gráficos: líneas</h1>
+		<hr />
+
+		<button onclick="crearPDF();">Crear documento PDF</button>
+
+		<script type="text/javascript">
+		
+			function crearPDF() {
+				var pdf = new jsPDF();
+
+				pdf.lines([[0,0],[150,5]],0,0);
+				pdf.lines([[0,0],[150,15]],0,0); //Origen 0,0
+				pdf.lines([[0,0],[150,25]],10,10); //Origen 10,10
+
+				pdf.lines([[0,0],[10,60],[20,0],[30,10],[40,0]],0,0); //Cada punto es respecto al anterior
+				
+				//ESCALA
+				pdf.lines([[0,0],[10,10],[20,0],[30,10],[40,0]],40,80);
+				pdf.lines([[0,0],[10,10],[20,0],[30,10],[40,0]],40,100,[1.5,1.5]);
+				pdf.lines([[0,0],[10,10],[20,0],[30,10],[40,0]],40,120,[0.5,0.5]);
+				pdf.lines([[0,0],[10,10],[20,0],[30,10],[40,0]],40,140,[-0.25,-0.25]);
+
+				//ESTILO
+				pdf.lines([[0,0],[100,10]],40,160,[1,1],'S');			
+				pdf.lines([[0,0],[100,10]],40,180,[1,1],'F'); //No se ve
+				pdf.lines([[0,0],[100,10]],40,200,[1,1],'DF');
+
+				//CLOSED
+				pdf.lines([[0,0],[10,10],[0,20]],40,220,[1,1],'S',false);
+				pdf.lines([[0,0],[10,10],[0,20]],80,220,[1,1],'S',true);
+				pdf.lines([[0,0],[10,10],[0,20]],120,220,[1,1],'F',true);
+
+				pdf.addPage();
+
+				pdf.setLineWidth(3);
+				pdf.setDrawColor(200,0,0);
+				pdf.lines([[0,0],[10,10],[20,0],[30,10],[40,0]],10,10);
+
+				pdf.lines([[0,0],[10,10],[0,20]],40,50,[1,1],'S',true);
+
+				console.log(JSON.stringify(pdf.CapJoinStyles));
+				pdf.setLineJoin(1);
+				pdf.lines([[0,0],[10,10],[0,20]],80,50,[1,1],'S',true);
+
+
+				
+				//SALIDA DEL DOCUMENTO
+				var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+				if(es_chrome) {
+					var win = window.open();
+					win.document.write('<iframe src="' + pdf.output('datauri')  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+				}
+
+				var es_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+				if(es_firefox) {
+					pdf.output('datauri');
+				}
+			}
+
+		</script>
+	</body>
+</html>

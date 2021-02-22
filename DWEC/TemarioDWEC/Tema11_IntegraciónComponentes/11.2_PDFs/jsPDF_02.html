@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jsPDF_02 - Obtener fuentes con getFontList y el objeto devuelto</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script type="text/javascript" src="recursos/jsPDF/jspdf.js"></script>
+		<style>
+			div {
+				border: 2px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>jsPDF_02 - Obtener fuentes con getFontList y el objeto devuelto</h1>
+		<hr />
+
+		<button onclick="obtenerFuentes();">Obtener fuentes</button>
+		
+		<br /><br />
+
+		<div id="fuentes"></div>
+
+		<script type="text/javascript">
+
+			function obtenerFuentes() {
+				var pdf = new jsPDF();
+				
+				var objetoFuentes = pdf.getFontList();
+
+				var cuadro = document.getElementById("fuentes");
+
+				cuadro.innerHTML += objetoFuentes;
+				cuadro.innerHTML += "<br /><br />";
+				cuadro.innerHTML += JSON.stringify(objetoFuentes);
+				cuadro.innerHTML += "<br /><br />";
+				cuadro.innerHTML += Object.keys(objetoFuentes);
+				cuadro.innerHTML += "<br /><br />";
+				cuadro.innerHTML += Object.values(objetoFuentes);
+				cuadro.innerHTML += "<br /><br />";
+
+				var listaFuentes= Object.keys(objetoFuentes);
+				var listaValores= Object.values(objetoFuentes);
+
+				for(var i=0;i<listaFuentes.length;i++) {
+					cuadro.innerHTML += listaFuentes[i] + ": " + listaValores[i] + "<br />";
+				}
+
+				cuadro.innerHTML += "<br /><br />";
+
+				for(var i=0;i<listaFuentes.length;i++) {
+					cuadro.innerHTML += listaFuentes[i] + ": " + objetoFuentes[listaFuentes[i]] + "<br />";
+				}
+
+			}
+
+		</script>
+	</body>
+</html>
