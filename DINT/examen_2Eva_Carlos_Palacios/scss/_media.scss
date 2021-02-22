@@ -1,0 +1,18 @@
+@media screen and (max-width: 1024px) {
+    section{
+        max-width: 1024px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    main{
+        display: flex;
+    }
+    main section{
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    video{
+        width: 100% !important;
+    }
+}

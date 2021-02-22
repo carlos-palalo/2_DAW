@@ -1,0 +1,20 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif  
+}
+
+@import "variables";
+
+body{
+    background-color: $bg_green_light;
+}
+
+@import "header";
+@import "nav";
+@import "main";
+@import "footer";
+@import "media";
+@import "img";
+@import "video";
+

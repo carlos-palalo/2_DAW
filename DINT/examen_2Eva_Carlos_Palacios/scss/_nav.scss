@@ -1,0 +1,15 @@
+nav {
+    background-color: $bg_green;
+    padding-top: 30px;
+    padding-left: 60px;
+    padding-bottom: 17px;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: $yellow;
+    background-color: $bg_green_dark;
+    border-radius: 3px;
+    margin-right: 3px;
+}
