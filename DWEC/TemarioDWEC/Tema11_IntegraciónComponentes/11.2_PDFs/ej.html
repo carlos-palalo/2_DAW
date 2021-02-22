@@ -43,13 +43,25 @@
     <script type="text/javascript">
 
         function crearPDF() {
-            var pdf = new jsPDF('portrait', 'mm', 'a4');
+            var name = document.getElementById("name").value;
+            var apellidos = document.getElementById("apellidos").value;
+            var edad = document.getElementById("edad").value;
+            var genero = document.getElementsByName("genero").checked;
+            var grado = document.getElementById("grado").value;
+
+            console.log(name);
+            console.log(apellidos);
+            console.log(edad);
+            console.log(genero);
+            console.log(grado);
+
+            //var pdf = new jsPDF('portrait', 'mm', 'a4');
             /*
                 Orientación: portrait o landscape
                 Unidades: pt, mm, cm, in
                 formato: a3, a4, a5, letter
             */
-
+            /*
             var arrayString = [];
             arrayString[0] = "Hola Mundo";
             arrayString[1] = "Buenas tardes";
@@ -76,6 +88,7 @@
 
             //En una nueva ventana
             //pdf.output('dataurlnewwindow'); 
+            */
         }
 
     </script>
