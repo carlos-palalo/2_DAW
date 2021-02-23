@@ -36,7 +36,7 @@ public class OperacionesBD {
             String sql = "SELECT c.idcliente, cnombre, categoria, cuentaporpagar " +
                     "FROM cliente c, encargos e, vendedores v " +
                     "WHERE c.idcliente = e.idcliente " +
-                    "AND e.idvendedor=v.idvendedor " +
+                    "AND c.idvendedor=v.idvendedor " +
                     "AND v.comision>0.12 " +
                     "AND c.cuentaporpagar<(SELECT AVG(s.cuentaporpagar) " +
                     "					FROM cliente s " +
