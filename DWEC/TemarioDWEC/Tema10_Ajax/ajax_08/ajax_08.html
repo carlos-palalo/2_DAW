@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ajax_08 - Insertar/modificar provincia en la base de datos de temperaturas</title>
+		<link rel="icon" type="image/x-icon" href="../recursos/favicon.ico">
+		<style>
+			div {
+				margin: 0.5cm;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>ajax_08 - Insertar/modificar provincia en la base de datos de temperaturas</h1>
+		<hr />
+		<div>Código<br /><input type="number" id="codigo"></div>
+		<div>Provincia<br /><input type="text" id="provincia"></div>
+		<div>Temperatura<br /><input type="number" id="temperatura"></div>
+		<div>Estado<br /><input type="number" id="estado"></div>
+		<div><input type="button" onclick="insertarRegistro();" value="Insertar/Modificar registro" /></div>
+		
+		<div id="contenido"></div>
+
+		<script type="text/javascript">
+
+			function insertarRegistro() {
+				var codigo = document.getElementById("codigo").value;
+				var provincia = document.getElementById("provincia").value;
+				var temperatura = document.getElementById("temperatura").value;
+				var estado = document.getElementById("estado").value;
+
+				var insercion;
+				if(window.XMLHttpRequest) {
+					insercion = new XMLHttpRequest();
+				} else if(window.ActiveXObject) {
+					insercion = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				var parametros = "";
+				parametros += "?codigo="+codigo;
+				parametros += "&provincia="+provincia;
+				parametros += "&temperatura="+temperatura;
+				parametros += "&estado="+estado;
+
+				insercion.open('GET','ajax_08.php'+parametros,true);
+				insercion.send(null);
+
+				insercion.onreadystatechange = function (evento) {
+					if((insercion.readyState == 4) && ((insercion.status == 200) )){
+						document.getElementById("contenido").innerHTML = insercion.responseText;
+					}
+				};
+			}
+
+		</script>
+	</body>
+</html>

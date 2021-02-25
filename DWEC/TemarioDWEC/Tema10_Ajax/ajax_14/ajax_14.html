@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>ajax_14 - Ajax con jQuery - Rellenar datos de la tabla de libros</title>
 		<link rel="icon" type="image/x-icon" href="../recursos/favicon.ico">
-		<script type="text/javascript" src="../recursos/jquery-3.5.1.js"></script>
+		<script type="text/javascript" src="../jquery-3.5.1.js"></script>
 		<style>
 			table,td {
 				border: 2px solid black;
@@ -62,6 +62,7 @@
 			$(document).ready(function(){ 
 				$("#boton").click(function() {
 					$("tr").find("td:first").text(function (fila,isbn) {
+						console.log(fila);
 						$.ajax({
 							url: "ajax_14.php",
 							type: "get",

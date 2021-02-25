@@ -53,7 +53,7 @@
                 if ((peticion.readyState == 4) && ((peticion.status == 200))) {
                     //PASO 5: procesar la respuesta
                     //document.getElementById("contenido").innerHTML = peticion.responseText;
-
+                    console.log(peticion.responseText);
                     var libros = JSON.parse(peticion.responseText);
                     //procesarDatos1(libros);
                     procesarDatos(libros);
