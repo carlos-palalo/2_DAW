@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Examen</title>
+    <script type="text/javascript" src="../jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="../jsPDF/jspdf.js"></script>
+    <!--<script type="text/javascript" src="jsPDF/jspdf.js"></script>-->
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+    <style>
+        #cuadro {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Examen 4</h1>
+    <hr />
+
+    <br /><br />
+
+    <!-- PASO 1: petición javascript -->
+    Precio mínimo<br />
+    <input type="number" id="preciomin" name="preciomin">
+
+    <br /><br />
+
+    Precio máximo<br />
+    <input type="number" id="preciomax" name="preciomax">
+    <br><br>
+    <button onclick="peticionLibros()">Realizar Petición</button><br><br>
+    <div id="cuadro"></div>
+    <br><br>
+    <button onclick="comprobarSeleccion(this)" id="crear" disabled>Crear PDF</button>
+    <button onclick="comprobarSeleccion(this)" id="eliminar" disabled>Eliminar Libro</button>
+
+    <script type="text/javascript">
+        var opciones = [];
+        var objLibros;
+
+        function peticionLibros() {
+            var peticion;
+            if (window.XMLHttpRequest) {
+                peticion = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                peticion = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            var vPrecioMin = document.getElementById("preciomin").value;
+            var vPrecioMax = document.getElementById("preciomax").value;
+
+            peticion.open('GET', 'examen1.php?preciomin=' + vPrecioMin + '&preciomax=' + vPrecioMax, true);
+            peticion.send(null);
+
+            peticion.onreadystatechange = function (evento) {
+                if ((peticion.readyState == 4) && ((peticion.status == 200))) {
+                    //console.log(JSON.parse(peticion.responseText)[0]);
+                    //console.log(peticion.responseText);
+                    objLibros = JSON.parse(peticion.responseText);
+                    procesarDatos(objLibros);
+                    console.log("Selección exitosa!");
+                }
+            };
+        }
+
+        function procesarDatos(_libros) {
+            var c = "";
+            _libros.forEach(function (_elemento) {
+                c += "<label><input type='radio' name='opciones' id='" + _elemento.isbn + "' value='" + _elemento.isbn + "'>" + _elemento.titulo + "</label><br>";
+                opciones.push(_elemento.isbn);
+            });
+            document.getElementById("cuadro").innerHTML = c;
+
+            $(function () {
+                $("#crear").add("#eliminar").removeAttr("disabled");
+            })
+        }
+
+        function comprobarSeleccion(event) {
+            var opcion = document.getElementsByName("opciones");
+            //console.log(opciones);
+            opciones.forEach(x => {
+                if (document.getElementById(x).checked) {
+                    var codigo = document.getElementById(x).value;
+                    //console.log(codigo);
+                    switch (event.id) {
+                        case "crear":
+                            crearPDF(codigo);
+                            break;
+                        case "eliminar":
+                            peticionBorrar(parseInt(codigo));
+                            break;
+                    }
+                }
+            });
+        }
+
+        function peticionBorrar(codigo) {
+            var peticion;
+            if (window.XMLHttpRequest) {
+                peticion = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                peticion = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            //console.log(codigo);
+            peticion.open('GET', 'examen2.php?codigo=' + codigo, true);
+            peticion.send(null);
+
+            peticion.onreadystatechange = function (evento) {
+                if ((peticion.readyState == 4) && ((peticion.status == 200))) {
+                    document.getElementById("cuadro").innerHTML = peticion.responseText;
+                }
+            };
+        }
+
+        function crearPDF(codigo) {
+            //console.log(objLibros);
+            objLibros.forEach(x => {
+                if (x.isbn == codigo) {
+                    console.log(x);
+                    var pdf = new jsPDF();
+                    pdf.setFontSize(14);
+                    pdf.setFont("courier", "bold");
+                    pdf.text(20, 35, "DATOS DEL LIBRO");
+                    
+                    //ISBN
+                    pdf.setFontSize(11);
+                    pdf.setFont("helvetica", "normal");
+                    pdf.text(20, 45, "ISBN:");
+                    pdf.setFontSize(13);
+                    pdf.setFont("courier", "bold");
+                    pdf.text(40, 45, x.isbn);
+
+                    //Titulo
+                    pdf.setFontSize(11);
+                    pdf.setFont("helvetica", "normal");
+                    pdf.text(20, 50, "Título:");
+                    pdf.setFontSize(13);
+                    pdf.setFont("courier", "bold");
+                    pdf.text(40, 50, x.titulo);
+
+                    //Autor
+                    pdf.setFontSize(11);
+                    pdf.setFont("helvetica", "normal");
+                    pdf.text(20, 55, "Autor:");
+                    pdf.setFontSize(13);
+                    pdf.setFont("courier", "bold");
+                    pdf.text(40, 55, x.autor);
+
+                    //Editorial
+                    pdf.setFontSize(11);
+                    pdf.setFont("helvetica", "normal");
+                    pdf.text(20, 60, "Editorial:");
+                    pdf.setFontSize(13);
+                    pdf.setFont("courier", "bold");
+                    pdf.text(40, 60, x.editorial);
+
+                    //Paginas
+                    pdf.setFontSize(11);
+                    pdf.setFont("helvetica", "normal");
+                    pdf.text(20, 65, "Paginas:");
+                    pdf.setFontSize(13);
+                    pdf.setFont("courier", "bold");
+                    pdf.text(40, 65, x.paginas);
+
+                    //Precio
+                    pdf.setFontSize(11);
+                    pdf.setFont("helvetica", "normal");
+                    pdf.text(20, 70, "Precio:");
+                    pdf.setFontSize(13);
+                    pdf.setFont("courier", "bold");
+                    pdf.text(40, 70, x.precio);
+
+                    //SALIDA DEL DOCUMENTO
+                    var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+                    if (es_chrome) {
+                        var win = window.open();
+                        win.document.write('<iframe src="' + pdf.output('datauri') + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+                    }
+
+                    var es_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+                    if (es_firefox) {
+                        pdf.output('datauri');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
