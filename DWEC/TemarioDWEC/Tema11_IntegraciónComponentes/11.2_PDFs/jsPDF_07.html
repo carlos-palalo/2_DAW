@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jsPDF_07 - Creación de formularios</title>
+		<link rel="icon" type="image/x-icon" href="recursos/favicon.ico">
+		<script type="text/javascript" src="recursos/jsPDF/jspdf.js"></script>
+				<!--<script type="text/javascript" src="jsPDF/jspdf.js"></script>-->
+		<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+	</head>
+	<body>
+		<h1>jsPDF_07 - Creación de formularios</h1>
+		<hr />
+
+		<form>
+			Nombre<br />
+			<input type="text" name="nombre" id="nombre" />
+			<br /><br />
+			Apellidos<br />
+			<input type="text" name="apellidos" id="apellidos" />
+			<br /><br />
+			Fecha de nacimiento<br />
+			<input type="date" name="fnacimiento" id="fnacimiento" />
+			<br /><br />
+			Domicilio<br />
+			<input type="text" name="domicilio" id="domicilio" />
+			<br /><br />
+			email<br />
+			<input type="email" name="email" id="email" />
+			<br /><br />
+			Centro de procedencia<br />
+			<input type="text" name="centroprocedencia" id="centroprocedencia" />
+			<br /><br />
+			Estudios cursados<br />
+			<input type="text" name="estudioscursados" id="estudioscursados" />
+			<br /><br />
+			Repite<br />
+			<input type="checkbox" name="repite" id="repite" />
+			<br /><br />
+			Ciclo formativo<br />
+			<select name="cicloformativo" id="cicloformativo">
+				<option value=""></option>
+				<option value="asir">Administración de sistemas informóticos en red</option>
+				<option value="ayf">Administración y finanzas</option>
+				<option value="daw">Desarrollo de aplicaciones Web</option>
+			</select>
+			<br /><br />
+			Curso<br />
+			<input type="radio" name="curso" id="curso1" value="1" />Primero
+			<br />
+			<input type="radio" name="curso" id="curso2" value="2" />Segundo
+			<br /><br />
+			<input type="button" value="Crear formulario" onclick="crearPDF();" />
+		</form>
+
+		<script type="text/javascript">
+
+			var pdf;
+
+			function marca(origenX,origenY) {
+				pdf.setLineWidth(0.6);
+				var v=2;
+				pdf.lines([[v,v]],origenX+1,origenY+1);
+				pdf.lines([[v,-v]],origenX+1,origenY+4-1);
+
+				/*v=4;
+				pdf.lines([[v,v]],origenX,origenY);
+				pdf.lines([[v,-v]],origenX,origenY+4);*/
+			}
+		
+			function crearPDF() {
+				var _nombre = document.getElementById("nombre").value.toUpperCase();
+				var _apellidos = document.getElementById("apellidos").value.toUpperCase();
+				var _fnacimiento = document.getElementById("fnacimiento").value;
+				var _domicilio = document.getElementById("domicilio").value.toUpperCase();
+				var _email = document.getElementById("email").value.toUpperCase();
+				var _centroprocedencia = document.getElementById("centroprocedencia").value.toUpperCase();
+				var _estudioscursados = document.getElementById("estudioscursados").value.toUpperCase();
+
+				pdf = new jsPDF();
+
+				for(var i=0;i<2;i++) {
+					pdf.setFontSize(15);
+					pdf.setFont("helvetica","bold");
+
+					pdf.text(25,15,"SOLICITUD DE MATRICULA - I.E.S. RIBERA DE CASTILLA");
+					pdf.text(45,25,"CICLOS FORMATIVOS DE GRADO SUPERIOR");
+
+					pdf.rect(15,39,180,70);
+
+					//NOMBRE
+					pdf.setFontSize(11);
+					pdf.setFont("helvetica","normal");
+					pdf.text(20,45,"Nombre:");
+					pdf.setFontSize(13);
+					pdf.setFont("courier","bold");
+					pdf.text(40,45,_nombre);
+					
+					//APELLIDOS
+					pdf.setFontSize(11);
+					pdf.setFont("helvetica","normal");
+					pdf.text(20,55,"Apellidos:");
+					pdf.setFontSize(13);
+					pdf.setFont("courier","bold");
+					pdf.text(43,55,_apellidos);
+
+					//FECHA DE NACIMIENTO
+					pdf.setFontSize(11);
+					pdf.setFont("helvetica","normal");
+					pdf.text(20,65,"Fecha de nacimiento:");
+					pdf.setFontSize(13);
+					pdf.setFont("courier","bold");
+					pdf.text(63,65,_fnacimiento);
+					
+					//DOMICILIO
+					pdf.setFontSize(11);
+					pdf.setFont("helvetica","normal");
+					pdf.text(20,75,"Domicilio:");
+					pdf.setFontSize(13);
+					pdf.setFont("courier","bold");
+					pdf.text(43,75,_domicilio);
+					
+					//EMAIL
+					pdf.setFontSize(11);
+					pdf.setFont("helvetica","normal");
+					pdf.text(20,85,"Email:");
+					pdf.setFontSize(13);
+					pdf.setFont("courier","bold");
+					pdf.text(36,85,_email);
+					
+					//CENTRO DE PROCEDENCIA
+					pdf.setFontSize(11);
+					pdf.setFont("helvetica","normal");
+					pdf.text(20,95,"Centro de procedencia:");
+					pdf.setFontSize(13);
+					pdf.setFont("courier","bold");
+					pdf.text(66,95,_centroprocedencia);
+					
+					//ESTUDIOS CURSADOS
+					pdf.setFontSize(11);
+					pdf.setFont("helvetica","normal");
+					pdf.text(20,105,"Estudios cursados:");
+					pdf.setFontSize(13);
+					pdf.setFont("courier","bold");
+					pdf.text(60,105,_estudioscursados);
+
+					//REPITE
+					pdf.setFontSize(15);
+					pdf.setFont("helvetica","bold");
+					pdf.text(95,120,"REPITE");
+					pdf.setFillColor(100,100,100);
+					if(document.getElementById("repite").checked) {
+						pdf.roundedRect(50,125,50,20,5,5,'F');
+						pdf.roundedRect(110,125,50,20,5,5,'S');	
+					} else {
+						pdf.roundedRect(50,125,50,20,5,5,'S');
+						pdf.roundedRect(110,125,50,20,5,5,'F');
+					}
+					pdf.text(73,137,"SI");
+					pdf.text(131,137,"NO");
+
+					//CICLO FORMATIVO
+					pdf.text(15,162,"CICLO FORMATIVO");
+					pdf.setLineWidth(0.6);
+					pdf.setFontSize(12);
+					pdf.rect(15,166.5,4,4);
+					pdf.text(25,170,"ADMINISTRACION DE SISTEMAS INFORMATICOS EN RED");
+					pdf.rect(15,176.5,4,4);
+					pdf.text(25,180,"ADMINISTRACION Y FINANZAS");
+					pdf.rect(15,186.5,4,4);
+					pdf.text(25,190,"DESARROLLO DE APLICACIONES WEB");
+					switch(document.getElementById("cicloformativo").value) {
+						case "asir": marca(15,166.5); break;
+						case "ayf": marca(15,176.5); break;
+						case "daw": marca(15,186.5); break;
+					}
+
+					//ESTUDIOS CURSADOS
+					pdf.setFontSize(15);
+					pdf.text(15,202,"CURSO");
+					pdf.setFont("helvetica");
+					pdf.setFontSize(12);
+					pdf.rect(15,206.5,4,4);
+					pdf.text(25,210,"1");
+					pdf.rect(15,216.5,4,4);
+					pdf.text(25,220,"2");
+					if(document.getElementById("curso1").checked) {
+						marca(15,206.5);
+					}
+
+					if(document.getElementById("curso2").checked) {
+						marca(15,216.5);
+					}
+
+
+					//FECHA Y FIRMA
+					var fecha = new Date();
+					var dia = fecha.getDate();
+					var mes;
+					switch(fecha.getMonth()) {
+						case 0: mes='Enero';break;
+						case 1: mes='Febrero';break;
+						case 2: mes='Marzo';break;
+						case 3: mes='Abril';break;
+						case 4: mes='Mayo';break;
+						case 5: mes='Junio';break;
+						case 6: mes='Julio';break;
+						case 7: mes='Agosto';break;
+						case 8: mes='Septiembre';break;
+						case 9: mes='Octubre';break;
+						case 10: mes='Noviembre';break;
+						case 11: mes='Diciembre';break;
+					}
+					pdf.setFontSize(8);
+					var ano = fecha.getFullYear();
+					pdf.text(120,252,"En Valladolid a " + dia + " de " + mes + " de " + ano );
+					pdf.text(120,272,"Firmado: " + _nombre + " " + _apellidos);
+
+					pdf.setFontSize(6);
+					if(i==0) {
+						pdf.text(10,290,"EJEMPLAR PARA SECRETARÍA");
+						pdf.addPage();
+					}
+					else {
+						pdf.text(10,290,"EJEMPLAR PARA EL INTERESADO");
+					}
+				}
+
+				
+				//SALIDA DEL DOCUMENTO
+				var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+				if(es_chrome) {
+					var win = window.open();
+					win.document.write('<iframe src="' + pdf.output('datauri')  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+				}
+
+				var es_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+				if(es_firefox) {
+					pdf.output('datauri');
+				}
+			}
+
+		</script>
+	</body>
+</html>
